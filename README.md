@@ -2,9 +2,13 @@
 
 All AI hackathons in one place — prizes, winners and upcoming events.
 
+Live site: **https://ai-hackathons-tawny.vercel.app**
+
 A public, read-only directory of AI hackathons. No login, no signup, no admin.
 A scheduled job re-reads public event listings every 6 hours, works out each
 event's status from its dates, and refreshes every page.
+
+Repository: `github.com/uncrownedprince786-collab/AI-Hackathon`
 
 ## Stack
 
