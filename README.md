@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Hackathons
 
-## Getting Started
+All AI hackathons in one place — prizes, winners and upcoming events.
 
-First, run the development server:
+A public, read-only directory of AI hackathons. No login, no signup, no admin.
+A scheduled job re-reads public event listings every 6 hours, works out each
+event's status from its dates, and refreshes every page.
+
+## Stack
+
+- Next.js 15 (App Router, React 19, TypeScript)
+- Tailwind CSS v4 + shadcn-style components + Lucide icons
+- Data from Devpost and lablab.ai public pages
+- JSON file locally, Supabase in production, ISR revalidation every 6 hours
+
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local   # optional: only needed for Supabase
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Local dev server on http://localhost:3000 |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run refresh:data` | Re-read the sources and rewrite `src/data/hackathons.json` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`REFRESH_FORCE=1 npm run refresh:data` re-reads every detail page instead of only
+the ones that changed. `REFRESH_LABLAB=0` collects Devpost only.
 
-## Learn More
+## Data flow
 
-To learn more about Next.js, take a look at the following resources:
+1. `src/lib/sources/devpost.ts` and `src/lib/sources/lablab.ts` read public pages.
+2. `src/lib/collector.ts` merges the results with the previous dataset so
+   hand-checked data survives, recalculates totals, and saves.
+3. `src/lib/store.ts` writes to Supabase when configured, otherwise to
+   `src/data/hackathons.json`.
+4. `src/lib/hackathons.ts` reads it back through `unstable_cache` with a 6 hour
+   window, and merges `src/data/curated.ts` (verified winners) on top.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Statuses are never stored as truth: they are derived from the dates on every read,
+so an event moves from upcoming to ongoing to past on its own.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Routes
 
-## Deploy on Vercel
+| Route | Purpose |
+| --- | --- |
+| `/` | Landing page with live, upcoming and winner highlights |
+| `/hackathons` | Full filterable list (search, status, mode, cash, credits, sort) |
+| `/ongoing`, `/upcoming`, `/past` | Status archives |
+| `/hackathons/[slug]` | Event detail, prizes, winners, FAQ |
+| `/winners` | Past events with published winning projects |
+| `/stats` | Totals by status, mode and sponsor |
+| `/how-we-collect-data` | Sources, method and FAQ |
+| `/submit` | Public submission form |
+| `/api/data` | Whole dataset as JSON, no key |
+| `/api/submit` | `POST` for the submission form |
+| `/api/cron/refresh` | Refresh endpoint, called by cron every 6 hours |
+| `/sitemap.xml`, `/robots.txt` | Generated from the dataset |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Automatic updates
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`GET` or `POST /api/cron/refresh` reads the public sources, saves the dataset, then
+calls `revalidateTag` and `revalidatePath` so every cached page picks up the new
+numbers. It requires `Authorization: Bearer <CRON_SECRET>`.
+
+It is called from two places:
+
+1. **GitHub Actions**, every 6 hours — `.github/workflows/refresh-data.yml`
+   (cron `17 */6 * * *`, plus a manual *Run workflow* button). This is what keeps
+   the 6-hour cadence.
+2. **Vercel Cron**, once a day at 09:00 UTC — `vercel.json`. Vercel's Hobby plan
+   rejects anything more frequent than daily, so this is only a backstop. On the
+   Pro plan, change the schedule in `vercel.json` to `0 */6 * * *` and delete the
+   workflow if you prefer to keep everything in Vercel.
+
+The endpoint answers `503` with a `warning` field when it collected successfully but
+could not save, which is what happens on Vercel before Supabase is configured. The
+workflow treats any non-`200` as a failure so it is visible in the Actions log.
+
+### GitHub Actions secrets
+
+| Secret | Value |
+| --- | --- |
+| `SITE_URL` | `https://ai-hackathons-tawny.vercel.app` (a repository variable works too) |
+| `CRON_SECRET` | The same value as the Vercel `CRON_SECRET` env var |
+
+## Supabase (required for production writes)
+
+Vercel's filesystem is read-only, so both the refresh and the submission form need a
+writable store.
+
+1. Create a Supabase project.
+2. Run `supabase/schema.sql` in the SQL editor.
+3. Add these Vercel **production** env vars:
+   - `SUPABASE_URL` — project URL
+   - `SUPABASE_SERVICE_ROLE_KEY` — service role key (writes need it; the anon key
+     can only read)
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — optional, reads only
+4. Redeploy, then call the refresh endpoint once to confirm `storage: "supabase"`.
+
+Without those, the site still serves the committed JSON dataset, but the cron and
+the submit form will report that they could not save.
+
+## Deploy
+
+```bash
+vercel --prod --scope <your-team>
+```
+
+`NEXT_PUBLIC_SITE_URL` must match the deployed URL so canonical links, the sitemap
+and the Open Graph image resolve correctly.
+
+## Adding a hackathon by hand
+
+Add an entry to `src/data/curated.ts`. Curated records are merged last, so they
+win over scraped values and are never overwritten by a refresh. Use this for
+events whose winners are published.
+
+## Data honesty
+
+- Cash and credits are tracked separately and shown separately.
+- Nothing is invented: no prize figure and no winner name is added unless the
+  organizer published it.
+- Every record keeps `officialUrl` and `sourceUrl`.
