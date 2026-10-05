@@ -24,6 +24,7 @@ create table if not exists public.submissions (
 -- The dataset is public: everyone can read the site, so the row must be too.
 alter table public.hackathons enable row level security;
 
+drop policy if exists "hackathons are public" on public.hackathons;
 create policy "hackathons are public"
   on public.hackathons for select
   using (true);

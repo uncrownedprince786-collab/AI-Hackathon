@@ -100,7 +100,7 @@ export async function writeDataset(dataset: Dataset): Promise<StorageTarget> {
       "hackathons?select=id&limit=1",
     );
     const headers = { Prefer: "return=minimal" };
-    const body = JSON.stringify({ data: dataset });
+    const body = JSON.stringify({ data: dataset, updated_at: new Date().toISOString() });
 
     if (existing && existing.length > 0) {
       const { ok } = await supabaseRequest(`hackathons?id=eq.${existing[0].id}`, {
