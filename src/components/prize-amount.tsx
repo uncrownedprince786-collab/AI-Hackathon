@@ -1,12 +1,18 @@
 import { cn } from "@/lib/utils";
 
-/** The single most important number on every card. */
+/**
+ * The most important number on a card. `claimed` switches the wording: when an
+ * organizer announces a pool without publishing a breakdown we say so instead of
+ * implying the money is confirmed cash.
+ */
 export function PrizeAmount({
   amount,
+  claimed = false,
   className,
   size = "lg",
 }: {
   amount: number;
+  claimed?: boolean;
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
 }) {
@@ -19,21 +25,28 @@ export function PrizeAmount({
 
   if (!amount || amount <= 0) {
     return (
-      <span className={cn("font-bold text-muted-foreground/70", sizes[size], className)}>
-        No cash prize
+      <span className={cn("font-semibold text-muted-foreground/80", sizes[size], className)}>
+        No prize pool published
       </span>
     );
   }
 
   return (
-    <span
-      className={cn(
-        "font-bold tracking-tight text-prize tabular-nums",
-        sizes[size],
-        className,
-      )}
-    >
-      {format(amount)}
+    <span className="inline-flex flex-col gap-0.5">
+      <span
+        className={cn(
+          "font-bold tracking-tight text-prize tabular-nums",
+          sizes[size],
+          className,
+        )}
+      >
+        {format(amount)}
+      </span>
+      {claimed ? (
+        <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+          Announced total pool
+        </span>
+      ) : null}
     </span>
   );
 }

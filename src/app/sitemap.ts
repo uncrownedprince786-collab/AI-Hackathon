@@ -1,11 +1,16 @@
 import type { MetadataRoute } from "next";
 import { getAllHackathons, getDataset } from "@/lib/hackathons";
+import { getPosts } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/seo";
 
 export const revalidate = 21600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [hackathons, dataset] = await Promise.all([getAllHackathons(), getDataset()]);
+  const [hackathons, dataset, posts] = await Promise.all([
+    getAllHackathons(),
+    getDataset(),
+    getPosts(),
+  ]);
   const lastModified = new Date(dataset.meta.lastUpdated);
 
   const staticPages: MetadataRoute.Sitemap = [
@@ -15,9 +20,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absoluteUrl("/upcoming"), lastModified, changeFrequency: "hourly", priority: 0.9 },
     { url: absoluteUrl("/past"), lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: absoluteUrl("/winners"), lastModified, changeFrequency: "weekly", priority: 0.85 },
+    { url: absoluteUrl("/events"), lastModified, changeFrequency: "daily", priority: 0.8 },
+    { url: absoluteUrl("/blog"), lastModified, changeFrequency: "daily", priority: 0.7 },
     { url: absoluteUrl("/stats"), lastModified, changeFrequency: "weekly", priority: 0.7 },
     {
-      url: absoluteUrl("/how-we-collect-data"),
+      url: absoluteUrl("/methodology"),
       lastModified,
       changeFrequency: "monthly",
       priority: 0.5,
@@ -32,5 +39,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: h.status === "ongoing" ? 0.9 : h.status === "upcoming" ? 0.8 : 0.6,
   }));
 
-  return [...staticPages, ...detailPages];
+  const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: absoluteUrl(`/blog/${post.slug}`),
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticPages, ...detailPages, ...blogPages];
 }

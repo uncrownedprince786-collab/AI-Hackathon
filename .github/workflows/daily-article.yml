@@ -1,0 +1,53 @@
+name: Publish daily AI article
+
+# Adds one new markdown file under content/blog each day. It only ever creates
+# a file for today, never edits an existing one, and exits quietly when no free
+# AI key is configured. Pushing the new file triggers the Vercel deployment.
+on:
+  schedule:
+    - cron: "23 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-article
+  cancel-in-progress: false
+
+jobs:
+  article:
+    name: Write today's article
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate the article
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_MODEL: ${{ vars.GROQ_MODEL }}
+        run: npx tsx scripts/generate-post.ts
+
+      - name: Commit if a new file appeared
+        run: |
+          if [ -z "$(git status --porcelain content/blog)" ]; then
+            echo "No new article today."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/blog
+          git commit -m "content: add daily AI article"
+          git push

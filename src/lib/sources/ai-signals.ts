@@ -210,3 +210,97 @@ export function parsePrizeAmount(raw: string | undefined): number {
   const value = Number.parseFloat(digits);
   return Number.isFinite(value) ? Math.round(value) : 0;
 }
+
+const POOL_WORDS = [
+  "in prizes",
+  "in prize",
+  "prize pool",
+  "prizes pool",
+  "total prize",
+  "prizes worth",
+  "prize worth",
+  "worth of prizes",
+  "in cash prizes",
+  "cash prizes",
+  "prizes available",
+];
+
+const SMALL_WORDS = new Set(["and", "or", "the", "of", "for", "to", "in", "at", "on", "by", "a", "an"]);
+
+/**
+ * Finds the biggest pool figure the organizer states in prose, for example
+ * "ML Empowerment Build Challenge ($400,000 in prizes!)" or "DSH Hacks V2 ($100k+ in prizes)".
+ * Requires a pool word nearby so ordinary amounts ("$15 for the .xyz domain") are ignored.
+ */
+export function extractClaimedPool(...texts: (string | undefined)[]): number {
+  const haystack = texts
+    .filter(Boolean)
+    .join(" ")
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\u2013/g, "-")
+    .replace(/\s+/g, " ");
+  if (!haystack) return 0;
+
+  const amounts: number[] = [];
+  const pattern = /(?:[$€£]\s?|\bUSD\s?)(\d[\d,]*(?:\.\d+)?)\s*([kKmM])?\b/g;
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(haystack)) !== null) {
+    const value = Number.parseFloat(match[1].replace(/,/g, ""));
+    if (!Number.isFinite(value)) continue;
+    const suffix = match[2]?.toLowerCase();
+    const scaled = suffix === "k" ? value * 1_000 : suffix === "m" ? value * 1_000_000 : value;
+    if (scaled <= 0) continue;
+    const around = haystack.slice(Math.max(0, match.index - 60), match.index + 90).toLowerCase();
+    if (POOL_WORDS.some((w) => around.includes(w))) amounts.push(Math.round(scaled));
+  }
+  return amounts.length ? Math.max(...amounts) : 0;
+}
+
+/** "nill" is lablab's points currency, never an organizer name. */
+export function cleanOrganizerName(raw: string | undefined | null): string {
+  let value = (raw ?? "").replace(/\s+/g, " ").trim();
+  if (!value) return "";
+  if (/^nill$/i.test(value)) return "";
+  value = value.replace(/^nill\s*[-|:]?\s*/i, "").trim();
+  value = value.replace(/[\s,;:|]+$/, "").trim();
+  if (!value) return "";
+  if (value.length > 60) value = `${value.slice(0, 57).trimEnd()}...`;
+
+  // Only re-case strings that are entirely lower case, so "IEEE" and "STEMise" survive.
+  if (value === value.toLowerCase() && /[a-z]/.test(value)) {
+    value = value
+      .split(" ")
+      .map((word, index) =>
+        index > 0 && SMALL_WORDS.has(word.toLowerCase())
+          ? word.toLowerCase()
+          : word.charAt(0).toUpperCase() + word.slice(1),
+      )
+      .join(" ");
+  }
+  return value;
+}
+
+const CLOSED_PATTERNS = [
+  /registration (?:is |has )?closed/i,
+  /submissions? (?:are |is |has )?closed/i,
+  /registration period (?:is |has )?(?:closed|ended)/i,
+  /no longer accepting (?:submissions|registrations|entries)/i,
+  /call for (?:submissions|entries) (?:is )?closed/i,
+  /\bsubmissions?\s+closed\b/i,
+];
+
+const OPEN_PATTERNS = [
+  /registration (?:is )?open/i,
+  /submissions? (?:are |is )?open/i,
+  /accepting (?:submissions|registrations|entries)/i,
+  /\bregister now\b/i,
+];
+
+/** Reads the organizer page for an explicit registration state. */
+export function detectRegistrationStatus(text: string | undefined | null): "open" | "closed" | undefined {
+  if (!text) return undefined;
+  if (CLOSED_PATTERNS.some((p) => p.test(text))) return "closed";
+  if (OPEN_PATTERNS.some((p) => p.test(text))) return "open";
+  return undefined;
+}
+

@@ -43,6 +43,7 @@ export async function GET(request: Request) {
       "/past",
       "/winners",
       "/stats",
+      "/events",
       "/api/data",
     ]) {
       revalidatePath(path);
@@ -59,6 +60,7 @@ export async function GET(request: Request) {
         updated: result.updated,
         removed: result.removed,
         storage: result.writtenTo,
+        aiReview: result.aiReview,
         warning:
           result.writtenTo === "none"
             ? "Nothing was saved: the filesystem is read-only and SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY are not set."

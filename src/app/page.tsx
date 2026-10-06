@@ -254,7 +254,7 @@ export default async function HomePage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild variant="outline">
-                <Link href="/how-we-collect-data">
+                <Link href="/methodology">
                   <Database aria-hidden="true" />
                   How we collect data
                 </Link>

@@ -114,8 +114,17 @@ function WinnerRow({
             )}
           </h2>
 
+          {winner.summary ? (
+            <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-foreground/80">
+              <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                What they built:{" "}
+              </span>
+              {winner.summary}
+            </p>
+          ) : null}
+
           {winner.team?.length ? (
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-1.5 text-sm text-muted-foreground">
               Team: {winner.team.join(", ")}
             </p>
           ) : null}

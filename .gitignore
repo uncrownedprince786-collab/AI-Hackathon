@@ -45,3 +45,6 @@ next-env.d.ts
 # local secrets
 .env.local
 .env*
+
+# keep the example config in the repo
+!.env.example

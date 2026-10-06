@@ -35,6 +35,8 @@ npm run dev
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run refresh:data` | Re-read the sources and rewrite `src/data/hackathons.json` |
+| `npx tsx scripts/generate-post.ts` | Write today's blog article into `content/blog` (needs a free AI key) |
+| `node scripts/check-links.mjs` | Crawl every internal link on a running server |
 
 `REFRESH_FORCE=1 npm run refresh:data` re-reads every detail page instead of only
 the ones that changed. `REFRESH_LABLAB=0` collects Devpost only.
@@ -43,10 +45,16 @@ the ones that changed. `REFRESH_LABLAB=0` collects Devpost only.
 
 1. `src/lib/sources/devpost.ts` and `src/lib/sources/lablab.ts` read public pages.
 2. `src/lib/collector.ts` merges the results with the previous dataset so
-   hand-checked data survives, recalculates totals, and saves.
-3. `src/lib/store.ts` writes to Supabase when configured, otherwise to
+   hand-checked data survives, recalculates totals, and saves. It also infers a
+   country and region from each published location.
+3. When a free AI key is set, `src/lib/sources/llm-review.ts` sends only the new
+   or changed records to a free language model, which may confirm that a listing
+   is really an AI event, that its dates make sense, and that a stated prize or
+   organizer was not missed. It can only repeat what the source already says, and
+   results are cached on a content hash so nothing is sent twice.
+4. `src/lib/store.ts` writes to Supabase when configured, otherwise to
    `src/data/hackathons.json`.
-4. `src/lib/hackathons.ts` reads it back through `unstable_cache` with a 6 hour
+5. `src/lib/hackathons.ts` reads it back through `unstable_cache` with a 6 hour
    window, and merges `src/data/curated.ts` (verified winners) on top.
 
 Statuses are never stored as truth: they are derived from the dates on every read,
@@ -61,7 +69,10 @@ so an event moves from upcoming to ongoing to past on its own.
 | `/ongoing`, `/upcoming`, `/past` | Status archives |
 | `/hackathons/[slug]` | Event detail, prizes, winners, FAQ |
 | `/winners` | Past events with published winning projects |
-| `/stats` | Totals by status, mode and sponsor |
+| `/events` | Upcoming AI events and meetups (Eventbrite, no API key) |
+| `/blog` | Short plain-English AI articles, one per day |
+| `/blog/[slug]` | A single article |
+| `/stats` | Totals by status, mode, prize type, country and region |
 | `/how-we-collect-data` | Sources, method and FAQ |
 | `/submit` | Public submission form |
 | `/api/data` | Whole dataset as JSON, no key |
@@ -95,6 +106,33 @@ workflow treats any non-`200` as a failure so it is visible in the Actions log.
 | --- | --- |
 | `SITE_URL` | `https://ai-hackathons-tawny.vercel.app` (a repository variable works too) |
 | `CRON_SECRET` | The same value as the Vercel `CRON_SECRET` env var |
+
+### Free AI accuracy check (optional)
+
+Set one of these where the refresh runs (Vercel project env vars, or `.env.local`
+locally) and the collector will send changed records to a free language model
+before saving:
+
+| Var | Notes |
+| --- | --- |
+| `GROQ_API_KEY` | Preferred. Free tier, model `llama-3.3-70b-versatile` |
+| `GEMINI_API_KEY` | Fallback, model `gemini-2.0-flash` |
+| `GROQ_MODEL`, `GEMINI_MODEL` | Optional model overrides |
+| `LLM_REVIEW_LIMIT` | Optional, max records per run (default 400) |
+
+Rules built into the check: it may only keep, reject or restate values that are
+literally in the source text, it never writes a prize or a winner that the
+organizer did not publish, a failure falls back to the normal rules, and each
+record's content hash is stored so unchanged records are never sent again.
+Without a key the refresh logs `ai review skipped` and continues.
+
+### Daily blog article
+
+`.github/workflows/daily-article.yml` runs `scripts/generate-post.ts` once a day
+with `GROQ_API_KEY` or `GEMINI_API_KEY`, writes a markdown file into
+`content/blog/` and commits it, which triggers a new Vercel deployment. It only
+ever creates a file for the current day, so it can never overwrite an article.
+Add the key as a repository secret for this to run.
 
 ## Supabase (required for production writes)
 
@@ -133,4 +171,8 @@ events whose winners are published.
 - Cash and credits are tracked separately and shown separately.
 - Nothing is invented: no prize figure and no winner name is added unless the
   organizer published it.
+- The optional language-model check can only drop a listing or restate values
+  that appear in the source text. It cannot add a prize, a date or a winner.
+- Blog articles are evergreen explainers: no news, no version numbers, no
+  citations that were not checked.
 - Every record keeps `officialUrl` and `sourceUrl`.

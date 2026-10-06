@@ -11,13 +11,15 @@ const COLUMNS = [
       { href: "/upcoming", label: "Upcoming" },
       { href: "/past", label: "Past hackathons" },
       { href: "/winners", label: "Winners" },
+      { href: "/events", label: "AI events" },
+      { href: "/blog", label: "Blog" },
     ],
   },
   {
     title: "Info",
     links: [
       { href: "/stats", label: "Stats" },
-      { href: "/how-we-collect-data", label: "How we collect data" },
+      { href: "/methodology", label: "How we collect data" },
       { href: "/submit", label: "Submit a hackathon" },
       { href: "/api/data", label: "Data (JSON)" },
     ],
@@ -73,7 +75,7 @@ export function SiteFooter({ lastUpdated }: { lastUpdated: string }) {
           </p>
           <p>
             Prize data comes from each organizer. Always check the{" "}
-            <Link href="/how-we-collect-data" className="underline hover:text-primary">
+            <Link href="/methodology" className="underline hover:text-primary">
               official page
             </Link>{" "}
             before you enter.

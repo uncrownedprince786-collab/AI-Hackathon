@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Building2, Coins, Globe, MapPin, Sparkles, Trophy, Users } from "lucide-react";
-import { getStats } from "@/lib/hackathons";
+import { getDataset, getStats } from "@/lib/hackathons";
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
 import { Card } from "@/components/ui/card";
@@ -20,6 +20,10 @@ export const metadata: Metadata = buildMetadata({
 
 export default async function StatsPage() {
   const stats = await getStats();
+  const dataset = await getDataset();
+  const countries = dataset.meta.countries ?? [];
+  const regions = dataset.meta.regions ?? [];
+  const aiReview = dataset.meta.aiReview;
   const counts = {
     upcoming: stats.upcoming,
     ongoing: stats.ongoing,
@@ -106,6 +110,69 @@ export default async function StatsPage() {
           </Card>
         </section>
 
+        {/* Global coverage */}
+        {countries.length > 0 ? (
+          <section>
+            <h2 className="text-xl font-bold tracking-tight">Global coverage</h2>
+            <p className="mt-1.5 text-sm text-muted-foreground">
+              Counted from the location each organizer publishes. Events marked online are not
+              counted against a country.
+            </p>
+
+            <div className="mt-4 grid gap-4 lg:grid-cols-2">
+              <div className="rounded-xl border border-border bg-card p-5">
+                <h3 className="text-sm font-semibold">By region</h3>
+                <ul className="mt-3 space-y-2.5">
+                  {regions.map((region) => {
+                    const max = Math.max(1, ...regions.map((r) => r.count));
+                    return (
+                      <li key={region.region}>
+                        <div className="flex items-baseline justify-between gap-3 text-sm">
+                          <span>{region.region}</span>
+                          <span className="tabular-nums text-muted-foreground">
+                            {region.count}
+                          </span>
+                        </div>
+                        <div className="mt-1 h-1.5 rounded-full bg-secondary">
+                          <span
+                            className="block h-1.5 rounded-full bg-primary"
+                            style={{ width: `${Math.max(3, Math.round((region.count / max) * 100))}%` }}
+                          />
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div className="rounded-xl border border-border bg-card p-5">
+                <h3 className="text-sm font-semibold">Top countries</h3>
+                <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {countries.slice(0, 12).map((country) => (
+                    <li
+                      key={country.country}
+                      className="flex items-center justify-between gap-3 rounded-lg border border-border px-3 py-2"
+                    >
+                      <span className="flex min-w-0 items-center gap-2 text-sm">
+                        <MapPin className="size-3.5 shrink-0 text-primary" aria-hidden="true" />
+                        <span className="truncate">{country.country}</span>
+                      </span>
+                      <span className="shrink-0 text-sm tabular-nums text-muted-foreground">
+                        {country.count}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                {countries.length > 12 ? (
+                  <p className="mt-3 text-xs text-muted-foreground">
+                    and {countries.length - 12} more countries
+                  </p>
+                ) : null}
+              </div>
+            </div>
+          </section>
+        ) : null}
+
         {/* Biggest pools */}
         <section>
           <h2 className="text-xl font-bold tracking-tight">Top 10 prize pools</h2>
@@ -188,6 +255,47 @@ export default async function StatsPage() {
         ) : null}
 
         <Card className="p-5">
+          <h2 className="text-sm font-semibold">Automatic accuracy check</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {aiReview ? (
+              <>
+                The last refresh sent{" "}
+                <span className="font-medium text-foreground tabular-nums">
+                  {aiReview.reviewed.toLocaleString("en-US")}
+                </span>{" "}
+                listings to a free language model ({aiReview.model}) to confirm they really are
+                AI events, that the dates make sense and that no stated prize was missed.{" "}
+                {aiReview.rejected > 0 ? (
+                  <>
+                    <span className="font-medium text-foreground tabular-nums">
+                      {aiReview.rejected.toLocaleString("en-US")}
+                    </span>{" "}
+                    were dropped as not usable.{" "}
+                  </>
+                ) : null}
+                {aiReview.fixed > 0 ? (
+                  <>
+                    <span className="font-medium text-foreground tabular-nums">
+                      {aiReview.fixed.toLocaleString("en-US")}
+                    </span>{" "}
+                    had a field corrected.{" "}
+                  </>
+                ) : null}
+                Checked {new Date(aiReview.at).toUTCString().replace(" GMT", " UTC")}.
+              </>
+            ) : (
+              <>
+                Each refresh can send new listings to a free language model to confirm they are
+                real AI events, that the dates make sense and that no stated prize was missed. It
+                runs in the background, only reads public pages, and never invents a prize or a
+                winner. When no key is configured the check is skipped and the usual rules still
+                apply.
+              </>
+            )}
+          </p>
+        </Card>
+
+        <Card className="p-5">
           <h2 className="text-sm font-semibold">Where does this data come from?</h2>
           <p className="mt-2 text-sm text-muted-foreground">
             We read public event pages and their structured data, then re-check every six
@@ -196,7 +304,7 @@ export default async function StatsPage() {
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link
-              href="/how-we-collect-data"
+              href="/methodology"
               className="inline-flex h-9 items-center rounded-lg border border-border px-3 text-sm font-medium transition-colors hover:bg-secondary"
             >
               How we collect data

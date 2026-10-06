@@ -202,26 +202,35 @@ export const curatedHackathons: Hackathon[] = [
         project: "SHIELD",
         team: ["Diego Caples", "Nicole Ma", "Zeyneb Kaya"],
         prize: "Most Impressive Technical Feat",
+        summary:
+          "A multi-agent framework that spots security vulnerabilities in a codebase and fixes them automatically.",
       },
       {
         project: "SideQuest",
         team: ["Aryan Bansal", "Ayush Paul", "Rohil Agarwal", "Stephen Xie"],
         prize: "Most Innovative Application",
+        summary:
+          "AI posts real-world jobs for nearby humans, who complete them for pay and send the verified results back to the AI.",
       },
       {
         project: "Ply",
         team: ["Baladhurgesh Balagurusamy Paramasivan", "Barathwaj Anandan"],
         prize: "Most Ready to Ship",
+        summary: "Auto-completes anything on your clipboard, so you type less and move faster.",
       },
       {
         project: "Achilles",
         team: ["Abhiram Chennupati", "Venkat Arun"],
         prize: "Finalist",
+        summary:
+          "Uses a set of coding agents to rewrite slow Python hotspots in a lower-level language.",
       },
       {
         project: "SentinelOS",
         team: ["Ayush Goel", "Saarthak Trivedi"],
         prize: "Finalist",
+        summary:
+          "A self-healing Linux system that monitors itself, asks Claude for a fix and applies it.",
       },
     ],
   }),

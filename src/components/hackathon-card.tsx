@@ -4,17 +4,21 @@ import {
   CalendarDays,
   ExternalLink,
   MapPin,
+  ShieldCheck,
   Trophy,
   Users,
   Video,
 } from "lucide-react";
 import type { Hackathon } from "@/lib/types";
 import {
-  deadlineText,
+  applicationStatus,
+  countdownText,
   formatCount,
   formatDateRange,
-  formatUsdLong,
+  formatPrize,
   modeLabel,
+  prizeSummary,
+  verifiedLabel,
 } from "@/lib/format";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -36,6 +40,8 @@ export function HackathonCard({
 }) {
   const ModeIcon = MODE_ICON[hackathon.mode];
   const href = `/hackathons/${hackathon.slug}`;
+  const prize = prizeSummary(hackathon);
+  const application = applicationStatus(hackathon);
 
   return (
     <Card
@@ -44,6 +50,12 @@ export function HackathonCard({
       <div className="flex flex-1 flex-col gap-4 p-5">
         <div className="flex flex-wrap items-center gap-2">
           <StatusBadge status={hackathon.status} />
+          {hackathon.status !== "past" ? (
+            <Badge variant={application.isOpen ? "ongoing" : "outline"}>
+              <Award aria-hidden="true" />
+              {application.label}
+            </Badge>
+          ) : null}
           <Badge variant="outline">
             <ModeIcon aria-hidden="true" />
             {modeLabel(hackathon.mode)}
@@ -62,7 +74,9 @@ export function HackathonCard({
               {hackathon.name}
             </Link>
           </h3>
-          <p className="text-sm text-muted-foreground">{hackathon.organizer}</p>
+          <p className="text-sm text-muted-foreground">
+            {hackathon.organizer} · {hackathon.sourceName}
+          </p>
         </div>
 
         <div className="flex flex-wrap items-end gap-x-6 gap-y-2">
@@ -70,12 +84,20 @@ export function HackathonCard({
             <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
               Prize pool
             </p>
-            <PrizeAmount amount={hackathon.totalPrizeUsd} size="lg" />
+            <PrizeAmount
+              amount={hackathon.totalPrizeUsd}
+              claimed={prize.claimedOnly}
+              size="lg"
+            />
           </div>
-          {hackathon.cashPrizeUsd > 0 && hackathon.creditPrizeUsd > 0 ? (
+          {prize.breakdownPublished && prize.cashUsd > 0 && prize.creditUsd > 0 ? (
             <p className="pb-1 text-xs text-muted-foreground">
-              {formatUsdLong(hackathon.cashPrizeUsd)} cash +{" "}
-              {formatUsdLong(hackathon.creditPrizeUsd)} credits
+              {formatPrize(prize.cashUsd)} cash + {formatPrize(prize.creditUsd)} credits
+            </p>
+          ) : null}
+          {prize.claimedOnly ? (
+            <p className="pb-1 text-xs text-muted-foreground">
+              Cash and credits split not published
             </p>
           ) : null}
         </div>
@@ -90,7 +112,7 @@ export function HackathonCard({
             <Award className="size-4 shrink-0" aria-hidden="true" />
             <dt className="sr-only">Deadline</dt>
             <dd className={hackathon.status !== "past" ? "font-medium text-foreground" : ""}>
-              {deadlineText(hackathon)}
+              {countdownText(hackathon)}
             </dd>
           </div>
           {hackathon.participants ? (
@@ -100,7 +122,23 @@ export function HackathonCard({
               <dd>{formatCount(hackathon.participants)} participants</dd>
             </div>
           ) : null}
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="size-4 shrink-0" aria-hidden="true" />
+            <dt className="sr-only">Data freshness</dt>
+            <dd className="text-xs">{verifiedLabel(hackathon)}</dd>
+          </div>
         </dl>
+
+        {/* Sits above the card-wide link overlay so it stays clickable. */}
+        <a
+          href={hackathon.officialUrl}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          className="relative z-10 inline-flex w-fit items-center gap-1 text-xs font-medium text-muted-foreground underline-offset-4 hover:text-primary hover:underline"
+        >
+          Official page
+          <ExternalLink className="size-3" aria-hidden="true" />
+        </a>
       </div>
     </Card>
   );
@@ -108,6 +146,7 @@ export function HackathonCard({
 
 /** Compact row used in sidebars and the winners page. */
 export function HackathonRow({ hackathon }: { hackathon: Hackathon }) {
+  const prize = prizeSummary(hackathon);
   return (
     <Link
       href={`/hackathons/${hackathon.slug}`}
@@ -116,11 +155,11 @@ export function HackathonRow({ hackathon }: { hackathon: Hackathon }) {
       <span className="min-w-0">
         <span className="block truncate text-sm font-medium">{hackathon.name}</span>
         <span className="block text-xs text-muted-foreground">
-          {formatDateRange(hackathon.startDate, hackathon.endDate)}
+          {formatDateRange(hackathon.startDate, hackathon.endDate)} · {prize.label}
         </span>
       </span>
       <span className="flex shrink-0 items-center gap-2">
-        <PrizeAmount amount={hackathon.totalPrizeUsd} size="sm" />
+        <PrizeAmount amount={hackathon.totalPrizeUsd} claimed={prize.claimedOnly} size="sm" />
         <ExternalLink className="size-3.5 text-muted-foreground" aria-hidden="true" />
       </span>
     </Link>

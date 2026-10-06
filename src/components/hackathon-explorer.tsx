@@ -14,15 +14,25 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { formatUsd } from "@/lib/format";
+import { cn } from "@/lib/utils";
 
-type SortKey = "relevance" | "prize-desc" | "prize-asc" | "date-asc" | "date-desc";
+type SortKey =
+  | "relevance"
+  | "prize-desc"
+  | "prize-asc"
+  | "date-asc"
+  | "date-desc"
+  | "participants-desc"
+  | "newest";
 
 const SORTS: { value: SortKey; label: string }[] = [
   { value: "relevance", label: "Best first" },
   { value: "prize-desc", label: "Prize: high to low" },
   { value: "prize-asc", label: "Prize: low to high" },
-  { value: "date-asc", label: "Closing soonest" },
-  { value: "date-desc", label: "Latest first" },
+  { value: "date-asc", label: "Deadline: soonest" },
+  { value: "date-desc", label: "Deadline: latest" },
+  { value: "participants-desc", label: "Participants: most" },
+  { value: "newest", label: "Recently added" },
 ];
 
 const STATUSES: { value: HackathonStatus | "all"; label: string }[] = [
@@ -68,6 +78,20 @@ export function HackathonExplorer({
   }, [hackathons]);
 
   const [organizer, setOrganizer] = useState("all");
+  const [tag, setTag] = useState("all");
+  const [cashOnly, setCashOnly] = useState(false);
+
+  const tagOptions = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const h of hackathons) {
+      for (const t of h.tags) counts.set(t, (counts.get(t) ?? 0) + 1);
+    }
+    return [...counts.entries()]
+      .filter(([, count]) => count >= 2)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, 30)
+      .map(([name]) => name);
+  }, [hackathons]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -77,6 +101,8 @@ export function HackathonExplorer({
       if (status !== "all" && h.status !== status) return false;
       if (mode !== "all" && h.mode !== mode) return false;
       if (organizer !== "all" && h.organizer !== organizer) return false;
+      if (tag !== "all" && !h.tags.includes(tag)) return false;
+      if (cashOnly && (h.cashPrizeUsd ?? 0) <= 0) return false;
       if (floor > 0 && (h.totalPrizeUsd ?? 0) < floor) return false;
       if (!q) return true;
       return (
@@ -107,6 +133,13 @@ export function HackathonExplorer({
               a.registrationDeadline ?? a.endDate,
             ) || a.name.localeCompare(b.name)
           );
+        case "participants-desc":
+          return (b.participants ?? 0) - (a.participants ?? 0) || b.totalPrizeUsd - a.totalPrizeUsd;
+        case "newest":
+          return (
+            (b.firstSeenAt ?? "").localeCompare(a.firstSeenAt ?? "") ||
+            (b.updatedAt ?? "").localeCompare(a.updatedAt ?? "")
+          );
         default: {
           if (a.status !== b.status) return weight[a.status] - weight[b.status];
           if (a.status === "past") return b.endDate.localeCompare(a.endDate);
@@ -114,24 +147,59 @@ export function HackathonExplorer({
         }
       }
     });
-  }, [hackathons, query, status, mode, organizer, minPrize, sort]);
+  }, [hackathons, query, status, mode, organizer, tag, cashOnly, minPrize, sort]);
 
   const hasFilters =
-    query !== "" || status !== "all" || mode !== "all" || organizer !== "all" || minPrize !== "0";
+    query !== "" ||
+    status !== "all" ||
+    mode !== "all" ||
+    organizer !== "all" ||
+    tag !== "all" ||
+    cashOnly ||
+    minPrize !== "0";
 
   function reset() {
     setQuery("");
     setStatus("all");
     setMode("all");
     setOrganizer("all");
+    setTag("all");
+    setCashOnly(false);
     setMinPrize("0");
     setVisible(PAGE_SIZE);
   }
 
   return (
     <div className="space-y-6">
-      <div className="rounded-xl border border-border bg-card p-4">
-        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+      <div className="rounded-xl border border-border bg-card p-3.5">
+        {showStatusFilter ? (
+          <div className="mb-3 flex flex-wrap items-center gap-1 rounded-lg bg-secondary/70 p-1">
+            {STATUSES.map((option) => {
+              const active = status === option.value;
+              return (
+                <button
+                  key={option.value}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => {
+                    setStatus(option.value);
+                    setVisible(PAGE_SIZE);
+                  }}
+                  className={cn(
+                    "rounded-md px-3 py-1.5 text-xs font-medium transition-colors",
+                    active
+                      ? "bg-background text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
+
+        <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-4">
           <div className="relative lg:col-span-2">
             <Search
               className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
@@ -144,32 +212,11 @@ export function HackathonExplorer({
                 setQuery(e.target.value);
                 setVisible(PAGE_SIZE);
               }}
-              placeholder="Search by name, organizer, tag or winner"
+              placeholder="Search name, organizer or topic"
               aria-label="Search hackathons"
-              className="pl-9"
+              className="h-9 pl-9"
             />
           </div>
-
-          {showStatusFilter ? (
-            <Select
-              value={status}
-              onValueChange={(v) => {
-                setStatus(v as HackathonStatus | "all");
-                setVisible(PAGE_SIZE);
-              }}
-            >
-              <SelectTrigger aria-label="Filter by status">
-                <SelectValue placeholder="Status" />
-              </SelectTrigger>
-              <SelectContent>
-                {STATUSES.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          ) : null}
 
           <Select
             value={mode}
@@ -178,7 +225,7 @@ export function HackathonExplorer({
               setVisible(PAGE_SIZE);
             }}
           >
-            <SelectTrigger aria-label="Filter by format">
+            <SelectTrigger className="h-9" aria-label="Filter by format">
               <SelectValue placeholder="Format" />
             </SelectTrigger>
             <SelectContent>
@@ -197,7 +244,7 @@ export function HackathonExplorer({
               setVisible(PAGE_SIZE);
             }}
           >
-            <SelectTrigger aria-label="Filter by organizer">
+            <SelectTrigger className="h-9" aria-label="Filter by organizer">
               <SelectValue placeholder="Organizer" />
             </SelectTrigger>
             <SelectContent>
@@ -210,8 +257,14 @@ export function HackathonExplorer({
             </SelectContent>
           </Select>
 
-          <Select value={minPrize} onValueChange={setMinPrize}>
-            <SelectTrigger aria-label="Minimum prize">
+          <Select
+            value={minPrize}
+            onValueChange={(v) => {
+              setMinPrize(v);
+              setVisible(PAGE_SIZE);
+            }}
+          >
+            <SelectTrigger className="h-9" aria-label="Minimum prize">
               <SelectValue placeholder="Minimum prize" />
             </SelectTrigger>
             <SelectContent>
@@ -224,8 +277,43 @@ export function HackathonExplorer({
             </SelectContent>
           </Select>
 
+          {tagOptions.length > 0 ? (
+            <Select
+              value={tag}
+              onValueChange={(v) => {
+                setTag(v);
+                setVisible(PAGE_SIZE);
+              }}
+            >
+              <SelectTrigger className="h-9" aria-label="Filter by topic">
+                <SelectValue placeholder="Topic" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Any topic</SelectItem>
+                {tagOptions.map((name) => (
+                  <SelectItem key={name} value={name}>
+                    {name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          ) : null}
+
+          <label className="flex h-9 items-center gap-2 rounded-lg border border-border px-3 text-sm text-muted-foreground">
+            <input
+              type="checkbox"
+              checked={cashOnly}
+              onChange={(e) => {
+                setCashOnly(e.target.checked);
+                setVisible(PAGE_SIZE);
+              }}
+              className="size-4 accent-primary"
+            />
+            Cash prizes published
+          </label>
+
           <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
-            <SelectTrigger aria-label="Sort results">
+            <SelectTrigger className="h-9" aria-label="Sort results">
               <SelectValue placeholder="Sort" />
             </SelectTrigger>
             <SelectContent>

@@ -15,7 +15,8 @@ const NAV = [
   { href: "/upcoming", label: "Upcoming" },
   { href: "/past", label: "Past" },
   { href: "/winners", label: "Winners" },
-  { href: "/stats", label: "Stats" },
+  { href: "/events", label: "Events" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export function SiteHeader({
@@ -117,7 +118,7 @@ export function SiteHeader({
                 </Link>
               </Button>
               <Button asChild size="sm" variant="outline">
-                <Link href="/how-we-collect-data" onClick={() => setOpen(false)}>
+                <Link href="/methodology" onClick={() => setOpen(false)}>
                   Our data
                 </Link>
               </Button>

@@ -115,6 +115,98 @@
   color: transparent;
 }
 
+/* Blog article body. Written in plain CSS so markdown output always renders
+   the same way, without a typography plugin. */
+.prose-custom {
+  color: var(--foreground);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+
+.prose-custom > * + * {
+  margin-top: 1.1em;
+}
+
+.prose-custom h2 {
+  margin-top: 2.4rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.prose-custom h3 {
+  margin-top: 1.9rem;
+  font-size: 1.175rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.prose-custom a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-custom ul,
+.prose-custom ol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding-left: 1.35rem;
+}
+
+.prose-custom ul {
+  list-style: disc;
+}
+
+.prose-custom ol {
+  list-style: decimal;
+}
+
+.prose-custom li::marker {
+  color: var(--primary);
+}
+
+.prose-custom strong {
+  color: var(--foreground);
+  font-weight: 650;
+}
+
+.prose-custom code {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--muted);
+  padding: 0.1rem 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.prose-custom pre {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--muted);
+  padding: 1rem;
+}
+
+.prose-custom pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.prose-custom blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 1rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+
+.prose-custom hr {
+  border-color: var(--border);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -5,10 +5,13 @@ import {
   statusFor,
   type DevpostListItem,
 } from "./sources/devpost";
-import { isAiRelevant } from "./sources/ai-signals";
+import { extractClaimedPool, isAiRelevant } from "./sources/ai-signals";
 import { fetchLablabEvent, fetchLablabIndex } from "./sources/lablab";
+import { llmConfig, reviewWithLlm } from "./sources/llm-review";
+import { detectCountry, detectRegion } from "./geo";
 import type {
   Dataset,
+  DatasetMeta,
   Hackathon,
   HackathonStatus,
   SourceStatus,
@@ -36,6 +39,15 @@ export interface CollectResult {
   added: number;
   updated: number;
   removed: number;
+  /** Behind-the-scenes AI check, for logs and the stats page. */
+  aiReview?: {
+    provider: string;
+    model: string;
+    reviewed: number;
+    rejected: number;
+    fixed: number;
+    dropped?: number;
+  };
 }
 
 const LOG = (...args: unknown[]) =>
@@ -58,7 +70,20 @@ function sumPrizes(h: Hackathon): void {
   }
   h.cashPrizeUsd = cash;
   h.creditPrizeUsd = credits;
-  h.totalPrizeUsd = cash + credits + other;
+
+  // A prize list that only adds up to credits (API keys, cloud credits, sponsor
+  // products) must not overwrite the pool the organizer announces. When the two
+  // disagree we keep the announced figure and say the breakdown is not published.
+  const itemised = cash + credits + other;
+  const claimed = h.claimedPrizeUsd ?? 0;
+  if (claimed > itemised) {
+    h.prizeBreakdownPublished = itemised > 0 && cash > 0;
+    h.totalPrizeUsd = claimed;
+  } else {
+    h.claimedPrizeUsd = claimed || undefined;
+    h.prizeBreakdownPublished = cash > 0;
+    h.totalPrizeUsd = itemised || claimed;
+  }
 }
 
 async function mapWithConcurrency<T, R>(
@@ -101,12 +126,27 @@ async function enrich(
       participants: detail.participants ?? base.participants,
       submissions: detail.submissions ?? base.submissions,
       invitedOnly: detail.invitedOnly || base.invitedOnly,
+      registrationStatus: detail.registrationStatus ?? base.registrationStatus,
+      winnersAnnounced: detail.winners.length ? true : base.winnersAnnounced,
+      officialUrl: detail.websiteUrl ?? base.officialUrl,
+      sourceUrl: base.sourceUrl || base.officialUrl,
       tags: detail.description
         ? base.tags
         : [...new Set([...base.tags, ...inferTags(detail.description)])],
       prizes,
       winners: dedupeWinners([...(base.winners ?? []), ...(detail.winners ?? [])]),
     };
+
+    // A headline figure in the title or description ("$400,000 in prizes") counts
+    // even when the prize table is missing.
+    const claimed = Math.max(
+      base.claimedPrizeUsd ?? 0,
+      extractClaimedPool(merged.name, detail.tagline, detail.description),
+    );
+    merged.claimedPrizeUsd = claimed || undefined;
+    if (detail.hasPrizeBreakdown && prizes.some((p) => p.type === "cash")) {
+      merged.prizeBreakdownPublished = true;
+    }
 
     if (
       !isAiRelevant({
@@ -127,8 +167,68 @@ async function enrich(
   }
 }
 
-function inferTags(text: string): string[] {
-  const found: string[] = [];
+/**
+ * Some organizer pages publish almost no prose. Rather than leave a near-empty
+ * page, we assemble a short factual summary from the fields we already have.
+ * Nothing is invented: every sentence comes from collected data.
+ */
+function ensureDescription(h: Hackathon): string {
+  const existing = (h.description ?? "").replace(/\s+/g, " ").trim();
+  if (existing.length >= 160) return existing;
+
+  const parts: string[] = [];
+  parts.push(
+    `${h.name} is an AI hackathon organised by ${h.organizer}, and it runs ${formatMode(h.mode)}.`,
+  );
+
+  if (h.tags.length) parts.push(`It focuses on ${listWords(h.tags.slice(0, 4))}.`);
+
+  if (h.registrationStatus === "closed") {
+    parts.push(
+      `Registration is closed${h.endDate ? ` and submissions closed on ${h.endDate}` : ""}.`,
+    );
+  } else if (h.endDate) {
+    parts.push(`Submissions are open until ${h.endDate}.`);
+  }
+
+  if (h.cashPrizeUsd > 0) {
+    parts.push(`The prize pool includes ${usd(h.cashPrizeUsd)} in cash.`);
+  } else if (h.claimedPrizeUsd) {
+    parts.push(
+      `The organiser announces a total prize pool of ${usd(h.claimedPrizeUsd)}, but does not publish a cash and credits breakdown.`,
+    );
+  } else if (h.creditPrizeUsd > 0) {
+    parts.push(`Prizes are offered in credits rather than cash (${usd(h.creditPrizeUsd)}).`);
+  } else {
+    parts.push("No prize pool is published on the organiser page.");
+  }
+
+  if (h.participants) parts.push(`${h.participants.toLocaleString("en-US")} people have registered.`);
+
+  const combined = existing ? `${existing} ${parts.join(" ")}` : parts.join(" ");
+  return combined.slice(0, 600).trim();
+}
+
+function formatMode(mode: Hackathon["mode"]): string {
+  if (mode === "online") return "fully online";
+  if (mode === "hybrid") return "in person and online";
+  return "in person";
+}
+
+function listWords(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
+function usd(value: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function inferTags(text: string): string[] {  const found: string[] = [];
   const map: [RegExp, string][] = [
     [/\bllm|large language model/i, "LLM"],
     [/\bagent(ic|s)?\b/i, "AI Agents"],
@@ -278,6 +378,7 @@ export async function collectDataset(
       fresh.updatedAt = nowIso;
       normalizeDates(fresh, now);
       sumPrizes(fresh);
+      fresh.description = ensureDescription(fresh);
       return fresh;
     }
 
@@ -295,6 +396,11 @@ export async function collectDataset(
       participants: fresh.participants ?? prev.participants,
       submissions: fresh.submissions ?? prev.submissions,
       registrationDeadline: fresh.registrationDeadline ?? prev.registrationDeadline,
+      registrationStatus: fresh.registrationStatus ?? prev.registrationStatus,
+      winnersAnnounced: fresh.winnersAnnounced || prev.winnersAnnounced,
+      claimedPrizeUsd: Math.max(fresh.claimedPrizeUsd ?? 0, prev.claimedPrizeUsd ?? 0) || undefined,
+      officialUrl: fresh.officialUrl || prev.officialUrl,
+      sourceUrl: fresh.sourceUrl || prev.sourceUrl,
       tags: [...new Set([...prev.tags, ...fresh.tags])].slice(0, 8),
       prizes: wasEnriched
         ? fresh.prizes.length
@@ -310,6 +416,7 @@ export async function collectDataset(
     base.updatedAt = nowIso;
     normalizeDates(base, now);
     sumPrizes(base);
+    base.description = ensureDescription(base);
     return base;
   });
 
@@ -323,11 +430,29 @@ export async function collectDataset(
   });
 
   const all = [...merged, ...retained];
+
+  // Location text is what organizers publish, so the country is read from it.
+  for (const h of all) {
+    h.country = detectCountry(h.location) ?? h.country;
+  }
+
+  // Behind-the-scenes accuracy check. Skipped automatically when no free API key
+  // is configured, so the refresh still works without it.
+  const aiReview = await runAiReview(merged);
+  const verified = aiReview ? all.filter((h) => aiReview.keep(h)) : all;
+  const dropped = all.length - verified.length;
+  if (aiReview?.summary) aiReview.summary.dropped = dropped;
+  if (aiReview?.result) aiReview.result.dropped = dropped;
+  if (dropped > 0) LOG(`ai review dropped ${dropped} record(s) that were not usable AI events`);
+
   const counts: Record<HackathonStatus, number> = { upcoming: 0, ongoing: 0, past: 0 };
   let totalPrizeUsd = 0;
-  for (const h of all) {
+  const countries = new Map<string, number>();
+  for (const h of verified) {
     counts[h.status] += 1;
     totalPrizeUsd += h.totalPrizeUsd ?? 0;
+    const country = h.country ?? detectCountry(h.location);
+    if (country) countries.set(country, (countries.get(country) ?? 0) + 1);
   }
 
   const dataset: Dataset = {
@@ -335,18 +460,22 @@ export async function collectDataset(
       ...previous.meta,
       lastUpdated: nowIso,
       cronSchedule: "0 */6 * * *",
-      total: all.length,
+      total: verified.length,
       counts,
       totalPrizeUsd,
+      countries: [...countries.entries()]
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .map(([country, count]) => ({ country, count })),
+      regions: summariseRegions(verified),
+      aiReview: aiReview?.summary,
       sources,
     },
-    hackathons: all,
+    hackathons: verified,
   };
 
-  const added = merged.filter((h) => !previousById.has(h.id)).length;
-  const updated = merged.length - added;
-  // Anything from the previous run that is neither live nor retained is dropped.
-  const keptIds = new Set(all.map((h) => h.id));
+  const keptIds = new Set(verified.map((h) => h.id));
+  const added = verified.filter((h) => !previousById.has(h.id)).length;
+  const updated = verified.length - added;
   const removed = previous.hackathons.filter((h) => !keptIds.has(h.id)).length;
 
   return {
@@ -355,7 +484,78 @@ export async function collectDataset(
     added,
     updated,
     removed,
+    aiReview: aiReview?.result,
   };
+}
+
+/**
+ * Runs the optional AI check over freshly collected records. Returns undefined
+ * when no provider is configured so callers can tell "not configured" apart
+ * from "configured and found nothing wrong".
+ */
+async function runAiReview(
+  items: Hackathon[],
+): Promise<
+  | {
+      keep: (h: Hackathon) => boolean;
+      summary?: DatasetMeta["aiReview"];
+      result?: CollectResult["aiReview"];
+    }
+  | undefined
+> {
+  const config = llmConfig();
+  if (!config) {
+    LOG("ai review skipped: set GROQ_API_KEY or GEMINI_API_KEY to enable it");
+    return undefined;
+  }
+
+  const outcome = await reviewWithLlm(items, config);
+  LOG(
+    `ai review (${outcome.model ?? "unknown"}): ${outcome.reviewed} checked, ${outcome.rejected} rejected, ${outcome.fixed} corrected`,
+  );
+  if (outcome.error) LOG(`ai review warning: ${outcome.error}`);
+
+  const verdicts = outcome.verdicts;
+  return {
+    keep: (h) => {
+      const verdict = verdicts.get(h.id);
+      // No verdict means the model did not return this row: keep the record.
+      if (!verdict) return true;
+      return verdict.isAi && verdict.complete;
+    },
+    summary:
+      outcome.reviewed > 0
+        ? {
+            provider: outcome.provider ?? config.provider,
+            model: outcome.model ?? config.model,
+            at: new Date().toISOString(),
+            reviewed: outcome.reviewed,
+            rejected: outcome.rejected,
+            fixed: outcome.fixed,
+          }
+        : undefined,
+    result:
+      outcome.reviewed > 0
+        ? {
+            provider: outcome.provider ?? config.provider,
+            model: outcome.model ?? config.model,
+            reviewed: outcome.reviewed,
+            rejected: outcome.rejected,
+            fixed: outcome.fixed,
+          }
+        : undefined,
+  };
+}
+
+function summariseRegions(items: Hackathon[]): { region: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const h of items) {
+    const region = detectRegion(h.location);
+    if (region) counts.set(region, (counts.get(region) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([region, count]) => ({ region, count }));
 }
 
 export async function refreshDataset(

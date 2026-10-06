@@ -1,11 +1,11 @@
 import * as cheerio from "cheerio";
-import { classifyPrize } from "./ai-signals";
+import { classifyPrize, cleanOrganizerName, detectRegistrationStatus, extractClaimedPool } from "./ai-signals";
 import type { Hackathon, Prize } from "../types";
 import { slugify, sleep, statusFor } from "./devpost";
 
 const LIST_URL = "https://lablab.ai/ai-hackathons";
 const UA =
-  "Mozilla/5.0 (compatible; AIHackathonsBot/1.0; +https://ai-hackathons.vercel.app)";
+  "Mozilla/5.0 (compatible; AIHackathonsBot/1.0; +https://ai-hackathons-tawny.vercel.app)";
 
 interface LablabEventLd {
   name?: string;
@@ -83,8 +83,12 @@ function toDateOnly(iso: string | undefined): string | null {
 
 function organizerName(value: LablabEventLd["organizer"]): string | undefined {
   if (!value) return undefined;
-  if (Array.isArray(value)) return value.map((o) => o?.name).filter(Boolean).join(" + ");
-  return value.name;
+  const raw = Array.isArray(value)
+    ? value.map((o) => o?.name).filter(Boolean).join(" + ")
+    : value.name;
+  // lablab marks its own events with "lablab.ai"; "nill" is their points currency.
+  const cleaned = cleanOrganizerName(raw);
+  return cleaned || undefined;
 }
 
 function detectMode(ld: LablabEventLd, text: string): Hackathon["mode"] {
@@ -278,6 +282,7 @@ export async function fetchLablabEvent(
 
   const mode = detectMode(event, text);
   const nowIso = now.toISOString();
+  const claimedPool = extractClaimedPool(event.name, text);
 
   const hackathon: Hackathon = {
     id: `lablab-${slugify(item.url.replace(/^https?:\/\/[^/]+/, ""))}`,
@@ -290,6 +295,8 @@ export async function fetchLablabEvent(
     startDate,
     endDate,
     registrationDeadline: endDate,
+    claimedPrizeUsd: claimedPool || undefined,
+    registrationStatus: detectRegistrationStatus(text),
     location: locationText,
     prizes,
     totalPrizeUsd: 0,
@@ -308,6 +315,7 @@ export async function fetchLablabEvent(
   };
 
   sumLablabPrizes(hackathon);
+  hackathon.prizeBreakdownPublished = prizes.some((p) => p.type === "cash");
   return hackathon;
 }
 
@@ -322,7 +330,14 @@ function sumLablabPrizes(h: Hackathon): void {
   }
   h.cashPrizeUsd = cash;
   h.creditPrizeUsd = credits;
-  h.totalPrizeUsd = cash + credits + other;
+  const itemised = cash + credits + other;
+  const claimed = h.claimedPrizeUsd ?? 0;
+  if (claimed > itemised) {
+    h.totalPrizeUsd = claimed;
+  } else {
+    h.claimedPrizeUsd = claimed || undefined;
+    h.totalPrizeUsd = itemised || claimed;
+  }
 }
 
 const TAG_MAP: [RegExp, string][] = [

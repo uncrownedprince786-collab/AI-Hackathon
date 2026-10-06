@@ -232,3 +232,4 @@ export async function getLastUpdated(): Promise<string> {
   const { meta } = await getDataset();
   return meta.lastUpdated;
 }
+

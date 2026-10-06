@@ -17,7 +17,10 @@ export function StatusBadge({
   className?: string;
 }) {
   return (
-    <Badge variant={status} className={cn("font-medium", className)}>
+    <Badge
+      variant={status}
+      className={cn("px-2.5 text-[11px] font-semibold uppercase tracking-wider", className)}
+    >
       {status === "ongoing" ? (
         <span className="relative flex size-1.5">
           <span className="absolute inline-flex size-full animate-ping rounded-full bg-success opacity-75" />

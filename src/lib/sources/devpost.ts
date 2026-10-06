@@ -1,6 +1,9 @@
 import * as cheerio from "cheerio";
 import {
   classifyPrize,
+  cleanOrganizerName,
+  detectRegistrationStatus,
+  extractClaimedPool,
   isAiRelevant,
   parsePeriodDates,
   parsePrizeAmount,
@@ -9,7 +12,7 @@ import type { Hackathon, Prize, Winner } from "../types";
 
 const API = "https://devpost.com/api/hackathons";
 const UA =
-  "Mozilla/5.0 (compatible; AIHackathonsBot/1.0; +https://ai-hackathons.vercel.app)";
+  "Mozilla/5.0 (compatible; AIHackathonsBot/1.0; +https://ai-hackathons-tawny.vercel.app)";
 
 export interface DevpostListItem {
   id: number;
@@ -24,6 +27,7 @@ export interface DevpostListItem {
   organization_name?: string;
   winners_announced?: boolean;
   thumbnail_url?: string;
+  tagline?: string;
   featured?: boolean;
   invite_only?: boolean;
   themes: { id: number; name: string }[];
@@ -95,6 +99,10 @@ export interface DevpostDetail {
   submissions?: number;
   organizer?: string;
   invitedOnly?: boolean;
+  registrationStatus?: "open" | "closed";
+  websiteUrl?: string;
+  /** True when the page lists prizes that add up to the announced pool. */
+  hasPrizeBreakdown?: boolean;
 }
 
 function clean(text: string | undefined | null): string {
@@ -149,9 +157,7 @@ export async function fetchDevpostDetail(
       .match(/([\d,]+)\s+(?:projects?|submissions?)/i)?.[1],
   );
 
-  const organizer = clean(
-    $("#challenge-information .host-label").first().text(),
-  ) || undefined;
+  const organizer = cleanOrganizerName($("#challenge-information .host-label").first().text()) || undefined;
 
   const invitedOnly = /invite only/i.test($("#challenge-information").text());
 
@@ -174,6 +180,8 @@ export async function fetchDevpostDetail(
 
   const winners = extractWinners($);
 
+  const information = clean($("#challenge-information").text());
+
   return {
     description,
     tagline,
@@ -185,7 +193,39 @@ export async function fetchDevpostDetail(
     submissions: submissionsRaw ? Number(submissionsRaw.replace(/,/g, "")) : undefined,
     organizer,
     invitedOnly,
+    registrationStatus: detectRegistrationStatus(`${information} ${description}`),
+    websiteUrl: findWebsite($, hackathonUrl),
+    hasPrizeBreakdown: prizes.length > 0,
   };
+}
+
+/** Devpost pages link the organizer's own site when it is not the event page itself. */
+function findWebsite($: cheerio.CheerioAPI, hackathonUrl: string): string | undefined {
+  const eventHost = safeHost(hackathonUrl);
+  const candidates: string[] = [];
+  $("#challenge-information a[href], #challenge-description a[href], article a[href]").each((_, el) => {
+    const href = $(el).attr("href");
+    if (href) candidates.push(href);
+  });
+  for (const raw of candidates) {
+    if (!/^https?:\/\//i.test(raw)) continue;
+    if (/\.(png|jpe?g|gif|svg|webp|pdf|zip)(\?|$)/i.test(raw)) continue;
+    const host = safeHost(raw);
+    if (!host || host === eventHost) continue;
+    if (/devpost\.com$|lablab\.ai$|twitter\.com|x\.com|facebook\.com|linkedin\.com|instagram\.com|youtube\.com|github\.com|discord\.(gg|com)|youtu\.be|medium\.com|substack\.com|notion\.so|forms\.gle|docs\.google|mailchimp|hubspot|eventbrite|meetup|zoom\.us|slack\.com/i.test(host)) {
+      continue;
+    }
+    return raw;
+  }
+  return undefined;
+}
+
+function safeHost(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return "";
+  }
 }
 
 function extractWinners($: cheerio.CheerioAPI): Winner[] {
@@ -243,6 +283,10 @@ export function listItemToHackathon(
 
   const totalPrizeUsd = parsePrizeAmount(item.prize_amount);
   const nowIso = now.toISOString();
+  const claimedPool = totalPrizeUsd || extractClaimedPool(item.title, item.tagline as string | undefined);
+  const organizer = cleanOrganizerName(item.organization_name) || "Independent";
+  // The listing prize figure is the organizer's total pool, not a cash breakdown.
+  const eventUrl = item.url?.trim();
 
   return {
     id: `devpost-${item.id}`,
@@ -251,29 +295,32 @@ export function listItemToHackathon(
     description,
     status: statusFor(period.startDate, period.endDate, now),
     mode: detectMode(location, item.displayed_location?.icon),
-    organizer: clean(item.organization_name) || "Independent",
+    organizer,
     startDate: period.startDate,
     endDate: period.endDate,
     registrationDeadline:
       item.open_state === "upcoming" ? undefined : period.endDate,
+    claimedPrizeUsd: claimedPool || undefined,
+    prizeBreakdownPublished: false,
+    winnersAnnounced: item.winners_announced || undefined,
     location: location || undefined,
     prizes: totalPrizeUsd
       ? [
           {
             amount: totalPrizeUsd,
             currency: "USD",
-            type: "cash",
+            type: "other",
             label: "Total prize pool",
           },
         ]
       : [],
     totalPrizeUsd,
-    cashPrizeUsd: totalPrizeUsd,
+    cashPrizeUsd: 0,
     creditPrizeUsd: 0,
     winners: [],
     tags: (item.themes ?? []).map((t) => t.name).slice(0, 6),
-    officialUrl: item.url,
-    sourceUrl: `https://devpost.com/hackathons/${item.id}`,
+    officialUrl: eventUrl,
+    sourceUrl: eventUrl || `https://devpost.com/hackathons/${item.id}`,
     sourceName: "Devpost",
     sourceId: String(item.id),
     imageUrl: absolute(item.thumbnail_url),

@@ -158,7 +158,7 @@ export function datasetJsonLd(counts: Record<HackathonStatus, number>, totalPriz
     name: "AI Hackathons dataset",
     description:
       "Public dataset of AI hackathons with prize pools, dates, organizers and winners.",
-    url: absoluteUrl("/how-we-collect-data"),
+    url: absoluteUrl("/methodology"),
     creator: { "@type": "Organization", name: "AI Hackathons" },
     isAccessibleForFree: true,
     license: "https://creativecommons.org/licenses/by/4.0/",
