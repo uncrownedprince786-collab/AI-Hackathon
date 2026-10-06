@@ -4,7 +4,6 @@ import {
   cleanOrganizerName,
   detectRegistrationStatus,
   extractClaimedPool,
-  isAiRelevant,
   parsePeriodDates,
   parsePrizeAmount,
 } from "./ai-signals";
@@ -269,17 +268,6 @@ export function listItemToHackathon(
   const description = clean(
     `AI hackathon hosted on Devpost by ${item.organization_name ?? "an independent organizer"}.`,
   );
-
-  if (
-    !isAiRelevant({
-      title: item.title,
-      tagline: location,
-      description,
-      themes: item.themes ?? [],
-    })
-  ) {
-    return null;
-  }
 
   const totalPrizeUsd = parsePrizeAmount(item.prize_amount);
   const nowIso = now.toISOString();

@@ -1,8 +1,9 @@
 name: Publish daily AI article
 
 # Adds one new markdown file under content/blog each day. It only ever creates
-# a file for today, never edits an existing one, and exits quietly when no free
-# AI key is configured. Pushing the new file triggers the Vercel deployment.
+# a file for today, never edits an existing one, and needs no API key: the
+# article is assembled from templates and real dataset numbers. Pushing the new
+# file triggers the Vercel deployment.
 on:
   schedule:
     - cron: "23 5 * * *"
@@ -34,10 +35,6 @@ jobs:
         run: npm ci
 
       - name: Generate the article
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          GROQ_MODEL: ${{ vars.GROQ_MODEL }}
         run: npx tsx scripts/generate-post.ts
 
       - name: Commit if a new file appeared

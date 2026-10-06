@@ -75,7 +75,8 @@ export function HackathonCard({
             </Link>
           </h3>
           <p className="text-sm text-muted-foreground">
-            {hackathon.organizer} · {hackathon.sourceName}
+            {hackathon.organizer ? `${hackathon.organizer} · ` : ""}
+            {hackathon.sourceName}
           </p>
         </div>
 

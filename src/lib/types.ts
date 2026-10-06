@@ -24,18 +24,6 @@ export interface Winner {
   prize?: string;
 }
 
-export type LlmProvider = "groq" | "gemini";
-
-export interface LlmReview {
-  /** Free-text provider id, e.g. "groq:llama-3.3-70b-versatile". */
-  model: string;
-  at: string;
-  /** Hash of the reviewed text, so unchanged events are never re-billed. */
-  hash: string;
-  keep: boolean;
-  reason: string;
-}
-
 export interface Hackathon {
   id: string;
   slug: string;
@@ -74,8 +62,6 @@ export interface Hackathon {
   submissions?: number;
   featured?: boolean;
   invitedOnly?: boolean;
-  /** Behind-the-scenes AI check, kept so the site can explain how data is verified. */
-  llmReview?: LlmReview;
   firstSeenAt: string;
   updatedAt: string;
 }
@@ -98,17 +84,6 @@ export interface DatasetMeta {
   /** Global coverage, read from the location text organizers publish. */
   countries?: { country: string; count: number }[];
   regions?: { region: string; count: number }[];
-  /** Result of the behind-the-scenes AI accuracy check, when it ran. */
-  aiReview?: {
-    provider: string;
-    model: string;
-    at: string;
-    reviewed: number;
-    rejected: number;
-    fixed: number;
-    /** Records the check removed because they were not AI events or were incomplete. */
-    dropped?: number;
-  };
 }
 
 export interface Dataset {

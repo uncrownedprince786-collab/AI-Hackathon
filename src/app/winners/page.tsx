@@ -141,7 +141,8 @@ function WinnerRow({
             </Link>
           </p>
           <p className="mt-0.5 text-xs text-muted-foreground">
-            {hackathon.organizer} · Ended {formatDate(hackathon.endDate)}
+            {hackathon.organizer ? `${hackathon.organizer} · ` : ""}
+            Ended {formatDate(hackathon.endDate)}
           </p>
           <Button asChild size="sm" variant="ghost" className="mt-2">
             <Link href={`/hackathons/${hackathon.slug}`}>Full details</Link>

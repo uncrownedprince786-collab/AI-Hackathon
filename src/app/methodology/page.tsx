@@ -58,8 +58,8 @@ const STEPS = [
   },
   {
     icon: Sparkles,
-    title: "5. An optional check behind the scenes",
-    body: "When a free AI key is configured, only the records that are new or changed are sent to a free language model. It can drop a listing that is clearly not an AI event, or restore a prize or organizer name that the page already states but our rules missed. It never writes a prize, a date or a winner that the source does not publish.",
+    title: "5. Every record passes a set of checks",
+    body: "Before a listing appears, a set of rules runs over it: it must clearly be about AI, have valid dates, a working official page, a prize figure that makes sense and a clean organizer name. Listings that fall short are kept out of the site. The checks only use the text on the public pages and never invent a prize, a date or a winner.",
   },
   {
     icon: ShieldCheck,
@@ -97,7 +97,7 @@ const FAQ = [
   {
     question: "Do you use AI to fill in the data?",
     answer:
-      "No. A free language model is only ever shown text we already read from the public pages, and it may only confirm that text, drop a listing, or repeat a number the page already states. It cannot add a prize, a date or a winner that the source never published, and when no key is configured the check is skipped entirely.",
+      "No. Every number on the site is read from a public event page or hand-checked. The pipeline runs a set of rules that only drop listings which are not clearly about AI or which miss a date, a working link or a prize figure that makes sense. No model writes, guesses or copies any data onto the site.",
   },
   {
     question: "I found a mistake. How do I fix it?",

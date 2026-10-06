@@ -23,7 +23,6 @@ export default async function StatsPage() {
   const dataset = await getDataset();
   const countries = dataset.meta.countries ?? [];
   const regions = dataset.meta.regions ?? [];
-  const aiReview = dataset.meta.aiReview;
   const counts = {
     upcoming: stats.upcoming,
     ongoing: stats.ongoing,
@@ -253,47 +252,6 @@ export default async function StatsPage() {
             </ul>
           </section>
         ) : null}
-
-        <Card className="p-5">
-          <h2 className="text-sm font-semibold">Automatic accuracy check</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {aiReview ? (
-              <>
-                The last refresh sent{" "}
-                <span className="font-medium text-foreground tabular-nums">
-                  {aiReview.reviewed.toLocaleString("en-US")}
-                </span>{" "}
-                listings to a free language model ({aiReview.model}) to confirm they really are
-                AI events, that the dates make sense and that no stated prize was missed.{" "}
-                {aiReview.rejected > 0 ? (
-                  <>
-                    <span className="font-medium text-foreground tabular-nums">
-                      {aiReview.rejected.toLocaleString("en-US")}
-                    </span>{" "}
-                    were dropped as not usable.{" "}
-                  </>
-                ) : null}
-                {aiReview.fixed > 0 ? (
-                  <>
-                    <span className="font-medium text-foreground tabular-nums">
-                      {aiReview.fixed.toLocaleString("en-US")}
-                    </span>{" "}
-                    had a field corrected.{" "}
-                  </>
-                ) : null}
-                Checked {new Date(aiReview.at).toUTCString().replace(" GMT", " UTC")}.
-              </>
-            ) : (
-              <>
-                Each refresh can send new listings to a free language model to confirm they are
-                real AI events, that the dates make sense and that no stated prize was missed. It
-                runs in the background, only reads public pages, and never invents a prize or a
-                winner. When no key is configured the check is skipped and the usual rules still
-                apply.
-              </>
-            )}
-          </p>
-        </Card>
 
         <Card className="p-5">
           <h2 className="text-sm font-semibold">Where does this data come from?</h2>

@@ -5,13 +5,12 @@ import {
   statusFor,
   type DevpostListItem,
 } from "./sources/devpost";
-import { extractClaimedPool, isAiRelevant } from "./sources/ai-signals";
+import { extractClaimedPool } from "./sources/ai-signals";
 import { fetchLablabEvent, fetchLablabIndex } from "./sources/lablab";
-import { llmConfig, reviewWithLlm } from "./sources/llm-review";
+import { screenRecords } from "./sources/accuracy-engine";
 import { detectCountry, detectRegion } from "./geo";
 import type {
   Dataset,
-  DatasetMeta,
   Hackathon,
   HackathonStatus,
   SourceStatus,
@@ -39,15 +38,6 @@ export interface CollectResult {
   added: number;
   updated: number;
   removed: number;
-  /** Behind-the-scenes AI check, for logs and the stats page. */
-  aiReview?: {
-    provider: string;
-    model: string;
-    reviewed: number;
-    rejected: number;
-    fixed: number;
-    dropped?: number;
-  };
 }
 
 const LOG = (...args: unknown[]) =>
@@ -146,16 +136,6 @@ async function enrich(
     merged.claimedPrizeUsd = claimed || undefined;
     if (detail.hasPrizeBreakdown && prizes.some((p) => p.type === "cash")) {
       merged.prizeBreakdownPublished = true;
-    }
-
-    if (
-      !isAiRelevant({
-        title: merged.name,
-        description: detail.description,
-        themes: merged.tags.map((t) => ({ id: -1, name: t })),
-      })
-    ) {
-      return { ...merged, description: merged.description || base.description };
     }
 
     sumPrizes(merged);
@@ -436,14 +416,18 @@ export async function collectDataset(
     h.country = detectCountry(h.location) ?? h.country;
   }
 
-  // Behind-the-scenes accuracy check. Skipped automatically when no free API key
-  // is configured, so the refresh still works without it.
-  const aiReview = await runAiReview(merged);
-  const verified = aiReview ? all.filter((h) => aiReview.keep(h)) : all;
+  // Only the accuracy engine decides what ships: the release threshold is a
+  // score of 75 or higher, curated records always pass, borderline records are
+  // held for a future refresh and poor ones are dropped. The scoring never
+  // reaches the frontend — the pipeline hand over clean data only.
+  const accuracy = screenRecords(all);
+  LOG(
+    `accuracy engine: ${accuracy.published.length} published, ${accuracy.held.length} held, ${accuracy.summary.rejected} rejected`,
+  );
+
+  const verified = accuracy.published;
   const dropped = all.length - verified.length;
-  if (aiReview?.summary) aiReview.summary.dropped = dropped;
-  if (aiReview?.result) aiReview.result.dropped = dropped;
-  if (dropped > 0) LOG(`ai review dropped ${dropped} record(s) that were not usable AI events`);
+  if (dropped > 0) LOG(`dropped ${dropped} record(s) that are not high-quality AI events`);
 
   const counts: Record<HackathonStatus, number> = { upcoming: 0, ongoing: 0, past: 0 };
   let totalPrizeUsd = 0;
@@ -467,7 +451,6 @@ export async function collectDataset(
         .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
         .map(([country, count]) => ({ country, count })),
       regions: summariseRegions(verified),
-      aiReview: aiReview?.summary,
       sources,
     },
     hackathons: verified,
@@ -484,66 +467,6 @@ export async function collectDataset(
     added,
     updated,
     removed,
-    aiReview: aiReview?.result,
-  };
-}
-
-/**
- * Runs the optional AI check over freshly collected records. Returns undefined
- * when no provider is configured so callers can tell "not configured" apart
- * from "configured and found nothing wrong".
- */
-async function runAiReview(
-  items: Hackathon[],
-): Promise<
-  | {
-      keep: (h: Hackathon) => boolean;
-      summary?: DatasetMeta["aiReview"];
-      result?: CollectResult["aiReview"];
-    }
-  | undefined
-> {
-  const config = llmConfig();
-  if (!config) {
-    LOG("ai review skipped: set GROQ_API_KEY or GEMINI_API_KEY to enable it");
-    return undefined;
-  }
-
-  const outcome = await reviewWithLlm(items, config);
-  LOG(
-    `ai review (${outcome.model ?? "unknown"}): ${outcome.reviewed} checked, ${outcome.rejected} rejected, ${outcome.fixed} corrected`,
-  );
-  if (outcome.error) LOG(`ai review warning: ${outcome.error}`);
-
-  const verdicts = outcome.verdicts;
-  return {
-    keep: (h) => {
-      const verdict = verdicts.get(h.id);
-      // No verdict means the model did not return this row: keep the record.
-      if (!verdict) return true;
-      return verdict.isAi && verdict.complete;
-    },
-    summary:
-      outcome.reviewed > 0
-        ? {
-            provider: outcome.provider ?? config.provider,
-            model: outcome.model ?? config.model,
-            at: new Date().toISOString(),
-            reviewed: outcome.reviewed,
-            rejected: outcome.rejected,
-            fixed: outcome.fixed,
-          }
-        : undefined,
-    result:
-      outcome.reviewed > 0
-        ? {
-            provider: outcome.provider ?? config.provider,
-            model: outcome.model ?? config.model,
-            reviewed: outcome.reviewed,
-            rejected: outcome.rejected,
-            fixed: outcome.fixed,
-          }
-        : undefined,
   };
 }
 

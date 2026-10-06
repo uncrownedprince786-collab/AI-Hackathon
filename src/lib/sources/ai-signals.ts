@@ -32,7 +32,6 @@ export const AI_KEYWORDS = [
   "nlp",
   "natural language",
   "diffusion",
-  "ml ",
   "mlops",
   "data science",
   "predictive",
@@ -75,7 +74,11 @@ export function isAiRelevant(input: {
 
   if (AI_EXCLUDE.some((x) => haystack.includes(x))) return false;
 
-  return AI_KEYWORDS.some((k) => haystack.includes(k));
+  return AI_KEYWORDS.some((k) => new RegExp(`\\b${escapeRegExp(k)}\\b`, "").test(haystack));
+}
+
+function escapeRegExp(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 const MONTHS: Record<string, number> = {

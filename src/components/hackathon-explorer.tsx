@@ -69,7 +69,11 @@ export function HackathonExplorer({
 
   const organizerOptions = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const h of hackathons) counts.set(h.organizer, (counts.get(h.organizer) ?? 0) + 1);
+    for (const h of hackathons) {
+      const name = h.organizer.trim();
+      if (!name) continue;
+      counts.set(name, (counts.get(name) ?? 0) + 1);
+    }
     return [...counts.entries()]
       .filter(([name, count]) => count > 1 || name !== "Independent")
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
