@@ -17,7 +17,8 @@
  * reject a record regardless of score (no AI evidence, missing dates, broken
  * link, duplicate, "non-ai" in the text).
  */
-import { cleanOrganizerName, extractClaimedPool } from "./ai-signals";
+import { cleanOrganizerName } from "./ai-signals";
+import { extractPrizeAnnouncement } from "./prize-extract";
 import { detectCountry } from "../geo";
 import { curatedHackathons } from "@/data/curated";
 import type { Hackathon } from "../types";
@@ -521,8 +522,13 @@ function scorePrizes(h: Hackathon): { score: number; reasons: string[]; problems
   const total = h.totalPrizeUsd ?? 0;
   const cash = h.cashPrizeUsd ?? 0;
   const credits = h.creditPrizeUsd ?? 0;
-  const stated = extractClaimedPool(h.name, stripHtml(h.description));
-  const hasAnything = claimed > 0 || total > 0 || cash > 0 || credits > 0 || h.prizes.length > 0;
+  const stated = extractPrizeAnnouncement(h.name, stripHtml(h.description)).usd ?? 0;
+  const hasAnything =
+    claimed > 0 ||
+    total > 0 ||
+    cash > 0 ||
+    credits > 0 ||
+    h.prizes.length > 0 || Boolean(h.claimedPrize);
 
   if (hasAnything) {
     score += 3;
@@ -811,8 +817,11 @@ export function prepareRecord(input: Hackathon, now = new Date()): Hackathon {
   const organizer = cleanOrganizerName(h.organizer);
   h.organizer = organizer && !isPlaceholderOrganizer(organizer) ? organizer : "";
 
-  const stated = extractClaimedPool(h.name, h.description);
-  if (stated > 0) h.claimedPrizeUsd = Math.max(h.claimedPrizeUsd ?? 0, stated);
+  const announced = extractPrizeAnnouncement(h.name, h.description);
+  if (announced.usd) h.claimedPrizeUsd = Math.max(h.claimedPrizeUsd ?? 0, announced.usd);
+  if (!h.claimedPrize && announced.nonUsd && !h.claimedPrizeUsd) {
+    h.claimedPrize = announced.nonUsd;
+  }
 
   const seen = new Set<string>();
   h.tags = (h.tags ?? [])
@@ -889,7 +898,9 @@ export function screenRecords(items: Hackathon[], now = new Date()): AccuracyRes
   const prepared = items.map((h) => prepareRecord(h, now));
   const scored = prepared.map((h) => ({ h, report: scoreRecord(h, now) }));
 
-  // Duplicates: identical links, or identical title on the same start date.
+  // Duplicates: identical links, identical title on the same start date, or
+  // the same event published by two sources under different URLs (same
+  // normalized name + organizer + dates).
   const taken = new Set<string>();
   const kept: { h: Hackathon; report: AccuracyReport }[] = [];
   const ranked = [...scored].sort((a, b) => rankOf(b.h, b.report) - rankOf(a.h, a.report));
@@ -901,11 +912,13 @@ export function screenRecords(items: Hackathon[], now = new Date()): AccuracyRes
     const { h, report } = entry;
     const urlKey = normalizeUrl(h.officialUrl);
     const nameKey = `${normalizeName(h.name)}|${h.startDate ?? ""}`;
+    const identityKey = `${normalizeName(h.name)}|${normalizeName(h.organizer)}|${h.startDate ?? ""}`;
 
     const dupUrl = urlKey && taken.has(`url:${urlKey}`);
     const dupName = taken.has(`name:${nameKey}`) || CURATED_KEYS.has(nameKey);
+    const dupIdentity = taken.has(`identity:${identityKey}`);
 
-    if (dupUrl || dupName) {
+    if (dupUrl || dupName || dupIdentity) {
       bump("duplicate listing");
       continue;
     }
@@ -914,6 +927,7 @@ export function screenRecords(items: Hackathon[], now = new Date()): AccuracyRes
     if (isCurated(h)) {
       if (urlKey) taken.add(`url:${urlKey}`);
       taken.add(`name:${nameKey}`);
+      taken.add(`identity:${identityKey}`);
       kept.push(entry);
       continue;
     }
@@ -930,6 +944,7 @@ export function screenRecords(items: Hackathon[], now = new Date()): AccuracyRes
 
     if (urlKey) taken.add(`url:${urlKey}`);
     taken.add(`name:${nameKey}`);
+    taken.add(`identity:${identityKey}`);
     kept.push(entry);
   }
 

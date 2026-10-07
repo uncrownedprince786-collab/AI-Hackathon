@@ -80,47 +80,42 @@ export default async function HomePage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="grid-bg absolute inset-0 opacity-60" aria-hidden="true" />
-        <div
-          className="absolute inset-x-0 -top-40 h-80 bg-[radial-gradient(60%_60%_at_50%_0%,var(--primary)_0%,transparent_70%)] opacity-15"
-          aria-hidden="true"
-        />
-
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24">
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="outline" className="mb-5">
+            <Badge variant="outline" className="mb-6">
               <RefreshCw aria-hidden="true" />
-              Updated every 6 hours · {formatCount(all.length)} hackathons
+              Updated every 6 hours · {new Set(all.map((h) => h.country).filter(Boolean)).size} countries
             </Badge>
 
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              All AI hackathons in one place
+              Find real AI hackathons worldwide
             </h1>
 
             <p className="mx-auto mt-5 max-w-2xl text-pretty text-base text-muted-foreground sm:text-lg">
-              Prizes, winners and upcoming events. See the money first, then the dates,
-              the organizer and the deadline. No login, no signup.
+              We track {formatCount(all.length)} AI hackathons — where they run, when they
+              close, the prize money each organizer actually announces, and the projects
+              that won. Every record links back to the official page so you can verify it.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Button asChild size="lg">
                 <Link href="/hackathons">
                   <Search aria-hidden="true" />
-                  Browse all hackathons
+                  Browse every hackathon
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
                 <Link href="/ongoing">
                   <Gauge aria-hidden="true" />
-                  What&apos;s live now ({ongoing.length})
+                  Live now ({ongoing.length})
                 </Link>
               </Button>
             </div>
 
             <p className="mt-6 text-xs text-muted-foreground">
               Last updated{" "}
-              <time dateTime={dataset.meta.lastUpdated}>
+              <time dateTime={dataset.meta.lastUpdated} className="font-medium text-foreground">
                 {new Date(dataset.meta.lastUpdated).toUTCString().replace(" GMT", " UTC")}
               </time>
             </p>
@@ -190,8 +185,8 @@ export default async function HomePage() {
 
       {/* Biggest prizes */}
       <Section
-        title="Biggest prize pools"
-        description="Ranked by total prize money, cash and credits together."
+        title="Biggest announced pools"
+        description="Ranked by the total pool each organizer publishes — cash, credits and announced totals separately."
         href="/stats"
         linkLabel="See full stats"
       >
@@ -286,8 +281,8 @@ export default async function HomePage() {
             />
             <MiniStat
               icon={Trophy}
-              label="Events with winners"
-              value={`${stats.withWinners} of ${stats.total}`}
+              label="Announced pools"
+              value={`${formatUsd(stats.announcedPrizeUsd)} · ${stats.announcedPoolCount}`}
             />
           </div>
         </div>

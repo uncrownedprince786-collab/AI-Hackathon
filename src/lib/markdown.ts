@@ -28,6 +28,11 @@ function inline(text: string): string {
     const safe = url.replace(/"/g, "&quot;");
     return `<a href="${safe}" rel="noopener noreferrer nofollow" target="_blank">${label}</a>`;
   });
+  // [label](/internal/path) — site links stay on-site, no nofollow.
+  out = out.replace(/\[([^\]]+)\]\((\/[^)\s]+)\)/g, (_m, label: string, path: string) => {
+    const safe = path.replace(/"/g, "&quot;");
+    return `<a href="${safe}">${label}</a>`;
+  });
 
   return out;
 }

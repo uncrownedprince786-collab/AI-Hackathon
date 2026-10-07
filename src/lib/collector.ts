@@ -1,21 +1,11 @@
 import {
-  fetchDevpostDetail,
-  fetchDevpostList,
-  listItemToHackathon,
-  statusFor,
-  type DevpostListItem,
-} from "./sources/devpost";
-import { extractClaimedPool } from "./sources/ai-signals";
-import { fetchLablabEvent, fetchLablabIndex } from "./sources/lablab";
+  SOURCE_REGISTRY,
+  adapterForSourceId,
+} from "./sources/registry";
+import { statusFor } from "./sources/devpost";
 import { screenRecords } from "./sources/accuracy-engine";
 import { detectCountry, detectRegion } from "./geo";
-import type {
-  Dataset,
-  Hackathon,
-  HackathonStatus,
-  SourceStatus,
-  Winner,
-} from "./types";
+import type { Dataset, Hackathon, HackathonStatus, SourceStatus } from "./types";
 import { CACHE_TAG, hasSupabase, readDataset, writeDataset, type StorageTarget } from "./store";
 
 export interface CollectOptions {
@@ -54,9 +44,12 @@ function sumPrizes(h: Hackathon): void {
   let credits = 0;
   let other = 0;
   for (const p of h.prizes) {
-    if (p.type === "cash") cash += p.amount;
-    else if (p.type === "credits") credits += p.amount;
-    else other += p.amount;
+    // Non-USD prizes are preserved in the list but never added to USD totals:
+    // converting them would be inventing a rate.
+    const isUsd = !p.currency || p.currency.toUpperCase() === "USD";
+    if (p.type === "cash") cash += isUsd ? p.amount : 0;
+    else if (p.type === "credits") credits += isUsd ? p.amount : 0;
+    else other += isUsd ? p.amount : 0;
   }
   h.cashPrizeUsd = cash;
   h.creditPrizeUsd = credits;
@@ -74,6 +67,8 @@ function sumPrizes(h: Hackathon): void {
     h.prizeBreakdownPublished = cash > 0;
     h.totalPrizeUsd = itemised || claimed;
   }
+  // A non-USD headline pool never feeds USD totals; keep it purely descriptive.
+  if (h.claimedPrize) h.claimedPrizeUsd = undefined;
 }
 
 async function mapWithConcurrency<T, R>(
@@ -101,43 +96,13 @@ async function enrich(
   base: Hackathon,
   signal?: AbortSignal,
 ): Promise<Hackathon> {
+  const adapter = adapterForSourceId(base.sourceName);
+  if (!adapter?.enrich) {
+    sumPrizes(base);
+    return base;
+  }
   try {
-    const detail = await fetchDevpostDetail(base.officialUrl, signal);
-    const prizes = detail.prizes.length ? detail.prizes : base.prizes;
-
-    const merged: Hackathon = {
-      ...base,
-      description: detail.description || base.description,
-      // The listing API carries a reliable globe/pin icon, so only upgrade the
-      // mode when the detail page actually says the event is hybrid.
-      mode: detail.mode === "hybrid" ? "hybrid" : base.mode,
-      location: detail.location ?? base.location,
-      organizer: detail.organizer || base.organizer,
-      participants: detail.participants ?? base.participants,
-      submissions: detail.submissions ?? base.submissions,
-      invitedOnly: detail.invitedOnly || base.invitedOnly,
-      registrationStatus: detail.registrationStatus ?? base.registrationStatus,
-      winnersAnnounced: detail.winners.length ? true : base.winnersAnnounced,
-      officialUrl: detail.websiteUrl ?? base.officialUrl,
-      sourceUrl: base.sourceUrl || base.officialUrl,
-      tags: detail.description
-        ? base.tags
-        : [...new Set([...base.tags, ...inferTags(detail.description)])],
-      prizes,
-      winners: dedupeWinners([...(base.winners ?? []), ...(detail.winners ?? [])]),
-    };
-
-    // A headline figure in the title or description ("$400,000 in prizes") counts
-    // even when the prize table is missing.
-    const claimed = Math.max(
-      base.claimedPrizeUsd ?? 0,
-      extractClaimedPool(merged.name, detail.tagline, detail.description),
-    );
-    merged.claimedPrizeUsd = claimed || undefined;
-    if (detail.hasPrizeBreakdown && prizes.some((p) => p.type === "cash")) {
-      merged.prizeBreakdownPublished = true;
-    }
-
+    const merged = await adapter.enrich(base, signal);
     sumPrizes(merged);
     return merged;
   } catch (error) {
@@ -208,33 +173,25 @@ function usd(value: number): string {
   }).format(value);
 }
 
-function inferTags(text: string): string[] {  const found: string[] = [];
-  const map: [RegExp, string][] = [
-    [/\bllm|large language model/i, "LLM"],
-    [/\bagent(ic|s)?\b/i, "AI Agents"],
-    [/\bgenerative|genai|gen ai\b/i, "Generative AI"],
-    [/\bmachine learning\b/i, "Machine Learning"],
-    [/\bdeep learning|neural\b/i, "Deep Learning"],
-    [/\bcomputer vision|image generation\b/i, "Computer Vision"],
-    [/\bnlp|natural language/i, "NLP"],
-    [/\bopenai|gpt-?4|gpt-?5\b/i, "OpenAI"],
-    [/\bcloud|aws|azure|gcp\b/i, "Cloud"],
-    [/robo|autonomous|drone/i, "Robotics"],
-  ];
-  for (const [re, tag] of map) if (re.test(text)) found.push(tag);
-  return found.slice(0, 5);
-}
-
-function dedupeWinners(winners: Winner[]): Winner[] {
-  const seen = new Set<string>();
-  const out: Winner[] = [];
-  for (const w of winners) {
-    const key = `${w.project.toLowerCase()}|${w.team?.join(",") ?? ""}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    out.push(w);
-  }
-  return out.slice(0, 25);
+/**
+ * Retention rule for records that did not reappear in this refresh's listings:
+ * past events and curated/hand-checked entries are always kept; non-past
+ * records from a source that ran successfully are treated as removed; non-past
+ * records from a source that failed or returned nothing are preserved so a
+ * transient outage never wipes data.
+ */
+export function selectRetained(
+  previous: Hackathon[],
+  liveIds: Set<string>,
+  succeededSourceIds: Set<string>,
+): Hackathon[] {
+  return previous.filter((h) => {
+    if (liveIds.has(h.id)) return false;
+    if (!h.sourceName || h.sourceName === "Curated") return true;
+    if (h.status === "past") return true;
+    if (!succeededSourceIds.has(h.sourceName)) return true;
+    return false;
+  });
 }
 
 export async function collectDataset(
@@ -249,70 +206,40 @@ export async function collectDataset(
   const previous = await readDataset();
   const previousById = new Map(previous.hackathons.map((h) => [h.id, h]));
   const sources: SourceStatus[] = [];
-  const enabled = new Set(options.sources ?? ["devpost", "lablab"]);
+  const enabled = new Set(options.sources ?? SOURCE_REGISTRY.map((a) => a.id));
   const seenIds = new Set<string>();
   const drafts: Hackathon[] = [];
 
-  if (enabled.has("devpost")) {
-    LOG(`fetching devpost listings (${pages} pages/status)...`);
-    const lists = await Promise.all([
-      fetchDevpostList("open", { pages, signal: options.signal }),
-      fetchDevpostList("upcoming", { pages, signal: options.signal }),
-      fetchDevpostList("ended", { pages: Math.max(pages, 6), signal: options.signal }),
-    ]);
-    const [open, upcoming, ended] = lists;
-    const allItems: DevpostListItem[] = [...open, ...upcoming, ...ended];
-
-    for (const item of allItems) {
-      const draft = listItemToHackathon(item, now);
-      if (!draft) continue;
-      if (seenIds.has(draft.id)) continue;
-      seenIds.add(draft.id);
-      drafts.push(draft);
-    }
-
-    sources.push({
-      name: "Devpost",
-      url: "https://devpost.com/hackathons",
-      ok: drafts.length > 0,
-      fetched: drafts.length,
-    });
-
-    LOG(`devpost ai drafts: ${drafts.length}`);
-  }
-
-  // lablab.ai publishes schema.org Event data for every AI hackathon it hosts.
-  let lablabCount = 0;
-  if (enabled.has("lablab")) {
+  // Run every enabled adapter in the registry. Adding a worldwide source is a
+  // new adapter entry, nothing else changes.
+  for (const adapter of SOURCE_REGISTRY) {
+    if (!enabled.has(adapter.id)) continue;
     try {
-      const index = await fetchLablabIndex(options.signal);
-      LOG(`lablab index: ${index.length} events`);
-      const lablabDrafts: Hackathon[] = [];
-      await mapWithConcurrency(index, Math.min(concurrency, 4), async (item, i) => {
-        if (i % 20 === 0) LOG(`  lablab ${i}/${index.length}`);
-        try {
-          const event = await fetchLablabEvent(item, now, options.signal);
-          if (event) lablabDrafts.push(event);
-        } catch (error) {
-          console.error(`[collect] lablab failed ${item.url}`, (error as Error).message);
-        }
+      LOG(`fetching ${adapter.name}...`);
+      const result = await adapter.fetch({
+        now,
+        signal: options.signal,
+        pages,
+        concurrency,
       });
-      for (const event of lablabDrafts) {
-        if (seenIds.has(event.id)) continue;
-        seenIds.add(event.id);
-        drafts.push(event);
+      let accepted = 0;
+      for (const record of result.records) {
+        if (seenIds.has(record.id)) continue;
+        seenIds.add(record.id);
+        drafts.push(record);
+        accepted += 1;
       }
-      lablabCount = lablabDrafts.length;
+      LOG(`${adapter.name} records: ${accepted}/${result.records.length}`);
       sources.push({
-        name: "lablab.ai",
-        url: "https://lablab.ai/ai-hackathons",
-        ok: true,
-        fetched: lablabCount,
+        name: adapter.name,
+        url: adapter.homepage,
+        ok: result.fetched > 0,
+        fetched: result.fetched,
       });
     } catch (error) {
       sources.push({
-        name: "lablab.ai",
-        url: "https://lablab.ai/ai-hackathons",
+        name: adapter.name,
+        url: adapter.homepage,
         ok: false,
         fetched: 0,
         error: (error as Error).message,
@@ -324,7 +251,8 @@ export async function collectDataset(
 
   // Preserve hand-checked data and skip re-fetching pages we already enriched.
   const needsDetail = drafts.filter((d) => {
-    if (d.sourceName !== "Devpost") return false;
+    const adapter = adapterForSourceId(d.sourceName);
+    if (!adapter?.requiresDetail) return false;
     if (options.forceDetail) return true;
     const prev = previousById.get(d.id);
     if (!prev) return true;
@@ -400,14 +328,16 @@ export async function collectDataset(
     return base;
   });
 
-  // Keep curated/past entries that the listing no longer returns.
+  // Keep curated/past entries that the listing no longer returns. Crucially,
+  // a source that failed or returned nothing this run must NOT trigger drops:
+  // that would wipe its non-past records on a transient outage (e.g. a 503).
   const liveIds = new Set(merged.map((h) => h.id));
-  const retained = previous.hackathons.filter((h) => {
-    if (liveIds.has(h.id)) return false;
-    if (!h.sourceName || h.sourceName === "Curated") return true;
-    if (h.status === "past") return true;
-    return false;
-  });
+  const succeededIds = new Set<string>();
+  for (const adapter of SOURCE_REGISTRY) {
+    const status = sources.find((s) => s.name === adapter.name);
+    if (status && status.ok) succeededIds.add(adapter.id);
+  }
+  const retained = selectRetained(previous.hackathons, liveIds, succeededIds);
 
   const all = [...merged, ...retained];
 

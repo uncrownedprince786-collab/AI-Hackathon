@@ -1,5 +1,10 @@
 import * as cheerio from "cheerio";
-import { classifyPrize, cleanOrganizerName, detectRegistrationStatus, extractClaimedPool } from "./ai-signals";
+import { extractPrizeAnnouncement } from "./prize-extract";
+import {
+  classifyPrize,
+  cleanOrganizerName,
+  detectRegistrationStatus,
+} from "./ai-signals";
 import type { Hackathon, Prize } from "../types";
 import { slugify, sleep, statusFor } from "./devpost";
 
@@ -282,7 +287,8 @@ export async function fetchLablabEvent(
 
   const mode = detectMode(event, text);
   const nowIso = now.toISOString();
-  const claimedPool = extractClaimedPool(event.name, text);
+  const announced = extractPrizeAnnouncement(event.name, text);
+  const claimedUsd = announced.usd || undefined;
 
   const hackathon: Hackathon = {
     id: `lablab-${slugify(item.url.replace(/^https?:\/\/[^/]+/, ""))}`,
@@ -295,7 +301,8 @@ export async function fetchLablabEvent(
     startDate,
     endDate,
     registrationDeadline: endDate,
-    claimedPrizeUsd: claimedPool || undefined,
+    claimedPrizeUsd: claimedUsd,
+    claimedPrize: claimedUsd ? undefined : announced.nonUsd,
     registrationStatus: detectRegistrationStatus(text),
     location: locationText,
     prizes,
@@ -324,9 +331,10 @@ function sumLablabPrizes(h: Hackathon): void {
   let credits = 0;
   let other = 0;
   for (const p of h.prizes) {
-    if (p.type === "cash") cash += p.amount;
-    else if (p.type === "credits") credits += p.amount;
-    else other += p.amount;
+    const isUsd = !p.currency || p.currency.toUpperCase() === "USD";
+    if (p.type === "cash") cash += isUsd ? p.amount : 0;
+    else if (p.type === "credits") credits += isUsd ? p.amount : 0;
+    else other += isUsd ? p.amount : 0;
   }
   h.cashPrizeUsd = cash;
   h.creditPrizeUsd = credits;
@@ -338,6 +346,7 @@ function sumLablabPrizes(h: Hackathon): void {
     h.claimedPrizeUsd = claimed || undefined;
     h.totalPrizeUsd = itemised || claimed;
   }
+  if (h.claimedPrize) h.claimedPrizeUsd = undefined;
 }
 
 const TAG_MAP: [RegExp, string][] = [

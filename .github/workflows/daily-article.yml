@@ -1,9 +1,11 @@
 name: Publish daily AI article
 
-# Adds one new markdown file under content/blog each day. It only ever creates
-# a file for today, never edits an existing one, and needs no API key: the
-# article is assembled from templates and real dataset numbers. Pushing the new
-# file triggers the Vercel deployment.
+# Adds one new dataset-backed markdown file under content/blog each day,
+# together with the .published.json state that keeps generation idempotent.
+# The article is built only from real dataset numbers; the generator's
+# fact-check gate blocks any unsupported figure and it skips the day cleanly
+# when no topic has enough data (exit 0). Pushing new files triggers the Vercel
+# deployment.
 on:
   schedule:
     - cron: "23 5 * * *"

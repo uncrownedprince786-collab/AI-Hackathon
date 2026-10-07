@@ -225,6 +225,7 @@ export default async function HackathonPage({
               <PrizeAmount
                 amount={hackathon.totalPrizeUsd}
                 claimed={prize.claimedOnly}
+                nonUsd={prize.nonUsd}
                 size="xl"
                 className="mt-1"
               />

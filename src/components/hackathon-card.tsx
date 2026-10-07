@@ -88,6 +88,7 @@ export function HackathonCard({
             <PrizeAmount
               amount={hackathon.totalPrizeUsd}
               claimed={prize.claimedOnly}
+              nonUsd={prize.nonUsd}
               size="lg"
             />
           </div>
@@ -160,7 +161,7 @@ export function HackathonRow({ hackathon }: { hackathon: Hackathon }) {
         </span>
       </span>
       <span className="flex shrink-0 items-center gap-2">
-        <PrizeAmount amount={hackathon.totalPrizeUsd} claimed={prize.claimedOnly} size="sm" />
+        <PrizeAmount amount={hackathon.totalPrizeUsd} claimed={prize.claimedOnly} nonUsd={prize.nonUsd} size="sm" />
         <ExternalLink className="size-3.5 text-muted-foreground" aria-hidden="true" />
       </span>
     </Link>

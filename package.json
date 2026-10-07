@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "refresh:data": "tsx scripts/refresh.ts",
+    "test": "tsx --test tests/prize-extract.test.ts tests/prize-summary.test.ts tests/engine-dedupe.test.ts tests/blog-engine.test.ts tests/retention.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

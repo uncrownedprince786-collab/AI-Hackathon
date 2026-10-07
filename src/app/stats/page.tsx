@@ -38,7 +38,7 @@ export default async function StatsPage() {
       <PageHeader
         eyebrow="Numbers"
         title="AI hackathon stats"
-        description="Everything we track, counted up. These numbers move on their own as the scheduled job adds new events and closes old ones."
+        description="Everything we track, counted up: cash prizes and cloud credits kept apart, announced pools labelled as such, and no figure estimated. These numbers move on their own as the scheduled job adds new events and closes old ones."
         stats={[
           { label: "Hackathons listed", value: String(stats.total) },
           { label: "Total prize money", value: formatUsd(stats.totalPrizeUsd) },
@@ -50,18 +50,19 @@ export default async function StatsPage() {
       <div className="mx-auto max-w-7xl space-y-10 px-4 py-10 sm:px-6">
         {/* Prize split */}
         <section>
-          <h2 className="text-xl font-bold tracking-tight">Prize money: cash vs credits</h2>
+          <h2 className="text-xl font-bold tracking-tight">How prize money breaks down</h2>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            Cloud and API credits are real money to a builder, so we count them separately
-            instead of hiding them in one number.
+            Cloud and API credits are real money to a builder, so we count them separately.
+            Announced pools are headline totals organizers publish without an itemised list, and
+            some events publish no prize figure at all — we never guess those.
           </p>
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="p-5">
               <Coins className="size-4 text-prize" aria-hidden="true" />
               <p className="mt-2 text-2xl font-bold tracking-tight tabular-nums text-prize">
                 {formatUsd(stats.cashPrizeUsd)}
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">Cash prizes</p>
+              <p className="mt-1 text-sm text-muted-foreground">Published cash prizes</p>
             </Card>
             <Card className="p-5">
               <Sparkles className="size-4 text-warning" aria-hidden="true" />
@@ -73,9 +74,24 @@ export default async function StatsPage() {
             <Card className="p-5">
               <Trophy className="size-4 text-primary" aria-hidden="true" />
               <p className="mt-2 text-2xl font-bold tracking-tight tabular-nums">
-                {formatUsd(stats.totalPrizeUsd)}
+                {formatUsd(stats.announcedPrizeUsd)}
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">Total combined</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Announced pools · {stats.announcedPoolCount} events
+              </p>
+            </Card>
+            <Card className="p-5">
+              <Building2 className="size-4 text-muted-foreground" aria-hidden="true" />
+              <p className="mt-2 text-2xl font-bold tracking-tight tabular-nums">
+                {stats.noPrizeInfo}
+                <span className="text-base font-normal text-muted-foreground">
+                  {" "}
+                  / {stats.total}
+                </span>
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Events with no published prize figure
+              </p>
             </Card>
           </div>
         </section>
@@ -176,7 +192,8 @@ export default async function StatsPage() {
         <section>
           <h2 className="text-xl font-bold tracking-tight">Top 10 prize pools</h2>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            Cash and credits added together, across all time.
+            Ranked by the total each organizer publishes — itemised lists and announced pools are
+            kept apart in the per-event breakdown.
           </p>
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {stats.biggest.map((h) => (

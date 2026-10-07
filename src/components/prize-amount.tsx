@@ -1,18 +1,22 @@
 import { cn } from "@/lib/utils";
+import { formatCurrency } from "@/lib/format";
 
 /**
  * The most important number on a card. `claimed` switches the wording: when an
  * organizer announces a pool without publishing a breakdown we say so instead of
- * implying the money is confirmed cash.
+ * implying the money is confirmed cash. `nonUsd` renders a headline pool in its
+ * original currency without converting it.
  */
 export function PrizeAmount({
   amount,
   claimed = false,
+  nonUsd,
   className,
   size = "lg",
 }: {
   amount: number;
   claimed?: boolean;
+  nonUsd?: { amount: number; currency: string };
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
 }) {
@@ -24,9 +28,27 @@ export function PrizeAmount({
   };
 
   if (!amount || amount <= 0) {
+    if (nonUsd && nonUsd.amount > 0) {
+      return (
+        <span className="inline-flex flex-col gap-0.5">
+          <span
+            className={cn(
+              "font-bold tracking-tight text-prize tabular-nums",
+              sizes[size],
+              className,
+            )}
+          >
+            {formatCurrency(nonUsd.amount, nonUsd.currency)}
+          </span>
+          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+            Announced total pool
+          </span>
+        </span>
+      );
+    }
     return (
       <span className={cn("font-semibold text-muted-foreground/80", sizes[size], className)}>
-        No prize pool published
+        Prize not published
       </span>
     );
   }

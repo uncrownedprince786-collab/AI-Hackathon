@@ -1,9 +1,9 @@
 import * as cheerio from "cheerio";
+import { extractPrizeAnnouncement } from "./prize-extract";
 import {
   classifyPrize,
   cleanOrganizerName,
   detectRegistrationStatus,
-  extractClaimedPool,
   parsePeriodDates,
   parsePrizeAmount,
 } from "./ai-signals";
@@ -271,8 +271,31 @@ export function listItemToHackathon(
 
   const totalPrizeUsd = parsePrizeAmount(item.prize_amount);
   const nowIso = now.toISOString();
-  const claimedPool = totalPrizeUsd || extractClaimedPool(item.title, item.tagline as string | undefined);
+  const announced = extractPrizeAnnouncement(
+    item.title,
+    item.tagline as string | undefined,
+  );
+  const claimedUsd = Math.max(totalPrizeUsd, announced.usd ?? 0) || undefined;
+  const claimedNonUsd = claimedUsd || totalPrizeUsd ? undefined : announced.nonUsd;
+  const announcedSplit = announced.split;
   const organizer = cleanOrganizerName(item.organization_name) || "Independent";
+  const splitPrizes: Prize[] = announcedSplit
+    ? [
+        { amount: announcedSplit.cash, currency: "USD", type: "cash", label: "Cash prizes" } as Prize,
+        { amount: announcedSplit.credits, currency: "USD", type: "credits", label: "Cloud/API credits" } as Prize,
+      ]
+    : [];
+  const poolPrize: Prize[] = totalPrizeUsd
+    ? [
+        {
+          amount: totalPrizeUsd,
+          currency: "USD",
+          type: "other",
+          label: "Total prize pool",
+        } as Prize,
+      ]
+    : [];
+  const listingPrizes: Prize[] = [...splitPrizes, ...poolPrize];
   // The listing prize figure is the organizer's total pool, not a cash breakdown.
   const eventUrl = item.url?.trim();
 
@@ -288,20 +311,12 @@ export function listItemToHackathon(
     endDate: period.endDate,
     registrationDeadline:
       item.open_state === "upcoming" ? undefined : period.endDate,
-    claimedPrizeUsd: claimedPool || undefined,
-    prizeBreakdownPublished: false,
+    claimedPrizeUsd: claimedUsd,
+    claimedPrize: claimedNonUsd,
+    prizeBreakdownPublished: Boolean(announcedSplit),
     winnersAnnounced: item.winners_announced || undefined,
     location: location || undefined,
-    prizes: totalPrizeUsd
-      ? [
-          {
-            amount: totalPrizeUsd,
-            currency: "USD",
-            type: "other",
-            label: "Total prize pool",
-          },
-        ]
-      : [],
+    prizes: listingPrizes,
     totalPrizeUsd,
     cashPrizeUsd: 0,
     creditPrizeUsd: 0,

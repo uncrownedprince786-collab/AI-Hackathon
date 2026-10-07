@@ -2,10 +2,14 @@ import { ImageResponse } from "next/og";
 import { getStats } from "@/lib/hackathons";
 import { formatUsd } from "@/lib/format";
 
-export const alt = "AI Hackathons — all AI hackathons in one place";
+export const alt = "AI Hackathons — find real AI hackathons worldwide";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const revalidate = 21600;
+
+const ACCENT = "#3b5bdb";
+const INK = "#1f2937";
+const MUTED = "#6b7280";
 
 export default async function OpengraphImage() {
   const stats = await getStats();
@@ -19,8 +23,8 @@ export default async function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#0b1220",
-          color: "#e6f6ff",
+          background: "#faf8f3",
+          color: INK,
           padding: 64,
           fontFamily: "sans-serif",
         }}
@@ -31,36 +35,32 @@ export default async function OpengraphImage() {
               width: 64,
               height: 64,
               borderRadius: 14,
-              border: "5px solid #22d3ee",
+              border: "5px solid " + ACCENT,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               fontSize: 30,
               fontWeight: 800,
-              color: "#22d3ee",
+              color: ACCENT,
             }}
           >
             AI
           </div>
-          <div style={{ fontSize: 40, fontWeight: 800, letterSpacing: -1 }}>
-            AI Hackathons
-          </div>
+          <div style={{ fontSize: 40, fontWeight: 800, letterSpacing: -1 }}>AI Hackathons</div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div style={{ fontSize: 62, fontWeight: 800, lineHeight: 1.1, letterSpacing: -2 }}>
-            All AI hackathons in one place
+            Find real AI hackathons worldwide
           </div>
-          <div style={{ fontSize: 30, color: "#93a7bd" }}>
-            Prizes, winners and upcoming events. No login.
-          </div>
+          <div style={{ fontSize: 30, color: MUTED }}>Verified events, real prizes, actual winners.</div>
         </div>
 
         <div style={{ display: "flex", gap: 44 }}>
-          <Stat value={String(stats.ongoing)} label="Ongoing now" color="#4ade80" />
-          <Stat value={String(stats.upcoming)} label="Upcoming" color="#22d3ee" />
-          <Stat value={formatUsd(stats.totalPrizeUsd)} label="Prize money" color="#22d3ee" />
-          <Stat value={String(stats.total)} label="Hackathons" color="#93a7bd" />
+          <Stat value={String(stats.ongoing)} label="Ongoing now" color={ACCENT} />
+          <Stat value={String(stats.upcoming)} label="Upcoming" color={ACCENT} />
+          <Stat value={formatUsd(stats.totalPrizeUsd)} label="Prize money" color={ACCENT} />
+          <Stat value={String(stats.total)} label="Hackathons" color={MUTED} />
         </div>
       </div>
     ),
@@ -72,7 +72,7 @@ function Stat({ value, label, color }: { value: string; label: string; color: st
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
       <div style={{ fontSize: 40, fontWeight: 800, color }}>{value}</div>
-      <div style={{ fontSize: 20, color: "#93a7bd" }}>{label}</div>
+      <div style={{ fontSize: 20, color: MUTED }}>{label}</div>
     </div>
   );
 }

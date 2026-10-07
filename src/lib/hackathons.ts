@@ -146,6 +146,13 @@ export interface Stats {
   totalPrizeUsd: number;
   cashPrizeUsd: number;
   creditPrizeUsd: number;
+  /** Headline pools with no published cash/credits breakdown. */
+  announcedPrizeUsd: number;
+  announcedPoolCount: number;
+  /** Pools announced in another currency (never converted to USD). */
+  nonUsdAnnounced: number;
+  /** Records with no prize information at all. */
+  noPrizeInfo: number;
   withWinners: number;
   totalWinners: number;
   online: number;
@@ -166,6 +173,10 @@ export async function getStats(): Promise<Stats> {
   let totalPrizeUsd = 0;
   let cashPrizeUsd = 0;
   let creditPrizeUsd = 0;
+  let announcedPrizeUsd = 0;
+  let announcedPoolCount = 0;
+  let nonUsdAnnounced = 0;
+  let noPrizeInfo = 0;
   let withWinners = 0;
   let totalWinners = 0;
   let online = 0;
@@ -174,9 +185,23 @@ export async function getStats(): Promise<Stats> {
   let totalParticipants = 0;
 
   for (const h of all) {
-    totalPrizeUsd += h.totalPrizeUsd ?? 0;
-    cashPrizeUsd += h.cashPrizeUsd ?? 0;
-    creditPrizeUsd += h.creditPrizeUsd ?? 0;
+    const pooled = h.totalPrizeUsd ?? 0;
+    const cash = h.cashPrizeUsd ?? 0;
+    const credits = h.creditPrizeUsd ?? 0;
+    totalPrizeUsd += pooled;
+    cashPrizeUsd += cash;
+    creditPrizeUsd += credits;
+
+    const itemised = cash > 0 || credits > 0;
+    if ((h.claimedPrizeUsd ?? 0) > 0 && !itemised && !h.prizeBreakdownPublished) {
+      announcedPrizeUsd += pooled;
+      announcedPoolCount += 1;
+    } else if (h.claimedPrize && pooled === 0) {
+      nonUsdAnnounced += 1;
+    } else if (!pooled && !h.claimedPrize && h.prizes.length === 0) {
+      noPrizeInfo += 1;
+    }
+
     totalParticipants += h.participants ?? 0;
     if (h.winners.length > 0) {
       withWinners += 1;
@@ -210,6 +235,10 @@ export async function getStats(): Promise<Stats> {
     totalPrizeUsd,
     cashPrizeUsd,
     creditPrizeUsd,
+    announcedPrizeUsd,
+    announcedPoolCount,
+    nonUsdAnnounced,
+    noPrizeInfo,
     withWinners,
     totalWinners,
     online,

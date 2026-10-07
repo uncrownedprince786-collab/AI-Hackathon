@@ -1,5 +1,5 @@
 import type { Hackathon, HackathonMode, HackathonStatus, Prize } from "./types";
-import { extractClaimedPool } from "./sources/ai-signals";
+import { extractPrizeAnnouncement } from "./sources/prize-extract";
 
 const MONTHS_SHORT = [
   "Jan",
@@ -161,32 +161,69 @@ export interface PrizeSummary {
   label: string;
   /** True when the organizer states a pool but publishes no cash/credits split. */
   claimedOnly: boolean;
+  /** Headline pool in another currency, preserved untouched (totalUsd is 0 then). */
+  nonUsd?: { amount: number; currency: string };
+}
+
+/** Formats an amount in its own currency without ever converting it. */
+export function formatCurrency(amount: number, currency: string): string {
+  const symbol: Record<string, string> = {
+    USD: "$",
+    EUR: "€",
+    GBP: "£",
+    INR: "₹",
+    JPY: "¥",
+    AUD: "A$",
+    CAD: "C$",
+    SGD: "S$",
+    NZD: "NZ$",
+    CHF: "CHF ",
+    CNY: "CN¥",
+  };
+  const value = Math.round(amount).toLocaleString("en-US");
+  const sym = symbol[currency.toUpperCase()];
+  if (!sym) return `${value} ${currency.toUpperCase()}`;
+  return `${sym}${value}`;
 }
 
 /**
  * A lot of organizers publish only a headline pool ("$400,000 in prizes") without
  * itemising it, so we never show "no cash prize" when a pool is stated. Instead we
- * say the pool is announced and mark that the breakdown is not published.
+ * say the pool is announced and mark that the breakdown is not published. Pools
+ * stated in another currency are shown in that currency and never converted.
  */
 export function prizeSummary(h: Hackathon): PrizeSummary {
   const cashUsd = h.cashPrizeUsd ?? 0;
   const creditUsd = h.creditPrizeUsd ?? 0;
   const breakdownPublished = h.prizeBreakdownPublished ?? cashUsd > 0;
+  const nonUsd = h.claimedPrize;
 
   // Safety net: if the record has no figure yet but the organizer's own title or
   // description states a pool, show that pool. We never say "no prize" when the
   // source clearly mentions money.
-  const statedInText = h.totalPrizeUsd ? 0 : extractClaimedPool(h.name, h.description);
+  const statedInText = h.totalPrizeUsd ? 0 : (extractPrizeAnnouncement(h.name, h.description).usd ?? 0);
   const totalUsd = Math.max(h.totalPrizeUsd ?? 0, h.claimedPrizeUsd ?? 0, statedInText);
-  const claimedOnly = totalUsd > 0 && (h.claimedPrizeUsd ?? 0) + statedInText > (h.totalPrizeUsd ?? 0);
+  const claimedOnly =
+    totalUsd > 0 && (h.claimedPrizeUsd ?? 0) + statedInText > (h.totalPrizeUsd ?? 0);
 
+  if (!totalUsd && nonUsd && !cashUsd && !creditUsd) {
+    return {
+      totalUsd: 0,
+      cashUsd,
+      creditUsd,
+      breakdownPublished: false,
+      label: `${formatCurrency(nonUsd.amount, nonUsd.currency)} announced pool`,
+      claimedOnly: true,
+      nonUsd,
+    };
+  }
   if (!totalUsd) {
     return {
       totalUsd: 0,
       cashUsd,
       creditUsd,
       breakdownPublished,
-      label: "No prize pool published",
+      label: "Prize not published",
       claimedOnly: false,
     };
   }
@@ -196,7 +233,7 @@ export function prizeSummary(h: Hackathon): PrizeSummary {
       cashUsd,
       creditUsd,
       breakdownPublished,
-      label: `${formatPrize(totalUsd)} total pool`,
+      label: `${formatUsdLong(totalUsd)} announced pool`,
       claimedOnly: true,
     };
   }
@@ -206,22 +243,22 @@ export function prizeSummary(h: Hackathon): PrizeSummary {
       cashUsd,
       creditUsd,
       breakdownPublished,
-      label: `${formatPrize(cashUsd)} cash + ${formatPrize(creditUsd)} credits`,
+      label: `${formatUsdLong(cashUsd)} cash + ${formatUsdLong(creditUsd)} credits`,
       claimedOnly: false,
     };
   }
   if (breakdownPublished && cashUsd > 0) {
-    return { totalUsd, cashUsd, creditUsd, breakdownPublished, label: `${formatPrize(cashUsd)} cash`, claimedOnly: false };
+    return { totalUsd, cashUsd, creditUsd, breakdownPublished, label: `${formatUsdLong(cashUsd)} cash`, claimedOnly: false };
   }
   if (breakdownPublished && creditUsd > 0) {
-    return { totalUsd, cashUsd, creditUsd, breakdownPublished, label: `${formatPrize(creditUsd)} in credits`, claimedOnly: false };
+    return { totalUsd, cashUsd, creditUsd, breakdownPublished, label: `${formatUsdLong(creditUsd)} in credits`, claimedOnly: false };
   }
   return {
     totalUsd,
     cashUsd,
     creditUsd,
     breakdownPublished,
-    label: `${formatPrize(totalUsd)} total pool`,
+    label: `${formatUsdLong(totalUsd)} announced pool`,
     claimedOnly: true,
   };
 }

@@ -37,6 +37,8 @@ export interface Hackathon {
   registrationDeadline?: string;
   /** Set when the organizer states a total pool but publishes no itemised list. */
   claimedPrizeUsd?: number;
+  /** Headline pool in another currency (€, £, ₹, …). Kept as-is; never converted. */
+  claimedPrize?: { amount: number; currency: string };
   /** False when only a headline pool figure is known (no cash/credits split). */
   prizeBreakdownPublished?: boolean;
   /** "closed" when the source page says registration or submissions are closed. */

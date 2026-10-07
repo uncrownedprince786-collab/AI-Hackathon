@@ -10,16 +10,16 @@ import { buildMetadata, absoluteUrl } from "@/lib/seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = buildMetadata({
-  title: "AI Blog — Plain-English Articles on AI, LLMs and Agents",
+  title: "AI Hackathons Blog — Data-Backed Articles",
   description:
-    "Simple daily articles about AI: what new tools do, how they help, and what is coming next. Written for people who build.",
+    "Daily articles about AI hackathons: the biggest prize pools, open events you can enter, global coverage and real winning projects — every figure read from the live dataset.",
   path: "/blog",
   keywords: [
-    "ai blog",
-    "artificial intelligence articles",
-    "llm explained",
-    "ai agents guide",
-    "genai news",
+    "ai hackathon blog",
+    "ai prize pools",
+    "ai hackathon prizes",
+    "ai hackathon rankings",
+    "ai hackathon events",
   ],
 });
 
@@ -35,7 +35,7 @@ export default async function BlogPage() {
           name: "AI Hackathons blog",
           url: absoluteUrl("/blog"),
           description:
-            "Plain-English articles about AI, large language models and agents for people who build.",
+            "Data-backed articles about AI hackathons: prize pools, open events, global coverage and winning projects.",
           blogPost: posts.slice(0, 20).map((post) => ({
             "@type": "BlogPosting",
             headline: post.title,
@@ -49,8 +49,8 @@ export default async function BlogPage() {
 
       <PageHeader
         eyebrow="Blog"
-        title="AI, explained simply"
-        description="Short articles about what AI tools actually do, how they help, and what is coming next. One useful piece at a time, written in common language."
+        title="AI hackathons, from the data"
+        description="One useful article a day, every figure read from the live dataset: the biggest prize pools, events you can enter today, global coverage, and real winning projects."
         stats={[
           { label: "Articles", value: String(posts.length) },
           { label: "Updated", value: posts.length ? formatDateLong(posts[0].date) : "—" },
@@ -113,8 +113,8 @@ export default async function BlogPage() {
           <p className="flex items-start gap-2">
             <Sparkles className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
             <span>
-              New articles are added regularly and cover one useful idea each: what a tool does,
-              how people use it, and what to watch next. No hype, no buzzwords.
+              Articles are assembled from the same dataset the rest of the site uses and every figure
+              points back to a real event page. No invented prizes, no hype.
             </span>
           </p>
         </div>

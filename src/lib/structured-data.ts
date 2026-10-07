@@ -1,6 +1,6 @@
 import type { Hackathon, HackathonStatus, Winner } from "@/lib/types";
 import { absoluteUrl } from "@/lib/seo";
-import { formatDate, formatUsdLong, modeLabel } from "@/lib/format";
+import { formatCurrency, formatDate, formatUsdLong, modeLabel } from "@/lib/format";
 
 export function websiteJsonLd() {
   return {
@@ -65,7 +65,7 @@ export function eventJsonLd(hackathon: Hackathon) {
       name: hackathon.organizer,
       ...(hackathon.officialUrl ? { url: hackathon.officialUrl } : {}),
     },
-    ...(hackathon.totalPrizeUsd > 0
+    ...(hackathon.totalPrizeUsd > 0 || hackathon.claimedPrize
       ? {
           offers: {
             "@type": "Offer",
@@ -73,7 +73,10 @@ export function eventJsonLd(hackathon: Hackathon) {
             priceCurrency: "USD",
             availability: "https://schema.org/InStock",
             url: hackathon.officialUrl || absoluteUrl(`/hackathons/${hackathon.slug}`),
-            description: `${formatUsdLong(hackathon.totalPrizeUsd)} total prize pool`,
+            description:
+              hackathon.totalPrizeUsd > 0
+                ? `${formatUsdLong(hackathon.totalPrizeUsd)} total prize pool`
+                : `${formatCurrency(hackathon.claimedPrize!.amount, hackathon.claimedPrize!.currency)} total prize pool`,
           },
         }
       : {}),

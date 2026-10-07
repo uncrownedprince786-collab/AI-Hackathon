@@ -1,19 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "2026-10-06T11:34:58.129Z",
+    "lastUpdated": "2026-10-07T09:05:38.809Z",
     "cronSchedule": "0 */6 * * *",
     "total": 101,
     "counts": {
       "upcoming": 26,
-      "ongoing": 29,
-      "past": 46
+      "ongoing": 27,
+      "past": 48
     },
     "sources": [
       {
         "name": "Devpost",
         "url": "https://devpost.com/hackathons",
-        "ok": true,
-        "fetched": 120
+        "ok": false,
+        "fetched": 0
       },
       {
         "name": "lablab.ai",
@@ -22,7 +22,7 @@
         "fetched": 24
       }
     ],
-    "totalPrizeUsd": 5064207,
+    "totalPrizeUsd": 6305057907,
     "countries": [
       {
         "country": "United States",
@@ -66,7 +66,7 @@
       "slug": "databricks-ai-social-impact-daisi-challenge-singapore-31398",
       "name": "Databricks AI Social Impact (DAISI) Challenge - Singapore",
       "description": "Build something Singapore actually needs The Databricks AI Social Impact (DAISI) Challenge is a national student challenge for Singapore's Institutes of Higher Learning. Student teams take on real societal problems using Singapore's national open data, build free on Databricks, get mentored by Databricks engineers, and pitch to Databricks APJ leadership. Nine problem statements across three tracks. Every one is grounded in open government datasets from data.gov.sg, SingStat and the agencies, with no login and no cost. Teams take one problem end to end: ingestion, data engineering, machine learning and a live dashboard demo. Why join Work on problems that matter: ageing, climate resilience, housing, mobility and community. Learn a platform used by thousands of companies worldwide, at no cost. Get a Databricks engineer as a mentor for the two-week build sprint. Compete for a prize pool worth up to US$24,500. The top team presents at the launch of the new Databricks Singapore office. What it costs Nothing. Every team builds on Databricks Free Edition. No credit card, no cluster setup, no infrastructure to manage. Notebooks, SQL warehouses, dashboards, Genie, Lakeflow, Unity Catalog an",
-      "status": "ongoing",
+      "status": "past",
       "mode": "in-person",
       "organizer": "Databricks",
       "startDate": "2026-09-16",
@@ -307,72 +307,6 @@
       "prizeBreakdownPublished": false
     },
     {
-      "id": "devpost-30516",
-      "slug": "since-ai-2026-30516",
-      "name": "Since AI 2026",
-      "description": "Build what comes next Since AI 2026 brings together more than 1,000 ambitious AI builders, engineers, researchers, founders, designers, and technical operators in Turku, Finland. This is not a conference. During an intensive three-day build event, participants form multidisciplinary teams, select one of 15 carefully scoped real-world challenges, and turn it into a working AI prototype. The focus is on execution: Working code Functional demonstrations Technical experimentation Real industry problems Concrete paths toward pilots and continued development Why join? €50,000 total prize pool 15 real-world company challenges More than 1,000 builders onsite Technical mentors and research expertise Access to leading AI technologies and infrastructure Connections to companies, investors, researchers, and potential employers Opportunities for pilots, recruitment, commercialization, and continued development Who should apply? We are looking for people who build. Relevant backgrounds include: AI and machine learning engineering LLMs and AI agents Computer vision Robotics and edge AI Data engineering and MLOps Software engineering Cybersecurity Applied research Product and design Entrepreneursh",
-      "status": "upcoming",
-      "mode": "in-person",
-      "organizer": "Since AI ry",
-      "startDate": "2026-11-06",
-      "endDate": "2026-11-08",
-      "registrationDeadline": "2026-11-08",
-      "location": "Kupittaa Campus, Turku",
-      "prizes": [
-        {
-          "amount": 10000,
-          "currency": "USD",
-          "type": "cash",
-          "label": "Grand Prize"
-        },
-        {
-          "amount": 2000,
-          "currency": "USD",
-          "type": "cash",
-          "label": "Company Challenge Winner Awards"
-        },
-        {
-          "amount": 4000,
-          "currency": "USD",
-          "type": "cash",
-          "label": "Best Technical Execution"
-        },
-        {
-          "amount": 3000,
-          "currency": "USD",
-          "type": "cash",
-          "label": "Best Responsible AI Implementation"
-        },
-        {
-          "amount": 3000,
-          "currency": "USD",
-          "type": "cash",
-          "label": "Best Commercial Potential"
-        }
-      ],
-      "totalPrizeUsd": 50000,
-      "cashPrizeUsd": 22000,
-      "creditPrizeUsd": 0,
-      "winners": [],
-      "tags": [
-        "Machine Learning/AI",
-        "Open Ended",
-        "Enterprise"
-      ],
-      "officialUrl": "https://sinceai2026.devpost.com/",
-      "sourceUrl": "https://sinceai2026.devpost.com/",
-      "sourceName": "Devpost",
-      "sourceId": "30516",
-      "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/815/575/datas/medium_square.png",
-      "participants": 77,
-      "featured": false,
-      "invitedOnly": false,
-      "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
-      "claimedPrizeUsd": 50000,
-      "prizeBreakdownPublished": true
-    },
-    {
       "id": "devpost-30317",
       "slug": "agents-for-humans-hackathon-30317",
       "name": "Agents for Humans Hackathon",
@@ -564,7 +498,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/band-of-agents-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/w2qbolodctcvil38mrvosg2x/w2qbolodctcvil38mrvosg2x_imageLink_fuyiibx1x3wq0jqs7ermhaae.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -604,7 +538,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ai-trading-agents",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/y995zcsch2bzk7mz9c98g9b4/y995zcsch2bzk7mz9c98g9b4_imageLink_rndn66s0zi6f0i90r4nvi7q4.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 55000,
       "prizeBreakdownPublished": true
     },
@@ -651,7 +585,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_ACT3--02_zj3sde4lo6wzxeeai5i4uagu.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -693,7 +627,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_ACT3--01_xrlzgi8lmhaakvnv4ijjo0cu.jpg",
       "participants": 3,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 5000,
       "prizeBreakdownPublished": true
     },
@@ -716,7 +650,7 @@
           "label": "Total prize pool"
         }
       ],
-      "totalPrizeUsd": 6300,
+      "totalPrizeUsd": 6300000000,
       "cashPrizeUsd": 6000,
       "creditPrizeUsd": 0,
       "winners": [],
@@ -734,8 +668,8 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Alpaca-AI-Trading-Agents-Hackathon_Main_banner_-01--1-_ks49u66qluhrfwxywm426tby.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
-      "claimedPrizeUsd": 6300,
+      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "claimedPrizeUsd": 6300000000,
       "prizeBreakdownPublished": true
     },
     {
@@ -825,8 +759,74 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/dk0pq00fw88uufuvi1p1u928/dk0pq00fw88uufuvi1p1u928_imageLink_u1p62xx6sqmib3zs6bugipt3.jpg",
       "participants": 300,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 32000,
+      "prizeBreakdownPublished": true
+    },
+    {
+      "id": "devpost-30516",
+      "slug": "since-ai-2026-30516",
+      "name": "Since AI 2026",
+      "description": "Build what comes next Since AI 2026 brings together more than 1,000 ambitious AI builders, engineers, researchers, founders, designers, and technical operators in Turku, Finland. This is not a conference. During an intensive three-day build event, participants form multidisciplinary teams, select one of 15 carefully scoped real-world challenges, and turn it into a working AI prototype. The focus is on execution: Working code Functional demonstrations Technical experimentation Real industry problems Concrete paths toward pilots and continued development Why join? €50,000 total prize pool 15 real-world company challenges More than 1,000 builders onsite Technical mentors and research expertise Access to leading AI technologies and infrastructure Connections to companies, investors, researchers, and potential employers Opportunities for pilots, recruitment, commercialization, and continued development Who should apply? We are looking for people who build. Relevant backgrounds include: AI and machine learning engineering LLMs and AI agents Computer vision Robotics and edge AI Data engineering and MLOps Software engineering Cybersecurity Applied research Product and design Entrepreneursh",
+      "status": "upcoming",
+      "mode": "in-person",
+      "organizer": "Since AI ry",
+      "startDate": "2026-11-06",
+      "endDate": "2026-11-08",
+      "registrationDeadline": "2026-11-08",
+      "location": "Kupittaa Campus, Turku",
+      "prizes": [
+        {
+          "amount": 10000,
+          "currency": "USD",
+          "type": "cash",
+          "label": "Grand Prize"
+        },
+        {
+          "amount": 2000,
+          "currency": "USD",
+          "type": "cash",
+          "label": "Company Challenge Winner Awards"
+        },
+        {
+          "amount": 4000,
+          "currency": "USD",
+          "type": "cash",
+          "label": "Best Technical Execution"
+        },
+        {
+          "amount": 3000,
+          "currency": "USD",
+          "type": "cash",
+          "label": "Best Responsible AI Implementation"
+        },
+        {
+          "amount": 3000,
+          "currency": "USD",
+          "type": "cash",
+          "label": "Best Commercial Potential"
+        }
+      ],
+      "totalPrizeUsd": 50000,
+      "cashPrizeUsd": 22000,
+      "creditPrizeUsd": 0,
+      "winners": [],
+      "tags": [
+        "Machine Learning/AI",
+        "Open Ended",
+        "Enterprise"
+      ],
+      "officialUrl": "https://sinceai2026.devpost.com/",
+      "sourceUrl": "https://sinceai2026.devpost.com/",
+      "sourceName": "Devpost",
+      "sourceId": "30516",
+      "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/815/575/datas/medium_square.png",
+      "participants": 77,
+      "featured": false,
+      "invitedOnly": false,
+      "firstSeenAt": "2026-10-05T11:50:43.719Z",
+      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
     {
@@ -987,7 +987,7 @@
       "id": "devpost-30858",
       "slug": "forgehacks-online-2026-30858",
       "name": "ForgeHacks Online 2026",
-      "description": "Visit our website: https://www.forgehacks.dev/Join the discord: https://discord.gg/HmS3CHYAv6 ForgeHacks is a student-focused online hackathon dedicated to AI for Real World Problems. We challenge you to forge practical, impactful AI solutions that address genuine challenges people and communities face today, whether in healthcare, education, or everyday life. This is about building something that could realistically be used, tested, or extended beyond the hackathon. You will work across six specialized tracks (), each with a focused problem space. Track prompts will be released closer to the event so everyone starts on equal footing. Tracks: - AI + Healthcare - AI + Education - AI + Climate - AI + Business - AI + Cybersecurity - AI + Creativity Find the released prompts at https://forgehacks.dev What makes ForgeHacks special Pure focus on real-world applicability of AI Student-led organizing team Emphasis on learning, mentorship, and building something that lasts Participation Perks - We've partnered with multiple organizations to provide participants with tools, credits, APIs, and other resources during the hackathon build session! Redeem them in our Discord Get started Register ",
+      "description": "Visit our website: https://www.forgehacks.dev/Join the discord: https://discord.gg/HmS3CHYAv6 ForgeHacks is a student-focused online hackathon dedicated to AI for Real World Problems. We challenge you to forge practical, impactful AI solutions that address genuine challenges people and communities face today, whether in healthcare, education, or everyday life. This is about building something that could realistically be used, tested, or extended beyond the hackathon. You will work across six specialized tracks (), each with a focused problem space. Track prompts will be released closer to the event so everyone starts on equal footing. Tracks: - AI + Healthcare - AI + Education - AI + Climate - AI + Business - AI + Cybersecurity - AI + Creativity Find the released prompts at https://forgehacks.dev What makes ForgeHacks special Pure focus on real-world applicability of AI Student-led organizing team Emphasis on learning, mentorship, and building something that lasts Participation Perks - We've partnered with multiple organizations to provide participants with tools, credits, APIs, and other resources during the hackathon build session! Redeem them in our Discord Get started Register",
       "status": "ongoing",
       "mode": "online",
       "organizer": "ForgeHacks",
@@ -1894,7 +1894,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/NATIVELY_BUILDER_Main_banner--4-_bzwjrup9toms3jquqljex8qw.jpg",
       "participants": 500,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 3800,
       "prizeBreakdownPublished": true
     },
@@ -1986,7 +1986,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/openclaw-surge-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/dwckjgknb4z88x4lplcuxorq/dwckjgknb4z88x4lplcuxorq_imageLink_ge98jmsfyf0viz7v0z6htcwv.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
@@ -2074,7 +2074,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/techex-intelligent-enterprise-solutions-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/mo83rq6y28xa14ceg51kzzht/mo83rq6y28xa14ceg51kzzht_imageLink_nqqmkvvr447fr6qjsst54ctw.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -2121,7 +2121,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/AI-Infra-Summit-Hackathon_Main_banner_-01--2-_emnu3m2g0ggcge3bu3idvkc4.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 31650,
       "prizeBreakdownPublished": true
     },
@@ -2163,7 +2163,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/cokcujybyg4odzqbqri0vgsy/cokcujybyg4odzqbqri0vgsy_imageLink_xtqn6zyn74jo0vl174qxboqo.jpg",
       "participants": 1000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 15000,
       "prizeBreakdownPublished": true
     },
@@ -2203,7 +2203,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/deriv-ai-talent-sprint",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/samf9un63imeruy3slk0e7vs/samf9un63imeruy3slk0e7vs_imageLink_dtruo00bf61ke9k5laxrwoz3.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -2242,7 +2242,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/agentic-commerce-on-arc",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/i0vk9hz4f3zx7trp5qy0v8y2/i0vk9hz4f3zx7trp5qy0v8y2_imageLink_e5qndbvisu18px43fzx8sf1i.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
@@ -2287,7 +2287,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Kubecon_Hackathon_Main_banner--6-_kwbcfs6opwvhzmeeok1r50av.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 9000,
       "prizeBreakdownPublished": true
     },
@@ -2295,7 +2295,7 @@
       "id": "devpost-31544",
       "slug": "qmul-ai-hackathon-31544",
       "name": "QMUL AI Hackathon",
-      "description": "This will be a one day hackathon, on the 10th October from 9am to 5pm. The theme will be Invisible AI, where teams of 4 will compete to build products where AI is integrated naturally into what the user is already doing, rather than existing mainly as something they have to prompt or talk to. Invisible AI could understand what is happening, work across existing tools, learn from behaviour or context, and take useful actions automatically. Think less about adding an AI chatbot to a product, and more about what becomes possible when the product itself is intelligent. For inspiration, take a look at products such as Granola, which works in the background of meetings and turns conversations into useful notes; Wispr Flow, which turns natural speech into polished text directly inside the apps you already use; Doomersion, which turns doomscrolling into language learning by automatically matching short-form videos to your level; or Tornyol, which uses autonomous micro-drones, sonar and intelligent control systems to detect and intercept mosquitoes. These are only examples — Invisible AI could be a consumer app, a business tool, a game, a piece of hardware, or something entirely different. ",
+      "description": "This will be a one day hackathon, on the 10th October from 9am to 5pm. The theme will be Invisible AI, where teams of 4 will compete to build products where AI is integrated naturally into what the user is already doing, rather than existing mainly as something they have to prompt or talk to. Invisible AI could understand what is happening, work across existing tools, learn from behaviour or context, and take useful actions automatically. Think less about adding an AI chatbot to a product, and more about what becomes possible when the product itself is intelligent. For inspiration, take a look at products such as Granola, which works in the background of meetings and turns conversations into useful notes; Wispr Flow, which turns natural speech into polished text directly inside the apps you already use; Doomersion, which turns doomscrolling into language learning by automatically matching short-form videos to your level; or Tornyol, which uses autonomous micro-drones, sonar and intelligent control systems to detect and intercept mosquitoes. These are only examples — Invisible AI could be a consumer app, a business tool, a game, a piece of hardware, or something entirely different.",
       "status": "upcoming",
       "mode": "in-person",
       "organizer": "Queen Mary AI Soc, Queen Mary CS Soc",
@@ -2362,7 +2362,7 @@
       "id": "devpost-30234",
       "slug": "agentic-ai-build-week-2026-30234",
       "name": "Agentic AI Build Week 2026",
-      "description": "⚠️⚠️⚠️⚠️⚠️ WE'VE MOVED OFF DEVPOST! All project submissions now happen on our AABW PORTAL 👉 aitalent.genaifund.ai/hackathon If you registered here on Devpost, you're already confirmed for AABW — head to the portal to create your project and submit. This Devpost page is now read-only for submissions and will stay up for schedule/reference info only. Note: Don't worry! All the projects that you submitted on Devpost previously have been migrated to our portal. Please check there. Key deadlines: July 11, 3:00 PM — Track confirmation deadline. Join us in person and confirm your track. (See the event portal schedule for the official July 11 kickoff time.) July 12, 9:00 AM ICT — Project submission deadline. 45 slots per track — first come, first served. ⚠️⚠️⚠️⚠️⚠️ Agentic AI Build Week is Southeast Asia's largest on-site AI buildathon — 2,000+ builders, 10 enterprise partners, and the full AI stack in one room for five days in Ho Chi Minh City. This is not a traditional hackathon. Every challenge comes from a real enterprise partner. Every winning solution enters an active deployment conversation on Demo Day. Enterprises aren't here to judge you — they're here to find solutions they can ",
+      "description": "⚠️⚠️⚠️⚠️⚠️ WE'VE MOVED OFF DEVPOST! All project submissions now happen on our AABW PORTAL 👉 aitalent.genaifund.ai/hackathon If you registered here on Devpost, you're already confirmed for AABW — head to the portal to create your project and submit. This Devpost page is now read-only for submissions and will stay up for schedule/reference info only. Note: Don't worry! All the projects that you submitted on Devpost previously have been migrated to our portal. Please check there. Key deadlines: July 11, 3:00 PM — Track confirmation deadline. Join us in person and confirm your track. (See the event portal schedule for the official July 11 kickoff time.) July 12, 9:00 AM ICT — Project submission deadline. 45 slots per track — first come, first served. ⚠️⚠️⚠️⚠️⚠️ Agentic AI Build Week is Southeast Asia's largest on-site AI buildathon — 2,000+ builders, 10 enterprise partners, and the full AI stack in one room for five days in Ho Chi Minh City. This is not a traditional hackathon. Every challenge comes from a real enterprise partner. Every winning solution enters an active deployment conversation on Demo Day. Enterprises aren't here to judge you — they're here to find solutions they can",
       "status": "past",
       "mode": "in-person",
       "organizer": "GenAI Fund",
@@ -2428,7 +2428,7 @@
       "id": "devpost-30441",
       "slug": "ai-yes-international-youth-ai-competition-30441",
       "name": "AI YES :International Youth AI Competition",
-      "description": "Get started About AIYES The International AI Youth Education Society (AIYES) is a global non-profit organization dedicated to inspiring, educating, and empowering young people in the field of artificial intelligence, thereby shaping an ethical, innovative, and inclusive future. The association brings together education experts, universities, AI technology companies, training institutions, and related professional social organizations from around the world to jointly promote AI education for young people. Based in the United States and with a global reach, the AIYES Association organizes various activities to encourage young people worldwide to learn about AI, utilize AI effectively, and use AI to drive educational change and innovation. The association upholds the values of \"democracy, diversity, connectivity and innovation\", inspiring and uniting young people around the world to help every child achieve a wonderful life through AI. About This Competition Amid the rapid evolution of AI, the 1st International Youth AI Competition is launched to empower young creators worldwide. Open to elementary, middle, and high school students of all nationalities, races, languages, and cultural ",
+      "description": "Get started About AIYES The International AI Youth Education Society (AIYES) is a global non-profit organization dedicated to inspiring, educating, and empowering young people in the field of artificial intelligence, thereby shaping an ethical, innovative, and inclusive future. The association brings together education experts, universities, AI technology companies, training institutions, and related professional social organizations from around the world to jointly promote AI education for young people. Based in the United States and with a global reach, the AIYES Association organizes various activities to encourage young people worldwide to learn about AI, utilize AI effectively, and use AI to drive educational change and innovation. The association upholds the values of \"democracy, diversity, connectivity and innovation\", inspiring and uniting young people around the world to help every child achieve a wonderful life through AI. About This Competition Amid the rapid evolution of AI, the 1st International Youth AI Competition is launched to empower young creators worldwide. Open to elementary, middle, and high school students of all nationalities, races, languages, and cultural",
       "status": "past",
       "mode": "online",
       "organizer": "International AI Youth Education Society",
@@ -2576,7 +2576,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/complete-ai-agent-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/q36m6onhz59t2m786flsz2cf/q36m6onhz59t2m786flsz2cf_imageLink_h06baj1aax086noealtiz2ol.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 3500,
       "prizeBreakdownPublished": true
     },
@@ -2806,7 +2806,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-ii",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/pn62mtt8xm33vu67q8z0673s/pn62mtt8xm33vu67q8z0673s_imageLink_or8is3enggyc9v517ljnbxua.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 21000,
       "prizeBreakdownPublished": true
     },
@@ -2844,7 +2844,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/IBM-BOB-2-0-Hackathon_Main_banner_-03--2-_xoi067ee0t95d0dbb2ranc89.jpg",
       "participants": 20,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 12000,
       "prizeBreakdownPublished": true
     },
@@ -2881,7 +2881,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ibm-bob-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/z55p8ld1kzke3m7wpiw7t9p1/z55p8ld1kzke3m7wpiw7t9p1_imageLink_a99n4zxv8d7ho8yq7lhbus34.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -2982,7 +2982,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/brightdata-ai-agents-web-data-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/fvnh186wdgbnmjz29joe369z/fvnh186wdgbnmjz29joe369z_imageLink_vlhe5nv71t354cidk3fzoecc.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 20000,
       "prizeBreakdownPublished": true
     },
@@ -3034,7 +3034,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/launch-fund-ai-meets-robotics",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/qqm4r3l7ugompbq37mgd2l94/qqm4r3l7ugompbq37mgd2l94_imageLink_rc187nnji0mlkzkc4fzqxkka.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3322,7 +3322,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/amd-developer",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/n3v922wai9khqi5gs2jctlap/n3v922wai9khqi5gs2jctlap_imageLink_gzq2ads92vzkylo0duucxcwe.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 22500,
       "prizeBreakdownPublished": true
     },
@@ -3984,7 +3984,7 @@
       "slug": "ai-hackathons-wearedevelopers-hackathon",
       "name": "WeAreDevelopers x BAND present: Dark Factory (hackathon edition)",
       "description": "🌎 Online Hackathon | 💻 Online Build: Sept 26 - Oct 5, 2026 A virtual, global hackathon. Build from anywhere in the world. Dark Factory is the official hackathon of WeAreDevelopers World Congress North America, presented by BAND, but you don't need to be in San Jose to take part. For one week, you build a software factory in BAND Desktop: a band of coding agents that plans work, implements it and checks its own results. 🎟️ Bonus for sign-ups: you are eligible for a free ticket to WeAreDevelopers",
-      "status": "ongoing",
+      "status": "past",
       "mode": "online",
       "organizer": "Lablab.ai",
       "startDate": "2026-09-26",
@@ -4015,7 +4015,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_WeAreDevelopers-Hackathon--01--4-_am1oh7sw8guwi0y3smw6yv6c.jpg",
       "participants": 1000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 6000,
       "prizeBreakdownPublished": true
     },
@@ -4145,7 +4145,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_ACT3--02--7-_w8d46drf9ou29ng10y320jqk.jpg",
       "participants": 364000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "claimedPrizeUsd": 12000,
       "prizeBreakdownPublished": true
     },
@@ -4255,7 +4255,7 @@
       "id": "devpost-30524",
       "slug": "zero-origin-30524",
       "name": "Zero Origin",
-      "description": "🚀 ZERO ORIGIN IDEATE. INNOVATE. IMPACT. ZERO ORIGIN, organized by the Rotaract Club of SNS College of Technology, is a problem-driven online hackathon focused on transforming real-world problems into practical, innovative, technology-driven solutions. Participants can choose challenges across AI, Automation, Cloud Computing, Finance & Economics, and Healthcare Technology, or bring their own validated problem through Open Innovation within the official themes. 📋 REGISTRATION Ready to participate? 🚀 Complete the official ZERO ORIGIN Registration Form to register your participation and provide your participant/team details. 🔗 Registration Form: https://docs.google.com/forms/d/e/1FAIpQLSegAz4Ghchcc1eCbLRpmPE0CfApY4UQYATrlkN_ZiUKOjjGag/viewform?usp=sharing&ouid=116678800314912500429 💬 JOIN THE ZERO ORIGIN COMMUNITY Stay connected with the organizing team for important announcements, updates, reminders, clarifications, and hackathon-related communication. 👉 Join our Discord Community: https://discord.gg/EfDrTERj5 👉 Join our Whatsapp Community: https://chat.whatsapp.com/BkQp1bfOX0q6thpsd5RgeY?s=cl&p=a&ilr=4 📌 Please provide accurate and complete information. The details collected ",
+      "description": "🚀 ZERO ORIGIN IDEATE. INNOVATE. IMPACT. ZERO ORIGIN, organized by the Rotaract Club of SNS College of Technology, is a problem-driven online hackathon focused on transforming real-world problems into practical, innovative, technology-driven solutions. Participants can choose challenges across AI, Automation, Cloud Computing, Finance & Economics, and Healthcare Technology, or bring their own validated problem through Open Innovation within the official themes. 📋 REGISTRATION Ready to participate? 🚀 Complete the official ZERO ORIGIN Registration Form to register your participation and provide your participant/team details. 🔗 Registration Form: https://docs.google.com/forms/d/e/1FAIpQLSegAz4Ghchcc1eCbLRpmPE0CfApY4UQYATrlkN_ZiUKOjjGag/viewform?usp=sharing&ouid=116678800314912500429 💬 JOIN THE ZERO ORIGIN COMMUNITY Stay connected with the organizing team for important announcements, updates, reminders, clarifications, and hackathon-related communication. 👉 Join our Discord Community: https://discord.gg/EfDrTERj5 👉 Join our Whatsapp Community: https://chat.whatsapp.com/BkQp1bfOX0q6thpsd5RgeY?s=cl&p=a&ilr=4 📌 Please provide accurate and complete information. The details collected",
       "status": "past",
       "mode": "online",
       "organizer": "RotaractClub of SNSCollege of Technology",
@@ -4316,7 +4316,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/qualcomm-x-meta-executorch-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_qualcomm_Hackathon_8--1-_z7iq12ad5fssb0hz99jczx9p.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-06T11:34:58.129Z",
+      "updatedAt": "2026-10-07T09:05:38.809Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -4594,7 +4594,7 @@
       "id": "devpost-29606",
       "slug": "luma-pitch-competition-july-3rd-10th-29606",
       "name": "LUMA Pitch Competition (July 3rd - 10th)",
-      "description": "The Problem The financial world is gatekept by complex jargon and confusing systems. While digital banking is everywhere, real financial literacy remains a privilege. Millions of people, including young adults, gig workers, and underserved communities, struggle to navigate basic money concepts, which often leads to systemic disadvantage and costly mistakes. The Challenge Create a product, platform, or tool that breaks down the barriers to financial literacy. Your solution should make money management, investing, or economic concepts intuitive, engaging, and genuinely accessible to people from any background. Focus Areas Jargon Translators: Tools that parse complex financial documents like lease agreements, loan terms, or privacy policies and explain them in plain language. Gamified Education: Applications that teach budgeting, credit health, or taxes through interactive simulations or habit-building mechanics. Inclusive Tech: Products designed with accessibility at the forefront, catering to neurodivergent users, non-native speakers, or those with visual or auditory impairments. Early Intervention: Platforms tailored for teenagers and young adults to build healthy financial habits ",
+      "description": "The Problem The financial world is gatekept by complex jargon and confusing systems. While digital banking is everywhere, real financial literacy remains a privilege. Millions of people, including young adults, gig workers, and underserved communities, struggle to navigate basic money concepts, which often leads to systemic disadvantage and costly mistakes. The Challenge Create a product, platform, or tool that breaks down the barriers to financial literacy. Your solution should make money management, investing, or economic concepts intuitive, engaging, and genuinely accessible to people from any background. Focus Areas Jargon Translators: Tools that parse complex financial documents like lease agreements, loan terms, or privacy policies and explain them in plain language. Gamified Education: Applications that teach budgeting, credit health, or taxes through interactive simulations or habit-building mechanics. Inclusive Tech: Products designed with accessibility at the forefront, catering to neurodivergent users, non-native speakers, or those with visual or auditory impairments. Early Intervention: Platforms tailored for teenagers and young adults to build healthy financial habits",
       "status": "past",
       "mode": "online",
       "organizer": "LUMA",
@@ -5057,7 +5057,7 @@
       "id": "devpost-31172",
       "slug": "hack-like-w-cc-2026-31172",
       "name": "Hack Like W@CC 2026",
-      "description": "2016 called… it wants its hackathon back 📞💻 Hack Like W@CC 2026 is officially here! Register for Women at the College of Computing - Georgia Tech’s flagship hackathon – open to women and allies across US universities. Participants of all experience levels can tinker with technology, develop new skills, and turn their ideas into meaningful projects. Through mentorship, teamwork, and hands-on problem solving, Hack Like W@CC empowers women to become confident creators and leaders in technology. Jump back to 2016 with us for 24 hours of coding, creativity, and community. Registration is now OPEN – Click here to apply! 📅 Saturday, Oct 17 - Sunday, Oct 18 ⏰ 11 AM, Oct 17 to 3 PM, Oct 18 📍 Klaus Atrium at Georgia Tech Remember 2016? - Snapchat streaks were sacred.- Pokémon Go had people roaming cities at midnight.- Vine dropped six seconds of timeless internet gold on the weekly.- Pink skies, LA sunsets, and neon everything were peak aesthetic. We’re bringing that energy back with Hack Like W@CC 2026! Our theme, “Back to 2016,” celebrates moments in tech and pop culture that felt creative, chaotic, and full of possibility. Your challenge is to build something that captures the spirit ",
+      "description": "2016 called… it wants its hackathon back 📞💻 Hack Like W@CC 2026 is officially here! Register for Women at the College of Computing - Georgia Tech’s flagship hackathon – open to women and allies across US universities. Participants of all experience levels can tinker with technology, develop new skills, and turn their ideas into meaningful projects. Through mentorship, teamwork, and hands-on problem solving, Hack Like W@CC empowers women to become confident creators and leaders in technology. Jump back to 2016 with us for 24 hours of coding, creativity, and community. Registration is now OPEN – Click here to apply! 📅 Saturday, Oct 17 - Sunday, Oct 18 ⏰ 11 AM, Oct 17 to 3 PM, Oct 18 📍 Klaus Atrium at Georgia Tech Remember 2016? - Snapchat streaks were sacred.- Pokémon Go had people roaming cities at midnight.- Vine dropped six seconds of timeless internet gold on the weekly.- Pink skies, LA sunsets, and neon everything were peak aesthetic. We’re bringing that energy back with Hack Like W@CC 2026! Our theme, “Back to 2016,” celebrates moments in tech and pop culture that felt creative, chaotic, and full of possibility. Your challenge is to build something that captures the spirit",
       "status": "upcoming",
       "mode": "in-person",
       "organizer": "Women at College of Computing @ GT",
@@ -5295,7 +5295,7 @@
       "id": "devpost-30492",
       "slug": "prompt2product-mlh-hack-day-aitr-30492",
       "name": "Prompt2Product: MLH Hack Day @ AITR",
-      "description": "Artificial Intelligence has transformed how ideas are generated, but the real value lies in turning those ideas into functional products that solve real-world problems. In this challenge, participants will leverage modern AI tools, large language models (LLMs), and rapid development frameworks to convert a simple prompt or problem statement into a working prototype or product. The objective is to demonstrate how AI-assisted development can accelerate innovation, reduce development time, and enable creators to build impactful solutions with minimal resources. Participants are encouraged to focus on creativity, usability, technical implementation, and real-world applicability. Whether it's a web application, mobile app, automation tool, chatbot, educational platform, healthcare solution, productivity assistant, or social-impact innovation, the goal is to transform an idea into a tangible product within the hackathon duration. Get started Form a team of 1-2 participants. Identify a real-world problem or opportunity or we will provide at the time of hackthon. Define a clear prompt describing the desired solution. Use AI tool (Gemini) to assist in ideation, design, coding, testing, and ",
+      "description": "Artificial Intelligence has transformed how ideas are generated, but the real value lies in turning those ideas into functional products that solve real-world problems. In this challenge, participants will leverage modern AI tools, large language models (LLMs), and rapid development frameworks to convert a simple prompt or problem statement into a working prototype or product. The objective is to demonstrate how AI-assisted development can accelerate innovation, reduce development time, and enable creators to build impactful solutions with minimal resources. Participants are encouraged to focus on creativity, usability, technical implementation, and real-world applicability. Whether it's a web application, mobile app, automation tool, chatbot, educational platform, healthcare solution, productivity assistant, or social-impact innovation, the goal is to transform an idea into a tangible product within the hackathon duration. Get started Form a team of 1-2 participants. Identify a real-world problem or opportunity or we will provide at the time of hackthon. Define a clear prompt describing the desired solution. Use AI tool (Gemini) to assist in ideation, design, coding, testing, and",
       "status": "upcoming",
       "mode": "in-person",
       "organizer": "Acropolis Institute of Technology and RC",

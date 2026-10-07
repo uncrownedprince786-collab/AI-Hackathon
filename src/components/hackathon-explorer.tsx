@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { formatUsd } from "@/lib/format";
+import { detectRegion } from "@/lib/geo";
 import { cn } from "@/lib/utils";
 
 type SortKey =
@@ -24,6 +25,16 @@ type SortKey =
   | "date-desc"
   | "participants-desc"
   | "newest";
+
+type DateWindow = "any" | "next-30" | "next-90" | "next-365" | "past";
+
+const DATE_WINDOWS: { value: DateWindow; label: string }[] = [
+  { value: "any", label: "Any dates" },
+  { value: "next-30", label: "Starts in 30 days" },
+  { value: "next-90", label: "Starts in 3 months" },
+  { value: "next-365", label: "Starts in a year" },
+  { value: "past", label: "Already started / past" },
+];
 
 const SORTS: { value: SortKey; label: string }[] = [
   { value: "relevance", label: "Best first" },
@@ -55,10 +66,12 @@ export function HackathonExplorer({
   hackathons,
   initialQuery = "",
   showStatusFilter = true,
+  lastUpdated,
 }: {
   hackathons: Hackathon[];
   initialQuery?: string;
   showStatusFilter?: boolean;
+  lastUpdated?: string;
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [status, setStatus] = useState<HackathonStatus | "all">("all");
@@ -66,6 +79,9 @@ export function HackathonExplorer({
   const [minPrize, setMinPrize] = useState("0");
   const [sort, setSort] = useState<SortKey>("relevance");
   const [visible, setVisible] = useState(PAGE_SIZE);
+  const [dateWindow, setDateWindow] = useState<DateWindow>("any");
+  const [country, setCountry] = useState("all");
+  const [region, setRegion] = useState("all");
 
   const organizerOptions = useMemo(() => {
     const counts = new Map<string, number>();
@@ -97,17 +113,57 @@ export function HackathonExplorer({
       .map(([name]) => name);
   }, [hackathons]);
 
+  const regionOptions = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const h of hackathons) {
+      const region = detectRegion(h.location);
+      if (region) counts.set(region, (counts.get(region) ?? 0) + 1);
+    }
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([name]) => name);
+  }, [hackathons]);
+
+  const countryOptions = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const h of hackathons) {
+      if (h.country) counts.set(h.country, (counts.get(h.country) ?? 0) + 1);
+    }
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, 60)
+      .map(([name]) => name);
+  }, [hackathons]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     const floor = Number(minPrize) || 0;
+    const today = new Date().toISOString().slice(0, 10);
+    const horizon = (days: number) => {
+      const d = new Date();
+      d.setUTCDate(d.getUTCDate() + days);
+      return d.toISOString().slice(0, 10);
+    };
+    const windowPlanned =
+      dateWindow === "next-30"
+        ? { min: today, max: horizon(30) }
+        : dateWindow === "next-90"
+          ? { min: today, max: horizon(90) }
+          : dateWindow === "next-365"
+            ? { min: today, max: horizon(365) }
+            : null;
 
     const result = hackathons.filter((h) => {
       if (status !== "all" && h.status !== status) return false;
       if (mode !== "all" && h.mode !== mode) return false;
       if (organizer !== "all" && h.organizer !== organizer) return false;
       if (tag !== "all" && !h.tags.includes(tag)) return false;
+      if (country !== "all" && h.country !== country) return false;
+      if (region !== "all" && detectRegion(h.location) !== region) return false;
       if (cashOnly && (h.cashPrizeUsd ?? 0) <= 0) return false;
       if (floor > 0 && (h.totalPrizeUsd ?? 0) < floor) return false;
+      if (dateWindow === "past" && h.startDate >= today) return false;
+      if (windowPlanned && (h.startDate < windowPlanned.min || h.startDate > windowPlanned.max)) return false;
       if (!q) return true;
       return (
         h.name.toLowerCase().includes(q) ||
@@ -151,7 +207,7 @@ export function HackathonExplorer({
         }
       }
     });
-  }, [hackathons, query, status, mode, organizer, tag, cashOnly, minPrize, sort]);
+  }, [hackathons, query, status, mode, organizer, tag, cashOnly, minPrize, sort, country, region, dateWindow]);
 
   const hasFilters =
     query !== "" ||
@@ -160,7 +216,10 @@ export function HackathonExplorer({
     organizer !== "all" ||
     tag !== "all" ||
     cashOnly ||
-    minPrize !== "0";
+    minPrize !== "0" ||
+    country !== "all" ||
+    region !== "all" ||
+    dateWindow !== "any";
 
   function reset() {
     setQuery("");
@@ -170,6 +229,9 @@ export function HackathonExplorer({
     setTag("all");
     setCashOnly(false);
     setMinPrize("0");
+    setCountry("all");
+    setRegion("all");
+    setDateWindow("any");
     setVisible(PAGE_SIZE);
   }
 
@@ -281,6 +343,65 @@ export function HackathonExplorer({
             </SelectContent>
           </Select>
 
+          <Select
+            value={country}
+            onValueChange={(v) => {
+              setCountry(v);
+              setVisible(PAGE_SIZE);
+            }}
+          >
+            <SelectTrigger className="h-9" aria-label="Filter by country">
+              <SelectValue placeholder="Country" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Any country</SelectItem>
+              {countryOptions.map((name) => (
+                <SelectItem key={name} value={name}>
+                  {name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select
+            value={region}
+            onValueChange={(v) => {
+              setRegion(v);
+              setVisible(PAGE_SIZE);
+            }}
+          >
+            <SelectTrigger className="h-9" aria-label="Filter by region">
+              <SelectValue placeholder="Region" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Any region</SelectItem>
+              {regionOptions.map((name) => (
+                <SelectItem key={name} value={name}>
+                  {name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          <Select
+            value={dateWindow}
+            onValueChange={(v) => {
+              setDateWindow(v as DateWindow);
+              setVisible(PAGE_SIZE);
+            }}
+          >
+            <SelectTrigger className="h-9" aria-label="Filter by dates">
+              <SelectValue placeholder="Dates" />
+            </SelectTrigger>
+            <SelectContent>
+              {DATE_WINDOWS.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
           {tagOptions.length > 0 ? (
             <Select
               value={tag}
@@ -385,6 +506,15 @@ export function HackathonExplorer({
             <span className="text-prize">
               {formatUsd(Math.max(0, ...filtered.map((h) => h.totalPrizeUsd)))}
             </span>
+            {lastUpdated ? (
+              <>
+                {" "}
+                · data refreshed{" "}
+                <time dateTime={lastUpdated}>
+                  {new Date(lastUpdated).toUTCString().replace(" GMT", " UTC")}
+                </time>
+              </>
+            ) : null}
           </p>
         </>
       )}
