@@ -11,7 +11,8 @@ import {
   webDraftToHackathon,
 } from "./web-scrape";
 import { detectCountry, detectRegion } from "./geo";
-import type { Dataset, Hackathon, HackathonStatus, SourceStatus, Winner } from "./types";
+import { cleanWinners } from "./winners";
+import type { Dataset, Hackathon, HackathonStatus, SourceStatus } from "./types";
 import { CACHE_TAG, hasSupabase, readDataset, writeDataset, type StorageTarget } from "./store";
 
 export interface CollectOptions {
@@ -188,20 +189,6 @@ export function mergeClaimedPrize(
   prev: number | undefined,
 ): number | undefined {
   return fresh ?? prev;
-}
-
-/** Drops non-winner rows and duplicate project names from a winners list. */
-export function cleanWinners(winners: Winner[]): Winner[] {
-  const seen = new Set<string>();
-  const out: Winner[] = [];
-  for (const w of winners) {
-    if (/^finalists?$/i.test(w.prize ?? "")) continue;
-    const key = w.project ? `name:${w.project.toLowerCase().trim()}` : w.url;
-    if (!key || seen.has(key)) continue;
-    seen.add(key);
-    out.push(w);
-  }
-  return out;
 }
 
 export async function collectDataset(

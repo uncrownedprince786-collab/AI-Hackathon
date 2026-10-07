@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import * as cheerio from "cheerio";
 import { extractWinners } from "../src/lib/sources/devpost";
-import { cleanWinners } from "../src/lib/collector";
+import { cleanWinners } from "../src/lib/winners";
 
 const HTML = `<article id="prizes">
   <div class="prize">

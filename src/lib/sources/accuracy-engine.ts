@@ -86,6 +86,44 @@ function hasWord(text: string, word: string): boolean {
 }
 
 /* ------------------------------------------------------------------ *
+ * AI event quality gate
+ *
+ * Some AI "hackathon" pages are pure marketing shells: no agenda, no tracks,
+ * no dates beyond a slogan, just copy like "unlock your potential" and
+ * "don't miss this opportunity". A real event describes what teams actually
+ * build. The gate counts how many of those generic filler phrases appear, so
+ * a page that is all slogan and almost no substance can never be published as
+ * a full event.
+ * ------------------------------------------------------------------ */
+
+const GENERIC_FILLER = [
+  /\bunlock your (creative )?potential\b/i,
+  /\b(don'?t|do not) miss (this |the |out on this )?opportunity\b/i,
+  /\bthis is your chance\b/i,
+  /\bunleash your creativity\b/i,
+  /\bpush(?:ing)? the boundaries of (?:ai|innovation|technology)\b/i,
+  /\binno?v?ation meets (?:technology|ai|innovation)\b/i,
+  /\bdive into the worlds? of ai\b/i,
+  /\bembark on (?:an|a) (?:incredible |amazing )?(?:journey|adventure)\b/i,
+  /\bexciting opportunity to\b/i,
+  /\bworld[\u2019'-]?s (?:largest |biggest )?(?:ai )?hackathon\b/i,
+];
+
+/** Number of distinct marketing-filler phrases in the given text. */
+export function genericContentSignals(text: string | undefined | null): number {
+  const source = stripHtml(text);
+  const seen = new Set<string>();
+  let hits = 0;
+  for (const phrase of GENERIC_FILLER) {
+    if (phrase.test(source)) {
+      seen.add(phrase.source);
+      hits += 1;
+    }
+  }
+  return hits;
+}
+
+/* ------------------------------------------------------------------ *
  * AI relevance
  * ------------------------------------------------------------------ */
 
@@ -785,13 +823,28 @@ export function scoreRecord(input: Hackathon, now = new Date()): AccuracyReport 
     Math.max(0, Math.min(100, ai.score + link.score + prizes.score + dates.score + completeness.score + organizer.score)),
   );
 
+  // Quality gate: a page made of marketing slogans is held, never published,
+  // however the individual signals score. One slogan can be genuine hype from
+  // a real organizer, so only filler-dominant short copy triggers the gate.
+  const filler = genericContentSignals(h.description);
+  const noSubstance = filler >= 2 && (h.description ?? "").length < 220;
+  if (noSubstance) {
+    reasons.push("generic marketing copy with no real description");
+  }
+
   const hard = hardRejectReason(h);
   if (hard) {
     return { id: h.id, name: h.name, score, verdict: "reject", reasons, hardReject: hard };
   }
 
   const verdict: AccuracyVerdict =
-    score >= PUBLISH_THRESHOLD ? "publish" : score >= REVIEW_THRESHOLD ? "review" : "reject";
+    noSubstance
+      ? "review"
+      : score >= PUBLISH_THRESHOLD
+        ? "publish"
+        : score >= REVIEW_THRESHOLD
+          ? "review"
+          : "reject";
   return { id: h.id, name: h.name, score, verdict, reasons };
 }
 

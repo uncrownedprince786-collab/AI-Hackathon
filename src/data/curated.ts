@@ -218,20 +218,6 @@ export const curatedHackathons: Hackathon[] = [
         prize: "Most Ready to Ship",
         summary: "Auto-completes anything on your clipboard, so you type less and move faster.",
       },
-      {
-        project: "Achilles",
-        team: ["Abhiram Chennupati", "Venkat Arun"],
-        prize: "Finalist",
-        summary:
-          "Uses a set of coding agents to rewrite slow Python hotspots in a lower-level language.",
-      },
-      {
-        project: "SentinelOS",
-        team: ["Ayush Goel", "Saarthak Trivedi"],
-        prize: "Finalist",
-        summary:
-          "A self-healing Linux system that monitors itself, asks Claude for a fix and applies it.",
-      },
     ],
   }),
   record({
@@ -311,7 +297,8 @@ export const curatedHackathons: Hackathon[] = [
       { rank: 3, project: "MindMesh", team: ["HackGPT"], prize: "3rd place" },
       { rank: 1, project: "Context4all", team: ["Context4all"], prize: "Novita AI track - 1st place" },
       { rank: 2, project: "Meadow Dream", team: ["Meadow Dream"], prize: "Novita AI track - 2nd place" },
-      { rank: 3, project: "Pulse", team: ["AutoMates"], prize: "Novita AI track - 3rd place" },
+      // Pulse (AutoMates) won two track prizes; it is one project, listed once
+      // under its strongest award so it never appears twice on the winners page.
       { rank: 1, project: "Pulse", team: ["AutoMates"], prize: "Zilliz track - 1st place" },
       { rank: 2, project: "CodeChrono", team: ["Code Brigade"], prize: "Zilliz track - 2nd place" },
       { rank: 3, project: "Founder Connect", team: ["Chocomalai"], prize: "Zilliz track - 3rd place" },

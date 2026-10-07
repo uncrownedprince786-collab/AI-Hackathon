@@ -8,6 +8,7 @@ import type {
 } from "./types";
 import { CACHE_TAG, readDataset } from "./store";
 import { curatedHackathons } from "@/data/curated";
+import { cleanWinners } from "./winners";
 
 export const REVALIDATE_SECONDS = 60 * 60 * 6;
 
@@ -37,7 +38,7 @@ function withCurated(dataset: Dataset): Dataset {
       description: entry.description || existing.description,
       organizer: entry.organizer || existing.organizer,
       prizes: entry.prizes.length ? entry.prizes : existing.prizes,
-      winners: entry.winners.length ? entry.winners : existing.winners,
+      winners: cleanWinners(entry.winners.length ? entry.winners : existing.winners),
       officialUrl: entry.officialUrl || existing.officialUrl,
       firstSeenAt: existing.firstSeenAt ?? entry.firstSeenAt,
       updatedAt: nowIso,
