@@ -394,7 +394,12 @@ export default async function HackathonPage({
                         )}
                       </p>
                       {winner.summary ? (
-                        <p className="mt-1 text-sm text-muted-foreground">{winner.summary}</p>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          <span className="text-xs font-semibold uppercase tracking-wider">
+                            What they built:{" "}
+                          </span>
+                          {winner.summary}
+                        </p>
                       ) : null}
                         {winner.team?.length ? (
                           <p className="mt-1 text-sm text-muted-foreground">

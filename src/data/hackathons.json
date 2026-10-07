@@ -1,11 +1,11 @@
 {
   "meta": {
-    "lastUpdated": "2026-10-07T09:05:38.809Z",
+    "lastUpdated": "2026-10-07T11:16:41.198Z",
     "cronSchedule": "0 */6 * * *",
-    "total": 101,
+    "total": 103,
     "counts": {
-      "upcoming": 26,
-      "ongoing": 27,
+      "upcoming": 27,
+      "ongoing": 28,
       "past": 48
     },
     "sources": [
@@ -20,6 +20,12 @@
         "url": "https://lablab.ai/ai-hackathons",
         "ok": true,
         "fetched": 24
+      },
+      {
+        "name": "Authentic web pages",
+        "url": "https://github.com/uncrownedprince786-collab/AI-Hackathon/blob/main/.github/workflows/daily-collect.yml",
+        "ok": true,
+        "fetched": 1
       }
     ],
     "totalPrizeUsd": 6305057907,
@@ -43,6 +49,10 @@
       {
         "country": "Singapore",
         "count": 1
+      },
+      {
+        "country": "United Kingdom",
+        "count": 1
       }
     ],
     "regions": [
@@ -56,6 +66,10 @@
       },
       {
         "region": "Caribbean",
+        "count": 1
+      },
+      {
+        "region": "Europe",
         "count": 1
       }
     ]
@@ -498,7 +512,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/band-of-agents-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/w2qbolodctcvil38mrvosg2x/w2qbolodctcvil38mrvosg2x_imageLink_fuyiibx1x3wq0jqs7ermhaae.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -538,7 +552,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ai-trading-agents",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/y995zcsch2bzk7mz9c98g9b4/y995zcsch2bzk7mz9c98g9b4_imageLink_rndn66s0zi6f0i90r4nvi7q4.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 55000,
       "prizeBreakdownPublished": true
     },
@@ -585,7 +599,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_ACT3--02_zj3sde4lo6wzxeeai5i4uagu.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -627,7 +641,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_ACT3--01_xrlzgi8lmhaakvnv4ijjo0cu.jpg",
       "participants": 3,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 5000,
       "prizeBreakdownPublished": true
     },
@@ -668,7 +682,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Alpaca-AI-Trading-Agents-Hackathon_Main_banner_-01--1-_ks49u66qluhrfwxywm426tby.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 6300000000,
       "prizeBreakdownPublished": true
     },
@@ -759,7 +773,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/dk0pq00fw88uufuvi1p1u928/dk0pq00fw88uufuvi1p1u928_imageLink_u1p62xx6sqmib3zs6bugipt3.jpg",
       "participants": 300,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 32000,
       "prizeBreakdownPublished": true
     },
@@ -1894,7 +1908,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/NATIVELY_BUILDER_Main_banner--4-_bzwjrup9toms3jquqljex8qw.jpg",
       "participants": 500,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 3800,
       "prizeBreakdownPublished": true
     },
@@ -1986,7 +2000,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/openclaw-surge-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/dwckjgknb4z88x4lplcuxorq/dwckjgknb4z88x4lplcuxorq_imageLink_ge98jmsfyf0viz7v0z6htcwv.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
@@ -2074,7 +2088,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/techex-intelligent-enterprise-solutions-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/mo83rq6y28xa14ceg51kzzht/mo83rq6y28xa14ceg51kzzht_imageLink_nqqmkvvr447fr6qjsst54ctw.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -2121,7 +2135,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/AI-Infra-Summit-Hackathon_Main_banner_-01--2-_emnu3m2g0ggcge3bu3idvkc4.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 31650,
       "prizeBreakdownPublished": true
     },
@@ -2163,7 +2177,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/cokcujybyg4odzqbqri0vgsy/cokcujybyg4odzqbqri0vgsy_imageLink_xtqn6zyn74jo0vl174qxboqo.jpg",
       "participants": 1000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 15000,
       "prizeBreakdownPublished": true
     },
@@ -2203,7 +2217,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/deriv-ai-talent-sprint",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/samf9un63imeruy3slk0e7vs/samf9un63imeruy3slk0e7vs_imageLink_dtruo00bf61ke9k5laxrwoz3.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -2242,7 +2256,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/agentic-commerce-on-arc",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/i0vk9hz4f3zx7trp5qy0v8y2/i0vk9hz4f3zx7trp5qy0v8y2_imageLink_e5qndbvisu18px43fzx8sf1i.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
@@ -2287,7 +2301,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Kubecon_Hackathon_Main_banner--6-_kwbcfs6opwvhzmeeok1r50av.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 9000,
       "prizeBreakdownPublished": true
     },
@@ -2576,7 +2590,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/complete-ai-agent-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/q36m6onhz59t2m786flsz2cf/q36m6onhz59t2m786flsz2cf_imageLink_h06baj1aax086noealtiz2ol.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 3500,
       "prizeBreakdownPublished": true
     },
@@ -2806,7 +2820,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-ii",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/pn62mtt8xm33vu67q8z0673s/pn62mtt8xm33vu67q8z0673s_imageLink_or8is3enggyc9v517ljnbxua.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 21000,
       "prizeBreakdownPublished": true
     },
@@ -2844,7 +2858,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/IBM-BOB-2-0-Hackathon_Main_banner_-03--2-_xoi067ee0t95d0dbb2ranc89.jpg",
       "participants": 20,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 12000,
       "prizeBreakdownPublished": true
     },
@@ -2881,7 +2895,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ibm-bob-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/z55p8ld1kzke3m7wpiw7t9p1/z55p8ld1kzke3m7wpiw7t9p1_imageLink_a99n4zxv8d7ho8yq7lhbus34.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -2982,7 +2996,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/brightdata-ai-agents-web-data-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/fvnh186wdgbnmjz29joe369z/fvnh186wdgbnmjz29joe369z_imageLink_vlhe5nv71t354cidk3fzoecc.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 20000,
       "prizeBreakdownPublished": true
     },
@@ -3034,7 +3048,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/launch-fund-ai-meets-robotics",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/qqm4r3l7ugompbq37mgd2l94/qqm4r3l7ugompbq37mgd2l94_imageLink_rc187nnji0mlkzkc4fzqxkka.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3322,7 +3336,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/amd-developer",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/n3v922wai9khqi5gs2jctlap/n3v922wai9khqi5gs2jctlap_imageLink_gzq2ads92vzkylo0duucxcwe.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 22500,
       "prizeBreakdownPublished": true
     },
@@ -4015,9 +4029,39 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_WeAreDevelopers-Hackathon--01--4-_am1oh7sw8guwi0y3smw6yv6c.jpg",
       "participants": 1000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 6000,
       "prizeBreakdownPublished": true
+    },
+    {
+      "id": "web-d9941f890dc8",
+      "slug": "london-ai-x-science-hackathon-d9941f890dc8",
+      "name": "LONDON AI X SCIENCE HACKATHON",
+      "description": "**London AI x Science Hackathon** October 3–4, 2026 · London Over 48 hours, teams will push frontier AI at the hardest open problems in science: autonomous science, novel materials discovery",
+      "status": "ongoing",
+      "mode": "in-person",
+      "organizer": "Deep-tech-week",
+      "startDate": "2026-10-03",
+      "endDate": "2026-10-07",
+      "registrationDeadline": "2026-10-07",
+      "prizeBreakdownPublished": false,
+      "prizes": [],
+      "totalPrizeUsd": 0,
+      "cashPrizeUsd": 0,
+      "creditPrizeUsd": 0,
+      "winners": [],
+      "tags": [
+        "Robotics"
+      ],
+      "officialUrl": "https://www.deep-tech-week.com/london-2026/events/london-ai-x-science-hackathon-2026",
+      "sourceUrl": "https://www.deep-tech-week.com/london-2026/events/london-ai-x-science-hackathon-2026",
+      "sourceName": "deep-tech-week",
+      "sourceId": "https://www.deep-tech-week.com/london-2026/events/london-ai-x-science-hackathon-2026",
+      "firstSeenAt": "2026-10-07T10:59:11.999Z",
+      "updatedAt": "2026-10-07T10:59:11.999Z",
+      "location": "London",
+      "country": "United Kingdom",
+      "region": "Europe"
     },
     {
       "id": "devpost-30539",
@@ -4145,7 +4189,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_ACT3--02--7-_w8d46drf9ou29ng10y320jqk.jpg",
       "participants": 364000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "claimedPrizeUsd": 12000,
       "prizeBreakdownPublished": true
     },
@@ -4316,8 +4360,35 @@
       "sourceId": "https://lablab.ai/ai-hackathons/qualcomm-x-meta-executorch-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_qualcomm_Hackathon_8--1-_z7iq12ad5fssb0hz99jczx9p.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-07T09:05:38.809Z",
+      "updatedAt": "2026-10-07T11:16:41.198Z",
       "prizeBreakdownPublished": false
+    },
+    {
+      "id": "web-e9d5531d5ff9",
+      "slug": "2027-wharton-hack-ai-thon-e9d5531d5ff9",
+      "name": "2027 Wharton Hack-AI-thon",
+      "description": "The Wharton Hack-AI-thon is a dynamic, co-curricular program where students come together to explore the power of artificial intelligence through hands-on innovation.",
+      "status": "upcoming",
+      "mode": "in-person",
+      "organizer": "Upenn",
+      "startDate": "2027-03-29",
+      "endDate": "2027-04-02",
+      "registrationDeadline": "2027-04-02",
+      "prizeBreakdownPublished": false,
+      "prizes": [],
+      "totalPrizeUsd": 0,
+      "cashPrizeUsd": 0,
+      "creditPrizeUsd": 0,
+      "winners": [],
+      "tags": [
+        "Data Science"
+      ],
+      "officialUrl": "https://ai-analytics.wharton.upenn.edu/for-students/wharton-hack-ai-thon/",
+      "sourceUrl": "https://ai-analytics.wharton.upenn.edu/for-students/wharton-hack-ai-thon/",
+      "sourceName": "upenn",
+      "sourceId": "https://ai-analytics.wharton.upenn.edu/for-students/wharton-hack-ai-thon/",
+      "firstSeenAt": "2026-10-07T10:59:11.999Z",
+      "updatedAt": "2026-10-07T10:59:11.999Z"
     },
     {
       "id": "devpost-30789",

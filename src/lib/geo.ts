@@ -302,6 +302,8 @@ const GENERIC = /^(worldwide|global|online|virtual|remote|anywhere|internet|worl
 function normalise(location: string): string {
   return location
     .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .replace(/[–—]/g, "-")
     .replace(/[^a-z0-9,.\- ]+/g, " ")
     .replace(/\s+/g, " ")
@@ -335,6 +337,30 @@ export function detectRegion(location: string | undefined): string | undefined {
   for (const region of REGIONS) {
     for (const name of region.countries) {
       if (text.includes(name.toLowerCase())) return region.label;
+    }
+  }
+  return undefined;
+}
+
+function titleCase(value: string): string {
+  return value
+    .split(" ")
+    .map((word) => (word ? word[0].toUpperCase() + word.slice(1) : word))
+    .join(" ");
+}
+
+/**
+ * First recognised city in a block of text (longest match wins), used by the
+ * web collector when a page names no explicit location. Returns the city only
+ * when it is a known venue city — anything else is left unlocated.
+ */
+export function findCityInText(text: string | undefined): string | undefined {
+  if (!text) return undefined;
+  const normalised = normalise(text);
+  const entries = Object.entries(CITY_ALIASES).sort((a, b) => b[0].length - a[0].length);
+  for (const [alias] of entries) {
+    if (new RegExp(`\\b${alias.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(normalised)) {
+      return titleCase(alias);
     }
   }
   return undefined;

@@ -4,6 +4,12 @@ import {
 } from "./sources/registry";
 import { statusFor } from "./sources/devpost";
 import { screenRecords } from "./sources/accuracy-engine";
+import {
+  applyWinnerSummaries,
+  loadWebDrafts,
+  loadWinnerSummaries,
+  webDraftToHackathon,
+} from "./web-scrape";
 import { detectCountry, detectRegion } from "./geo";
 import type { Dataset, Hackathon, HackathonStatus, SourceStatus } from "./types";
 import { CACHE_TAG, hasSupabase, readDataset, writeDataset, type StorageTarget } from "./store";
@@ -16,6 +22,8 @@ export interface CollectOptions {
   concurrency?: number;
   /** Which public sources to read. Defaults to all of them. */
   sources?: ("devpost" | "lablab")[];
+  /** Fold the Puppeteer-collected drafts (web-drafts.json) through the engine. */
+  useWeb?: boolean;
   /** Re-read every Devpost detail page, even ones already enriched. */
   forceDetail?: boolean;
   now?: Date;
@@ -249,6 +257,36 @@ export async function collectDataset(
 
   LOG(`total drafts: ${drafts.length}`);
 
+  // Web drafts come from the human-like Puppeteer collector (scripts/scrape.ts),
+  // which runs offline in GitHub Actions. They are already detailed, so the
+  // engine treats them exactly like any other source: prizes accounted, global
+  // dedupe by URL/name/identity, then publish/hold/reject.
+  const useWeb = options.useWeb ?? true;
+  if (useWeb) {
+    const webDrafts = await loadWebDrafts();
+    const nowWeb = now.toISOString();
+    let accepted = 0;
+    if (webDrafts.length > 0) {
+      LOG(`web drafts: ${webDrafts.length}`);
+      for (const draft of webDrafts) {
+        const h = webDraftToHackathon(draft, now);
+        if (!h || seenIds.has(h.id)) continue;
+        seenIds.add(h.id);
+        drafts.push(h);
+        accepted += 1;
+      }
+      sources.push({
+        name: "Authentic web pages",
+        url: "https://github.com/uncrownedprince786-collab/AI-Hackathon/blob/main/.github/workflows/daily-collect.yml",
+        ok: accepted > 0,
+        fetched: accepted,
+      });
+      // Keep the timestamps on fresh drafts consistent with this run.
+      for (const d of drafts) if (d.id.startsWith("web-")) d.updatedAt = nowWeb;
+    }
+    LOG(`web drafts accepted: ${accepted}`);
+  }
+
   // Preserve hand-checked data and skip re-fetching pages we already enriched.
   const needsDetail = drafts.filter((d) => {
     const adapter = adapterForSourceId(d.sourceName);
@@ -340,6 +378,15 @@ export async function collectDataset(
   const retained = selectRetained(previous.hackathons, liveIds, succeededIds);
 
   const all = [...merged, ...retained];
+
+  // "What they built": visitors of winner project pages (the Puppeteer pass)
+  // publish a short description read from the project's own page. Existing
+  // summaries from the organizer are never overwritten.
+  const winnerCache = await loadWinnerSummaries();
+  if (winnerCache.length) {
+    const filled = applyWinnerSummaries(all, winnerCache);
+    if (filled > 0) LOG(`winner summaries merged: ${filled}`);
+  }
 
   // Location text is what organizers publish, so the country is read from it.
   for (const h of all) {

@@ -227,21 +227,21 @@ function safeHost(url: string): string {
   }
 }
 
-function extractWinners($: cheerio.CheerioAPI): Winner[] {
+export function extractWinners($: cheerio.CheerioAPI): Winner[] {
   const winners: Winner[] = [];
   const seen = new Set<string>();
 
   $("article#prizes .prize").each((_, el) => {
     const node = $(el);
     const label = clean(node.find(".prize-title").text());
-    if (!/winner|grand prize|first place|1st place/i.test(label)) return;
+    if (!/winner|grand prize|first place|1st place|second place|2nd place|third place|3rd place|runner's? up|runners up/i.test(label)) return;
 
     const links = node.find(".prize-content a[href]");
     links.each((__, a) => {
-      const href = $(a).attr("href");
+      const href = absolute($(a).attr("href"));
       const name = clean($(a).text());
       if (!href || !name || seen.has(name)) return;
-      if (!/devpost\.com\/software|devpost\.com\/software\//.test(href)) return;
+      if (!/^https:\/\/devpost\.com\/software\//.test(href)) return;
       seen.add(name);
       winners.push({ project: name, url: href, prize: label });
     });

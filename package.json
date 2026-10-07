@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "refresh:data": "tsx scripts/refresh.ts",
-    "test": "tsx --test tests/prize-extract.test.ts tests/prize-summary.test.ts tests/engine-dedupe.test.ts tests/blog-engine.test.ts tests/retention.test.ts",
+    "scrape:web": "tsx scripts/scrape.ts",
+    "test": "tsx --test tests/prize-extract.test.ts tests/prize-summary.test.ts tests/engine-dedupe.test.ts tests/blog-engine.test.ts tests/retention.test.ts tests/web-scrape.test.ts tests/devpost-winners.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -36,6 +37,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.27",
+    "puppeteer-core": "^24.0.0",
     "tailwindcss": "^4",
     "tsx": "^4.23.15",
     "typescript": "^5"

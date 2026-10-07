@@ -46,8 +46,16 @@ export function PrizeAmount({
         </span>
       );
     }
+    // A missing prize is shown quietly: smaller and muted, so real prize
+    // numbers always stand out. The event is never hidden over its prize.
     return (
-      <span className={cn("font-semibold text-muted-foreground/80", sizes[size], className)}>
+      <span
+        className={cn(
+          "font-normal leading-snug text-muted-foreground/60",
+          size === "xl" ? "text-lg" : "text-sm",
+          className,
+        )}
+      >
         Prize not published
       </span>
     );

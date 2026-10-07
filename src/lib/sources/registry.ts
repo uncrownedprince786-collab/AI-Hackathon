@@ -10,7 +10,7 @@
  * Pipeline: Source Registry → Adapter → Raw → Normalizer → AI relevance →
  * Evidence → Global dedupe → Accuracy engine → Published.
  */
-import type { Hackathon } from "../types";
+import type { Hackathon, Winner } from "../types";
 import { extractPrizeAnnouncement } from "./prize-extract";
 import {
   fetchDevpostDetail,
@@ -85,7 +85,7 @@ const DEVPOST: SourceAdapter = {
         ? record.tags
         : [...new Set([...record.tags, ...detailTags(detail.description)])],
       prizes,
-      winners: [...new Set([...(record.winners ?? []), ...(detail.winners ?? [])])].slice(0, 25),
+      winners: dedupeWinners([...(record.winners ?? []), ...(detail.winners ?? [])]).slice(0, 25),
     };
 
     // A headline figure anywhere in the organizer's own text ("$400,000 in
@@ -179,6 +179,19 @@ async function mapWithConcurrency<T, R>(
   });
   await Promise.all(runners);
   return results;
+}
+
+/** A recommended event's winners, deduplicated by project URL (first wins). */
+function dedupeWinners(list: { project: string; url?: string; prize?: string }[]): Winner[] {
+  const seen = new Set<string>();
+  const out: Winner[] = [];
+  for (const w of list) {
+    const key = w.url ?? `name:${w.project.toLowerCase()}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(w as Winner);
+  }
+  return out;
 }
 
 export const SOURCE_REGISTRY: SourceAdapter[] = [DEVPOST, LABLAB];

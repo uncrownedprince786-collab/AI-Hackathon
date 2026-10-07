@@ -10,16 +10,18 @@ async function main() {
   const pages = Number(process.env.REFRESH_PAGES ?? 4);
   const detailLimit = Number(process.env.REFRESH_DETAIL_LIMIT ?? 120);
   const useLablab = process.env.REFRESH_LABLAB !== "0";
+  const useWeb = process.env.REFRESH_WEB !== "0";
   const forceDetail = process.env.REFRESH_FORCE === "1";
 
   console.log(
-    `Refreshing hackathon data (pages=${pages}, detail=${detailLimit}, lablab=${useLablab}, force=${forceDetail})`,
+    `Refreshing hackathon data (pages=${pages}, detail=${detailLimit}, lablab=${useLablab}, web=${useWeb}, force=${forceDetail})`,
   );
 
   const result = await refreshDataset({
     pages,
     detailLimit,
     forceDetail,
+    useWeb,
     sources: useLablab ? ["devpost", "lablab"] : ["devpost"],
   });
 
