@@ -11,7 +11,7 @@ import {
   webDraftToHackathon,
 } from "./web-scrape";
 import { detectCountry, detectRegion } from "./geo";
-import type { Dataset, Hackathon, HackathonStatus, SourceStatus } from "./types";
+import type { Dataset, Hackathon, HackathonStatus, SourceStatus, Winner } from "./types";
 import { CACHE_TAG, hasSupabase, readDataset, writeDataset, type StorageTarget } from "./store";
 
 export interface CollectOptions {
@@ -100,26 +100,6 @@ async function mapWithConcurrency<T, R>(
   return results;
 }
 
-async function enrich(
-  base: Hackathon,
-  signal?: AbortSignal,
-): Promise<Hackathon> {
-  const adapter = adapterForSourceId(base.sourceName);
-  if (!adapter?.enrich) {
-    sumPrizes(base);
-    return base;
-  }
-  try {
-    const merged = await adapter.enrich(base, signal);
-    sumPrizes(merged);
-    return merged;
-  } catch (error) {
-    console.error(`[collect] detail failed ${base.officialUrl}`, (error as Error).message);
-    sumPrizes(base);
-    return base;
-  }
-}
-
 /**
  * Some organizer pages publish almost no prose. Rather than leave a near-empty
  * page, we assemble a short factual summary from the fields we already have.
@@ -200,6 +180,28 @@ export function selectRetained(
     if (!succeededSourceIds.has(h.sourceName)) return true;
     return false;
   });
+}
+
+/** What the source reports now wins; the stored figure is only a fallback. */
+export function mergeClaimedPrize(
+  fresh: number | undefined,
+  prev: number | undefined,
+): number | undefined {
+  return fresh ?? prev;
+}
+
+/** Drops non-winner rows and duplicate project names from a winners list. */
+export function cleanWinners(winners: Winner[]): Winner[] {
+  const seen = new Set<string>();
+  const out: Winner[] = [];
+  for (const w of winners) {
+    if (/^finalists?$/i.test(w.prize ?? "")) continue;
+    const key = w.project ? `name:${w.project.toLowerCase().trim()}` : w.url;
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push(w);
+  }
+  return out;
 }
 
 export async function collectDataset(
@@ -311,8 +313,23 @@ export async function collectDataset(
 
   const enriched = new Map<string, Hackathon>();
   await mapWithConcurrency(toEnrich, concurrency, async (draft) => {
-    const result = await enrich(draft, options.signal);
-    enriched.set(draft.id, result);
+    const adapter = adapterForSourceId(draft.sourceName);
+    if (!adapter?.enrich) {
+      sumPrizes(draft);
+      enriched.set(draft.id, draft);
+      return;
+    }
+    try {
+      const merged = await adapter.enrich(draft, options.signal);
+      sumPrizes(merged);
+      enriched.set(draft.id, merged);
+    } catch (error) {
+      // A failed detail read must never masquerade as an enrichment: marking it
+      // enriched would overwrite the richer previously-published version with
+      // the thin listing card. Leave the entry out so prev detail is kept.
+      console.error(`[collect] detail failed ${draft.officialUrl}`, (error as Error).message);
+      sumPrizes(draft);
+    }
   });
 
   const merged: Hackathon[] = drafts.map((draft) => {
@@ -344,7 +361,10 @@ export async function collectDataset(
       registrationDeadline: fresh.registrationDeadline ?? prev.registrationDeadline,
       registrationStatus: fresh.registrationStatus ?? prev.registrationStatus,
       winnersAnnounced: fresh.winnersAnnounced || prev.winnersAnnounced,
-      claimedPrizeUsd: Math.max(fresh.claimedPrizeUsd ?? 0, prev.claimedPrizeUsd ?? 0) || undefined,
+      // What the source says now wins; the stored figure only fills a gap when
+      // this run saw no prize at all. A max() here would freeze any inflated
+      // value forever, so a corrected source value could never ship again.
+      claimedPrizeUsd: mergeClaimedPrize(fresh.claimedPrizeUsd, prev.claimedPrizeUsd),
       officialUrl: fresh.officialUrl || prev.officialUrl,
       sourceUrl: fresh.sourceUrl || prev.sourceUrl,
       tags: [...new Set([...prev.tags, ...fresh.tags])].slice(0, 8),
@@ -378,6 +398,14 @@ export async function collectDataset(
   const retained = selectRetained(previous.hackathons, liveIds, succeededIds);
 
   const all = [...merged, ...retained];
+
+  // Clean results written by older parser versions: a "Finalist" row names
+  // projects that did not win money, and one project read from a link and again
+  // inline without a link must not appear twice. Running this on every refresh
+  // heals stored data that no longer needs a full detail re-read.
+  for (const h of all) {
+    h.winners = cleanWinners(h.winners);
+  }
 
   // "What they built": visitors of winner project pages (the Puppeteer pass)
   // publish a short description read from the project's own page. Existing

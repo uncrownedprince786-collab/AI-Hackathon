@@ -181,13 +181,15 @@ async function mapWithConcurrency<T, R>(
   return results;
 }
 
-/** A recommended event's winners, deduplicated by project URL (first wins). */
+/** A recommended event's winners, deduplicated by project name (first wins). */
 function dedupeWinners(list: { project: string; url?: string; prize?: string }[]): Winner[] {
   const seen = new Set<string>();
   const out: Winner[] = [];
   for (const w of list) {
-    const key = w.url ?? `name:${w.project.toLowerCase()}`;
-    if (seen.has(key)) continue;
+    // Name is the identity here: a project pulled from a link and the same
+    // project named inline without a link must not both appear on the page.
+    const key = w.project ? `name:${w.project.toLowerCase().trim()}` : w.url;
+    if (!key || seen.has(key)) continue;
     seen.add(key);
     out.push(w as Winner);
   }
@@ -196,7 +198,7 @@ function dedupeWinners(list: { project: string; url?: string; prize?: string }[]
 
 export const SOURCE_REGISTRY: SourceAdapter[] = [DEVPOST, LABLAB];
 
-/** Looks up an adapter by its id; unknown sources are treated as inert. */
+/** Looks up an adapter by its id or display name; unknown sources are inert. */
 export function adapterForSourceId(id: string | undefined): SourceAdapter | undefined {
-  return SOURCE_REGISTRY.find((a) => a.id === id);
+  return SOURCE_REGISTRY.find((a) => a.id === id || a.name === id);
 }

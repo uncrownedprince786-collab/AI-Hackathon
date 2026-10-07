@@ -121,3 +121,30 @@ test("extractPrizeAnnouncement: 'prizes TBD' returns empty", () => {
     {},
   );
 });
+
+test("parsePrizeAmounts never scales with a letter from the next word", () => {
+  // "$6,300 Main prizes" must stay $6,300 — not $6,300,000,000.
+  const hits = parsePrizeAmounts("Total prize pool: $6,300 Main prizes");
+  assert.equal(hits.find((h) => h.currency === "USD")?.amount, 6300);
+  assert.ok(!hits.some((h) => h.amount > 6300));
+});
+
+test("extractPrizeAnnouncement: lablab '$6,300 Main prizes' stays a $6,300 pool", () => {
+  const ann = extractPrizeAnnouncement(
+    "Alpaca AI Trading Agents Hackathon",
+    "Prizes 🏆 Total prize pool: $6,300 Main prizes 🥇 1st place $2,500 + $300 in Featherless credits.",
+  );
+  assert.equal(ann.usd, 6300);
+});
+
+test("parsePrizeAmounts still scales a real k/M suffix", () => {
+  const hits = parsePrizeAmounts("Prize pool worth $100k and a $1M grand prize.");
+  const usd = new Map(hits.map((h) => [h.amount, h.currency]));
+  assert.equal(usd.get(100000), "USD");
+  assert.equal(usd.get(1000000), "USD");
+});
+
+test("extractPrizeAnnouncement: a real M suffix still scales", () => {
+  const ann = extractPrizeAnnouncement("Meta Challenge", "Up to $1M in prizes for the winners.");
+  assert.equal(ann.usd, 1000000);
+});

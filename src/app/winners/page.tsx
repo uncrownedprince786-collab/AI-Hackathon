@@ -21,6 +21,18 @@ export const metadata: Metadata = buildMetadata({
 export default async function WinnersPage() {
   const [winners, stats] = await Promise.all([getWinners(), getStats()]);
 
+  // The prize figure on this page is scoped to the events listed here, not the
+  // whole dataset: two different numbers must never both read as "total prize
+  // money". Sum each covered event's pool once, so the stat matches the list.
+  const coveredEvents = new Set<string>();
+  let coveredPrizeUsd = 0;
+  for (const { hackathon } of winners) {
+    if (!coveredEvents.has(hackathon.id)) {
+      coveredEvents.add(hackathon.id);
+      coveredPrizeUsd += hackathon.totalPrizeUsd ?? 0;
+    }
+  }
+
   return (
     <>
       <JsonLd
@@ -47,7 +59,10 @@ export default async function WinnersPage() {
           { label: "Winning projects", value: String(winners.length) },
           { label: "Events covered", value: String(stats.withWinners) },
           { label: "Organizers", value: String(stats.uniqueOrganizers) },
-          { label: "Prize money tracked", value: formatUsdLong(stats.totalPrizeUsd) },
+          {
+            label: "Prize money at covered events",
+            value: formatUsdLong(coveredPrizeUsd),
+          },
         ]}
       />
 

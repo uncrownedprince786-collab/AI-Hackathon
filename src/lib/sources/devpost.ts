@@ -234,6 +234,8 @@ export function extractWinners($: cheerio.CheerioAPI): Winner[] {
   $("article#prizes .prize").each((_, el) => {
     const node = $(el);
     const label = clean(node.find(".prize-title").text());
+    // A "Finalist" row names projects that did not win money, so it is not a result.
+    if (/^finalists?$/i.test(label)) return;
     if (!/winner|grand prize|first place|1st place|second place|2nd place|third place|3rd place|runner's? up|runners up/i.test(label)) return;
 
     const links = node.find(".prize-content a[href]");

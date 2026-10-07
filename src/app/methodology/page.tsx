@@ -70,6 +70,11 @@ const STEPS = [
 
 const FAQ = [
   {
+    question: "What does the \"Total prize money\" figure mean?",
+    answer:
+      "It is the sum of every event's published prize pool, counted in US dollars only. Cash prizes and cloud credits stay in separate columns, and a headline pool an organizer announces without a breakdown is counted as an announced total and labelled as such. A pool stated in another currency is shown in that currency and never converted. The winners page shows its own narrower figure — the prize money of the events whose results are listed there — so the two numbers are not the same thing and are not meant to be compared as if they were.",
+  },
+  {
     question: "Where does the AI hackathon data come from?",
     answer:
       "We read public event listings and event pages from hackathon platforms such as Devpost and lablab.ai, plus a small set of hand-checked records for major AI hackathons. Every record keeps the link it was read from.",
@@ -307,6 +312,7 @@ export default async function HowWeCollectDataPage() {
             {[
               "We never ask you to create an account or sign in.",
               "We never guess a prize amount. If it is not published, we leave it blank.",
+              "We never convert a prize stated in another currency into US dollars; we show it in the currency the organizer published.",
               "We never invent winner names. If the organizer did not publish results, we say nothing.",
               "We never hide where a number came from. Each record keeps its source link.",
             ].map((item) => (

@@ -68,13 +68,15 @@ const CURRENCY_BY_TOKEN = new Map<string, string>([
 ]);
 
 const NUMBER = String.raw`\d{1,3}(?:,\d{3})+|\d+(?:\.\d+)?`;
-const SUFFIX = String.raw`\s*([kKmM])?`;
+// A k/M suffix only scales when it actually ends the figure. Without the guard,
+// "$6,300 Main prizes" is read as $6,300 × M ("M" of "Main") = $6,300,000,000.
+const SCALE_SUFFIX = String.raw`(?:([kKmM])(?![a-zA-Z]))?`;
 const PREFIX = String.raw`[$€£₹]|\b(?:${CODE_ALTERNATION})`;
 const POSTCODE = String.raw`\b(?:${CODE_ALTERNATION})\b`;
 
-const CHAR_PATTERN = new RegExp(`(${PREFIX})\\s*(${NUMBER})${SUFFIX}`, "g");
+const CHAR_PATTERN = new RegExp(`(${PREFIX})\\s*(${NUMBER})${SCALE_SUFFIX}`, "g");
 
-const POST_PATTERN = new RegExp(`(${NUMBER})\\s*([kKmM])?\\s*(${POSTCODE})`, "g");
+const POST_PATTERN = new RegExp(`(${NUMBER})${SCALE_SUFFIX}\\s*(${POSTCODE})`, "g");
 
 /** Strip markup/entities and normalise separators so figures can be scanned. */
 function clean(text: string): string {
