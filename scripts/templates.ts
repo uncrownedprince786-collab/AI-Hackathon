@@ -105,7 +105,7 @@ Every event on this site keeps both an official link and the link we read the da
 
 ## The takeaway
 
-A big announced pool is a good sign an event is well funded, but the real question is what the winners actually receive. Prefer events that publish the full breakdown, [browse the full ranked list](/stats), and use the official page to confirm before spending a weekend on it.
+A big announced pool is a good sign an event is well funded, but the real question is what the winners actually receive. Prefer events that publish the full breakdown, [browse the full list](/hackathons), and use the official page to confirm before spending a weekend on it.
 
 ${sourceFooter(f)}`;
     },

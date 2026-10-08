@@ -195,7 +195,7 @@ export function isLikelyEventPath(raw: string): boolean {
   if (host.endsWith("kaggle.com")) return path.startsWith("/competitions/") && path !== "/competitions";
   if (host.endsWith("lablab.ai")) return path.startsWith("/ai-hackathons/");
   if (host.endsWith("devpost.com")) {
-    return path.startsWith("/hackathons/") && path !== "/hackathons" && !/\/submit|/i.test(path);
+    return path.startsWith("/hackathons/") && path !== "/hackathons";
   }
   if (host === "hackathon.com") return path.includes("/hackathon");
   // Organizer and university pages: a page with a hackathon word in the path.
@@ -810,8 +810,8 @@ export interface ScrapeSettings {
 
 export function scrapeSettings(): ScrapeSettings {
   return {
-    maxEvents: Number(process.env.SCRAPE_MAX_EVENTS ?? 20),
-    maxWinners: Number(process.env.SCRAPE_MAX_WINNERS ?? 24),
+    maxEvents: Number(process.env.SCRAPE_MAX_EVENTS ?? 80),
+    maxWinners: Number(process.env.SCRAPE_MAX_WINNERS ?? 60),
     disableWinners: process.env.SCRAPE_WINNERS === "0",
     headful: process.env.SCRAPE_HEADFUL === "1",
   };
@@ -1165,8 +1165,8 @@ export async function runWebScrape(settings: ScrapeSettings = scrapeSettings()):
       await humanPause(2200, 4800);
     }
 
-    // 2. Authentic listing sites — a rotating subset each day.
-    for (const seed of shuffle(SEED_SITES).slice(0, 4)) {
+    // 2. Authentic listing sites, all worldwide hubs; candidates are deduped below.
+    for (const seed of shuffle(SEED_SITES)) {
       log(`reading listing: ${seed.url}`);
       const links = await collectListingLinks(page, seed.url);
       const onSite = links.filter((l) => {

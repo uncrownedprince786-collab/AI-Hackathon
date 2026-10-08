@@ -72,11 +72,7 @@ so an event moves from upcoming to ongoing to past on its own.
 | `/events` | Upcoming AI events and meetups (Eventbrite, no API key) |
 | `/blog` | Short plain-English AI articles, one per day |
 | `/blog/[slug]` | A single article |
-| `/stats` | Totals by status, mode, prize type, country and region |
-| `/how-we-collect-data` | Sources, method and FAQ |
-| `/submit` | Public submission form |
-| `/api/data` | Whole dataset as JSON, no key |
-| `/api/submit` | `POST` for the submission form |
+| `/privacy` | Plain-language notice about the public data we show |
 | `/api/cron/refresh` | Refresh endpoint, called by cron every 6 hours |
 | `/sitemap.xml`, `/robots.txt` | Generated from the dataset |
 
@@ -117,20 +113,18 @@ can never overwrite an article, and it needs no API key.
 
 ## Supabase (required for production writes)
 
-Vercel's filesystem is read-only, so both the refresh and the submission form need a
-writable store.
+Vercel's filesystem is read-only, so the refresh job needs a writable store.
 
 1. Create a Supabase project.
-2. Run `supabase/schema.sql` in the SQL editor.
-3. Add these Vercel **production** env vars:
+2. Add these Vercel **production** env vars:
    - `SUPABASE_URL` — project URL
    - `SUPABASE_SERVICE_ROLE_KEY` — service role key (writes need it; the anon key
      can only read)
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — optional, reads only
-4. Redeploy, then call the refresh endpoint once to confirm `storage: "supabase"`.
+3. Redeploy, then call the refresh endpoint once to confirm `storage: "supabase"`.
 
-Without those, the site still serves the committed JSON dataset, but the cron and
-the submit form will report that they could not save.
+Without those, the site still serves the committed JSON dataset, but the cron will
+report that it could not save.
 
 ## Deploy
 

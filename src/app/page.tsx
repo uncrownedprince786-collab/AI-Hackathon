@@ -4,7 +4,6 @@ import {
   ArrowRight,
   CalendarClock,
   Coins,
-  Database,
   Gauge,
   RefreshCw,
   Search,
@@ -13,7 +12,6 @@ import {
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HackathonCard, HackathonRow } from "@/components/hackathon-card";
 import { JsonLd } from "@/components/json-ld";
@@ -53,7 +51,7 @@ const FAQ = [
   {
     question: "Do I need an account to use this site?",
     answer:
-      "No. There is no login and no signup. Every page is open to everyone, and you can also download the whole dataset as JSON.",
+      "No. There is no login and no signup. Every page is open to everyone.",
   },
 ];
 
@@ -139,7 +137,7 @@ export default async function HomePage() {
               icon={Coins}
               label="Prize money tracked"
               value={formatUsd(stats.totalPrizeUsd)}
-              href="/stats"
+              href="/hackathons"
             />
             <StatTile
               icon={Trophy}
@@ -187,8 +185,8 @@ export default async function HomePage() {
       <Section
         title="Biggest announced pools"
         description="Ranked by the total pool each organizer publishes — cash, credits and announced totals separately."
-        href="/stats"
-        linkLabel="See full stats"
+        href="/hackathons"
+        linkLabel="See all by prize"
       >
         <div className="grid gap-3 md:grid-cols-2">
           {stats.biggest.slice(0, 6).map((h) => (
@@ -247,20 +245,6 @@ export default async function HomePage() {
               hours, reads the dates again, and moves each event between upcoming,
               ongoing and past on its own.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild variant="outline">
-                <Link href="/methodology">
-                  <Database aria-hidden="true" />
-                  How we collect data
-                </Link>
-              </Button>
-              <Button asChild variant="ghost">
-                <Link href="/api/data">
-                  Download the data
-                  <ArrowRight aria-hidden="true" />
-                </Link>
-              </Button>
-            </div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
@@ -304,26 +288,6 @@ export default async function HomePage() {
             </details>
           ))}
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="mx-auto max-w-7xl px-4 pb-4 sm:px-6">
-        <Card className="flex flex-col items-start gap-4 border-primary/30 bg-primary/5 p-8 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h2 className="text-xl font-bold tracking-tight">
-              Running an AI hackathon?
-            </h2>
-            <p className="mt-1.5 text-sm text-muted-foreground">
-              Send us the link. It takes one minute and there is no account to create.
-            </p>
-          </div>
-          <Button asChild size="lg" className="shrink-0">
-            <Link href="/submit">
-              Submit a hackathon
-              <ArrowRight aria-hidden="true" />
-            </Link>
-          </Button>
-        </Card>
       </section>
     </>
   );

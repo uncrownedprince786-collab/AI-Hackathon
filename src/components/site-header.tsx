@@ -76,10 +76,6 @@ export function SiteHeader({
             ) : null}
           </span>
 
-          <Button asChild size="sm" variant="outline" className="hidden sm:inline-flex">
-            <Link href="/submit">Submit</Link>
-          </Button>
-
           <Button
             variant="ghost"
             size="icon"
@@ -111,18 +107,6 @@ export function SiteHeader({
                 {item.label}
               </Link>
             ))}
-            <div className="grid grid-cols-2 gap-2 p-2">
-              <Button asChild size="sm" variant="outline">
-                <Link href="/submit" onClick={() => setOpen(false)}>
-                  Submit
-                </Link>
-              </Button>
-              <Button asChild size="sm" variant="outline">
-                <Link href="/methodology" onClick={() => setOpen(false)}>
-                  Our data
-                </Link>
-              </Button>
-            </div>
           </nav>
         </div>
       ) : null}

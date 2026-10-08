@@ -30,8 +30,8 @@ export async function GET(request: Request) {
 
   try {
     const result = await refreshDataset({
-      pages: Number(process.env.REFRESH_PAGES ?? 4),
-      detailLimit: Number(process.env.REFRESH_DETAIL_LIMIT ?? 120),
+      pages: Number(process.env.REFRESH_PAGES ?? 8),
+      detailLimit: Number(process.env.REFRESH_DETAIL_LIMIT ?? 240),
     });
 
     revalidateTag(CACHE_TAG);
@@ -42,9 +42,7 @@ export async function GET(request: Request) {
       "/ongoing",
       "/past",
       "/winners",
-      "/stats",
       "/events",
-      "/api/data",
     ]) {
       revalidatePath(path);
     }

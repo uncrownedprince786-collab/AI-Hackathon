@@ -17,12 +17,7 @@ const COLUMNS = [
   },
   {
     title: "Info",
-    links: [
-      { href: "/stats", label: "Stats" },
-      { href: "/methodology", label: "How we collect data" },
-      { href: "/submit", label: "Submit a hackathon" },
-      { href: "/api/data", label: "Data (JSON)" },
-    ],
+    links: [{ href: "/privacy", label: "Privacy" }],
   },
 ];
 
@@ -74,11 +69,8 @@ export function SiteFooter({ lastUpdated }: { lastUpdated: string }) {
             &copy; {year} AI Hackathons. Free to use, no login needed.
           </p>
           <p>
-            Prize data comes from each organizer. Always check the{" "}
-            <Link href="/methodology" className="underline hover:text-primary">
-              official page
-            </Link>{" "}
-            before you enter.
+            Prize data comes from each organizer. Always check the official
+            page before you enter.
           </p>
         </div>
       </div>

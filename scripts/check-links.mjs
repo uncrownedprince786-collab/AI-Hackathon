@@ -14,7 +14,7 @@ for (const m of sitemap.body.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   urls.add(u.startsWith(base) ? u.slice(base.length) || "/" : u);
 }
 
-const pages = ["/", "/hackathons", "/ongoing", "/upcoming", "/past", "/winners", "/stats", "/methodology", "/how-we-collect-data", "/submit"];
+const pages = ["/", "/hackathons", "/ongoing", "/upcoming", "/past", "/winners", "/privacy"];
 const bodies = [];
 for (const p of pages) {
   try {

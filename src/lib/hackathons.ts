@@ -9,6 +9,7 @@ import type {
 import { CACHE_TAG, readDataset } from "./store";
 import { curatedHackathons } from "@/data/curated";
 import { cleanWinners } from "./winners";
+import { hasPublishedPrize } from "./format";
 
 export const REVALIDATE_SECONDS = 60 * 60 * 6;
 
@@ -70,6 +71,9 @@ const STATUS_WEIGHT: Record<HackathonStatus, number> = {
 
 function byRelevance(a: Hackathon, b: Hackathon): number {
   if (a.status !== b.status) return STATUS_WEIGHT[a.status] - STATUS_WEIGHT[b.status];
+  // Widely-verified detail: events with a published prize outrank "Prize not published".
+  const prize = Number(hasPublishedPrize(b)) - Number(hasPublishedPrize(a));
+  if (prize !== 0) return prize;
   if (a.status === "past") {
     return b.endDate.localeCompare(a.endDate);
   }

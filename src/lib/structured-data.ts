@@ -1,4 +1,4 @@
-import type { Hackathon, HackathonStatus, Winner } from "@/lib/types";
+import type { Hackathon, Winner } from "@/lib/types";
 import { absoluteUrl } from "@/lib/seo";
 import { formatCurrency, formatDate, formatUsdLong, modeLabel } from "@/lib/format";
 
@@ -151,29 +151,6 @@ export function winnerJsonLd(hackathon: Hackathon, winner: Winner) {
           award: `${winner.prize} - ${hackathon.name} (${formatDate(hackathon.endDate)})`,
         }
       : {}),
-  };
-}
-
-export function datasetJsonLd(counts: Record<HackathonStatus, number>, totalPrizeUsd: number) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Dataset",
-    name: "AI Hackathons dataset",
-    description:
-      "Public dataset of AI hackathons with prize pools, dates, organizers and winners.",
-    url: absoluteUrl("/methodology"),
-    creator: { "@type": "Organization", name: "AI Hackathons" },
-    isAccessibleForFree: true,
-    license: "https://creativecommons.org/licenses/by/4.0/",
-    distribution: {
-      "@type": "DataDownload",
-      encodingFormat: "application/json",
-      contentUrl: absoluteUrl("/api/data"),
-    },
-    variableMeasured: [
-      { "@type": "PropertyValue", name: "Total hackathons", value: String(counts.upcoming + counts.ongoing + counts.past) },
-      { "@type": "PropertyValue", name: "Total prize money", value: formatUsdLong(totalPrizeUsd) },
-    ],
   };
 }
 

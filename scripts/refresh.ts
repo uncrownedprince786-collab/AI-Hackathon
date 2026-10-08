@@ -7,8 +7,8 @@
 import { refreshDataset } from "../src/lib/collector";
 
 async function main() {
-  const pages = Number(process.env.REFRESH_PAGES ?? 4);
-  const detailLimit = Number(process.env.REFRESH_DETAIL_LIMIT ?? 120);
+  const pages = Number(process.env.REFRESH_PAGES ?? 8);
+  const detailLimit = Number(process.env.REFRESH_DETAIL_LIMIT ?? 240);
   const useLablab = process.env.REFRESH_LABLAB !== "0";
   const useWeb = process.env.REFRESH_WEB !== "0";
   const forceDetail = process.env.REFRESH_FORCE === "1";

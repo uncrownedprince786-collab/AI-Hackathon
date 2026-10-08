@@ -263,6 +263,19 @@ export function prizeSummary(h: Hackathon): PrizeSummary {
   };
 }
 
+/**
+ * True when the organizer has published a prize figure (in USD or announced in
+ * their own currency). "Prize not published" records sort below these, and we
+ * never show them as a headline: a missing prize is rendered quietly.
+ */
+export function hasPublishedPrize(h: Hackathon): boolean {
+  return (
+    (h.totalPrizeUsd ?? 0) > 0 ||
+    (h.claimedPrizeUsd ?? 0) > 0 ||
+    (h.claimedPrize?.amount ?? 0) > 0
+  );
+}
+
 export interface ApplicationStatus {
   isOpen: boolean;
   /** Short badge text. */

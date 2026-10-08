@@ -546,16 +546,7 @@ export default async function HackathonPage({
               </Card>
             ) : null}
 
-            <Card className="p-5">
-              <h2 className="text-sm font-semibold">Know a missing hackathon?</h2>
-              <p className="mt-1.5 text-sm text-muted-foreground">
-                Send the link and we will add it. No account needed.
-              </p>
-              <Button asChild variant="outline" size="sm" className="mt-3 w-full">
-                <Link href="/submit">Submit a hackathon</Link>
-              </Button>
-            </Card>
-          </aside>
+            </aside>
         </div>
       </div>
     </>

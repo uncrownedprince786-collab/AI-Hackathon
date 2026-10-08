@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { formatUsd } from "@/lib/format";
+import { formatUsd, hasPublishedPrize } from "@/lib/format";
 import { detectRegion } from "@/lib/geo";
 import { cn } from "@/lib/utils";
 
@@ -202,6 +202,8 @@ export function HackathonExplorer({
           );
         default: {
           if (a.status !== b.status) return weight[a.status] - weight[b.status];
+          const prize = Number(hasPublishedPrize(b)) - Number(hasPublishedPrize(a));
+          if (prize !== 0) return prize;
           if (a.status === "past") return b.endDate.localeCompare(a.endDate);
           return a.startDate.localeCompare(b.startDate) || b.totalPrizeUsd - a.totalPrizeUsd;
         }
