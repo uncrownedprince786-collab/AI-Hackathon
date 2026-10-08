@@ -32,7 +32,7 @@ jobs:
       - name: Human-like web collector (events)
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.path }}
-          SCRAPE_MAX_EVENTS: "20"
+          SCRAPE_MAX_EVENTS: "60"
           SCRAPE_WINNERS: "0"
         run: npm run scrape:web
 
@@ -43,7 +43,7 @@ jobs:
         env:
           PUPPETEER_EXECUTABLE_PATH: ${{ steps.chrome.outputs.path }}
           SCRAPE_MAX_EVENTS: "0"
-          SCRAPE_MAX_WINNERS: "24"
+          SCRAPE_MAX_WINNERS: "48"
         run: npm run scrape:web
 
       - name: Commit collected data

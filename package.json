@@ -9,7 +9,7 @@
     "lint": "eslint",
     "refresh:data": "tsx scripts/refresh.ts",
     "scrape:web": "tsx scripts/scrape.ts",
-    "test": "tsx --test tests/prize-extract.test.ts tests/prize-summary.test.ts tests/engine-dedupe.test.ts tests/accuracy-gate.test.ts tests/blog-engine.test.ts tests/retention.test.ts tests/collector-merge.test.ts tests/web-scrape.test.ts tests/devpost-winners.test.ts",
+    "test": "tsx --test tests/prize-extract.test.ts tests/prize-summary.test.ts tests/engine-dedupe.test.ts tests/accuracy-gate.test.ts tests/blog-engine.test.ts tests/retention.test.ts tests/collector-merge.test.ts tests/web-scrape.test.ts tests/web-scrape-queries.test.ts tests/devpost-winners.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -3,7 +3,7 @@ import { CACHE_TAG } from "@/lib/store";
 
 const SITE_NAME = "AI Hackathons";
 const SITE_URL =
-  (process.env.NEXT_PUBLIC_SITE_URL ?? "").trim() || "https://ai-hackathons.vercel.app";
+  (process.env.NEXT_PUBLIC_SITE_URL ?? "").trim() || "https://ai-hackathons-tawny.vercel.app";
 
 export const siteUrl = SITE_URL;
 export const siteName = SITE_NAME;

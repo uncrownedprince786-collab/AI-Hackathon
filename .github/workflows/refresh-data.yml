@@ -1,8 +1,9 @@
 name: Refresh hackathon data
 
-# The Vercel Hobby plan only allows one cron per day, so this workflow is what
-# keeps the dataset fresh every 6 hours. It calls the same endpoint the site uses
-# and the endpoint revalidates the cached pages afterwards.
+# Keeps the dataset fresh every 6 hours. The frontend serves the committed
+# dataset (the runtime can only revalidate the cache, never persist), so this
+# workflow runs the accuracy-engine refresh, commits the output and pushes —
+# the Vercel Git integration then deploys it. Uses no secrets.
 on:
   schedule:
     # minute 17 of every 6th hour, so it does not pile onto :00 with everyone else
@@ -13,40 +14,29 @@ concurrency:
   group: refresh-hackathon-data
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   refresh:
-    name: Refresh the live dataset
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
-      - name: Call the refresh endpoint
-        env:
-          SITE_URL: ${{ vars.SITE_URL || secrets.SITE_URL }}
-          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Refresh dataset through the accuracy engine
+        run: npm run refresh:data
+
+      - name: Commit refreshed data
         run: |
-          if [ -z "$SITE_URL" ]; then
-            echo "::error::SITE_URL is not set. Add it as an Actions secret (or repository variable)."
-            exit 1
-          fi
-          if [ -z "$CRON_SECRET" ]; then
-            echo "::error::CRON_SECRET is not set. Add it as an Actions secret."
-            exit 1
-          fi
-
-          url="${SITE_URL%/}/api/cron/refresh"
-          echo "POST $url"
-
-          status=$(curl -sS -o /tmp/refresh.json -w '%{http_code}' \
-            -X POST \
-            -H "Authorization: Bearer $CRON_SECRET" \
-            --max-time 540 \
-            "$url")
-
-          echo "HTTP $status"
-          cat /tmp/refresh.json
-          echo
-
-          if [ "$status" != "200" ]; then
-            echo "::error::Refresh failed with HTTP $status"
-            exit 1
-          fi
+          git config user.name "ai-hackathons-bot"
+          git config user.email "84974365+ai-hackathons-bot[bot]@users.noreply.github.com"
+          git add src/data/hackathons.json
+          git commit -m "data: 6-hourly dataset refresh" && git push || echo "no data changes"

@@ -1055,17 +1055,11 @@ async function collectListingLinks(
   return links.filter((l) => isUsableEventUrl(l.url) && isLikelyEventPath(l.url));
 }
 
-function pickQueries(now: Date): string[] {
-  const start = new Date(now.getFullYear(), 0, 0);
-  const day = Math.floor((now.getTime() - start.getTime()) / 86_400_000);
-  const queries = [
-    SEARCH_QUERIES[day % SEARCH_QUERIES.length],
-    SITE_SEARCH_QUERIES[day % SITE_SEARCH_QUERIES.length],
-  ];
-  // Two out of every three days also scan a specific world region so the cron
-  // gradually builds coverage beyond the default English-language hubs.
-  if (day % 3 !== 0) queries.push(REGION_QUERIES[day % REGION_QUERIES.length]);
-  return queries;
+export function pickQueries(): string[] {
+  // Worldwide coverage with no regional cap: every run searches the full set
+  // of global topic queries plus every country/region query. Quality is still
+  // guaranteed downstream — only the accuracy engine decides what ships.
+  return [...SEARCH_QUERIES, ...SITE_SEARCH_QUERIES, ...REGION_QUERIES];
 }
 
 async function visitPage(page: import("puppeteer-core").Page, url: string): Promise<PageExtract> {
@@ -1151,7 +1145,7 @@ export async function runWebScrape(settings: ScrapeSettings = scrapeSettings()):
 
     // 1. Search engines, like a person searching the web. Only results that
     // actually describe an event are kept — corporate/tips never get visited.
-    for (const query of pickQueries(now)) {
+    for (const query of pickQueries()) {
       log(`searching: ${query}`);
       const results = await searchQuery(page, query);
       for (const r of results) {

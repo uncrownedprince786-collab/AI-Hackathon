@@ -1,0 +1,38 @@
+name: CI
+
+# Required quality gate: every push and pull request must pass tests,
+# typecheck, lint and a production build before it can ship.
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Tests
+        run: npm test
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npx eslint --max-warnings 0
+
+      - name: Production build
+        run: npm run build
