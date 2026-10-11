@@ -58,7 +58,7 @@ export default async function WinnersPage() {
         stats={[
           { label: "Winning projects", value: String(winners.length) },
           { label: "Events covered", value: String(stats.withWinners) },
-          { label: "Organizers", value: String(stats.uniqueOrganizers) },
+          { label: "Organizers with winners", value: String(coveredEvents.size) },
           {
             label: "Prize money at covered events",
             value: formatUsdLong(coveredPrizeUsd),
