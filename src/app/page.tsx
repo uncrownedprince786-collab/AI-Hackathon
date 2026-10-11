@@ -241,8 +241,8 @@ export default async function HomePage() {
             <h2 className="text-2xl font-bold tracking-tight">How this list stays correct</h2>
             <p className="mt-3 text-muted-foreground">
               Every record links to the official page where the organizer publishes it, so
-              you can always check the facts yourself. A scheduled job reads the live
-              listings every six hours, reads the dates again, and moves each event
+              you can always check the facts yourself. The data is refreshed throughout
+              the day (about every 6 hours), and the system rechecks dates to move each event
               between upcoming, ongoing and past on its own.
             </p>
           </div>
