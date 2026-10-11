@@ -37,7 +37,7 @@ export async function generateMetadata({
     title: post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
-    keywords: post.tags.map((t) => t.toLowerCase()),
+    keywords: post.keywords.length ? post.keywords : post.tags.map((t) => t.toLowerCase()),
   });
 }
 

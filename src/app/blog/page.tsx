@@ -10,9 +10,9 @@ import { buildMetadata, absoluteUrl } from "@/lib/seo";
 export const revalidate = 3600;
 
 export const metadata: Metadata = buildMetadata({
-  title: "AI Hackathons Blog — Data-Backed Articles",
+  title: "AI Hackathons Blog — Data-Backed Articles & Daily AI News",
   description:
-    "Daily articles about AI hackathons: the biggest prize pools, open events you can enter, global coverage and real winning projects — every figure read from the live dataset.",
+    "Daily articles about AI hackathons: the biggest prize pools, open events you can enter, global coverage and real winning projects — plus a keyword-matched Today in AI digest of the latest developments, every figure read from the live dataset.",
   path: "/blog",
   keywords: [
     "ai hackathon blog",
@@ -20,6 +20,8 @@ export const metadata: Metadata = buildMetadata({
     "ai hackathon prizes",
     "ai hackathon rankings",
     "ai hackathon events",
+    "ai news today",
+    "artificial intelligence news",
   ],
 });
 
@@ -50,7 +52,7 @@ export default async function BlogPage() {
       <PageHeader
         eyebrow="Blog"
         title="AI hackathons, from the data"
-        description="One useful article a day, every figure read from the live dataset: the biggest prize pools, events you can enter today, global coverage, and real winning projects."
+        description="One useful article a day, every figure read from the live dataset — plus a keyword-matched Today in AI digest of the latest developments, each item linked to its source."
         stats={[
           { label: "Articles", value: String(posts.length) },
           { label: "Updated", value: posts.length ? formatDateLong(posts[0].date) : "—" },

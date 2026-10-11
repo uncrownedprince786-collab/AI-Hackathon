@@ -114,11 +114,22 @@ datacenter IPs, and produced only ~2 retained records in its lifetime.
 
 ### Daily blog article
 
-`.github/workflows/daily-article.yml` runs `scripts/generate-post.ts` once a day.
-It writes a markdown file into `content/blog/` from a fixed set of plain-English
-templates, using only facts taken from the dataset, and commits it, which triggers
-a new Vercel deployment. It only ever creates a file for the current day, so it
-can never overwrite an article, and it needs no API key.
+`.github/workflows/daily-article.yml` runs `scripts/generate-post.ts` once a day
+(cron `23 5 * * *`). It writes one markdown file into `content/blog/` from a
+fixed set of plain-English templates, using only facts taken from the dataset,
+and commits it, which triggers a new Vercel deployment. It only ever creates a
+file for the current day, so it can never overwrite an article, and it needs no
+API key.
+
+Every article also gets a keyword-matched **"Today in AI"** section
+(`scripts/ai-news.ts`): the day's real headlines from established AI outlets
+(arXiv, Hugging Face, The Verge, TechCrunch, MIT News, The Decoder), each one a
+linked headline with nothing added — and any `$` figure is stripped so the
+article's fact-check gate is never tripped. If the feeds fail, the last good
+cache (72h) is reused and, failing that, the section is simply omitted: the
+daily article never depends on external availability. Frontmatter is enriched
+with per-topic SEO keywords plus fresh news terms, and rendered as `<meta
+name="keywords">` on each article page.
 
 ## Supabase (optional legacy writes)
 

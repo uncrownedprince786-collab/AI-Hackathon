@@ -13,6 +13,7 @@ export interface BlogPost {
   description: string;
   date: string;
   tags: string[];
+  keywords: string[];
   author: string;
   body: string;
 }
@@ -25,6 +26,7 @@ interface Frontmatter {
   date?: string;
   description?: string;
   tags?: string;
+  keywords?: string;
   author?: string;
 }
 
@@ -55,6 +57,10 @@ function parseFile(name: string, raw: string): BlogPost | null {
     tags: (frontmatter.tags ?? "")
       .split(",")
       .map((t) => t.trim())
+      .filter(Boolean),
+    keywords: (frontmatter.keywords ?? frontmatter.tags ?? "")
+      .split(",")
+      .map((k) => k.trim().toLowerCase())
       .filter(Boolean),
     author: frontmatter.author ?? "AI Hackathons",
     body: match[2].trim(),

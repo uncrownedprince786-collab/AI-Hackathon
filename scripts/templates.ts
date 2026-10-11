@@ -18,6 +18,8 @@ interface Template {
   slug: string;
   title: string;
   description: string;
+  /** SEO keywords that describe this topic (used in frontmatter + news matching). */
+  keywords: string[];
   /** Whether this topic has enough real data today to stay coherent. */
   fits(facts: Facts): boolean;
   body(facts: Facts): string;
@@ -73,6 +75,14 @@ const TEMPLATES: Template[] = [
     title: "The biggest AI hackathon prize pools right now",
     description:
       "Which AI hackathons currently offer the largest prize money, and how to read those figures honestly without confusing announced pools for cash.",
+    keywords: [
+      "ai hackathon prize pools",
+      "biggest ai hackathon prizes",
+      "ai prize money",
+      "ai hackathon cash prizes",
+      "ai hackathon prize breakdown",
+      "ai hackathon funding",
+    ],
     fits: (f) => bestPrizes(3)(f).length >= 3,
     body: (f) => {
       const lines = bestPrizes(6)(f).map((h, i) => {
@@ -115,6 +125,14 @@ ${sourceFooter(f)}`;
     title: "Three AI hackathons you can enter right now",
     description:
       "Real, currently open AI hackathons from the dataset with dates, locations, prizes and official links.",
+    keywords: [
+      "ai hackathons to enter",
+      "ai hackathon open now",
+      "ai hackathon registration",
+      "online ai hackathon",
+      "ai hackathon for beginners",
+      "ai hackathon submissions",
+    ],
     fits: (f) => active(3)(f).length >= 3,
     body: (f) => {
       const events = active(3)(f);
@@ -170,6 +188,14 @@ ${sourceFooter(f)}`;
     title: "AI hackathons are a global sport",
     description:
       "Where AI hackathons happen, how many are online, and how the site reads location data from public pages.",
+    keywords: [
+      "ai hackathon around the world",
+      "international ai hackathon",
+      "ai hackathon locations",
+      "online or in person ai hackathon",
+      "global ai hackathon",
+      "ai hackathon countries",
+    ],
     fits: (f) => new Set(f.hackathons.map((h) => h.country).filter(Boolean)).size >= 2,
     body: (f) => {
       const total = f.hackathons.length;
@@ -224,6 +250,14 @@ ${sourceFooter(f)}`;
     title: "What winning AI hackathon projects look like",
     description:
       "Real winner examples from the dataset, plus why some events never publish their winners.",
+    keywords: [
+      "ai hackathon winners",
+      "ai hackathon winning projects",
+      "best ai hackathon projects",
+      "ai project ideas",
+      "ai hackathon judging",
+      "ai hackathon demos",
+    ],
     fits: (f) => f.hackathons.some((h) => h.winners.length > 0),
     body: (f) => {
       const withWinners = f.hackathons.filter((h) => h.winners.length > 0);
@@ -284,6 +318,14 @@ ${sourceFooter(f)}`;
     title: "Upcoming, ongoing or past: how the status works",
     description:
       "How every event on this site gets its status, why registration is a separate signal, and how dates are read from the dataset.",
+    keywords: [
+      "ai hackathon status",
+      "upcoming ai hackathons",
+      "ongoing ai hackathons",
+      "past ai hackathons",
+      "ai hackathon dates explained",
+      "ai hackathon registration closed",
+    ],
     fits: (f) => f.hackathons.length >= 1,
     body: (f) => {
       const total = f.hackathons.length;
