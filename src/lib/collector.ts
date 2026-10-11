@@ -285,6 +285,9 @@ export async function collectDataset(
     if (!prev) return true;
     if (prev.status !== d.status) return true;
     if (!prev.description || prev.description.length < 120) return true;
+    // An event whose winner names were announced but never stored gets one
+    // detail re-read so extractWinners can fill the list from the source card.
+    if (prev.winnersAnnounced && !prev.winners.length) return true;
     return false;
   });
 

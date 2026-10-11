@@ -7,47 +7,94 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const data = JSON.parse(readFileSync(join(root, "src/data/hackathons.json"), "utf8"));
 const curated = readFileSync(join(root, "src/data/curated.ts"), "utf8");
 const records = data.hackathons ?? data;
-const now = new Date("2026-10-05T00:00:00Z");
+const now = new Date();
 
 const statusOf = (h) => {
-  const start = (h.startDate ?? h.start_date ?? "") ? Date.parse((h.startDate ?? h.start_date ?? "") + "T00:00:00Z") : NaN;
-  const end = (h.endDate ?? h.end_date ?? "") ? Date.parse((h.endDate ?? h.end_date ?? "") + "T23:59:59Z") : NaN;
+  const start = (h.startDate ?? "") ? Date.parse(h.startDate + "T00:00:00Z") : NaN;
+  const end = (h.endDate ?? "") ? Date.parse(h.endDate + "T23:59:59Z") : NaN;
   if (Number.isNaN(start)) return "unknown";
   if (!Number.isNaN(end) && now > end) return "past";
   if (now < start) return "upcoming";
   return "ongoing";
 };
 
-const money = (s) => (s || "").replace(/,/g, "").match(/\$\s?(\d+(?:\.\d+)?)/g) || [];
-const maxMoney = (s) => Math.max(0, ...money(s).map((m) => Number(m.replace(/[^0-9.]/g, ""))));
-
-const out = { total: records.length, counts: {}, noCashButClaimsMoney: [], dirtyOrganizers: [], dateAnomalies: [], noEndDate: [], winnerCoverage: { withWinners: 0, past: 0 }, thinDescriptions: [], prizeTextSamples: [] };
+const out = {
+  total: records.length,
+  counts: {},
+  claimsWithoutAmounts: [],
+  inconsistentPoolTotals: [],
+  dirtyOrganizers: [],
+  dateAnomalies: [],
+  noEndDate: [],
+  brokenWinners: [],
+  winnerCoverage: { eventsWithWinners: 0, totalWinners: 0, past: 0 },
+  thinDescriptions: [],
+};
 
 for (const h of records) {
   const status = statusOf(h);
   out.counts[status] = (out.counts[status] || 0) + 1;
 
-  const claimed = Math.max(maxMoney((h.name ?? h.title ?? "")), maxMoney((h.description ?? "")), maxMoney((h.prizes || []).map((p) => `${p.amount ?? ""} ${p.label ?? ""}`).join(" ")));
-  const cash = h.prizePool?.cashUsd ?? 0;
-  if (!cash && claimed > 0) out.noCashButClaimsMoney.push({ slug: (h.slug ?? ""), claimed, title: (h.name ?? h.title ?? "").slice(0, 80), organizer: (h.organizer ?? ""), prizes: (h.prizes || []).length });
+  const cash = h.cashPrizeUsd ?? 0;
+  const credits = h.creditPrizeUsd ?? 0;
+  const claimed = h.claimedPrizeUsd ?? 0;
+  const total = h.totalPrizeUsd ?? 0;
+
+  if (claimed > 0 && cash === 0 && credits === 0 && total === 0 && !h.claimedPrize) {
+    out.claimsWithoutAmounts.push({ slug: h.slug, title: (h.name ?? "").slice(0, 70), claimed });
+  }
+  if (total > 0 && cash + credits > total && h.prizeBreakdownPublished) {
+    out.inconsistentPoolTotals.push({
+      slug: h.slug,
+      note: "published cash+credits exceed the pool total",
+      claimed,
+      total,
+      cash,
+      credits,
+      breakdown: h.prizeBreakdownPublished,
+    });
+  }
 
   const org = ((h.organizer ?? "") || "").trim();
-  if (!org || /nill|prize|hackathon|202\d|^\W+$/i.test(org) || org.length > 40 || org !== org.replace(/\s+/g, " ")) {
-    out.dirtyOrganizers.push({ slug: (h.slug ?? ""), organizer: org });
+  if (
+    !org ||
+    /^(n\/?a|unknown|tbd|pending|independent)$/i.test(org) ||
+    org.length > 40 ||
+    org !== org.replace(/\s+/g, " ")
+  ) {
+    out.dirtyOrganizers.push({ slug: h.slug, organizer: org });
   }
 
-  const s = (h.startDate ?? h.start_date ?? "") ? Date.parse((h.startDate ?? h.start_date ?? "") + "T00:00:00Z") : NaN;
-  const e = (h.endDate ?? h.end_date ?? "") ? Date.parse((h.endDate ?? h.end_date ?? "") + "T23:59:59Z") : NaN;
-  if (!Number.isNaN(s) && !Number.isNaN(e) && e < s) out.dateAnomalies.push({ slug: (h.slug ?? ""), start: (h.startDate ?? h.start_date ?? ""), end: (h.endDate ?? h.end_date ?? "") });
-  if (!(h.endDate ?? h.end_date ?? "")) out.noEndDate.push({ slug: (h.slug ?? ""), start: (h.startDate ?? h.start_date ?? ""), status });
-
-  if (status === "past") {
-    out.winnerCoverage.past += 1;
-    if ((h.winners || []).length) out.winnerCoverage.withWinners += 1;
+  const s = h.startDate ? Date.parse(h.startDate + "T00:00:00Z") : NaN;
+  const e = h.endDate ? Date.parse(h.endDate + "T23:59:59Z") : NaN;
+  if (!Number.isNaN(s) && !Number.isNaN(e) && e < s) {
+    out.dateAnomalies.push({ slug: h.slug, start: h.startDate, end: h.endDate });
   }
-  if (!(h.description ?? "") || (h.description ?? "").length < 120) out.thinDescriptions.push({ slug: (h.slug ?? ""), len: ((h.description ?? "") || "").length });
+  if (!h.endDate) out.noEndDate.push({ slug: h.slug, start: h.startDate, status });
+
+  if (status === "past") out.winnerCoverage.past += 1;
+  const winners = h.winners ?? [];
+  if (winners.length) {
+    out.winnerCoverage.eventsWithWinners += 1;
+    out.winnerCoverage.totalWinners += winners.length;
+  }
+  for (const w of winners) {
+    if (w.rank != null && (!Number.isInteger(w.rank) || w.rank < 1)) {
+      out.brokenWinners.push({ slug: h.slug, project: w.project, rank: w.rank });
+    }
+  }
+  if (!h.description || h.description.length < 120) {
+    out.thinDescriptions.push({ slug: h.slug, len: (h.description ?? "").length });
+  }
 }
 
 out.curatedSlugs = [...curated.matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[1]);
+// Hand-checked winners live in curated.ts and are merged at read time, so the
+// stored dataset never carries them. Report them alongside stored coverage.
+out.curatedWinners = {
+  events: out.curatedSlugs.length,
+  total: (curated.match(/^\s*project:\s*"/gm) ?? []).length,
+  withSummary: (curated.match(/^\s*summary:\s*"/gm) ?? []).length,
+  storedEvents: out.winnerCoverage.eventsWithWinners,
+};
 console.log(JSON.stringify(out, null, 1));
-

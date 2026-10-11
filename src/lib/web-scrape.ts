@@ -850,19 +850,67 @@ const SEARCH_QUERIES = [
   "data science hackathon competition 2026",
 ];
 
+// Country/city-targeted queries across every inhabited continent. No region is
+// capped or skipped: each daily run searches the whole set, and the accuracy
+// engine decides what qualifies. Countries with busier scenes get one query
+// per hub; smaller ones share a national query.
 const REGION_QUERIES = [
-  "AI hackathon Nigeria 2026",
+  // South Asia
   "GenAI hackathon India 2026",
+  "AI hackathon Pakistan 2026",
+  "machine learning hackathon Bangladesh Dhaka 2026",
+  "AI hackathon Sri Lanka Colombo 2026",
+  "hackathon Nepal Kathmandu AI 2026",
+  // East Asia
+  "AI hackathon Japan Tokyo 2026",
+  "LLM hackathon Seoul South Korea 2026",
+  "AI hackathon China Shanghai 2026",
+  "Generative AI hackathon Taiwan 2026",
+  "AI hackathon Hong Kong 2026",
+  // South-East Asia
+  "AI hackathon Vietnam Ho Chi Minh City 2026",
+  "AI hackathon Thailand Bangkok 2026",
+  "AI hackathon Philippines Manila 2026",
+  "machine learning hackathon Malaysia Kuala Lumpur 2026",
   "AI hackathon Singapore 2026",
-  "Generative AI competition Brazil 2026",
-  "AI hackathon London university 2026",
+  "AI hackathon Indonesia Jakarta 2026",
+  // Middle East & North Africa
   "LLM hackathon Dubai 2026",
-  "Computer vision hackathon Mexico 2026",
+  "AI hackathon Saudi Arabia Riyadh 2026",
+  "AI hackathon Qatar Doha 2026",
+  "AI hackathon Israel Tel Aviv 2026",
+  "AI hackathon Turkey Istanbul 2026",
+  "AI hackathon Egypt Cairo 2026",
+  "AI hackathon Morocco Casablanca 2026",
+  // Europe
+  "AI hackathon London university 2026",
+  "AI hackathon France Paris 2026",
+  "AI hackathon Spain Madrid Barcelona 2026",
+  "AI hackathon Italy Milan 2026",
+  "AI hackathon Netherlands Amsterdam 2026",
+  "AI hackathon Switzerland St. Gallen 2026",
+  "AI hackathon Poland Warsaw 2026",
+  "AI hackathon Helsinki Finland 2026",
+  "AI hackathon Lisbon Portugal 2026",
   "AI competition Germany university 2026",
+  // Africa
+  "AI hackathon Nigeria 2026",
+  "AI hackathon South Africa Cape Town 2026",
   "AI hackathon Kenya Nairobi 2026",
-  "Machine learning hackathon Indonesia 2026",
+  "AI hackathon Ghana Accra 2026",
+  "AI hackathon Ethiopia Addis Ababa 2026",
+  // Oceania
+  "AI hackathon Australia Sydney 2026",
+  "AI hackathon New Zealand Auckland 2026",
+  // Latin America
+  "AI hackathon Colombia Bogota 2026",
+  "AI hackathon Argentina Buenos Aires 2026",
+  "AI hackathon Chile Santiago 2026",
+  "AI hackathon Peru Lima 2026",
+  "Generative AI competition Brazil 2026",
+  "Computer vision hackathon Mexico 2026",
+  // North America
   "AI hackathon Canada 2026",
-  "AI hackathon UAE women 2026",
 ];
 
 const SITE_SEARCH_QUERIES = [
