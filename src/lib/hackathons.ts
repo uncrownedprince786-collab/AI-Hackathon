@@ -1,15 +1,9 @@
 import "server-only";
 import { unstable_cache } from "next/cache";
-import type {
-  Dataset,
-  Hackathon,
-  HackathonMode,
-  HackathonStatus,
-} from "./types";
+import type { Dataset, Hackathon, HackathonStatus } from "./types";
 import { CACHE_TAG, readDataset } from "./store";
-import { curatedHackathons } from "@/data/curated";
-import { cleanWinners } from "./winners";
-import { hasPublishedPrize } from "./format";
+import { mergedDataset } from "./dataset";
+import { byRelevance, computeStats, type Stats } from "./stats";
 
 export const REVALIDATE_SECONDS = 60 * 60 * 6;
 
@@ -23,30 +17,11 @@ export const getDataset = unstable_cache(
 );
 
 function withCurated(dataset: Dataset): Dataset {
-  const scraped = dataset.hackathons ?? [];
-  const byId = new Map(scraped.map((h) => [h.id, h]));
-  const nowIso = new Date().toISOString();
-
-  for (const entry of curatedHackathons) {
-    const existing = byId.get(entry.id);
-    if (!existing) {
-      byId.set(entry.id, entry);
-      continue;
-    }
-    byId.set(entry.id, {
-      ...existing,
-      // Hand-checked fields always win; scraped fields fill the gaps.
-      description: entry.description || existing.description,
-      organizer: entry.organizer || existing.organizer,
-      prizes: entry.prizes.length ? entry.prizes : existing.prizes,
-      winners: cleanWinners(entry.winners.length ? entry.winners : existing.winners),
-      officialUrl: entry.officialUrl || existing.officialUrl,
-      firstSeenAt: existing.firstSeenAt ?? entry.firstSeenAt,
-      updatedAt: nowIso,
-    });
-  }
-
-  const hackathons = [...byId.values()];
+  // Statuses are re-derived from the organizer's own dates at every read. An
+  // event that ends this hour moves to "past" immediately, even if the dataset
+  // file still carries the previous refresh's status — and a stopped refresh
+  // can never freeze the whole list in one state.
+  const hackathons = mergedDataset(dataset.hackathons ?? [], new Date());
   return { ...dataset, hackathons, meta: recalcMeta(dataset.meta, hackathons) };
 }
 
@@ -61,24 +36,6 @@ function recalcMeta(
     totalPrizeUsd += h.totalPrizeUsd ?? 0;
   }
   return { ...meta, total: hackathons.length, counts, totalPrizeUsd };
-}
-
-const STATUS_WEIGHT: Record<HackathonStatus, number> = {
-  ongoing: 0,
-  upcoming: 1,
-  past: 2,
-};
-
-function byRelevance(a: Hackathon, b: Hackathon): number {
-  if (a.status !== b.status) return STATUS_WEIGHT[a.status] - STATUS_WEIGHT[b.status];
-  // Widely-verified detail: events with a published prize outrank "Prize not published".
-  const prize = Number(hasPublishedPrize(b)) - Number(hasPublishedPrize(a));
-  if (prize !== 0) return prize;
-  if (a.status === "past") {
-    return b.endDate.localeCompare(a.endDate);
-  }
-  if (a.startDate !== b.startDate) return a.startDate.localeCompare(b.startDate);
-  return b.totalPrizeUsd - a.totalPrizeUsd;
 }
 
 export async function getAllHackathons(): Promise<Hackathon[]> {
@@ -143,123 +100,11 @@ export async function getWinners(): Promise<
     .slice(0, 200);
 }
 
-export interface Stats {
-  total: number;
-  upcoming: number;
-  ongoing: number;
-  past: number;
-  totalPrizeUsd: number;
-  cashPrizeUsd: number;
-  creditPrizeUsd: number;
-  /** Headline pools with no published cash/credits breakdown. */
-  announcedPrizeUsd: number;
-  announcedPoolCount: number;
-  /** Pools announced in another currency (never converted to USD). */
-  nonUsdAnnounced: number;
-  /** Records with no prize information at all. */
-  noPrizeInfo: number;
-  withWinners: number;
-  totalWinners: number;
-  online: number;
-  inPerson: number;
-  hybrid: number;
-  uniqueOrganizers: number;
-  totalParticipants: number;
-  biggest: Hackathon[];
-  topOrganizers: { name: string; count: number }[];
-  byYear: { year: number; count: number; prizeUsd: number }[];
-  upcomingPrizesUsd: number;
-}
+export type { Stats } from "./stats";
 
 export async function getStats(): Promise<Stats> {
   const all = await getAllHackathons();
-  const organizers = new Map<string, number>();
-  const byYearMap = new Map<number, { count: number; prizeUsd: number }>();
-  let totalPrizeUsd = 0;
-  let cashPrizeUsd = 0;
-  let creditPrizeUsd = 0;
-  let announcedPrizeUsd = 0;
-  let announcedPoolCount = 0;
-  let nonUsdAnnounced = 0;
-  let noPrizeInfo = 0;
-  let withWinners = 0;
-  let totalWinners = 0;
-  let online = 0;
-  let inPerson = 0;
-  let hybrid = 0;
-  let totalParticipants = 0;
-
-  for (const h of all) {
-    const pooled = h.totalPrizeUsd ?? 0;
-    const cash = h.cashPrizeUsd ?? 0;
-    const credits = h.creditPrizeUsd ?? 0;
-    totalPrizeUsd += pooled;
-    cashPrizeUsd += cash;
-    creditPrizeUsd += credits;
-
-    const itemised = cash > 0 || credits > 0;
-    if ((h.claimedPrizeUsd ?? 0) > 0 && !itemised && !h.prizeBreakdownPublished) {
-      announcedPrizeUsd += pooled;
-      announcedPoolCount += 1;
-    } else if (h.claimedPrize && pooled === 0) {
-      nonUsdAnnounced += 1;
-    } else if (!pooled && !h.claimedPrize && h.prizes.length === 0) {
-      noPrizeInfo += 1;
-    }
-
-    totalParticipants += h.participants ?? 0;
-    if (h.winners.length > 0) {
-      withWinners += 1;
-      totalWinners += h.winners.length;
-    }
-    const mode: HackathonMode = h.mode;
-    if (mode === "online") online += 1;
-    else if (mode === "in-person") inPerson += 1;
-    else hybrid += 1;
-
-    const org = h.organizer || "Unknown";
-    organizers.set(org, (organizers.get(org) ?? 0) + 1);
-
-    const year = Number(h.endDate.slice(0, 4));
-    const entry = byYearMap.get(year) ?? { count: 0, prizeUsd: 0 };
-    entry.count += 1;
-    entry.prizeUsd += h.totalPrizeUsd ?? 0;
-    byYearMap.set(year, entry);
-  }
-
-  const topOrganizers = [...organizers.entries()]
-    .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 12);
-
-  return {
-    total: all.length,
-    upcoming: all.filter((h) => h.status === "upcoming").length,
-    ongoing: all.filter((h) => h.status === "ongoing").length,
-    past: all.filter((h) => h.status === "past").length,
-    totalPrizeUsd,
-    cashPrizeUsd,
-    creditPrizeUsd,
-    announcedPrizeUsd,
-    announcedPoolCount,
-    nonUsdAnnounced,
-    noPrizeInfo,
-    withWinners,
-    totalWinners,
-    online,
-    inPerson,
-    hybrid,
-    uniqueOrganizers: organizers.size,
-    totalParticipants,
-    biggest: [...all].sort((a, b) => b.totalPrizeUsd - a.totalPrizeUsd).slice(0, 10),
-    topOrganizers,
-    byYear: [...byYearMap.entries()]
-      .map(([year, v]) => ({ year, ...v }))
-      .sort((a, b) => a.year - b.year),
-    upcomingPrizesUsd: all
-      .filter((h) => h.status !== "past")
-      .reduce((sum, h) => sum + (h.totalPrizeUsd ?? 0), 0),
-  };
+  return computeStats(all);
 }
 
 export async function getLastUpdated(): Promise<string> {

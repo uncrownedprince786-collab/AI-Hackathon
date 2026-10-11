@@ -240,10 +240,10 @@ export default async function HomePage() {
           <div>
             <h2 className="text-2xl font-bold tracking-tight">How this list stays correct</h2>
             <p className="mt-3 text-muted-foreground">
-              Every hackathon has an official link and a source link, so you can always
-              check the facts yourself. A scheduled job reads public pages every six
-              hours, reads the dates again, and moves each event between upcoming,
-              ongoing and past on its own.
+              Every record links to the official page where the organizer publishes it, so
+              you can always check the facts yourself. A scheduled job reads the live
+              listings every six hours, reads the dates again, and moves each event
+              between upcoming, ongoing and past on its own.
             </p>
           </div>
 
