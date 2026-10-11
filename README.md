@@ -5,7 +5,7 @@ All AI hackathons in one place — prizes, winners and upcoming events.
 Live site: **https://ai-hackathons-tawny.vercel.app**
 
 A public, read-only directory of AI hackathons. No login, no signup, no admin.
-A scheduled job re-reads public event listings every 6 hours, works out each
+A scheduled job re-reads public event listings throughout the day (about every 6 hours), works out each
 event's status from its dates, and refreshes every page.
 
 Repository: `github.com/uncrownedprince786-collab/AI-Hackathon`
@@ -14,10 +14,10 @@ Repository: `github.com/uncrownedprince786-collab/AI-Hackathon`
 
 - Next.js 15 (App Router, React 19, TypeScript)
 - Tailwind CSS v4 + shadcn-style components + Lucide icons
-- Data from Devpost and lablab.ai public pages (refreshed every 6 hours). A
+- Data from Devpost and lablab.ai public pages (refreshed throughout the day, about every 6 hours). A
   retired open-web collector's records are preserved and its sites documented
   in `meta.retiredSources` (see *Source coverage* below)
-- JSON file locally, Supabase in production, ISR revalidation every 6 hours
+- JSON file locally, Supabase in production, ISR revalidation (hourly by default)
 
 ## Getting started
 
@@ -81,7 +81,7 @@ so an event moves from upcoming to ongoing to past on its own.
 
 ## Automatic updates
 
-`.github/workflows/refresh-data.yml` runs every 6 hours (cron `17 */6 * * *`,
+`.github/workflows/refresh-data.yml` runs throughout the day (cron `17 */6 * * *`,
 plus a manual *Run workflow* button): it re-reads the public sources, pushes
 them through the accuracy engine, commits `src/data/hackathons.json`, and
 pushes. The Vercel Git integration then deploys the new commit. No secrets and

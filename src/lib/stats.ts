@@ -94,12 +94,13 @@ export function computeStats(all: Hackathon[]): Stats {
     .sort((a, b) => b.count - a.count)
     .slice(0, 12);
 
+  const accountedTotal = cashPrizeUsd + creditPrizeUsd + announcedPrizeUsd;
   return {
     total: all.length,
     upcoming: all.filter((h) => h.status === "upcoming").length,
     ongoing: all.filter((h) => h.status === "ongoing").length,
     past: all.filter((h) => h.status === "past").length,
-    totalPrizeUsd,
+    totalPrizeUsd: accountedTotal,
     cashPrizeUsd,
     creditPrizeUsd,
     announcedPrizeUsd,

@@ -44,7 +44,7 @@ export default async function UpcomingPage() {
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
         {hackathons.length === 0 ? (
           <p className="rounded-xl border border-dashed border-border px-6 py-20 text-center text-muted-foreground">
-            No upcoming hackathons yet. The list refreshes every 6 hours.
+            No upcoming hackathons yet. The list refreshes throughout the day (about every 6 hours).
           </p>
         ) : (
           <HackathonExplorer hackathons={hackathons} showStatusFilter={false} />

@@ -45,9 +45,9 @@ const FAQ = [
   },
   {
     question: "How often is this list updated?",
-    answer:
-      "The list refreshes automatically every 6 hours. Each hackathon moves from upcoming to ongoing to past on its own, based on its real start and end dates.",
-  },
+      answer:
+        "The list refreshes automatically throughout the day (about every 6 hours). Each hackathon moves from upcoming to ongoing to past on its own, based on its real start and end dates.",
+    },
   {
     question: "Do I need an account to use this site?",
     answer:
@@ -81,10 +81,10 @@ export default async function HomePage() {
       <section className="border-b border-border bg-background">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="outline" className="mb-6">
-              <RefreshCw aria-hidden="true" />
-              Updated every 6 hours · {new Set(all.map((h) => h.country).filter(Boolean)).size} countries
-            </Badge>
+              <Badge variant="outline" className="mb-6">
+                <RefreshCw aria-hidden="true" />
+                Refreshed throughout the day (about every 6 hours) · {new Set(all.map((h) => h.country).filter(Boolean)).size} countries
+              </Badge>
 
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               Find real AI hackathons worldwide

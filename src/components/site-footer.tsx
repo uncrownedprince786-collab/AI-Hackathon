@@ -41,7 +41,7 @@ export function SiteFooter({ lastUpdated }: { lastUpdated: string }) {
               <time dateTime={lastUpdated}>
                 {new Date(lastUpdated).toUTCString().replace(" GMT", " UTC")}
               </time>
-              . Updated every 6 hours.
+              . Refreshed throughout the day (about every 6 hours).
             </p>
           </div>
 

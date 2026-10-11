@@ -11,7 +11,7 @@ export const siteName = SITE_NAME;
 export const tagline = "All AI hackathons in one place — prizes, winners and upcoming events.";
 
 export const description =
-  "Find every AI hackathon in one place. See prize money, credits, dates, deadlines, organizers and winners for upcoming, ongoing and past AI hackathons. Updated every 6 hours.";
+  "Find every AI hackathon in one place. See prize money, credits, dates, deadlines, organizers and winners for upcoming, ongoing and past AI hackathons. Refreshed throughout the day (about every 6 hours).";
 
 export function titleFor(value: string): string {
   return `${value} | ${SITE_NAME}`;

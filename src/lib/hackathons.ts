@@ -5,16 +5,12 @@ import { CACHE_TAG, readDataset } from "./store";
 import { mergedDataset } from "./dataset";
 import { byRelevance, computeStats, type Stats } from "./stats";
 
-export const REVALIDATE_SECONDS = 60 * 60 * 6;
+export const REVALIDATE_SECONDS = 60 * 60 * 1; // revalidate hourly for fresher statuses
 
-export const getDataset = unstable_cache(
-  async (): Promise<Dataset> => {
-    const stored = await readDataset();
-    return withCurated(stored);
-  },
-  ["hackathon-dataset"],
-  { revalidate: REVALIDATE_SECONDS, tags: [CACHE_TAG] },
-);
+export async function getDataset(): Promise<Dataset> {
+  const stored = await readDataset();
+  return withCurated(stored);
+}
 
 function withCurated(dataset: Dataset): Dataset {
   // Statuses are re-derived from the organizer's own dates at every read. An
