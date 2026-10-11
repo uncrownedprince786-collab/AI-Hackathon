@@ -191,6 +191,18 @@ export function mergeClaimedPrize(
   return fresh ?? prev;
 }
 
+/**
+ * Failure-safe publication decision: when the previous dataset is non-empty and
+ * every source reports no data this run, the refresh must preserve the last
+ * known good dataset instead of overwriting it with an empty/fresh-stamped one.
+ */
+export function shouldPreserveLastGood(
+  previousCount: number,
+  sources: SourceStatus[],
+): boolean {
+  return previousCount > 0 && !sources.some((s) => s.ok);
+}
+
 export async function collectDataset(
   options: CollectOptions = {},
 ): Promise<CollectResult> {
@@ -202,6 +214,9 @@ export async function collectDataset(
 
   const previous = await readDataset();
   const previousById = new Map(previous.hackathons.map((h) => [h.id, h]));
+  const prevSources = new Map(
+    (previous.meta.sources ?? []).map((s) => [s.name, s] as const),
+  );
   const sources: SourceStatus[] = [];
   const enabled = new Set(options.sources ?? SOURCE_REGISTRY.map((a) => a.id));
   const seenIds = new Set<string>();
@@ -232,6 +247,7 @@ export async function collectDataset(
         url: adapter.homepage,
         ok: result.fetched > 0,
         fetched: result.fetched,
+        lastOkAt: result.fetched > 0 ? nowIso : prevSources.get(adapter.name)?.lastOkAt,
       });
     } catch (error) {
       sources.push({
@@ -239,6 +255,7 @@ export async function collectDataset(
         url: adapter.homepage,
         ok: false,
         fetched: 0,
+        lastOkAt: prevSources.get(adapter.name)?.lastOkAt,
         error: (error as Error).message,
       });
     }
@@ -250,11 +267,16 @@ export async function collectDataset(
   // which runs offline in GitHub Actions. They are already detailed, so the
   // engine treats them exactly like any other source: prizes accounted, global
   // dedupe by URL/name/identity, then publish/hold/reject.
+  const WEB_SOURCE_URL =
+    "https://github.com/uncrownedprince786-collab/AI-Hackathon/blob/main/src/data/web-drafts.json";
   const useWeb = options.useWeb ?? true;
   if (useWeb) {
-    const webDrafts = await loadWebDrafts();
+    const { collectedAt, drafts: webDrafts } = await loadWebDrafts();
     const nowWeb = now.toISOString();
     let accepted = 0;
+    // Web records carry the collected site's own name (e.g. "deep-tech-week"),
+    // so meta.sources keeps one entry per site, matching the records.
+    const bySite = new Map<string, { count: number; url: string }>();
     if (webDrafts.length > 0) {
       LOG(`web drafts: ${webDrafts.length}`);
       for (const draft of webDrafts) {
@@ -263,17 +285,68 @@ export async function collectDataset(
         seenIds.add(h.id);
         drafts.push(h);
         accepted += 1;
+        const agg = bySite.get(h.sourceName) ?? { count: 0, url: h.officialUrl };
+        agg.count += 1;
+        if (!bySite.has(h.sourceName)) bySite.set(h.sourceName, agg);
       }
-      sources.push({
-        name: "Authentic web pages",
-        url: "https://github.com/uncrownedprince786-collab/AI-Hackathon/blob/main/.github/workflows/daily-collect.yml",
-        ok: accepted > 0,
-        fetched: accepted,
-      });
       // Keep the timestamps on fresh drafts consistent with this run.
       for (const d of drafts) if (d.id.startsWith("web-")) d.updatedAt = nowWeb;
     }
     LOG(`web drafts accepted: ${accepted}`);
+
+    // Sites of web records we still carry (retained from earlier runs) stay in
+    // meta.sources, marked stale, so a quiet web collector is visible instead of
+    // silently dropping the source — and source names always match records.
+    const carriedWebSites = new Map<string, { url: string; lastOkAt: string }>();
+    for (const h of previous.hackathons) {
+      if (h.sourceName === "Curated") continue;
+      if (SOURCE_REGISTRY.some((a) => a.name === h.sourceName)) continue;
+      if (!h.id.startsWith("web-")) continue;
+      carriedWebSites.set(h.sourceName, {
+        url: carriedWebSites.get(h.sourceName)?.url ?? h.officialUrl,
+        lastOkAt: h.updatedAt,
+      });
+    }
+    const webSites = new Set<string>([...bySite.keys(), ...carriedWebSites.keys()]);
+    for (const name of webSites) {
+      const fresh = bySite.get(name);
+      const prev = prevSources.get(name);
+      if (fresh) {
+        sources.push({
+          name,
+          url: fresh.url || prev?.url || WEB_SOURCE_URL,
+          ok: true,
+          fetched: fresh.count,
+          lastOkAt: collectedAt ?? prev?.lastOkAt ?? carriedWebSites.get(name)?.lastOkAt,
+        });
+      } else {
+        sources.push({
+          name,
+          url: prev?.url || carriedWebSites.get(name)?.url || WEB_SOURCE_URL,
+          ok: false,
+          fetched: 0,
+          lastOkAt: prev?.lastOkAt ?? carriedWebSites.get(name)?.lastOkAt,
+          error: (prev?.lastOkAt ?? carriedWebSites.get(name)?.lastOkAt)
+            ? "no new web drafts since the last collected batch"
+            : "no web data yet",
+        });
+      }
+    }
+  }
+
+  // Failure-safe publication: when every source reports no data this run, do
+  // not overwrite the last known good dataset and do not re-stamp its
+  // "lastUpdated" — a broken run must never masquerade as a fresh one. The
+  // updated source statuses still get committed so the failure is visible.
+  if (previous.hackathons.length > 0 && !sources.some((s) => s.ok)) {
+    LOG("all sources reported no data; preserving the last known good dataset");
+    return {
+      dataset: { ...previous, meta: { ...previous.meta, sources } },
+      writtenTo: "json",
+      added: 0,
+      updated: 0,
+      removed: 0,
+    };
   }
 
   // Preserve hand-checked data and skip re-fetching pages we already enriched.

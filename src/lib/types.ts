@@ -73,6 +73,8 @@ export interface SourceStatus {
   url: string;
   ok: boolean;
   fetched: number;
+  /** When this source last produced data. Absent = never succeeded. */
+  lastOkAt?: string;
   error?: string;
 }
 

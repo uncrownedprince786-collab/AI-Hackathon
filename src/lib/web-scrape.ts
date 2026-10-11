@@ -81,9 +81,18 @@ async function writeJson(file: string, value: unknown): Promise<void> {
   await fs.writeFile(file, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
-export async function loadWebDrafts(): Promise<WebDraft[]> {
-  const data = await readJson<{ records?: WebDraft[] }>(WEB_DRAFTS_FILE, {});
-  return Array.isArray(data.records) ? data.records : [];
+export async function loadWebDrafts(): Promise<{
+  collectedAt?: string;
+  drafts: WebDraft[];
+}> {
+  const data = await readJson<{
+    collectedAt?: string;
+    records?: WebDraft[];
+  }>(WEB_DRAFTS_FILE, {});
+  return {
+    collectedAt: data.collectedAt,
+    drafts: Array.isArray(data.records) ? data.records : [],
+  };
 }
 
 export async function loadWinnerSummaries(): Promise<WinnerSummaryEntry[]> {
