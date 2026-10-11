@@ -92,8 +92,15 @@ export async function getPosts(): Promise<BlogPost[]> {
   }
 
   posts.sort((a, b) => b.date.localeCompare(a.date));
-  cache = posts;
-  return posts;
+  const deduped = new Map<string, BlogPost>();
+  for (const p of posts) {
+    const existing = deduped.get(p.slug);
+    if (!existing || p.date > existing.date) {
+      deduped.set(p.slug, p);
+    }
+  }
+  cache = [...deduped.values()].sort((a, b) => b.date.localeCompare(a.date));
+  return cache;
 }
 
 export async function getPost(slug: string): Promise<BlogPost | null> {
