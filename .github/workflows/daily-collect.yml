@@ -1,12 +1,14 @@
 name: Collect worldwide web sources
 
-# Human-like Puppeteer collector for authentic global AI hackathons, followed
-# by a data refresh through the accuracy engine. Runs behind the scenes only:
-# the frontend receives the final clean dataset. Committing the collected data
-# triggers the Vercel deployment.
+# RETIRED from the schedule on 2026-10-11: the open-web Puppeteer collector
+# stopped completing in CI (one failure on Oct 8, then cancelled runs Oct 9-11)
+# because the search engines it leans on block datacenter IPs. It produced ~2
+# retained records in its lifetime. Kept as a MANUAL-ONLY tool: anyone can run
+# it from the Actions tab, and the accuracy engine still folds the drafts in.
+# Any records it produced stay in the dataset under each site's own name, and
+# the sites are documented in meta.retiredSources so nothing reads as a
+# silently stale active source. The 6-hour cadence is refresh-data.yml.
 on:
-  schedule:
-    - cron: "17 3 * * *"
   workflow_dispatch:
 
 permissions:

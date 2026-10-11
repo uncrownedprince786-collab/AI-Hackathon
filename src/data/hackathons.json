@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastUpdated": "2026-10-11T15:43:30.780Z",
-    "cronSchedule": "0 */6 * * *",
+    "cronSchedule": "17 */6 * * *",
     "total": 109,
     "counts": {
       "upcoming": 23,
@@ -22,13 +22,19 @@
         "ok": true,
         "fetched": 24,
         "lastOkAt": "2026-10-11T15:43:30.780Z"
-      },
+      }
+    ],
+    "retiredSources": [
       {
         "name": "vercel",
         "url": "https://wonders-of-ai-kare.vercel.app/",
-        "ok": true,
+        "ok": false,
         "fetched": 1,
-        "lastOkAt": "2026-10-07T11:06:31.084Z"
+        "lastOkAt": "2026-10-07T11:06:31.084Z",
+        "lastCollectedAt": "2026-10-07T11:06:31.084Z",
+        "retiredAt": "2026-10-11T16:45:00.000Z",
+        "reason": "Web collector retired on 2026-10-11: open-web Puppeteer runs stopped completing in CI (one failure on Oct 8, then cancelled runs Oct 9-11); its only draft (WONDERS OF AI) never cleared the accuracy gate",
+        "error": "retired — not collected on a schedule"
       },
       {
         "name": "deep-tech-week",
@@ -36,7 +42,10 @@
         "ok": false,
         "fetched": 0,
         "lastOkAt": "2026-10-07T10:59:11.999Z",
-        "error": "no new web drafts since the last collected batch"
+        "lastCollectedAt": "2026-10-07T10:59:11.999Z",
+        "retiredAt": "2026-10-11T16:45:00.000Z",
+        "reason": "Web collector retired on 2026-10-11: open-web Puppeteer runs stopped completing in CI (one failure on Oct 8, then cancelled runs Oct 9-11); this site contributed 1 retained record (London AI x Science Hackathon 2026)",
+        "error": "retired — not collected on a schedule"
       },
       {
         "name": "upenn",
@@ -44,7 +53,10 @@
         "ok": false,
         "fetched": 0,
         "lastOkAt": "2026-10-07T10:59:11.999Z",
-        "error": "no new web drafts since the last collected batch"
+        "lastCollectedAt": "2026-10-07T10:59:11.999Z",
+        "retiredAt": "2026-10-11T16:45:00.000Z",
+        "reason": "Web collector retired on 2026-10-11: open-web Puppeteer runs stopped completing in CI (one failure on Oct 8, then cancelled runs Oct 9-11); this site contributed 1 retained record (Wharton Hack-AI-thon 2027)",
+        "error": "retired — not collected on a schedule"
       }
     ],
     "totalPrizeUsd": 5265272,

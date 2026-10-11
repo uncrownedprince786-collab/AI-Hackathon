@@ -14,7 +14,9 @@ Repository: `github.com/uncrownedprince786-collab/AI-Hackathon`
 
 - Next.js 15 (App Router, React 19, TypeScript)
 - Tailwind CSS v4 + shadcn-style components + Lucide icons
-- Data from Devpost and lablab.ai public pages
+- Data from Devpost and lablab.ai public pages (refreshed every 6 hours). A
+  retired open-web collector's records are preserved and its sites documented
+  in `meta.retiredSources` (see *Source coverage* below)
 - JSON file locally, Supabase in production, ISR revalidation every 6 hours
 
 ## Getting started
@@ -35,6 +37,7 @@ npm run dev
 | `npm run lint` | ESLint |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run refresh:data` | Re-read the sources and rewrite `src/data/hackathons.json` |
+| `npm run scrape:web` | Manual open-web collector (Puppeteer, retired from CI) — drafts feed the accuracy engine |
 | `npx tsx scripts/generate-post.ts` | Write today's blog article into `content/blog` (no key needed) |
 | `node scripts/check-links.mjs` | Crawl every internal link on a running server |
 
@@ -73,35 +76,41 @@ so an event moves from upcoming to ongoing to past on its own.
 | `/blog` | Short plain-English AI articles, one per day |
 | `/blog/[slug]` | A single article |
 | `/privacy` | Plain-language notice about the public data we show |
-| `/api/cron/refresh` | Refresh endpoint, called by cron every 6 hours |
+| `/api/health` | Read-only report: service health and per-source freshness |
 | `/sitemap.xml`, `/robots.txt` | Generated from the dataset |
 
 ## Automatic updates
 
-`GET` or `POST /api/cron/refresh` reads the public sources, saves the dataset, then
-calls `revalidateTag` and `revalidatePath` so every cached page picks up the new
-numbers. It requires `Authorization: Bearer <CRON_SECRET>`.
+`.github/workflows/refresh-data.yml` runs every 6 hours (cron `17 */6 * * *`,
+plus a manual *Run workflow* button): it re-reads the public sources, pushes
+them through the accuracy engine, commits `src/data/hackathons.json`, and
+pushes. The Vercel Git integration then deploys the new commit. No secrets and
+no writable store are required: the dataset lives in the repository, so
+Vercel's read-only filesystem is never a problem.
 
-It is called from two places:
+There is no Vercel cron and no `/api/cron/refresh` endpoint anymore. A read-only
+**`GET /api/health`** reports service health (is the dataset intact and
+computing?) separately from source coverage (are the active sources fresh on
+the 6-hour schedule?), plus the documented retired sources. `healthy` is true
+only when both hold.
 
-1. **GitHub Actions**, every 6 hours — `.github/workflows/refresh-data.yml`
-   (cron `17 */6 * * *`, plus a manual *Run workflow* button). This is what keeps
-   the 6-hour cadence.
-2. **Vercel Cron**, once a day at 09:00 UTC — `vercel.json`. Vercel's Hobby plan
-   rejects anything more frequent than daily, so this is only a backstop. On the
-   Pro plan, change the schedule in `vercel.json` to `0 */6 * * *` and delete the
-   workflow if you prefer to keep everything in Vercel.
+### Source coverage
 
-The endpoint answers `503` with a `warning` field when it collected successfully but
-could not save, which is what happens on Vercel before Supabase is configured. The
-workflow treats any non-`200` as a failure so it is visible in the Actions log.
+| Site | Status | Role |
+| --- | --- | --- |
+| Devpost | active, every 6 h | main listing + detail enrichment |
+| lablab.ai | active, every 6 h | secondary listing |
+| deep-tech-week | retired 2026-10-11 | 1 retained record (London AI x Science Hackathon 2026) |
+| upenn | retired 2026-10-11 | 1 retained record (Wharton Hack-AI-thon 2027) |
+| vercel | retired 2026-10-11 | 1 draft never cleared the accuracy gate |
 
-### GitHub Actions secrets
-
-| Secret | Value |
-| --- | --- |
-| `SITE_URL` | `https://ai-hackathons-tawny.vercel.app` (a repository variable works too) |
-| `CRON_SECRET` | The same value as the Vercel `CRON_SECRET` env var |
+Retired sites are listed in `meta.retiredSources` with their last-collected
+timestamps and the reason, and never count against coverage — so a historical
+source can't read as "active but silently stale". Their records stay in the
+dataset under each site's own name. `.github/workflows/daily-collect.yml` (the
+Puppeteer open-web collector) is kept as a manual-only tool: it stopped
+completing in CI on Oct 8 2026 because the search engines it relies on block
+datacenter IPs, and produced only ~2 retained records in its lifetime.
 
 ### Daily blog article
 
@@ -111,9 +120,11 @@ templates, using only facts taken from the dataset, and commits it, which trigge
 a new Vercel deployment. It only ever creates a file for the current day, so it
 can never overwrite an article, and it needs no API key.
 
-## Supabase (required for production writes)
+## Supabase (optional legacy writes)
 
-Vercel's filesystem is read-only, so the refresh job needs a writable store.
+Production refreshes commit straight to the repository (see *Automatic
+updates*), so a writable database is not needed. The old code path in
+`src/lib/store.ts` can still mirror to Supabase if configured:
 
 1. Create a Supabase project.
 2. Add these Vercel **production** env vars:
@@ -121,10 +132,8 @@ Vercel's filesystem is read-only, so the refresh job needs a writable store.
    - `SUPABASE_SERVICE_ROLE_KEY` — service role key (writes need it; the anon key
      can only read)
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — optional, reads only
-3. Redeploy, then call the refresh endpoint once to confirm `storage: "supabase"`.
 
-Without those, the site still serves the committed JSON dataset, but the cron will
-report that it could not save.
+Without those, the site serves the committed JSON dataset.
 
 ## Deploy
 

@@ -78,12 +78,37 @@ export interface SourceStatus {
   error?: string;
 }
 
+/**
+ * A source that is no longer collected on a schedule. Kept in the meta so a
+ * historical source can never read as "active but silently stale": it appears
+ * here with a retiredAt timestamp and the reason, while any records it
+ * produced stay in the dataset under its own name.
+ */
+export interface RetiredSourceStatus {
+  name: string;
+  url?: string;
+  /** Always false after retirement: the entry documents history, not activity. */
+  ok: boolean;
+  fetched: number;
+  /** When this site last produced data while it was still collected. */
+  lastOkAt?: string;
+  /** When the last collected draft batch for this site was written. */
+  lastCollectedAt?: string;
+  /** When the source was retired from the scheduled pipeline. */
+  retiredAt: string;
+  reason?: string;
+  error?: string;
+}
+
 export interface DatasetMeta {
   lastUpdated: string;
   cronSchedule: string;
   total: number;
   counts: Record<HackathonStatus, number>;
+  /** Sources that are actively collected on the schedule. */
   sources: SourceStatus[];
+  /** Sources retired from the schedule, documented so they are not shown as stale-active. */
+  retiredSources?: RetiredSourceStatus[];
   totalPrizeUsd: number;
   /** Global coverage, read from the location text organizers publish. */
   countries?: { country: string; count: number }[];

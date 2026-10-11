@@ -30,6 +30,17 @@ async function main() {
         lastOkAt?: string;
         error?: string;
       }[];
+      retiredSources?: {
+        name: string;
+        url?: string;
+        ok: boolean;
+        fetched: number;
+        lastOkAt?: string;
+        lastCollectedAt?: string;
+        retiredAt: string;
+        reason?: string;
+        error?: string;
+      }[];
       countries?: { country: string; count: number }[];
     };
     hackathons: Hackathon[];
@@ -147,24 +158,32 @@ async function main() {
   console.log("\n-- source honesty");
   const recordSources = new Map<string, number>();
   for (const h of stored) recordSources.set(h.sourceName, (recordSources.get(h.sourceName) ?? 0) + 1);
-  const metaSources = new Map(dataset.meta.sources.map((s) => [s.name, s]));
-  console.log("  record sourceName -> count (|| in meta):");
+  const activeNames = new Set(dataset.meta.sources.map((s) => s.name));
+  const retiredNames = new Set((dataset.meta.retiredSources ?? []).map((s) => s.name));
+  console.log("  record sourceName -> count (active | retired):");
   for (const [name, count] of [...recordSources.entries()].sort((a, b) => b[1] - a[1])) {
-    console.log(`    ${name.padEnd(24)} ${count}   ${metaSources.has(name) ? "in meta" : "** MISSING FROM meta.sources **"}`);
+    const where = activeNames.has(name) ? "active" : retiredNames.has(name) ? "retired" : "** MISSING **";
+    console.log(`    ${name.padEnd(24)} ${count}   ${where}`);
   }
-  const missingFromMeta = [...recordSources.keys()].filter((s) => !metaSources.has(s));
-  if (missingFromMeta.length) console.log(`  DEFECT: records whose source is missing from meta.sources: ${missingFromMeta.join(", ")}`);
+  const unaccounted = [...recordSources.keys()].filter((s) => !activeNames.has(s) && !retiredNames.has(s));
+  if (unaccounted.length)
+    console.log(`  DEFECT: records whose source is neither active nor retired: ${unaccounted.join(", ")}`);
+  console.log("  active sources (must be fresh on the 6-hour schedule):");
+  const STALE_MS = 9 * 3600 * 1000;
   for (const s of dataset.meta.sources) {
-    if (!recordSources.has(s.name)) {
-      if (s.ok) console.log(`  meta source "${s.name}" read data but every record was held/rejected by the accuracy gate (not a defect)`);
-      else if (!s.lastOkAt) console.log(`  meta source "${s.name}" is dead: ok=false and never produced (lastOkAt missing)`);
-    }
+    const stale = !s.ok || !s.lastOkAt || Date.now() - Date.parse(s.lastOkAt) > STALE_MS;
+    if (stale) console.log(`    ${s.name.padEnd(24)} STALE: ok=${s.ok} fetched=${s.fetched} lastOkAt=${s.lastOkAt ?? "none"}`);
+    else console.log(`    ${s.name.padEnd(24)} ok=${s.ok} fetched=${s.fetched} lastOkAt=${s.lastOkAt ?? "none"}`);
   }
   const noTimestamp = dataset.meta.sources.filter((s) => !("lastOkAt" in s) && recordSources.has(s.name));
   if (noTimestamp.length)
-    console.log(`  DEFECT: sources with records but NO lastOkAt (stale-hiding): ${noTimestamp.map((s) => s.name).join(", ")}`);
-  console.log("  per-source lastOkAt:");
-  for (const s of dataset.meta.sources) console.log(`    ${s.name.padEnd(24)} ok=${s.ok} fetched=${s.fetched} lastOkAt=${s.lastOkAt ?? "none"}`);
+    console.log(`  DEFECT: active sources with records but NO lastOkAt (stale-hiding): ${noTimestamp.map((s) => s.name).join(", ")}`);
+  console.log("  retired sources (documented history, never counted against coverage):");
+  for (const s of dataset.meta.retiredSources ?? []) {
+    console.log(
+      `    ${s.name.padEnd(24)} retiredAt=${s.retiredAt} lastCollectedAt=${s.lastCollectedAt ?? "none"} fetched=${s.fetched} — ${(s.reason ?? "").slice(0, 80)}`,
+    );
+  }
 
   console.log("\n-- URL checks");
   const equalUrls = stored.filter((h) => h.officialUrl === h.sourceUrl).length;

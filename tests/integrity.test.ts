@@ -110,3 +110,30 @@ test("production dataset: canonical invariants hold over the merged Dataset", as
   assert.equal(s.totalWinners, curatedWinners);
   assert.equal(s.withWinners, curatedHackathons.length);
 });
+
+test("production dataset: active sources are the live adapters; web sites are retired and documented", async () => {
+  const file = path.join(process.cwd(), "src", "data", "hackathons.json");
+  const dataset = JSON.parse(await fs.readFile(file, "utf8")) as {
+    meta: {
+      sources: { name: string; ok: boolean; lastOkAt?: string }[];
+      retiredSources?: { name: string; retiredAt: string; lastCollectedAt?: string }[];
+    };
+  };
+
+  // Active sources: exactly the SOURCE_REGISTRY adapters, all reporting ok with
+  // a lastOkAt timestamp (nothing silently stale).
+  const active = dataset.meta.sources.map((s) => s.name).sort();
+  assert.deepEqual(active, ["Devpost", "lablab.ai"]);
+  for (const s of dataset.meta.sources) {
+    assert.ok(s.ok, `${s.name} must report ok`);
+    assert.ok(s.lastOkAt, `${s.name} must carry lastOkAt`);
+  }
+
+  // Former web sites are documented as retired, never counted against coverage.
+  const retired = (dataset.meta.retiredSources ?? []).map((s) => s.name).sort();
+  assert.deepEqual(retired, ["deep-tech-week", "upenn", "vercel"]);
+  for (const s of dataset.meta.retiredSources ?? []) {
+    assert.ok(s.retiredAt, `${s.name} must carry retiredAt`);
+    assert.ok(s.lastCollectedAt, `${s.name} must carry lastCollectedAt`);
+  }
+});

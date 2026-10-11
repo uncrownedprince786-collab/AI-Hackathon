@@ -12,7 +12,13 @@ import {
 } from "./web-scrape";
 import { detectCountry, detectRegion } from "./geo";
 import { cleanWinners } from "./winners";
-import type { Dataset, Hackathon, HackathonStatus, SourceStatus } from "./types";
+import type {
+  Dataset,
+  Hackathon,
+  HackathonStatus,
+  RetiredSourceStatus,
+  SourceStatus,
+} from "./types";
 import { CACHE_TAG, hasSupabase, readDataset, writeDataset, type StorageTarget } from "./store";
 
 export interface CollectOptions {
@@ -263,19 +269,26 @@ export async function collectDataset(
 
   LOG(`total drafts: ${drafts.length}`);
 
-  // Web drafts come from the human-like Puppeteer collector (scripts/scrape.ts),
-  // which runs offline in GitHub Actions. They are already detailed, so the
-  // engine treats them exactly like any other source: prizes accounted, global
-  // dedupe by URL/name/identity, then publish/hold/reject.
+  // The open-web Puppeteer collector (scripts/scrape.ts) is RETIRED from the
+  // schedule: the search engines it leans on block CI-scale IPs, and scheduled
+  // runs stopped completing on Oct 8 2026 (one failure, then daily
+  // cancellations). A manual `npm run scrape:web` can still feed fresh drafts
+  // through the accuracy engine exactly like any other source, but the sites it
+  // produced records for are no longer tracked as active sources. They are
+  // documented in meta.retiredSources instead, so nothing reads as a silently
+  // stale active source — and records it produced stay in the dataset under
+  // each site's own name.
   const WEB_SOURCE_URL =
     "https://github.com/uncrownedprince786-collab/AI-Hackathon/blob/main/src/data/web-drafts.json";
+  const RETIRED_WEB_REASON =
+    "Web collector retired on 2026-10-11: open-web Puppeteer runs stopped completing in CI (one failure on Oct 8, then cancelled runs Oct 9-11); records it produced are retained in the dataset";
   const useWeb = options.useWeb ?? true;
+  const retiredWeb: RetiredSourceStatus[] = [];
   if (useWeb) {
     const { collectedAt, drafts: webDrafts } = await loadWebDrafts();
     const nowWeb = now.toISOString();
     let accepted = 0;
-    // Web records carry the collected site's own name (e.g. "deep-tech-week"),
-    // so meta.sources keeps one entry per site, matching the records.
+    // Web records carry the collected site's own name (e.g. "deep-tech-week").
     const bySite = new Map<string, { count: number; url: string }>();
     if (webDrafts.length > 0) {
       LOG(`web drafts: ${webDrafts.length}`);
@@ -294,9 +307,10 @@ export async function collectDataset(
     }
     LOG(`web drafts accepted: ${accepted}`);
 
-    // Sites of web records we still carry (retained from earlier runs) stay in
-    // meta.sources, marked stale, so a quiet web collector is visible instead of
-    // silently dropping the source — and source names always match records.
+    // Sites of web records we still carry (retained from earlier runs) are,
+    // like all web sites, retired entries — never active sources. The union of
+    // fresh drafts, carried records and previous retired entries keeps the list
+    // stable across refreshes.
     const carriedWebSites = new Map<string, { url: string; lastOkAt: string }>();
     for (const h of previous.hackathons) {
       if (h.sourceName === "Curated") continue;
@@ -307,30 +321,33 @@ export async function collectDataset(
         lastOkAt: h.updatedAt,
       });
     }
-    const webSites = new Set<string>([...bySite.keys(), ...carriedWebSites.keys()]);
-    for (const name of webSites) {
+    const prevRetired = new Map(
+      (previous.meta.retiredSources ?? []).map((s) => [s.name, s] as const),
+    );
+    const retiredNames = new Set<string>([
+      ...bySite.keys(),
+      ...carriedWebSites.keys(),
+      ...[...prevRetired.keys()].filter(
+        (n) => !SOURCE_REGISTRY.some((a) => a.name === n),
+      ),
+    ]);
+    for (const name of retiredNames) {
       const fresh = bySite.get(name);
+      const carried = carriedWebSites.get(name);
       const prev = prevSources.get(name);
-      if (fresh) {
-        sources.push({
-          name,
-          url: fresh.url || prev?.url || WEB_SOURCE_URL,
-          ok: true,
-          fetched: fresh.count,
-          lastOkAt: collectedAt ?? prev?.lastOkAt ?? carriedWebSites.get(name)?.lastOkAt,
-        });
-      } else {
-        sources.push({
-          name,
-          url: prev?.url || carriedWebSites.get(name)?.url || WEB_SOURCE_URL,
-          ok: false,
-          fetched: 0,
-          lastOkAt: prev?.lastOkAt ?? carriedWebSites.get(name)?.lastOkAt,
-          error: (prev?.lastOkAt ?? carriedWebSites.get(name)?.lastOkAt)
-            ? "no new web drafts since the last collected batch"
-            : "no web data yet",
-        });
-      }
+      const prior = prevRetired.get(name);
+      const lastOkAt = prev?.lastOkAt ?? prior?.lastOkAt ?? carried?.lastOkAt;
+      retiredWeb.push({
+        name,
+        url: fresh?.url || prev?.url || prior?.url || carried?.url || WEB_SOURCE_URL,
+        ok: false,
+        fetched: fresh?.count ?? prev?.fetched ?? prior?.fetched ?? 0,
+        lastOkAt,
+        lastCollectedAt: fresh ? (collectedAt ?? nowIso) : (prior?.lastCollectedAt ?? lastOkAt),
+        retiredAt: prior?.retiredAt ?? nowIso,
+        reason: prior?.reason ?? RETIRED_WEB_REASON,
+        error: "retired — not collected on a schedule",
+      });
     }
   }
 
@@ -341,7 +358,15 @@ export async function collectDataset(
   if (previous.hackathons.length > 0 && !sources.some((s) => s.ok)) {
     LOG("all sources reported no data; preserving the last known good dataset");
     return {
-      dataset: { ...previous, meta: { ...previous.meta, sources } },
+      dataset: {
+        ...previous,
+        meta: {
+          ...previous.meta,
+          cronSchedule: "17 */6 * * *",
+          sources,
+          retiredSources: previous.meta.retiredSources ?? [],
+        },
+      },
       writtenTo: "json",
       added: 0,
       updated: 0,
@@ -507,11 +532,19 @@ export async function collectDataset(
     if (country) countries.set(country, (countries.get(country) ?? 0) + 1);
   }
 
+  const prevRetiredList = previous.meta.retiredSources ?? [];
+  const retiredByName = new Map(retiredWeb.map((r) => [r.name, r] as const));
+  const retiredSources = [
+    ...prevRetiredList.filter((r) => !retiredByName.has(r.name)),
+    ...retiredWeb,
+  ];
+
   const dataset: Dataset = {
     meta: {
       ...previous.meta,
       lastUpdated: nowIso,
-      cronSchedule: "0 */6 * * *",
+      // Kept in lock-step with .github/workflows/refresh-data.yml.
+      cronSchedule: "17 */6 * * *",
       total: verified.length,
       counts,
       totalPrizeUsd,
@@ -520,6 +553,7 @@ export async function collectDataset(
         .map(([country, count]) => ({ country, count })),
       regions: summariseRegions(verified),
       sources,
+      retiredSources,
     },
     hackathons: verified,
   };
