@@ -1,9 +1,15 @@
 {
-  "fetchedAt": "2026-10-13T12:48:42.475Z",
+  "fetchedAt": "2026-10-14T10:21:46.519Z",
   "items": [
     {
       "title": "Anthropic study warns that small AI models could soon replicate across everyday devices",
       "link": "https://the-decoder.com/anthropic-study-warns-that-small-ai-models-could-soon-replicate-across-everyday-devices/",
+      "source": "The Decoder",
+      "date": "2026-10-13"
+    },
+    {
+      "title": "406 scientists demand AI models be cut off from the internet immediately",
+      "link": "https://the-decoder.com/406-scientists-demand-ai-models-be-cut-off-from-the-internet-immediately/",
       "source": "The Decoder",
       "date": "2026-10-13"
     },
@@ -20,16 +26,10 @@
       "date": "2026-10-12"
     },
     {
-      "title": "Meta's new frontier model Muse Wonder Full breaks into the AI top tier",
-      "link": "https://the-decoder.com/metas-new-frontier-model-muse-wonder-full-breaks-into-the-ai-top-tier/",
-      "source": "The Decoder",
-      "date": "2026-10-12"
-    },
-    {
-      "title": "Sakana AI's self-improving model gets better at solving and judging, but can't catch its own blind spots",
-      "link": "https://the-decoder.com/sakana-ais-self-improving-model-gets-better-at-solving-and-judging-but-cant-catch-its-own-blind-spots/",
-      "source": "The Decoder",
-      "date": "2026-10-12"
+      "title": "Artificiality's First Exam: An LLM-Referenced C-test for Supraintelligence",
+      "link": "https://arxiv.org/abs/2610.14005",
+      "source": "arXiv AI",
+      "date": "2026-10-14"
     }
   ]
 }
