@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-10-14T10:21:46.519Z",
+  "fetchedAt": "2026-10-15T10:07:14.520Z",
   "items": [
     {
-      "title": "Anthropic study warns that small AI models could soon replicate across everyday devices",
-      "link": "https://the-decoder.com/anthropic-study-warns-that-small-ai-models-could-soon-replicate-across-everyday-devices/",
+      "title": "Ricursive Intelligence is betting on AI-designed chips to help solve the compute crisis",
+      "link": "https://techcrunch.com/2026/10/14/ricursive-intelligence-is-betting-on-ai-designed-chips-to-help-solve-the-compute-crisis/",
+      "source": "TechCrunch",
+      "date": "2026-10-15"
+    },
+    {
+      "title": "Researchers tracked down a rogue fleet of Chinese AI agents in the wild and actually talked to it",
+      "link": "https://the-decoder.com/researchers-tracked-down-a-rogue-fleet-of-chinese-ai-agents-in-the-wild-and-actually-talked-to-it/",
       "source": "The Decoder",
-      "date": "2026-10-13"
+      "date": "2026-10-14"
+    },
+    {
+      "title": "Apate sends AI agents undercover to get scammed so they can gather fraud intelligence",
+      "link": "https://techcrunch.com/2026/10/14/apate-sends-ai-agents-undercover-to-get-scammed-so-they-can-gather-fraud-intelligence/",
+      "source": "TechCrunch",
+      "date": "2026-10-14"
+    },
+    {
+      "title": "Floqer’s AI agents research sales prospects so teams don’t have to",
+      "link": "https://techcrunch.com/2026/10/14/floqers-ai-agents-help-b2b-revenue-teams-research-customers/",
+      "source": "TechCrunch",
+      "date": "2026-10-14"
     },
     {
       "title": "406 scientists demand AI models be cut off from the internet immediately",
       "link": "https://the-decoder.com/406-scientists-demand-ai-models-be-cut-off-from-the-internet-immediately/",
       "source": "The Decoder",
       "date": "2026-10-13"
-    },
-    {
-      "title": "Anthropic says it cut Claude reasoning token theft by up to 99% in fight against industrial-scale distillation",
-      "link": "https://the-decoder.com/anthropic-says-it-cut-claude-reasoning-token-theft-by-up-to-99-in-fight-against-industrial-scale-distillation/",
-      "source": "The Decoder",
-      "date": "2026-10-13"
-    },
-    {
-      "title": "Clearing chat history helps AI agents find better solutions",
-      "link": "https://the-decoder.com/clearing-chat-history-helps-ai-agents-find-better-solutions/",
-      "source": "The Decoder",
-      "date": "2026-10-12"
-    },
-    {
-      "title": "Artificiality's First Exam: An LLM-Referenced C-test for Supraintelligence",
-      "link": "https://arxiv.org/abs/2610.14005",
-      "source": "arXiv AI",
-      "date": "2026-10-14"
     }
   ]
 }
