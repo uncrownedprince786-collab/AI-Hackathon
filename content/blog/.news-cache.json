@@ -1,16 +1,10 @@
 {
-  "fetchedAt": "2026-10-16T09:57:30.078Z",
+  "fetchedAt": "2026-10-17T09:30:27.329Z",
   "items": [
     {
-      "title": "Bank of America puts 4,000 people on fixing vulnerabilities uncovered by Anthropic's Mythos and other AI models",
-      "link": "https://the-decoder.com/bank-of-america-puts-4000-people-on-fixing-vulnerabilities-uncovered-by-anthropics-mythos-and-other-ai-models/",
+      "title": "Anthropic gives METR inside access to audit its AI models and safety practices",
+      "link": "https://the-decoder.com/anthropic-gives-metr-inside-access-to-audit-its-ai-models-and-safety-practices/",
       "source": "The Decoder",
-      "date": "2026-10-15"
-    },
-    {
-      "title": "Feature Elicitation for SAE Steering of Deceptive Behaviour in Small LLMs",
-      "link": "https://arxiv.org/abs/2610.20638",
-      "source": "arXiv ML",
       "date": "2026-10-16"
     },
     {
@@ -20,16 +14,22 @@
       "date": "2026-10-15"
     },
     {
-      "title": "Nvidia's Nemotron 3.5 Super VL is an open model built to run enterprise AI agents nonstop",
-      "link": "https://the-decoder.com/nvidias-nemotron-3-5-super-vl-is-an-open-model-built-to-run-enterprise-ai-agents-nonstop/",
-      "source": "The Decoder",
-      "date": "2026-10-15"
+      "title": "Value-Informed Schedule Trimming for Accelerated Sequential Monte Carlo Guidance in Discrete Diffusion",
+      "link": "https://arxiv.org/abs/2610.20669",
+      "source": "arXiv AI",
+      "date": "2026-10-17"
     },
     {
-      "title": "AI agents are coming to Rivian’s cars",
-      "link": "https://techcrunch.com/2026/10/15/ai-agents-are-coming-to-rivians-cars/",
-      "source": "TechCrunch",
-      "date": "2026-10-15"
+      "title": "L2G-SR: Learning to Guide LLM-based Symbolic Regression",
+      "link": "https://arxiv.org/abs/2610.20685",
+      "source": "arXiv AI",
+      "date": "2026-10-17"
+    },
+    {
+      "title": "Mathematicians say OpenAI doesn't understand its own Navier-Stokes proof",
+      "link": "https://the-decoder.com/mathematicians-say-openai-doesnt-understand-its-own-navier-stokes-proof/",
+      "source": "The Decoder",
+      "date": "2026-10-17"
     }
   ]
 }
