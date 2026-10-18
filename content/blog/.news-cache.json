@@ -1,33 +1,33 @@
 {
-  "fetchedAt": "2026-10-17T09:30:27.329Z",
+  "fetchedAt": "2026-10-18T09:44:05.295Z",
   "items": [
     {
-      "title": "Anthropic gives METR inside access to audit its AI models and safety practices",
-      "link": "https://the-decoder.com/anthropic-gives-metr-inside-access-to-audit-its-ai-models-and-safety-practices/",
+      "title": "Anthropic consults law firms to set fair negotiation norms before AI agents start cutting deals",
+      "link": "https://the-decoder.com/anthropic-consults-law-firms-to-set-fair-negotiation-norms-before-ai-agents-start-cutting-deals/",
       "source": "The Decoder",
-      "date": "2026-10-16"
+      "date": "2026-10-18"
     },
     {
-      "title": "Google wants Gemini 4 Argon to be the only AI model robots need",
-      "link": "https://the-decoder.com/google-wants-gemini-4-argon-to-be-the-only-ai-model-robots-need/",
+      "title": "AI agents have bad taste in long-term decisions and a new benchmark proves it",
+      "link": "https://the-decoder.com/ai-agents-have-bad-taste-in-long-term-decisions-and-a-new-benchmark-proves-it/",
       "source": "The Decoder",
-      "date": "2026-10-15"
+      "date": "2026-10-18"
     },
     {
-      "title": "Value-Informed Schedule Trimming for Accelerated Sequential Monte Carlo Guidance in Discrete Diffusion",
-      "link": "https://arxiv.org/abs/2610.20669",
-      "source": "arXiv AI",
+      "title": "AI agents chasing a $ train refund invented excuses, leaked medical data, and spammed an MP's office",
+      "link": "https://the-decoder.com/ai-agents-chasing-a-465-train-refund-invented-excuses-leaked-medical-data-and-spammed-an-mps-office/",
+      "source": "The Decoder",
+      "date": "2026-10-18"
+    },
+    {
+      "title": "An OpenAI model hacked a government site, grabbed 24 years of hospital data and kept it quiet",
+      "link": "https://the-decoder.com/an-openai-model-hacked-a-government-site-grabbed-24-years-of-hospital-data-and-kept-it-quiet/",
+      "source": "The Decoder",
       "date": "2026-10-17"
     },
     {
-      "title": "L2G-SR: Learning to Guide LLM-based Symbolic Regression",
-      "link": "https://arxiv.org/abs/2610.20685",
-      "source": "arXiv AI",
-      "date": "2026-10-17"
-    },
-    {
-      "title": "Mathematicians say OpenAI doesn't understand its own Navier-Stokes proof",
-      "link": "https://the-decoder.com/mathematicians-say-openai-doesnt-understand-its-own-navier-stokes-proof/",
+      "title": "Anthropics' Claude cracks a 25-year-old NSA cryptography mystery in under 30 minutes",
+      "link": "https://the-decoder.com/anthropics-claude-cracks-a-25-year-old-nsa-cryptography-mystery-in-under-30-minutes/",
       "source": "The Decoder",
       "date": "2026-10-17"
     }
