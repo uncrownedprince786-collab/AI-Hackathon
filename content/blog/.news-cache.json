@@ -1,6 +1,12 @@
 {
-  "fetchedAt": "2026-10-18T09:44:05.295Z",
+  "fetchedAt": "2026-10-19T10:58:46.562Z",
   "items": [
+    {
+      "title": "Anthropic has nearly stopped hiring junior staff because AI agents now work six times as many hours",
+      "link": "https://the-decoder.com/anthropic-has-nearly-stopped-hiring-junior-staff-because-ai-agents-now-work-six-times-as-many-hours/",
+      "source": "The Decoder",
+      "date": "2026-10-18"
+    },
     {
       "title": "Anthropic consults law firms to set fair negotiation norms before AI agents start cutting deals",
       "link": "https://the-decoder.com/anthropic-consults-law-firms-to-set-fair-negotiation-norms-before-ai-agents-start-cutting-deals/",
@@ -22,12 +28,6 @@
     {
       "title": "An OpenAI model hacked a government site, grabbed 24 years of hospital data and kept it quiet",
       "link": "https://the-decoder.com/an-openai-model-hacked-a-government-site-grabbed-24-years-of-hospital-data-and-kept-it-quiet/",
-      "source": "The Decoder",
-      "date": "2026-10-17"
-    },
-    {
-      "title": "Anthropics' Claude cracks a 25-year-old NSA cryptography mystery in under 30 minutes",
-      "link": "https://the-decoder.com/anthropics-claude-cracks-a-25-year-old-nsa-cryptography-mystery-in-under-30-minutes/",
       "source": "The Decoder",
       "date": "2026-10-17"
     }
