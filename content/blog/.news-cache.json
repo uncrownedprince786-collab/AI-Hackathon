@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-10-20T10:12:34.669Z",
+  "fetchedAt": "2026-10-21T10:20:44.428Z",
   "items": [
     {
-      "title": "Anthropic has nearly stopped hiring junior staff because AI agents now work six times as many hours",
-      "link": "https://the-decoder.com/anthropic-has-nearly-stopped-hiring-junior-staff-because-ai-agents-now-work-six-times-as-many-hours/",
+      "title": "OpenAI acquires Orchestra Bio to build AI agents that speed up drug development",
+      "link": "https://the-decoder.com/openai-acquires-orchestra-bio-to-build-ai-agents-that-speed-up-drug-development/",
       "source": "The Decoder",
-      "date": "2026-10-18"
+      "date": "2026-10-21"
     },
     {
-      "title": "Anthropic consults law firms to set fair negotiation norms before AI agents start cutting deals",
-      "link": "https://the-decoder.com/anthropic-consults-law-firms-to-set-fair-negotiation-norms-before-ai-agents-start-cutting-deals/",
-      "source": "The Decoder",
-      "date": "2026-10-18"
+      "title": "When Planning Problems Become Hard for LLMs: Separating Structural Complexity from Semantic Interpretability",
+      "link": "https://arxiv.org/abs/2610.26964",
+      "source": "arXiv AI",
+      "date": "2026-10-21"
     },
     {
       "title": "Zero-Shot Tabular Learning via Hypergraph Reasoning with LLMs",
       "link": "https://arxiv.org/abs/2610.23923",
       "source": "arXiv ML",
+      "date": "2026-10-21"
+    },
+    {
+      "title": "OpenAI says GPT-6 is much better with legacy programming languages such as COBOL and Fortran",
+      "link": "https://the-decoder.com/openai-says-gpt-6-is-much-better-with-legacy-programming-languages-such-as-cobol-and-fortran/",
+      "source": "The Decoder",
       "date": "2026-10-20"
     },
     {
-      "title": "Microsoft says AI agents are like insider threats as ‘frontier models can’t be trusted’",
-      "link": "https://techcrunch.com/2026/10/19/microsoft-says-ai-agents-are-like-insider-threats-as-frontier-models-cant-be-trusted/",
-      "source": "TechCrunch",
-      "date": "2026-10-19"
-    },
-    {
-      "title": "AI agents have bad taste in long-term decisions and a new benchmark proves it",
-      "link": "https://the-decoder.com/ai-agents-have-bad-taste-in-long-term-decisions-and-a-new-benchmark-proves-it/",
+      "title": "Army Cyber Command's ECHOTRIBBLE would turn AI agents into self-spreading cyberweapons",
+      "link": "https://the-decoder.com/army-cyber-commands-echotribble-would-turn-ai-agents-into-self-spreading-cyberweapons/",
       "source": "The Decoder",
-      "date": "2026-10-18"
+      "date": "2026-10-20"
     }
   ]
 }
