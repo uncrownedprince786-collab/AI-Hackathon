@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-10-21T10:20:44.428Z",
+  "fetchedAt": "2026-10-22T10:20:32.447Z",
   "items": [
     {
-      "title": "OpenAI acquires Orchestra Bio to build AI agents that speed up drug development",
-      "link": "https://the-decoder.com/openai-acquires-orchestra-bio-to-build-ai-agents-that-speed-up-drug-development/",
+      "title": "Google Cloud now offers OpenAI models alongside Gemini and Claude, becoming the only major provider with all three",
+      "link": "https://the-decoder.com/google-cloud-now-offers-openai-models-alongside-gemini-and-claude-becoming-the-only-major-provider-with-all-three/",
       "source": "The Decoder",
       "date": "2026-10-21"
     },
     {
-      "title": "When Planning Problems Become Hard for LLMs: Separating Structural Complexity from Semantic Interpretability",
-      "link": "https://arxiv.org/abs/2610.26964",
-      "source": "arXiv AI",
+      "title": "Anthropic takes on Grok Bot, Meta's Muse, and OpenAI's Dots with its always-on agent \"Claude Duet\"",
+      "link": "https://the-decoder.com/anthropic-takes-on-grok-bot-metas-muse-and-openais-dots-with-its-always-on-agent-claude-duet/",
+      "source": "The Decoder",
+      "date": "2026-10-22"
+    },
+    {
+      "title": "OpenAI's GPT-5.6 Sol and Google's Gemini 4 Argon found critical PHP flaw affecting millions of websites",
+      "link": "https://the-decoder.com/openais-gpt-5-6-sol-and-gemini-4-argon-discovered-the-critical-php-vulnerability-affecting-millions-of-websites/",
+      "source": "The Decoder",
       "date": "2026-10-21"
     },
     {
-      "title": "Zero-Shot Tabular Learning via Hypergraph Reasoning with LLMs",
-      "link": "https://arxiv.org/abs/2610.23923",
-      "source": "arXiv ML",
+      "title": "Inception's Mercury 3 diffusion model claims to beat GPT-6 Luna and Claude Haiku 5.5 at a fraction of the wait",
+      "link": "https://the-decoder.com/inceptions-mercury-3-diffusion-model-claims-to-beat-gpt-6-luna-and-claude-haiku-5-5-at-a-fraction-of-the-wait/",
+      "source": "The Decoder",
       "date": "2026-10-21"
     },
     {
-      "title": "OpenAI says GPT-6 is much better with legacy programming languages such as COBOL and Fortran",
-      "link": "https://the-decoder.com/openai-says-gpt-6-is-much-better-with-legacy-programming-languages-such-as-cobol-and-fortran/",
+      "title": "China protests the US Deepseek ban while blocking ChatGPT, Claude, and Gemini at home",
+      "link": "https://the-decoder.com/china-protests-the-us-deepseek-ban-while-blocking-chatgpt-claude-and-gemini-at-home/",
       "source": "The Decoder",
-      "date": "2026-10-20"
-    },
-    {
-      "title": "Army Cyber Command's ECHOTRIBBLE would turn AI agents into self-spreading cyberweapons",
-      "link": "https://the-decoder.com/army-cyber-commands-echotribble-would-turn-ai-agents-into-self-spreading-cyberweapons/",
-      "source": "The Decoder",
-      "date": "2026-10-20"
+      "date": "2026-10-21"
     }
   ]
 }
