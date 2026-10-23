@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-22T10:20:32.447Z",
+  "fetchedAt": "2026-10-23T10:15:35.671Z",
   "items": [
     {
       "title": "Google Cloud now offers OpenAI models alongside Gemini and Claude, becoming the only major provider with all three",
@@ -20,16 +20,16 @@
       "date": "2026-10-21"
     },
     {
-      "title": "Inception's Mercury 3 diffusion model claims to beat GPT-6 Luna and Claude Haiku 5.5 at a fraction of the wait",
-      "link": "https://the-decoder.com/inceptions-mercury-3-diffusion-model-claims-to-beat-gpt-6-luna-and-claude-haiku-5-5-at-a-fraction-of-the-wait/",
-      "source": "The Decoder",
-      "date": "2026-10-21"
+      "title": "MCP vs CLI for AI Agents: A Comparative Analysis of Tool Integration Strategies for Autonomous Systems",
+      "link": "https://arxiv.org/abs/2610.30157",
+      "source": "arXiv AI",
+      "date": "2026-10-23"
     },
     {
-      "title": "China protests the US Deepseek ban while blocking ChatGPT, Claude, and Gemini at home",
-      "link": "https://the-decoder.com/china-protests-the-us-deepseek-ban-while-blocking-chatgpt-claude-and-gemini-at-home/",
-      "source": "The Decoder",
-      "date": "2026-10-21"
+      "title": "Route-and-Generate: KL-Regularized Router Improvement for Reasoning Routing in LLMs",
+      "link": "https://arxiv.org/abs/2610.30351",
+      "source": "arXiv AI",
+      "date": "2026-10-23"
     }
   ]
 }
