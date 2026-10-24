@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-10-23T10:15:35.671Z",
+  "fetchedAt": "2026-10-24T09:38:28.594Z",
   "items": [
     {
-      "title": "Google Cloud now offers OpenAI models alongside Gemini and Claude, becoming the only major provider with all three",
-      "link": "https://the-decoder.com/google-cloud-now-offers-openai-models-alongside-gemini-and-claude-becoming-the-only-major-provider-with-all-three/",
+      "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
+      "link": "https://the-decoder.com/chinese-ai-model-kimi-k3-1-pro-is-closing-in-on-anthropics-claude-opus-5-5/",
       "source": "The Decoder",
-      "date": "2026-10-21"
+      "date": "2026-10-23"
     },
     {
-      "title": "Anthropic takes on Grok Bot, Meta's Muse, and OpenAI's Dots with its always-on agent \"Claude Duet\"",
-      "link": "https://the-decoder.com/anthropic-takes-on-grok-bot-metas-muse-and-openais-dots-with-its-always-on-agent-claude-duet/",
+      "title": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
+      "link": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
+      "source": "TechCrunch",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Anthropic's Claude now writes code and proves it safe automatically",
+      "link": "https://the-decoder.com/anthropics-claude-now-writes-code-and-proves-it-safe-automatically/",
+      "source": "The Decoder",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Left alone with nothing to do, AI agents started playing",
+      "link": "https://techcrunch.com/2026/10/22/left-alone-with-nothing-to-do-ai-agents-started-playing/",
+      "source": "TechCrunch",
+      "date": "2026-10-23"
+    },
+    {
+      "title": "Major US banks are locking out AI agents that log in with customer credentials",
+      "link": "https://the-decoder.com/major-us-banks-are-locking-out-ai-agents-that-log-in-with-customer-credentials/",
       "source": "The Decoder",
       "date": "2026-10-22"
-    },
-    {
-      "title": "OpenAI's GPT-5.6 Sol and Google's Gemini 4 Argon found critical PHP flaw affecting millions of websites",
-      "link": "https://the-decoder.com/openais-gpt-5-6-sol-and-gemini-4-argon-discovered-the-critical-php-vulnerability-affecting-millions-of-websites/",
-      "source": "The Decoder",
-      "date": "2026-10-21"
-    },
-    {
-      "title": "MCP vs CLI for AI Agents: A Comparative Analysis of Tool Integration Strategies for Autonomous Systems",
-      "link": "https://arxiv.org/abs/2610.30157",
-      "source": "arXiv AI",
-      "date": "2026-10-23"
-    },
-    {
-      "title": "Route-and-Generate: KL-Regularized Router Improvement for Reasoning Routing in LLMs",
-      "link": "https://arxiv.org/abs/2610.30351",
-      "source": "arXiv AI",
-      "date": "2026-10-23"
     }
   ]
 }
