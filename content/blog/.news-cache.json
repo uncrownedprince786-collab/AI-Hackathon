@@ -1,12 +1,6 @@
 {
-  "fetchedAt": "2026-10-25T09:56:51.786Z",
+  "fetchedAt": "2026-10-26T11:18:27.159Z",
   "items": [
-    {
-      "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
-      "link": "https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/",
-      "source": "The Decoder",
-      "date": "2026-10-24"
-    },
     {
       "title": "OpenAI says it will no longer train its AI models on the live internet, citing “significant risks”",
       "link": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks/",
@@ -30,6 +24,12 @@
       "link": "https://the-decoder.com/openai-offers-discounts-up-to-90-percent-to-poach-anthropics-biggest-customers/",
       "source": "The Decoder",
       "date": "2026-10-25"
+    },
+    {
+      "title": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+      "link": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+      "source": "TechCrunch",
+      "date": "2026-10-24"
     }
   ]
 }
