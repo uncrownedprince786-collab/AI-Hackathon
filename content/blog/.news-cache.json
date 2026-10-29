@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-10-28T11:27:28.480Z",
+  "fetchedAt": "2026-10-29T11:37:38.430Z",
   "items": [
     {
       "title": "AI agents hacked Anthropic, maker of arguably the most capable AI models for cyberdefense",
@@ -8,27 +8,27 @@
       "date": "2026-10-28"
     },
     {
-      "title": "Google Deepmind's Genie 4 puts a modern spin on agent designs that predate LLMs",
-      "link": "https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/",
+      "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
+      "link": "https://the-decoder.com/google-opens-android-development-to-third-party-ai-agents-and-unveils-new-gemini-apis/",
       "source": "The Decoder",
-      "date": "2026-10-27"
+      "date": "2026-10-28"
+    },
+    {
+      "title": "As AI agents reshape the web, Google opens Gemini and Search to more apps",
+      "link": "https://techcrunch.com/2026/10/28/as-ai-agents-reshape-the-web-google-opens-gemini-and-search-to-more-apps/",
+      "source": "TechCrunch",
+      "date": "2026-10-28"
+    },
+    {
+      "title": "Google Deepmind releases Gemini 4 Carbon just two weeks after Argon with gains across the board",
+      "link": "https://the-decoder.com/google-deepmind-releases-gemini-4-carbon-just-two-weeks-after-argon-with-gains-across-the-board/",
+      "source": "The Decoder",
+      "date": "2026-10-28"
     },
     {
       "title": "Can we trust LLMs to judge whether a research idea is novel?",
       "link": "https://huggingface.co/blog/allenai/novelty-bench",
       "source": "Hugging Face",
-      "date": "2026-10-27"
-    },
-    {
-      "title": "OpenAI's partner content arrives in ChatGPT pre-summarized while the rest of the web gets raw scraps",
-      "link": "https://the-decoder.com/openais-partner-content-arrives-in-chatgpt-pre-summarized-while-the-rest-of-the-web-gets-raw-scraps/",
-      "source": "The Decoder",
-      "date": "2026-10-27"
-    },
-    {
-      "title": "Anthropic uses its IPO letter to renew its pledge that Claude will never show ads",
-      "link": "https://the-decoder.com/anthropic-uses-its-ipo-letter-to-renew-its-pledge-that-claude-will-never-show-ads/",
-      "source": "The Decoder",
       "date": "2026-10-27"
     }
   ]
