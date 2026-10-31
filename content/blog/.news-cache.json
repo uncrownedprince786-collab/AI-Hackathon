@@ -1,23 +1,23 @@
 {
-  "fetchedAt": "2026-10-30T11:28:57.137Z",
+  "fetchedAt": "2026-10-31T10:59:51.872Z",
   "items": [
     {
-      "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
-      "link": "https://the-decoder.com/google-opens-android-development-to-third-party-ai-agents-and-unveils-new-gemini-apis/",
+      "title": "OpenAI sets new behavioral guidelines for AI models that have already proven hard to control",
+      "link": "https://the-decoder.com/openai-sets-new-behavioral-guidelines-for-ai-models-that-have-already-proven-hard-to-control/",
       "source": "The Decoder",
-      "date": "2026-10-28"
+      "date": "2026-10-30"
     },
     {
       "title": "Detecting Covert Collusion between AI Agents through Partner-Outsider Positive Listening",
       "link": "https://arxiv.org/abs/2610.37849",
       "source": "arXiv AI",
-      "date": "2026-10-30"
+      "date": "2026-10-31"
     },
     {
       "title": "Evaluating and improving AI agents for sequencing protocol understanding",
       "link": "https://arxiv.org/abs/2610.37851",
       "source": "arXiv AI",
-      "date": "2026-10-30"
+      "date": "2026-10-31"
     },
     {
       "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
