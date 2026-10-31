@@ -1,12 +1,12 @@
 {
   "meta": {
-    "lastUpdated": "2026-10-30T22:21:40.698Z",
+    "lastUpdated": "2026-10-31T05:43:14.717Z",
     "cronSchedule": "17 */6 * * *",
-    "total": 145,
+    "total": 146,
     "counts": {
-      "upcoming": 25,
+      "upcoming": 23,
       "ongoing": 19,
-      "past": 101
+      "past": 104
     },
     "sources": [
       {
@@ -14,14 +14,14 @@
         "url": "https://devpost.com/hackathons",
         "ok": true,
         "fetched": 120,
-        "lastOkAt": "2026-10-30T22:21:40.698Z"
+        "lastOkAt": "2026-10-31T05:43:14.717Z"
       },
       {
         "name": "lablab.ai",
         "url": "https://lablab.ai/ai-hackathons",
         "ok": true,
         "fetched": 23,
-        "lastOkAt": "2026-10-30T22:21:40.698Z"
+        "lastOkAt": "2026-10-31T05:43:14.717Z"
       }
     ],
     "retiredSources": [
@@ -71,7 +71,7 @@
       },
       {
         "country": "India",
-        "count": 4
+        "count": 5
       },
       {
         "country": "United Kingdom",
@@ -109,7 +109,7 @@
       },
       {
         "region": "Asia Pacific",
-        "count": 6
+        "count": 7
       },
       {
         "region": "Europe",
@@ -153,7 +153,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false,
       "country": "Singapore",
       "claimedPrizeUsd": 24500
@@ -270,11 +270,11 @@
       "sourceName": "Devpost",
       "sourceId": "31302",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/288/985/datas/medium_square.png",
-      "participants": 24880,
+      "participants": 25028,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 69750,
       "prizeBreakdownPublished": true
     },
@@ -324,11 +324,11 @@
       "sourceName": "Devpost",
       "sourceId": "30447",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/366/318/datas/medium_square.png",
-      "participants": 5110,
+      "participants": 5109,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 2500,
       "prizeBreakdownPublished": true
     },
@@ -524,7 +524,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/band-of-agents-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/w2qbolodctcvil38mrvosg2x/w2qbolodctcvil38mrvosg2x_imageLink_fuyiibx1x3wq0jqs7ermhaae.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -564,7 +564,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ai-trading-agents",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/y995zcsch2bzk7mz9c98g9b4/y995zcsch2bzk7mz9c98g9b4_imageLink_rndn66s0zi6f0i90r4nvi7q4.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 55000,
       "prizeBreakdownPublished": true
     },
@@ -611,7 +611,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_ACT3--02_zj3sde4lo6wzxeeai5i4uagu.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -653,7 +653,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_AI-League--01_gd5cwxbxale56q8s7trjhkg6.jpg",
       "participants": 3,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -694,7 +694,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Alpaca-AI-Trading-Agents-Hackathon_Main_banner_-01--1-_ks49u66qluhrfwxywm426tby.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 6300,
       "prizeBreakdownPublished": true
     },
@@ -760,7 +760,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true,
       "country": "Finland"
@@ -821,7 +821,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 100000,
       "prizeBreakdownPublished": false,
       "country": "India"
@@ -864,7 +864,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 40000,
       "prizeBreakdownPublished": true,
       "country": "India"
@@ -913,7 +913,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/dk0pq00fw88uufuvi1p1u928/dk0pq00fw88uufuvi1p1u928_imageLink_u1p62xx6sqmib3zs6bugipt3.jpg",
       "participants": 300,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 32000,
       "prizeBreakdownPublished": true
     },
@@ -975,11 +975,11 @@
       "sourceName": "Devpost",
       "sourceId": "31400",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/375/196/datas/medium_square.png",
-      "participants": 1519,
+      "participants": 1534,
       "featured": true,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 6000,
       "prizeBreakdownPublished": true
     },
@@ -1029,11 +1029,11 @@
       "sourceName": "Devpost",
       "sourceId": "31480",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/366/043/datas/medium_square.png",
-      "participants": 137,
+      "participants": 138,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 997,
       "prizeBreakdownPublished": true
     },
@@ -1101,11 +1101,11 @@
       "sourceName": "Devpost",
       "sourceId": "30984",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/087/526/datas/medium_square.png",
-      "participants": 6359,
+      "participants": 6357,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 20250,
       "prizeBreakdownPublished": true
     },
@@ -1187,7 +1187,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 100000,
       "prizeBreakdownPublished": true
     },
@@ -1243,11 +1243,11 @@
       "sourceName": "Devpost",
       "sourceId": "31052",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/155/384/datas/medium_square.png",
-      "participants": 1131,
+      "participants": 1132,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 40000,
       "prizeBreakdownPublished": true
     },
@@ -1301,7 +1301,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -1711,7 +1711,7 @@
       "slug": "qloo-agentic-hackathon-31054",
       "name": "Qloo Agentic Hackathon",
       "description": "Agents are getting smarter, but they're culturally blind. They can reason, plan, and execute — but ask them what to recommend, what to build, or what people actually want, and they're guessing. This hackathon is about fixing that. Build an agentic tool, an agent-powered app, or wire Qloo into an agent that already exists. Use our API and taste graph — 250M+ entities across music, film, dining, fashion, and more — to give your agent something most never get: real cultural grounding. We're not looking for demos of what LLMs can already do. We're looking for the thing that only works because it knows what people love. Show us the use case where cultural intelligence is the difference between \"technically functional\" and \"actually good.\" Build it, ship it, blow our minds.Get your API key here to get started: https://docs.qloo.com/reference/qloo-llm-hackathon-developer-guide#getting-your-api-key",
-      "status": "ongoing",
+      "status": "past",
       "mode": "online",
       "organizer": "Qloo",
       "startDate": "2026-09-30",
@@ -1750,11 +1750,11 @@
       "sourceName": "Devpost",
       "sourceId": "31054",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/363/782/datas/medium_square.png",
-      "participants": 2963,
+      "participants": 2996,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 25000,
       "prizeBreakdownPublished": true
     },
@@ -1763,7 +1763,7 @@
       "slug": "nebius-x-nvidia-global-ai-hackathon-30790",
       "name": "Nebius x NVIDIA Global AI Hackathon",
       "description": "Welcome to the Nebius x NVIDIA Global AI Hackathon Build a working AI system on open, independent infrastructure, and own the whole thing. The NVIDIA x Nebius Global AI Hackathon is for AI builders, ML engineers, founders, and anyone shipping practical, high-performance AI. You'll build with NVIDIA open source models served on Nebius through Nebius Token Factory, on high performance GPU infrastructure. Experiment with new ideas, push the boundaries of open source AI, and submit a project for a chance to win prizes and recognition. Join fellow builders for technical onboarding, casual workshops, team formation, focused build time, and feedback as you participate in the Global AI Hackathon. Find your nearby city/event here!",
-      "status": "ongoing",
+      "status": "past",
       "mode": "online",
       "organizer": "Nebius",
       "startDate": "2026-08-26",
@@ -1822,11 +1822,11 @@
       "sourceName": "Devpost",
       "sourceId": "30790",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/173/025/datas/medium_square.png",
-      "participants": 29892,
+      "participants": 29891,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
@@ -1880,7 +1880,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 350000,
       "prizeBreakdownPublished": true
     },
@@ -1957,7 +1957,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/NATIVELY_BUILDER_Main_banner--4-_bzwjrup9toms3jquqljex8qw.jpg",
       "participants": 500,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 3800,
       "prizeBreakdownPublished": true
     },
@@ -2009,7 +2009,7 @@
       "featured": false,
       "invitedOnly": true,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 40000,
       "prizeBreakdownPublished": true
     },
@@ -2173,11 +2173,11 @@
       "sourceName": "Devpost",
       "sourceId": "31775",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/622/204/datas/medium_square.png",
-      "participants": 33,
+      "participants": 35,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-28T22:36:38.113Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31552",
@@ -2215,11 +2215,11 @@
       "sourceName": "Devpost",
       "sourceId": "31552",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/624/690/datas/medium_square.png",
-      "participants": 877,
+      "participants": 896,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-22T17:12:06.616Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31393",
@@ -2297,11 +2297,11 @@
       "sourceName": "Devpost",
       "sourceId": "31060",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/139/026/datas/medium_square.png",
-      "participants": 119,
+      "participants": 120,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-26T22:41:19.727Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31808",
@@ -2337,11 +2337,11 @@
       "sourceName": "Devpost",
       "sourceId": "31808",
       "imageUrl": "https://assets.devpost.com/assets/defaults/thumbnail-placeholder-8c916ef4da99a222ce6ece077c71c7e282f071f830747b2abb5718018cbfa699.gif",
-      "participants": 194,
+      "participants": 205,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-26T22:41:19.727Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31165",
@@ -2530,7 +2530,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/techex-intelligent-enterprise-solutions-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/mo83rq6y28xa14ceg51kzzht/mo83rq6y28xa14ceg51kzzht_imageLink_nqqmkvvr447fr6qjsst54ctw.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -2577,7 +2577,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ai-infra-summit-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/AI-Infra-Summit-Hackathon_Main_banner_-01--2-_emnu3m2g0ggcge3bu3idvkc4.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 31650,
       "prizeBreakdownPublished": true
     },
@@ -2619,8 +2619,47 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/cokcujybyg4odzqbqri0vgsy/cokcujybyg4odzqbqri0vgsy_imageLink_xtqn6zyn74jo0vl174qxboqo.jpg",
       "participants": 1000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 15000,
+      "prizeBreakdownPublished": true
+    },
+    {
+      "id": "lablab-ai-hackathons-agentic-commerce-on-arc",
+      "slug": "ai-hackathons-agentic-commerce-on-arc",
+      "name": "Agentic Commerce on Arc",
+      "description": "In this hybrid hackathon powered by Arc, developers will build the next generation of agentic commerce systems using Arc with USDC. Explore a world where AI agents and web services can pay for APIs, data, compute, and content in dynamic, usage-based ways, while Arc provides stablecoin-native settlement with predictable USDC fees and deterministic, sub-second finality. This hackathon is supported by Google & Google DeepMind, with a dedicated challenge and $40,000 in Google Cloud Platform (GCP) cr",
+      "status": "past",
+      "mode": "hybrid",
+      "organizer": "Lablab.ai",
+      "startDate": "2026-01-09",
+      "endDate": "2026-01-24",
+      "registrationDeadline": "2026-01-24",
+      "prizes": [
+        {
+          "amount": 50000,
+          "currency": "USD",
+          "type": "cash",
+          "label": "Total prize pool"
+        }
+      ],
+      "totalPrizeUsd": 50000,
+      "cashPrizeUsd": 50000,
+      "creditPrizeUsd": 0,
+      "winners": [],
+      "tags": [
+        "AI Agents",
+        "Fintech",
+        "AMD",
+        "Infrastructure"
+      ],
+      "officialUrl": "https://lablab.ai/ai-hackathons/agentic-commerce-on-arc",
+      "sourceUrl": "https://lablab.ai/ai-hackathons/agentic-commerce-on-arc",
+      "sourceName": "lablab.ai",
+      "sourceId": "https://lablab.ai/ai-hackathons/agentic-commerce-on-arc",
+      "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/i0vk9hz4f3zx7trp5qy0v8y2/i0vk9hz4f3zx7trp5qy0v8y2_imageLink_e5qndbvisu18px43fzx8sf1i.jpg",
+      "firstSeenAt": "2026-10-05T11:50:43.719Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
+      "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
     {
@@ -2659,47 +2698,8 @@
       "sourceId": "https://lablab.ai/ai-hackathons/deriv-ai-talent-sprint",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/samf9un63imeruy3slk0e7vs/samf9un63imeruy3slk0e7vs_imageLink_dtruo00bf61ke9k5laxrwoz3.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10000,
-      "prizeBreakdownPublished": true
-    },
-    {
-      "id": "lablab-ai-hackathons-agentic-commerce-on-arc",
-      "slug": "ai-hackathons-agentic-commerce-on-arc",
-      "name": "Agentic Commerce on Arc",
-      "description": "In this hybrid hackathon powered by Arc, developers will build the next generation of agentic commerce systems using Arc with USDC. Explore a world where AI agents and web services can pay for APIs, data, compute, and content in dynamic, usage-based ways, while Arc provides stablecoin-native settlement with predictable USDC fees and deterministic, sub-second finality. This hackathon is supported by Google & Google DeepMind, with a dedicated challenge and $40,000 in Google Cloud Platform (GCP) cr",
-      "status": "past",
-      "mode": "hybrid",
-      "organizer": "Lablab.ai",
-      "startDate": "2026-01-09",
-      "endDate": "2026-01-24",
-      "registrationDeadline": "2026-01-24",
-      "prizes": [
-        {
-          "amount": 50000,
-          "currency": "USD",
-          "type": "cash",
-          "label": "Total prize pool"
-        }
-      ],
-      "totalPrizeUsd": 50000,
-      "cashPrizeUsd": 50000,
-      "creditPrizeUsd": 0,
-      "winners": [],
-      "tags": [
-        "AI Agents",
-        "Fintech",
-        "AMD",
-        "Infrastructure"
-      ],
-      "officialUrl": "https://lablab.ai/ai-hackathons/agentic-commerce-on-arc",
-      "sourceUrl": "https://lablab.ai/ai-hackathons/agentic-commerce-on-arc",
-      "sourceName": "lablab.ai",
-      "sourceId": "https://lablab.ai/ai-hackathons/agentic-commerce-on-arc",
-      "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/i0vk9hz4f3zx7trp5qy0v8y2/i0vk9hz4f3zx7trp5qy0v8y2_imageLink_e5qndbvisu18px43fzx8sf1i.jpg",
-      "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
-      "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
     {
@@ -2743,7 +2743,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/VULTR_Hackathon_Main_banner_hamo49yw2w3xyexes1krygjt.jpg",
       "participants": 6,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 15000,
       "prizeBreakdownPublished": true
     },
@@ -2846,7 +2846,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -2942,7 +2942,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/complete-ai-agent-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/q36m6onhz59t2m786flsz2cf/q36m6onhz59t2m786flsz2cf_imageLink_h06baj1aax086noealtiz2ol.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 3500,
       "prizeBreakdownPublished": true
     },
@@ -2977,7 +2977,7 @@
       "featured": false,
       "invitedOnly": true,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3030,7 +3030,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 3000,
       "prizeBreakdownPublished": true
     },
@@ -3072,7 +3072,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 100,
       "prizeBreakdownPublished": true
     },
@@ -3126,7 +3126,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 100000,
       "prizeBreakdownPublished": true
     },
@@ -3172,7 +3172,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/amd-developer-hackathon-act-ii",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/pn62mtt8xm33vu67q8z0673s/pn62mtt8xm33vu67q8z0673s_imageLink_or8is3enggyc9v517ljnbxua.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 21000,
       "prizeBreakdownPublished": true
     },
@@ -3210,7 +3210,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/IBM-BOB-2-0-Hackathon_Main_banner_-03--2-_xoi067ee0t95d0dbb2ranc89.jpg",
       "participants": 20,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 12000,
       "prizeBreakdownPublished": true
     },
@@ -3247,7 +3247,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/ibm-bob-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/z55p8ld1kzke3m7wpiw7t9p1/z55p8ld1kzke3m7wpiw7t9p1_imageLink_a99n4zxv8d7ho8yq7lhbus34.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -3348,7 +3348,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/brightdata-ai-agents-web-data-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/fvnh186wdgbnmjz29joe369z/fvnh186wdgbnmjz29joe369z_imageLink_vlhe5nv71t354cidk3fzoecc.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 20000,
       "prizeBreakdownPublished": true
     },
@@ -3400,7 +3400,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/launch-fund-ai-meets-robotics",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/qqm4r3l7ugompbq37mgd2l94/qqm4r3l7ugompbq37mgd2l94_imageLink_rc187nnji0mlkzkc4fzqxkka.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3474,6 +3474,40 @@
       "country": "United States"
     },
     {
+      "id": "devpost-31735",
+      "slug": "ai-build-india-31735",
+      "name": "AI Build India",
+      "description": "AI hackathon hosted on Devpost by Hacker's Unity. AI Build India is an AI hackathon organised by Hacker's Unity, and it runs in person. It focuses on Machine Learning/AI and Open Ended. Submissions are open until 2026-10-31. No prize pool is published on the organiser page. 29 people have registered.",
+      "status": "ongoing",
+      "mode": "in-person",
+      "organizer": "Hacker's Unity",
+      "startDate": "2026-10-14",
+      "endDate": "2026-10-31",
+      "registrationDeadline": "2026-10-31",
+      "prizeBreakdownPublished": false,
+      "location": "jaipur",
+      "prizes": [],
+      "totalPrizeUsd": 0,
+      "cashPrizeUsd": 0,
+      "creditPrizeUsd": 0,
+      "winners": [],
+      "tags": [
+        "Machine Learning/AI",
+        "Open Ended"
+      ],
+      "officialUrl": "https://sphinx-26.devpost.com/",
+      "sourceUrl": "https://sphinx-26.devpost.com/",
+      "sourceName": "Devpost",
+      "sourceId": "31735",
+      "imageUrl": "https://assets.devpost.com/assets/defaults/thumbnail-placeholder-8c916ef4da99a222ce6ece077c71c7e282f071f830747b2abb5718018cbfa699.gif",
+      "participants": 29,
+      "featured": false,
+      "invitedOnly": false,
+      "firstSeenAt": "2026-10-31T05:43:14.717Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
+      "country": "India"
+    },
+    {
       "id": "devpost-31489",
       "slug": "ethnohack-31489",
       "name": "EthnoHack",
@@ -3500,11 +3534,11 @@
       "sourceName": "Devpost",
       "sourceId": "31489",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/370/953/datas/medium_square.png",
-      "participants": 178,
+      "participants": 180,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3538,7 +3572,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3632,7 +3666,7 @@
       "slug": "hackfw-made-challenge-30548",
       "name": "HackFW: MADE Challenge",
       "description": "HackFW creates a sustainable innovation flywheel for Fort Worth by exposing youth and workforce to hands-on technical product development in data and software engineering. Through real-world challenges and industry mentorship, we're building a pipeline that keeps technical talent local and broadening exposure and inclusivity while establishing Fort Worth as an emerging tech hub. Get started Register at https://hackfw.devpost.com Join the talent network: https://talent.fwtx.city Focus your submission on techno-industrialism. What helps manufacturing & supply chains. Think AI first tools, process, data infrastructure, embedded systems. More details to come.",
-      "status": "ongoing",
+      "status": "past",
       "mode": "in-person",
       "organizer": "Fort Worth DAO",
       "startDate": "2026-10-01",
@@ -3734,11 +3768,11 @@
       "sourceName": "Devpost",
       "sourceId": "30731",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/982/889/datas/medium_square.png",
-      "participants": 166,
+      "participants": 168,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 21394,
       "prizeBreakdownPublished": false,
       "country": "Canada"
@@ -3773,7 +3807,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3813,7 +3847,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/amd-developer",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/images/events/n3v922wai9khqi5gs2jctlap/n3v922wai9khqi5gs2jctlap_imageLink_gzq2ads92vzkylo0duucxcwe.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 22500,
       "prizeBreakdownPublished": true
     },
@@ -3845,11 +3879,11 @@
       "sourceName": "Devpost",
       "sourceId": "31580",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/544/995/datas/medium_square.png",
-      "participants": 334,
+      "participants": 344,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-13T00:41:35.852Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31512",
@@ -4116,11 +4150,11 @@
       "sourceName": "Devpost",
       "sourceId": "31907",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/723/285/datas/medium_square.png",
-      "participants": 101,
+      "participants": 105,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-28T12:56:40.233Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31826",
@@ -4152,7 +4186,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-24T15:58:13.895Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31024",
@@ -4296,11 +4330,11 @@
       "sourceName": "Devpost",
       "sourceId": "31024",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/374/843/datas/medium_square.png",
-      "participants": 4616,
+      "participants": 4638,
       "featured": true,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 1000000,
       "prizeBreakdownPublished": true
     },
@@ -4408,7 +4442,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 138000,
       "prizeBreakdownPublished": true
     },
@@ -4468,7 +4502,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10680,
       "prizeBreakdownPublished": false
     },
@@ -4546,7 +4580,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 1247,
       "prizeBreakdownPublished": true
     },
@@ -4745,11 +4779,11 @@
       "sourceName": "Devpost",
       "sourceId": "31503",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/376/754/datas/medium_square.png",
-      "participants": 3330,
+      "participants": 3328,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 45000,
       "prizeBreakdownPublished": true
     },
@@ -4789,7 +4823,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_WeAreDevelopers-Hackathon--01--4-_am1oh7sw8guwi0y3smw6yv6c.jpg",
       "participants": 1000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 6000,
       "prizeBreakdownPublished": true
     },
@@ -4942,7 +4976,7 @@
       "sourceId": "https://lablab.ai/ai-hackathons/qualcomm-x-meta-executorch-hackathon",
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_qualcomm_Hackathon_8--1-_z7iq12ad5fssb0hz99jczx9p.jpg",
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false,
       "country": "United States"
     },
@@ -4983,7 +5017,7 @@
       "imageUrl": "https://storage.googleapis.com/lablab-static-eu/events/Main_Banner_AMD_ACT3--02--10-_voxzvl8qes9og2rlse35sxez.jpg",
       "participants": 364000,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 17000,
       "prizeBreakdownPublished": true
     },
@@ -5014,11 +5048,11 @@
       "sourceName": "Devpost",
       "sourceId": "30764",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/929/208/datas/medium_square.png",
-      "participants": 391,
+      "participants": 394,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -5048,11 +5082,11 @@
       "sourceName": "Devpost",
       "sourceId": "30456",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/826/556/datas/medium_square.png",
-      "participants": 56,
+      "participants": 57,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -5189,7 +5223,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true,
       "country": "Canada"
@@ -5246,11 +5280,11 @@
       "sourceName": "Devpost",
       "sourceId": "30463",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/828/557/datas/medium_square.jpg",
-      "participants": 267,
+      "participants": 268,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 6000,
       "prizeBreakdownPublished": true,
       "country": "United States"
@@ -5356,11 +5390,11 @@
       "sourceName": "Devpost",
       "sourceId": "30789",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/995/823/datas/medium_square.jpg",
-      "participants": 726,
+      "participants": 732,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 7800,
       "prizeBreakdownPublished": false
     },
@@ -5420,7 +5454,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 3500,
       "prizeBreakdownPublished": true
     },
@@ -5694,7 +5728,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-10T21:46:11.696Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "country": "Canada"
     },
     {
@@ -5958,11 +5992,11 @@
       "sourceName": "Devpost",
       "sourceId": "31572",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/624/479/datas/medium_square.png",
-      "participants": 839,
+      "participants": 883,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-27T18:02:31.468Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31805",
@@ -6084,11 +6118,11 @@
       "sourceName": "Devpost",
       "sourceId": "31660",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/571/487/datas/medium_square.png",
-      "participants": 75,
+      "participants": 79,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-16T21:10:30.008Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-26475",
@@ -6126,18 +6160,18 @@
       "sourceName": "Devpost",
       "sourceId": "26475",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/640/846/datas/medium_square.jpg",
-      "participants": 109,
+      "participants": 112,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-27T12:13:52.926Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31779",
       "slug": "trmi-x-lovhack-multiplayer-everything-hackathon-31779",
       "name": "TRMI X Lovhack : Multiplayer Everything Hackathon",
       "description": "AI hackathon hosted on Devpost by Lovhack. TRMI X Lovhack : Multiplayer Everything Hackathon is an AI hackathon organised by Lovhack, and it runs fully online. It focuses on Machine Learning/AI, Open Ended and Web. Submissions are open until 2026-11-01. The organiser announces a total prize pool of $300, but does not publish a cash and credits breakdown. 42 people have registered.",
-      "status": "upcoming",
+      "status": "ongoing",
       "mode": "online",
       "organizer": "Lovhack",
       "startDate": "2026-10-31",
@@ -6168,11 +6202,11 @@
       "sourceName": "Devpost",
       "sourceId": "31779",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/705/173/datas/medium_square.png",
-      "participants": 42,
+      "participants": 47,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-30T22:21:40.698Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31820",
@@ -6214,7 +6248,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-27T18:02:31.468Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31609",
@@ -6294,11 +6328,11 @@
       "sourceName": "Devpost",
       "sourceId": "31737",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/587/014/datas/medium_square.jpeg",
-      "participants": 113,
+      "participants": 114,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-24T11:03:01.915Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31742",
@@ -6336,11 +6370,11 @@
       "sourceName": "Devpost",
       "sourceId": "31742",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/656/411/datas/medium_square.png",
-      "participants": 1774,
+      "participants": 1805,
       "featured": true,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-23T17:09:07.781Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-30029",
@@ -6421,11 +6455,11 @@
       "sourceName": "Devpost",
       "sourceId": "31667",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/585/149/datas/medium_square.png",
-      "participants": 2623,
+      "participants": 3205,
       "featured": true,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-14T21:42:35.165Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31694",
@@ -6463,11 +6497,11 @@
       "sourceName": "Devpost",
       "sourceId": "31694",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/578/562/datas/medium_square.png",
-      "participants": 665,
+      "participants": 681,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-16T11:26:24.160Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31659",
@@ -6505,11 +6539,11 @@
       "sourceName": "Devpost",
       "sourceId": "31659",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/541/121/datas/medium_square.png",
-      "participants": 990,
+      "participants": 996,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-15T17:02:54.502Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31200",
@@ -6547,11 +6581,11 @@
       "sourceName": "Devpost",
       "sourceId": "31200",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/367/399/datas/medium_square.png",
-      "participants": 74,
+      "participants": 75,
       "featured": false,
       "invitedOnly": true,
       "firstSeenAt": "2026-10-27T22:15:19.201Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31815",
@@ -6588,11 +6622,11 @@
       "sourceName": "Devpost",
       "sourceId": "31815",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/625/473/datas/medium_square.png",
-      "participants": 76,
+      "participants": 77,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-24T04:38:32.116Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31676",
@@ -6758,7 +6792,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false,
       "country": "Canada"
     },
@@ -6834,7 +6868,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false,
       "country": "Mexico"
     },
@@ -6869,7 +6903,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "claimedPrizeUsd": 40000,
       "prizeBreakdownPublished": false
     },
@@ -6946,7 +6980,7 @@
       "slug": "stemergent-hacks-2026-31187",
       "name": "STEMergent Hacks 2026",
       "description": "The STEMergent Ideathon & Hackathon challenges students to use technology to solve real problems in their schools, communities, and beyond. Participants can choose between two pathways depending on their experience level: Ideathon Pathway - Design a creative, realistic technology solution without needing to fully build it. Focus on identifying an important problem, explaining your solution, and showing what it could look like through slides, mockups, or a prototype. Hackathon Pathway -Turn an idea into a functional project. Build a website, app, tool, or prototype that addresses a meaningful problem affecting students, schools, nonprofits, or communities. Whether this is your first competition or you've participated in hackathons before, there's a pathway for you.",
-      "status": "upcoming",
+      "status": "ongoing",
       "mode": "online",
       "organizer": "STEMergent",
       "startDate": "2026-10-31",
@@ -6968,11 +7002,11 @@
       "sourceName": "Devpost",
       "sourceId": "31187",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/273/593/datas/medium_square.png",
-      "participants": 185,
+      "participants": 191,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z",
+      "updatedAt": "2026-10-31T05:43:14.717Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -7045,11 +7079,11 @@
       "sourceName": "Devpost",
       "sourceId": "31222",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/239/296/datas/medium_square.png",
-      "participants": 69,
+      "participants": 72,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-10T05:54:23.279Z",
-      "updatedAt": "2026-10-30T22:21:40.698Z"
+      "updatedAt": "2026-10-31T05:43:14.717Z"
     },
     {
       "id": "devpost-31239",
