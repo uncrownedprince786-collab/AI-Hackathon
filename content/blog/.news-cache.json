@@ -1,22 +1,22 @@
 {
-  "fetchedAt": "2026-10-31T10:59:51.872Z",
+  "fetchedAt": "2026-11-01T11:55:16.293Z",
   "items": [
     {
-      "title": "OpenAI sets new behavioral guidelines for AI models that have already proven hard to control",
-      "link": "https://the-decoder.com/openai-sets-new-behavioral-guidelines-for-ai-models-that-have-already-proven-hard-to-control/",
+      "title": "OpenAI's upcoming chat-and-work merger in ChatGPT signals the end of all-you-can-prompt pricing",
+      "link": "https://the-decoder.com/openais-upcoming-chat-and-work-merger-in-chatgpt-signals-the-end-of-all-you-can-prompt-pricing/",
       "source": "The Decoder",
-      "date": "2026-10-30"
+      "date": "2026-11-01"
     },
     {
-      "title": "Detecting Covert Collusion between AI Agents through Partner-Outsider Positive Listening",
-      "link": "https://arxiv.org/abs/2610.37849",
-      "source": "arXiv AI",
+      "title": "Anthropic's watermark rollout leaves a loophole on two older Claude models",
+      "link": "https://the-decoder.com/anthropics-watermark-rollout-leaves-a-loophole-on-two-older-claude-models/",
+      "source": "The Decoder",
       "date": "2026-10-31"
     },
     {
-      "title": "Evaluating and improving AI agents for sequencing protocol understanding",
-      "link": "https://arxiv.org/abs/2610.37851",
-      "source": "arXiv AI",
+      "title": "Beekeeping tips and wrestling advice can train AI models to sabotage oversight",
+      "link": "https://the-decoder.com/beekeeping-tips-and-wrestling-advice-can-train-ai-models-to-sabotage-oversight/",
+      "source": "The Decoder",
       "date": "2026-10-31"
     },
     {
@@ -26,10 +26,10 @@
       "date": "2026-10-29"
     },
     {
-      "title": "OpenAI doubles usage limits on Pro plans as competition with Anthropic heats up",
-      "link": "https://the-decoder.com/openai-doubles-usage-limits-on-pro-plans-as-competition-with-anthropic-heats-up/",
-      "source": "The Decoder",
-      "date": "2026-10-29"
+      "title": "Can we trust LLMs to judge whether a research idea is novel?",
+      "link": "https://huggingface.co/blog/allenai/novelty-bench",
+      "source": "Hugging Face",
+      "date": "2026-10-27"
     }
   ]
 }
