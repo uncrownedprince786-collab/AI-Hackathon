@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-11-02T13:40:38.646Z",
+  "fetchedAt": "2026-11-03T12:53:33.284Z",
   "items": [
     {
-      "title": "Adobe is testing how well AI agents can use editing tools like a Photoshop professional would",
-      "link": "https://the-decoder.com/adobe-is-testing-how-well-ai-agents-can-use-editing-tools-like-a-photoshop-professional-would/",
+      "title": "Anthropic cracks down on game cloning in Claude Code after wave of AI-built knockoffs",
+      "link": "https://the-decoder.com/anthropic-cracks-down-on-game-cloning-in-claude-code-after-wave-of-ai-built-knockoffs/",
       "source": "The Decoder",
-      "date": "2026-11-01"
+      "date": "2026-11-03"
     },
     {
-      "title": "Chinese AI models are politically complex, not just government mouthpieces, study finds",
-      "link": "https://the-decoder.com/chinese-ai-models-are-politically-complex-not-just-government-mouthpieces-study-finds/",
-      "source": "The Decoder",
-      "date": "2026-11-01"
+      "title": "Y Combinator’s Garry Tan uses AI agents so much, he spends up to $ a year on tokens",
+      "link": "https://techcrunch.com/2026/11/02/y-combinators-garry-tan-uses-ai-agents-so-much-he-spends-up-to-200k-a-year-on-tokens/",
+      "source": "TechCrunch",
+      "date": "2026-11-03"
     },
     {
-      "title": "OpenAI is steering ChatGPT users toward more paid usage",
-      "link": "https://the-decoder.com/openai-is-steering-chatgpt-users-toward-more-paid-usage/",
+      "title": "One brutal Minecraft night scared 50 AI agents into inventing chicken handoff protocols, a Fertilizer Officer, and fishing shifts",
+      "link": "https://the-decoder.com/one-brutal-minecraft-night-scared-50-ai-agents-into-inventing-chicken-handoff-protocols-a-fertilizer-officer-and-fishing-shifts/",
       "source": "The Decoder",
-      "date": "2026-11-01"
+      "date": "2026-11-02"
     },
     {
-      "title": "OpenAI's upcoming chat-and-work merger in ChatGPT signals the end of all-you-can-prompt pricing",
-      "link": "https://the-decoder.com/openais-upcoming-chat-and-work-merger-in-chatgpt-signals-the-end-of-all-you-can-prompt-pricing/",
-      "source": "The Decoder",
-      "date": "2026-11-01"
+      "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
+      "link": "https://huggingface.co/blog/mistral-large4",
+      "source": "Hugging Face",
+      "date": "2026-10-29"
     },
     {
-      "title": "Anthropic's watermark rollout leaves a loophole on two older Claude models",
-      "link": "https://the-decoder.com/anthropics-watermark-rollout-leaves-a-loophole-on-two-older-claude-models/",
-      "source": "The Decoder",
-      "date": "2026-10-31"
+      "title": "Can we trust LLMs to judge whether a research idea is novel?",
+      "link": "https://huggingface.co/blog/allenai/novelty-bench",
+      "source": "Hugging Face",
+      "date": "2026-10-27"
     }
   ]
 }
