@@ -1,23 +1,23 @@
 {
-  "fetchedAt": "2026-11-03T12:53:33.284Z",
+  "fetchedAt": "2026-11-04T13:07:19.449Z",
   "items": [
     {
-      "title": "Anthropic cracks down on game cloning in Claude Code after wave of AI-built knockoffs",
-      "link": "https://the-decoder.com/anthropic-cracks-down-on-game-cloning-in-claude-code-after-wave-of-ai-built-knockoffs/",
-      "source": "The Decoder",
-      "date": "2026-11-03"
-    },
-    {
-      "title": "Y Combinator’s Garry Tan uses AI agents so much, he spends up to $ a year on tokens",
-      "link": "https://techcrunch.com/2026/11/02/y-combinators-garry-tan-uses-ai-agents-so-much-he-spends-up-to-200k-a-year-on-tokens/",
+      "title": "Anthropic is working on a system to prove AI models’ identity",
+      "link": "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/",
       "source": "TechCrunch",
       "date": "2026-11-03"
     },
     {
-      "title": "One brutal Minecraft night scared 50 AI agents into inventing chicken handoff protocols, a Fertilizer Officer, and fishing shifts",
-      "link": "https://the-decoder.com/one-brutal-minecraft-night-scared-50-ai-agents-into-inventing-chicken-handoff-protocols-a-fertilizer-officer-and-fishing-shifts/",
+      "title": "OpenAI says GPT-6 Astra designed a hardware device from scratch in under a week",
+      "link": "https://the-decoder.com/openai-says-gpt-6-astra-designed-a-hardware-device-from-scratch-in-under-a-week/",
       "source": "The Decoder",
-      "date": "2026-11-02"
+      "date": "2026-11-03"
+    },
+    {
+      "title": "AI agents take over at SETI's Allen Telescope Array, scanning for extraterrestrial intelligence",
+      "link": "https://the-decoder.com/ai-agents-take-over-at-setis-allen-telescope-array-scanning-for-extraterrestrial-intelligence/",
+      "source": "The Decoder",
+      "date": "2026-11-03"
     },
     {
       "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
@@ -26,10 +26,10 @@
       "date": "2026-10-29"
     },
     {
-      "title": "Can we trust LLMs to judge whether a research idea is novel?",
-      "link": "https://huggingface.co/blog/allenai/novelty-bench",
-      "source": "Hugging Face",
-      "date": "2026-10-27"
+      "title": "Training LLM Agents to Automate LLM Post-Training with RSI-Dojo",
+      "link": "https://arxiv.org/abs/2611.03698",
+      "source": "arXiv AI",
+      "date": "2026-11-04"
     }
   ]
 }
