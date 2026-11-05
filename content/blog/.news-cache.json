@@ -1,34 +1,34 @@
 {
-  "fetchedAt": "2026-11-04T13:07:19.449Z",
+  "fetchedAt": "2026-11-05T13:20:55.576Z",
   "items": [
     {
-      "title": "Anthropic is working on a system to prove AI models’ identity",
-      "link": "https://techcrunch.com/2026/11/03/anthropic-is-working-on-a-system-to-prove-ai-models-identity/",
+      "title": "Anthropic loses product lead Catherine Wu behind Claude Code to OpenAI",
+      "link": "https://the-decoder.com/anthropic-loses-product-lead-catherine-wu-behind-claude-code-to-openai/",
+      "source": "The Decoder",
+      "date": "2026-11-05"
+    },
+    {
+      "title": "GPT-6 Astra sees the matrix and reprograms other AI models directly through their weights",
+      "link": "https://the-decoder.com/gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights/",
+      "source": "The Decoder",
+      "date": "2026-11-04"
+    },
+    {
+      "title": "ChatGPT can now turn text prompts and photos into animated GIFs with OpenAI's Images 2.6 model",
+      "link": "https://the-decoder.com/chatgpt-can-now-turn-text-prompts-and-photos-into-animated-gifs-with-openais-images-2-6-model/",
+      "source": "The Decoder",
+      "date": "2026-11-04"
+    },
+    {
+      "title": "Anthropic's text watermark is easy to bypass on several older Claude models",
+      "link": "https://the-decoder.com/anthropics-text-watermark-is-easy-to-bypass-on-several-older-claude-models/",
+      "source": "The Decoder",
+      "date": "2026-11-04"
+    },
+    {
+      "title": "Almost no one uses AI agents to book their Uber, company says",
+      "link": "https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/",
       "source": "TechCrunch",
-      "date": "2026-11-03"
-    },
-    {
-      "title": "OpenAI says GPT-6 Astra designed a hardware device from scratch in under a week",
-      "link": "https://the-decoder.com/openai-says-gpt-6-astra-designed-a-hardware-device-from-scratch-in-under-a-week/",
-      "source": "The Decoder",
-      "date": "2026-11-03"
-    },
-    {
-      "title": "AI agents take over at SETI's Allen Telescope Array, scanning for extraterrestrial intelligence",
-      "link": "https://the-decoder.com/ai-agents-take-over-at-setis-allen-telescope-array-scanning-for-extraterrestrial-intelligence/",
-      "source": "The Decoder",
-      "date": "2026-11-03"
-    },
-    {
-      "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
-      "link": "https://huggingface.co/blog/mistral-large4",
-      "source": "Hugging Face",
-      "date": "2026-10-29"
-    },
-    {
-      "title": "Training LLM Agents to Automate LLM Post-Training with RSI-Dojo",
-      "link": "https://arxiv.org/abs/2611.03698",
-      "source": "arXiv AI",
       "date": "2026-11-04"
     }
   ]
