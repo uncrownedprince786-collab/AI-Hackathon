@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-11-05T13:20:55.576Z",
+  "fetchedAt": "2026-11-06T13:04:19.453Z",
   "items": [
     {
-      "title": "Anthropic loses product lead Catherine Wu behind Claude Code to OpenAI",
-      "link": "https://the-decoder.com/anthropic-loses-product-lead-catherine-wu-behind-claude-code-to-openai/",
+      "title": "Autonomous AI Agents Systematically Diverge From Human Preferences in Proof Formalization",
+      "link": "https://arxiv.org/abs/2611.06995",
+      "source": "arXiv AI",
+      "date": "2026-11-06"
+    },
+    {
+      "title": "Stochastic Dynamics of Generative AI: From Autoregressive Models to Interacting LLM Networks and Neural SDEs",
+      "link": "https://arxiv.org/abs/2611.07065",
+      "source": "arXiv ML",
+      "date": "2026-11-06"
+    },
+    {
+      "title": "Anthropic adds bank account access to Claude so users can track their spending",
+      "link": "https://the-decoder.com/anthropic-adds-bank-account-access-to-claude-so-users-can-track-their-spending/",
+      "source": "The Decoder",
+      "date": "2026-11-06"
+    },
+    {
+      "title": "OpenAIs GPT-6 Cyber can both break into systems and propose how to fix them",
+      "link": "https://the-decoder.com/openais-gpt-6-cyber-can-both-break-into-systems-and-propose-how-to-fix-them/",
       "source": "The Decoder",
       "date": "2026-11-05"
     },
     {
-      "title": "GPT-6 Astra sees the matrix and reprograms other AI models directly through their weights",
-      "link": "https://the-decoder.com/gpt-6-astra-sees-the-matrix-and-reprograms-other-ai-models-directly-through-their-weights/",
+      "title": "Tencent releases Hy4 with vision and computer use, claims second place among Chinese AI models",
+      "link": "https://the-decoder.com/tencent-releases-hy4-with-vision-and-computer-use-claims-second-place-among-chinese-ai-models/",
       "source": "The Decoder",
-      "date": "2026-11-04"
-    },
-    {
-      "title": "ChatGPT can now turn text prompts and photos into animated GIFs with OpenAI's Images 2.6 model",
-      "link": "https://the-decoder.com/chatgpt-can-now-turn-text-prompts-and-photos-into-animated-gifs-with-openais-images-2-6-model/",
-      "source": "The Decoder",
-      "date": "2026-11-04"
-    },
-    {
-      "title": "Anthropic's text watermark is easy to bypass on several older Claude models",
-      "link": "https://the-decoder.com/anthropics-text-watermark-is-easy-to-bypass-on-several-older-claude-models/",
-      "source": "The Decoder",
-      "date": "2026-11-04"
-    },
-    {
-      "title": "Almost no one uses AI agents to book their Uber, company says",
-      "link": "https://techcrunch.com/2026/11/04/almost-no-one-uses-ai-agents-to-book-their-uber-company-says/",
-      "source": "TechCrunch",
-      "date": "2026-11-04"
+      "date": "2026-11-05"
     }
   ]
 }
