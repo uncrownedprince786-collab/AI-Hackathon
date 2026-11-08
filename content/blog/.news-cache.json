@@ -1,6 +1,18 @@
 {
-  "fetchedAt": "2026-11-07T11:49:56.827Z",
+  "fetchedAt": "2026-11-08T12:01:39.007Z",
   "items": [
+    {
+      "title": "The gap between open and closed AI models in cyber capabilities keeps shrinking",
+      "link": "https://the-decoder.com/the-gap-between-open-and-closed-ai-models-in-cyber-capabilities-keeps-shrinking/",
+      "source": "The Decoder",
+      "date": "2026-11-07"
+    },
+    {
+      "title": "State propaganda in some Chinese AI models is only \"a thin layer\" that fine-tuning can strip away",
+      "link": "https://the-decoder.com/state-propaganda-in-some-chinese-ai-models-is-only-a-thin-layer-that-fine-tuning-can-strip-away/",
+      "source": "The Decoder",
+      "date": "2026-11-07"
+    },
     {
       "title": "Nine AI agents tried autonomous research on open questions from US national labs and none passed the experts' bar",
       "link": "https://the-decoder.com/nine-ai-agents-tried-autonomous-research-on-open-questions-from-us-national-labs-and-none-passed-the-experts-bar/",
@@ -8,28 +20,16 @@
       "date": "2026-11-07"
     },
     {
-      "title": "Anthropic adds bank account access to Claude so users can track their spending",
-      "link": "https://the-decoder.com/anthropic-adds-bank-account-access-to-claude-so-users-can-track-their-spending/",
+      "title": "The inventor of the bitter lesson has a bitter lesson for LLM scaling enthusiasts",
+      "link": "https://the-decoder.com/the-inventor-of-the-bitter-lesson-has-a-bitter-lesson-for-llm-scaling-enthusiasts/",
       "source": "The Decoder",
-      "date": "2026-11-06"
+      "date": "2026-11-08"
     },
     {
-      "title": "OpenAI lands an $ funding round, but has to court dentists for more capital",
-      "link": "https://the-decoder.com/openai-lands-an-11-billion-funding-round-but-has-to-court-dentists-for-more-capital/",
+      "title": "Anthropic pushes ahead with pre-Thanksgiving IPO despite tech selloff, accepts lower valuation",
+      "link": "https://the-decoder.com/anthropic-pushes-ahead-with-pre-thanksgiving-ipo-despite-tech-selloff-accepts-lower-valuation/",
       "source": "The Decoder",
       "date": "2026-11-07"
-    },
-    {
-      "title": "Perplexity now has its own always-on AI agent",
-      "link": "https://the-decoder.com/perplexity-now-has-its-own-always-on-ai-agent/",
-      "source": "The Decoder",
-      "date": "2026-11-06"
-    },
-    {
-      "title": "METR finds Anthropic may have crossed its own AI acceleration warning threshold back in July",
-      "link": "https://the-decoder.com/metr-finds-anthropic-may-have-crossed-its-own-ai-acceleration-warning-threshold-back-in-july/",
-      "source": "The Decoder",
-      "date": "2026-11-06"
     }
   ]
 }
