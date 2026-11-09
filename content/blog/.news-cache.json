@@ -1,6 +1,12 @@
 {
-  "fetchedAt": "2026-11-08T12:01:39.007Z",
+  "fetchedAt": "2026-11-09T14:05:54.331Z",
   "items": [
+    {
+      "title": "Decision Context: Persistent Behavioral Learning for AI Agents",
+      "link": "https://arxiv.org/abs/2611.08644",
+      "source": "arXiv AI",
+      "date": "2026-11-09"
+    },
     {
       "title": "The gap between open and closed AI models in cyber capabilities keeps shrinking",
       "link": "https://the-decoder.com/the-gap-between-open-and-closed-ai-models-in-cyber-capabilities-keeps-shrinking/",
@@ -8,28 +14,22 @@
       "date": "2026-11-07"
     },
     {
-      "title": "State propaganda in some Chinese AI models is only \"a thin layer\" that fine-tuning can strip away",
-      "link": "https://the-decoder.com/state-propaganda-in-some-chinese-ai-models-is-only-a-thin-layer-that-fine-tuning-can-strip-away/",
-      "source": "The Decoder",
-      "date": "2026-11-07"
+      "title": "LLM-Based Feature Extraction for Multi-Criteria Inventory Classification",
+      "link": "https://arxiv.org/abs/2611.08626",
+      "source": "arXiv AI",
+      "date": "2026-11-09"
     },
     {
-      "title": "Nine AI agents tried autonomous research on open questions from US national labs and none passed the experts' bar",
-      "link": "https://the-decoder.com/nine-ai-agents-tried-autonomous-research-on-open-questions-from-us-national-labs-and-none-passed-the-experts-bar/",
-      "source": "The Decoder",
-      "date": "2026-11-07"
+      "title": "Cancellation Is Not Enough: What Retries Leave Behind in an Overloaded LLM Engine",
+      "link": "https://arxiv.org/abs/2611.08684",
+      "source": "arXiv AI",
+      "date": "2026-11-09"
     },
     {
-      "title": "The inventor of the bitter lesson has a bitter lesson for LLM scaling enthusiasts",
-      "link": "https://the-decoder.com/the-inventor-of-the-bitter-lesson-has-a-bitter-lesson-for-llm-scaling-enthusiasts/",
-      "source": "The Decoder",
-      "date": "2026-11-08"
-    },
-    {
-      "title": "Anthropic pushes ahead with pre-Thanksgiving IPO despite tech selloff, accepts lower valuation",
-      "link": "https://the-decoder.com/anthropic-pushes-ahead-with-pre-thanksgiving-ipo-despite-tech-selloff-accepts-lower-valuation/",
-      "source": "The Decoder",
-      "date": "2026-11-07"
+      "title": "Embedding Consistent Recurrent Neural Networks in Finite Element Simulations for Path-Dependent Damage Prediction",
+      "link": "https://arxiv.org/abs/2611.08494",
+      "source": "arXiv ML",
+      "date": "2026-11-09"
     }
   ]
 }
