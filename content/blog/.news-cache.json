@@ -1,34 +1,34 @@
 {
-  "fetchedAt": "2026-11-09T14:05:54.331Z",
+  "fetchedAt": "2026-11-10T13:38:03.599Z",
   "items": [
     {
-      "title": "Decision Context: Persistent Behavioral Learning for AI Agents",
-      "link": "https://arxiv.org/abs/2611.08644",
+      "title": "Veterans' Mental Health Crisis Severity Annotation: Do LLMs Agree More Than Human Experts?",
+      "link": "https://arxiv.org/abs/2611.10048",
       "source": "arXiv AI",
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     {
-      "title": "The gap between open and closed AI models in cyber capabilities keeps shrinking",
-      "link": "https://the-decoder.com/the-gap-between-open-and-closed-ai-models-in-cyber-capabilities-keeps-shrinking/",
-      "source": "The Decoder",
-      "date": "2026-11-07"
-    },
-    {
-      "title": "LLM-Based Feature Extraction for Multi-Criteria Inventory Classification",
-      "link": "https://arxiv.org/abs/2611.08626",
+      "title": "AYO: A Safe and Privacy-Preserving Platform for Studying Children's Interaction with LLMs",
+      "link": "https://arxiv.org/abs/2611.10054",
       "source": "arXiv AI",
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     {
-      "title": "Cancellation Is Not Enough: What Retries Leave Behind in an Overloaded LLM Engine",
-      "link": "https://arxiv.org/abs/2611.08684",
-      "source": "arXiv AI",
-      "date": "2026-11-09"
-    },
-    {
-      "title": "Embedding Consistent Recurrent Neural Networks in Finite Element Simulations for Path-Dependent Damage Prediction",
-      "link": "https://arxiv.org/abs/2611.08494",
+      "title": "Causal Discovery Bench: Can LLMs Autonomously Conduct Effective Experiments?",
+      "link": "https://arxiv.org/abs/2611.09934",
       "source": "arXiv ML",
+      "date": "2026-11-10"
+    },
+    {
+      "title": "Claude Fable 5.2 and Mythos 5.2 cement Anthropic's AI lead just before its IPO",
+      "link": "https://the-decoder.com/claude-fable-5-2-and-mythos-5-2-cement-anthropics-ai-lead-just-before-its-ipo/",
+      "source": "The Decoder",
+      "date": "2026-11-09"
+    },
+    {
+      "title": "Disney bets on Adobe's Firefly to create brand-safe AI models for its entertainment empire",
+      "link": "https://the-decoder.com/disney-bets-on-adobes-firefly-to-create-brand-safe-ai-models-for-its-entertainment-empire/",
+      "source": "The Decoder",
       "date": "2026-11-09"
     }
   ]
