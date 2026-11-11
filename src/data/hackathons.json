@@ -1,11 +1,11 @@
 {
   "meta": {
-    "lastUpdated": "2026-11-11T06:24:03.158Z",
+    "lastUpdated": "2026-11-11T19:36:49.316Z",
     "cronSchedule": "17 */6 * * *",
-    "total": 172,
+    "total": 173,
     "counts": {
       "upcoming": 18,
-      "ongoing": 27,
+      "ongoing": 28,
       "past": 127
     },
     "sources": [
@@ -14,13 +14,13 @@
         "url": "https://devpost.com/hackathons",
         "ok": true,
         "fetched": 120,
-        "lastOkAt": "2026-11-11T06:24:03.158Z"
+        "lastOkAt": "2026-11-11T19:36:49.316Z"
       },
       {
         "name": "lablab.ai",
         "url": "https://lablab.ai/ai-hackathons",
-        "ok": true,
-        "fetched": 23,
+        "ok": false,
+        "fetched": 0,
         "lastOkAt": "2026-11-11T06:24:03.158Z"
       }
     ],
@@ -153,7 +153,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false,
       "country": "Singapore",
       "claimedPrizeUsd": 24500
@@ -270,11 +270,11 @@
       "sourceName": "Devpost",
       "sourceId": "31302",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/288/985/datas/medium_square.png",
-      "participants": 33952,
+      "participants": 34656,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 69750,
       "prizeBreakdownPublished": true
     },
@@ -544,7 +544,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 100000,
       "prizeBreakdownPublished": false,
       "country": "India"
@@ -587,7 +587,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 40000,
       "prizeBreakdownPublished": true,
       "country": "India"
@@ -705,11 +705,11 @@
       "sourceName": "Devpost",
       "sourceId": "31480",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/366/043/datas/medium_square.png",
-      "participants": 293,
+      "participants": 310,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 1000,
       "prizeBreakdownPublished": true
     },
@@ -777,11 +777,11 @@
       "sourceName": "Devpost",
       "sourceId": "30984",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/087/526/datas/medium_square.png",
-      "participants": 6342,
+      "participants": 6341,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 20250,
       "prizeBreakdownPublished": true
     },
@@ -847,7 +847,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 6000,
       "prizeBreakdownPublished": true
     },
@@ -907,7 +907,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 40000,
       "prizeBreakdownPublished": true
     },
@@ -961,7 +961,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true
     },
@@ -1564,11 +1564,11 @@
       "sourceName": "Devpost",
       "sourceId": "30790",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/173/025/datas/medium_square.png",
-      "participants": 29869,
+      "participants": 29868,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 50000,
       "prizeBreakdownPublished": true
     },
@@ -1622,7 +1622,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 350000,
       "prizeBreakdownPublished": true
     },
@@ -1662,11 +1662,11 @@
       "sourceName": "Devpost",
       "sourceId": "32042",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/796/876/datas/medium_square.png",
-      "participants": 33,
+      "participants": 94,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-10T19:44:47.988Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "country": "India"
     },
     {
@@ -1717,7 +1717,7 @@
       "featured": false,
       "invitedOnly": true,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 40000,
       "prizeBreakdownPublished": true
     },
@@ -1797,11 +1797,11 @@
       "sourceName": "Devpost",
       "sourceId": "31719",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/622/830/datas/medium_square.jpg",
-      "participants": 76,
+      "participants": 84,
       "featured": false,
       "invitedOnly": true,
       "firstSeenAt": "2026-11-01T06:07:21.682Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-30071",
@@ -1923,11 +1923,11 @@
       "sourceName": "Devpost",
       "sourceId": "31948",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/758/654/datas/medium_square.jpeg",
-      "participants": 68,
+      "participants": 81,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-10T07:20:18.242Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31775",
@@ -1965,11 +1965,11 @@
       "sourceName": "Devpost",
       "sourceId": "31775",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/622/204/datas/medium_square.png",
-      "participants": 64,
+      "participants": 66,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-28T22:36:38.113Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31552",
@@ -2007,11 +2007,11 @@
       "sourceName": "Devpost",
       "sourceId": "31552",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/624/690/datas/medium_square.png",
-      "participants": 2082,
+      "participants": 2160,
       "featured": true,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-22T17:12:06.616Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31994",
@@ -2049,11 +2049,11 @@
       "sourceName": "Devpost",
       "sourceId": "31994",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/785/560/datas/medium_square.png",
-      "participants": 86,
+      "participants": 93,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-07T05:59:34.997Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31928",
@@ -2173,11 +2173,11 @@
       "sourceName": "Devpost",
       "sourceId": "31642",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/715/013/datas/medium_square.png",
-      "participants": 275,
+      "participants": 293,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-02T15:55:53.310Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31060",
@@ -2600,7 +2600,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-06T10:34:09.872Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-30744",
@@ -2667,7 +2667,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -2781,11 +2781,11 @@
       "sourceName": "Devpost",
       "sourceId": "31808",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/784/130/datas/medium_square.png",
-      "participants": 1382,
+      "participants": 1462,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-26T22:41:19.727Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-29114",
@@ -2833,11 +2833,11 @@
       "sourceName": "Devpost",
       "sourceId": "29114",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/642/899/datas/medium_square.png",
-      "participants": 1212,
+      "participants": 1211,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 3000,
       "prizeBreakdownPublished": true
     },
@@ -2879,7 +2879,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 100,
       "prizeBreakdownPublished": true
     },
@@ -2921,7 +2921,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false,
       "claimedPrizeUsd": 8000
     },
@@ -2975,7 +2975,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 100000,
       "prizeBreakdownPublished": true
     },
@@ -3239,7 +3239,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3474,7 +3474,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -3700,6 +3700,40 @@
       "prizeBreakdownPublished": true
     },
     {
+      "id": "devpost-32009",
+      "slug": "ai-for-medicine-a-global-student-hackathon-on-the-future-of-care-32009",
+      "name": "AI for Medicine: A Global Student Hackathon on the Future of Care",
+      "description": "AI hackathon hosted on Devpost by Open Health AI Collective. AI for Medicine: A Global Student Hackathon on the Future of Care is an AI hackathon organised by Open Health AI Collective, and it runs fully online. It focuses on Beginner Friendly, Health and Machine Learning/AI. Submissions are open until 2026-12-04. No prize pool is published on the organiser page. 75 people have registered.",
+      "status": "ongoing",
+      "mode": "online",
+      "organizer": "Open Health AI Collective",
+      "startDate": "2026-11-04",
+      "endDate": "2026-12-04",
+      "registrationDeadline": "2026-12-04",
+      "prizeBreakdownPublished": false,
+      "location": "Online",
+      "prizes": [],
+      "totalPrizeUsd": 0,
+      "cashPrizeUsd": 0,
+      "creditPrizeUsd": 0,
+      "winners": [],
+      "tags": [
+        "Beginner Friendly",
+        "Health",
+        "Machine Learning/AI"
+      ],
+      "officialUrl": "https://ai-for-medicine.devpost.com/",
+      "sourceUrl": "https://ai-for-medicine.devpost.com/",
+      "sourceName": "Devpost",
+      "sourceId": "32009",
+      "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/788/362/datas/medium_square.png",
+      "participants": 75,
+      "featured": false,
+      "invitedOnly": false,
+      "firstSeenAt": "2026-11-11T19:36:49.316Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z"
+    },
+    {
       "id": "devpost-31841",
       "slug": "global-ai-hackathon-devcon-2026-by-mel-31841",
       "name": "Global AI Hackathon - Devcon 2026 By Mel",
@@ -3765,7 +3799,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-13T00:41:35.852Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31512",
@@ -3829,11 +3863,11 @@
       "sourceName": "Devpost",
       "sourceId": "31960",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/767/299/datas/medium_square.png",
-      "participants": 114,
+      "participants": 118,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-03T14:17:23.403Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31728",
@@ -3897,11 +3931,11 @@
       "sourceName": "Devpost",
       "sourceId": "30880",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/339/368/datas/medium_square.png",
-      "participants": 31,
+      "participants": 32,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-24T20:51:35.249Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31548",
@@ -4066,11 +4100,11 @@
       "sourceName": "Devpost",
       "sourceId": "31907",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/723/285/datas/medium_square.png",
-      "participants": 468,
+      "participants": 479,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-28T12:56:40.233Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31826",
@@ -4098,11 +4132,11 @@
       "sourceName": "Devpost",
       "sourceId": "31826",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/631/283/datas/medium_square.png",
-      "participants": 188,
+      "participants": 195,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-24T15:58:13.895Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31975",
@@ -4323,11 +4357,11 @@
       "sourceName": "Devpost",
       "sourceId": "31024",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/374/843/datas/medium_square.png",
-      "participants": 5762,
+      "participants": 5841,
       "featured": true,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 1000000,
       "prizeBreakdownPublished": true
     },
@@ -4431,11 +4465,11 @@
       "sourceName": "Devpost",
       "sourceId": "30992",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/173/047/datas/medium_square.png",
-      "participants": 35461,
+      "participants": 35460,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 138000,
       "prizeBreakdownPublished": true
     },
@@ -4495,7 +4529,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 10680,
       "prizeBreakdownPublished": false
     },
@@ -4573,7 +4607,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 1247,
       "prizeBreakdownPublished": true
     },
@@ -4776,7 +4810,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 45000,
       "prizeBreakdownPublished": true
     },
@@ -5066,11 +5100,11 @@
       "sourceName": "Devpost",
       "sourceId": "30764",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/929/208/datas/medium_square.png",
-      "participants": 426,
+      "participants": 430,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -5100,11 +5134,11 @@
       "sourceName": "Devpost",
       "sourceId": "30456",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/826/556/datas/medium_square.png",
-      "participants": 70,
+      "participants": 73,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -5507,11 +5541,11 @@
       "sourceName": "Devpost",
       "sourceId": "30689",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/874/689/datas/medium_square.png",
-      "participants": 41,
+      "participants": 42,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 10000,
       "prizeBreakdownPublished": true,
       "country": "Canada"
@@ -5568,11 +5602,11 @@
       "sourceName": "Devpost",
       "sourceId": "30463",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/828/557/datas/medium_square.jpg",
-      "participants": 326,
+      "participants": 332,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 6000,
       "prizeBreakdownPublished": true,
       "country": "United States"
@@ -5678,11 +5712,11 @@
       "sourceName": "Devpost",
       "sourceId": "30789",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/004/995/823/datas/medium_square.jpg",
-      "participants": 1018,
+      "participants": 1046,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "claimedPrizeUsd": 7800,
       "prizeBreakdownPublished": false
     },
@@ -6134,7 +6168,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-07T21:51:53.340Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "country": "United Kingdom"
     },
     {
@@ -6216,11 +6250,11 @@
       "sourceName": "Devpost",
       "sourceId": "31746",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/585/747/datas/medium_square.png",
-      "participants": 156,
+      "participants": 165,
       "featured": false,
       "invitedOnly": true,
       "firstSeenAt": "2026-11-04T19:46:22.562Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "country": "United States"
     },
     {
@@ -6527,11 +6561,11 @@
       "sourceName": "Devpost",
       "sourceId": "31572",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/624/479/datas/medium_square.png",
-      "participants": 2737,
+      "participants": 2828,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-27T18:02:31.468Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31805",
@@ -6695,11 +6729,11 @@
       "sourceName": "Devpost",
       "sourceId": "31943",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/779/857/datas/medium_square.png",
-      "participants": 69,
+      "participants": 74,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-06T06:48:41.320Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-26475",
@@ -6737,11 +6771,11 @@
       "sourceName": "Devpost",
       "sourceId": "26475",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/640/846/datas/medium_square.jpg",
-      "participants": 226,
+      "participants": 232,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-27T12:13:52.926Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31722",
@@ -6779,11 +6813,11 @@
       "sourceName": "Devpost",
       "sourceId": "31722",
       "imageUrl": "https://assets.devpost.com/assets/defaults/thumbnail-placeholder-8c916ef4da99a222ce6ece077c71c7e282f071f830747b2abb5718018cbfa699.gif",
-      "participants": 21,
+      "participants": 22,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-07T21:51:53.340Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31779",
@@ -6867,7 +6901,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-02T15:55:53.310Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31820",
@@ -6989,11 +7023,11 @@
       "sourceName": "Devpost",
       "sourceId": "31737",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/587/014/datas/medium_square.jpeg",
-      "participants": 173,
+      "participants": 178,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-24T11:03:01.915Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31972",
@@ -7031,11 +7065,11 @@
       "sourceName": "Devpost",
       "sourceId": "31972",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/785/867/datas/medium_square.png",
-      "participants": 135,
+      "participants": 164,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-08T22:07:07.783Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31776",
@@ -7073,11 +7107,11 @@
       "sourceName": "Devpost",
       "sourceId": "31776",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/628/007/datas/medium_square.png",
-      "participants": 49,
+      "participants": 54,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-07T21:51:53.340Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31742",
@@ -7119,7 +7153,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-23T17:09:07.781Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31831",
@@ -7199,11 +7233,11 @@
       "sourceName": "Devpost",
       "sourceId": "31787",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/766/254/datas/medium_square.png",
-      "participants": 257,
+      "participants": 280,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-01T13:26:42.298Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-30029",
@@ -7327,11 +7361,11 @@
       "sourceName": "Devpost",
       "sourceId": "31667",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/585/149/datas/medium_square.png",
-      "participants": 11755,
+      "participants": 12265,
       "featured": true,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-14T21:42:35.165Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31973",
@@ -7369,11 +7403,11 @@
       "sourceName": "Devpost",
       "sourceId": "31973",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/779/699/datas/medium_square.png",
-      "participants": 179,
+      "participants": 271,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-10T19:44:47.988Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31694",
@@ -7415,7 +7449,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-16T11:26:24.160Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31659",
@@ -7457,7 +7491,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-15T17:02:54.502Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-32079",
@@ -7495,11 +7529,11 @@
       "sourceName": "Devpost",
       "sourceId": "32079",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/837/067/datas/medium_square.png",
-      "participants": 24,
+      "participants": 63,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-10T19:44:47.988Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-30697",
@@ -7583,7 +7617,7 @@
       "featured": false,
       "invitedOnly": true,
       "firstSeenAt": "2026-10-27T22:15:19.201Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31083",
@@ -7621,11 +7655,11 @@
       "sourceName": "Devpost",
       "sourceId": "31083",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/522/477/datas/medium_square.jpg",
-      "participants": 1176,
+      "participants": 1245,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-11-02T15:55:53.310Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31815",
@@ -7949,7 +7983,7 @@
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false,
       "country": "Mexico"
     },
@@ -8083,11 +8117,11 @@
       "sourceName": "Devpost",
       "sourceId": "31187",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/273/593/datas/medium_square.png",
-      "participants": 296,
+      "participants": 308,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-05T11:50:43.719Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z",
+      "updatedAt": "2026-11-11T19:36:49.316Z",
       "prizeBreakdownPublished": false
     },
     {
@@ -8160,11 +8194,11 @@
       "sourceName": "Devpost",
       "sourceId": "31222",
       "imageUrl": "https://d112y698adiu2z.cloudfront.net/photos/production/challenge_thumbnails/005/239/296/datas/medium_square.png",
-      "participants": 88,
+      "participants": 91,
       "featured": false,
       "invitedOnly": false,
       "firstSeenAt": "2026-10-10T05:54:23.279Z",
-      "updatedAt": "2026-11-11T06:24:03.158Z"
+      "updatedAt": "2026-11-11T19:36:49.316Z"
     },
     {
       "id": "devpost-31239",
