@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-11-11T12:50:13.020Z",
+  "fetchedAt": "2026-11-12T13:52:39.089Z",
   "items": [
     {
-      "title": "OpenAI turns ChatGPT into a business directory with AI agents that handle customer questions",
-      "link": "https://the-decoder.com/openai-turns-chatgpt-into-a-business-directory-with-ai-agents-that-handle-customer-questions/",
-      "source": "The Decoder",
-      "date": "2026-11-10"
+      "title": "New research could lead to faster, trustworthy AI models for climate prediction",
+      "link": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112",
+      "source": "MIT News",
+      "date": "2026-11-12"
     },
     {
-      "title": "Enterprise sales push OpenAI's quarterly revenue to $, though it still trails Anthropic",
-      "link": "https://the-decoder.com/enterprise-sales-push-openais-quarterly-revenue-to-10-billion-though-it-still-trails-anthropic/",
+      "title": "Google Deepmind shifts genomics AI from bulk tissue predictions to single cell type resolution with AlphaGenome 2",
+      "link": "https://the-decoder.com/google-deepmind-shifts-genomics-ai-from-bulk-tissue-predictions-to-single-cell-type-resolution-with-alphagenome-2/",
       "source": "The Decoder",
+      "date": "2026-11-12"
+    },
+    {
+      "title": "Australia's proposed AI safety bill would force frontier model makers to open up to independent testing",
+      "link": "https://the-decoder.com/australias-proposed-ai-safety-bill-would-force-frontier-model-makers-to-open-up-to-independent-testing/",
+      "source": "The Decoder",
+      "date": "2026-11-12"
+    },
+    {
+      "title": "Token Pooling-Aware Training for Multi-Vector Embedding Models",
+      "link": "https://huggingface.co/blog/token-pooling",
+      "source": "Hugging Face",
       "date": "2026-11-11"
     },
     {
-      "title": "Anthropic turns Claude into a full workspace with Plugins, spreadsheets, whiteboards, and soon Meeting notes",
-      "link": "https://the-decoder.com/anthropic-turns-claude-into-a-full-workspace-with-plugins-spreadsheets-whiteboards-and-soon-meeting-notes/",
+      "title": "Google joins the decision-model wave with Gemini Decision 1, scoring 1,000 questions in a single pass",
+      "link": "https://the-decoder.com/google-joins-the-decision-model-wave-with-gemini-decision-1-scoring-1000-questions-in-a-single-pass/",
       "source": "The Decoder",
-      "date": "2026-11-10"
-    },
-    {
-      "title": "Google DeepMind's Gemini Robotics 2.5 scores 96 percent sorting metal parts in a Mercedes-Benz assembly pilot",
-      "link": "https://the-decoder.com/google-deepminds-gemini-robotics-2-5-scores-96-percent-sorting-metal-parts-in-a-mercedes-benz-assembly-pilot/",
-      "source": "The Decoder",
-      "date": "2026-11-10"
-    },
-    {
-      "title": "OpenAI, Anthropic face new oversight as New York’s AI safety law takes effect",
-      "link": "https://techcrunch.com/2026/11/10/openai-anthropic-face-new-oversight-as-new-yorks-ai-safety-law-takes-effect/",
-      "source": "TechCrunch",
-      "date": "2026-11-10"
+      "date": "2026-11-11"
     }
   ]
 }
