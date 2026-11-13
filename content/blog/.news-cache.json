@@ -1,6 +1,18 @@
 {
-  "fetchedAt": "2026-11-12T13:52:39.089Z",
+  "fetchedAt": "2026-11-13T13:16:14.349Z",
   "items": [
+    {
+      "title": "Thompson Sampling using Prior-fitted Diffusion Transformers",
+      "link": "https://arxiv.org/abs/2611.14656",
+      "source": "arXiv ML",
+      "date": "2026-11-13"
+    },
+    {
+      "title": "Claude Meetings lets Anthropic's AI join your video calls",
+      "link": "https://the-decoder.com/claude-meetings-lets-anthropics-ai-join-your-video-calls/",
+      "source": "The Decoder",
+      "date": "2026-11-12"
+    },
     {
       "title": "New research could lead to faster, trustworthy AI models for climate prediction",
       "link": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112",
@@ -8,28 +20,16 @@
       "date": "2026-11-12"
     },
     {
-      "title": "Google Deepmind shifts genomics AI from bulk tissue predictions to single cell type resolution with AlphaGenome 2",
-      "link": "https://the-decoder.com/google-deepmind-shifts-genomics-ai-from-bulk-tissue-predictions-to-single-cell-type-resolution-with-alphagenome-2/",
-      "source": "The Decoder",
-      "date": "2026-11-12"
+      "title": "Together Compiler: Continual Compilation for AI Inference",
+      "link": "https://arxiv.org/abs/2611.14681",
+      "source": "arXiv AI",
+      "date": "2026-11-13"
     },
     {
-      "title": "Australia's proposed AI safety bill would force frontier model makers to open up to independent testing",
-      "link": "https://the-decoder.com/australias-proposed-ai-safety-bill-would-force-frontier-model-makers-to-open-up-to-independent-testing/",
-      "source": "The Decoder",
-      "date": "2026-11-12"
-    },
-    {
-      "title": "Token Pooling-Aware Training for Multi-Vector Embedding Models",
-      "link": "https://huggingface.co/blog/token-pooling",
-      "source": "Hugging Face",
-      "date": "2026-11-11"
-    },
-    {
-      "title": "Google joins the decision-model wave with Gemini Decision 1, scoring 1,000 questions in a single pass",
-      "link": "https://the-decoder.com/google-joins-the-decision-model-wave-with-gemini-decision-1-scoring-1000-questions-in-a-single-pass/",
-      "source": "The Decoder",
-      "date": "2026-11-11"
+      "title": "GenPFN: An In-Context Tabular Foundation Model Approach for Augmenting Small Datasets in Engineering",
+      "link": "https://arxiv.org/abs/2611.14804",
+      "source": "arXiv AI",
+      "date": "2026-11-13"
     }
   ]
 }
