@@ -1,34 +1,34 @@
 {
-  "fetchedAt": "2026-11-13T13:16:14.349Z",
+  "fetchedAt": "2026-11-14T12:20:05.163Z",
   "items": [
     {
-      "title": "Thompson Sampling using Prior-fitted Diffusion Transformers",
-      "link": "https://arxiv.org/abs/2611.14656",
-      "source": "arXiv ML",
-      "date": "2026-11-13"
-    },
-    {
-      "title": "Claude Meetings lets Anthropic's AI join your video calls",
-      "link": "https://the-decoder.com/claude-meetings-lets-anthropics-ai-join-your-video-calls/",
+      "title": "Former OpenAI researcher says he found Nvidia Blackwell fingerprints hidden inside six Chinese AI models",
+      "link": "https://the-decoder.com/former-openai-researcher-says-he-found-nvidia-blackwell-fingerprints-hidden-inside-six-chinese-ai-models/",
       "source": "The Decoder",
-      "date": "2026-11-12"
-    },
-    {
-      "title": "New research could lead to faster, trustworthy AI models for climate prediction",
-      "link": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112",
-      "source": "MIT News",
-      "date": "2026-11-12"
-    },
-    {
-      "title": "Together Compiler: Continual Compilation for AI Inference",
-      "link": "https://arxiv.org/abs/2611.14681",
-      "source": "arXiv AI",
       "date": "2026-11-13"
     },
     {
-      "title": "GenPFN: An In-Context Tabular Foundation Model Approach for Augmenting Small Datasets in Engineering",
-      "link": "https://arxiv.org/abs/2611.14804",
-      "source": "arXiv AI",
+      "title": "ChatGPT’s new Wallet lets AI agents shop and check out for you",
+      "link": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
+      "source": "TechCrunch",
+      "date": "2026-11-13"
+    },
+    {
+      "title": "OpenAI rebuilt AI shopping from scratch with ChatGPT Wallet",
+      "link": "https://the-decoder.com/openai-rebuilt-ai-shopping-from-scratch-with-chatgpt-wallet/",
+      "source": "The Decoder",
+      "date": "2026-11-13"
+    },
+    {
+      "title": "Anthropic's Claude for Manufacturing plugs AI directly into factory software to automate industrial workflows",
+      "link": "https://the-decoder.com/anthropics-claude-for-manufacturing-plugs-ai-directly-into-factory-software-to-automate-industrial-workflows/",
+      "source": "The Decoder",
+      "date": "2026-11-13"
+    },
+    {
+      "title": "Export-banned Nvidia chips are behind China’s most powerful AI models — uh-oh, Jensen!",
+      "link": "https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/",
+      "source": "TechCrunch",
       "date": "2026-11-13"
     }
   ]
