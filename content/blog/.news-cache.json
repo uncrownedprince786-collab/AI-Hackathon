@@ -1,12 +1,6 @@
 {
-  "fetchedAt": "2026-11-14T12:20:05.163Z",
+  "fetchedAt": "2026-11-15T12:51:21.731Z",
   "items": [
-    {
-      "title": "Former OpenAI researcher says he found Nvidia Blackwell fingerprints hidden inside six Chinese AI models",
-      "link": "https://the-decoder.com/former-openai-researcher-says-he-found-nvidia-blackwell-fingerprints-hidden-inside-six-chinese-ai-models/",
-      "source": "The Decoder",
-      "date": "2026-11-13"
-    },
     {
       "title": "ChatGPT’s new Wallet lets AI agents shop and check out for you",
       "link": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
@@ -14,22 +8,28 @@
       "date": "2026-11-13"
     },
     {
-      "title": "OpenAI rebuilt AI shopping from scratch with ChatGPT Wallet",
-      "link": "https://the-decoder.com/openai-rebuilt-ai-shopping-from-scratch-with-chatgpt-wallet/",
+      "title": "Gemini 4 Carbon takes the MathArena crown but costs 15 times more than GPT-6.1 Sol",
+      "link": "https://the-decoder.com/gemini-4-carbon-takes-the-matharena-crown-but-costs-15-times-more-than-gpt-6-1-sol/",
       "source": "The Decoder",
-      "date": "2026-11-13"
+      "date": "2026-11-14"
     },
     {
-      "title": "Anthropic's Claude for Manufacturing plugs AI directly into factory software to automate industrial workflows",
-      "link": "https://the-decoder.com/anthropics-claude-for-manufacturing-plugs-ai-directly-into-factory-software-to-automate-industrial-workflows/",
+      "title": "Anthropic says outdated prompting habits are slowing down Claude Opus 5.5",
+      "link": "https://the-decoder.com/anthropic-says-outdated-prompting-habits-are-slowing-down-claude-opus-5-5/",
       "source": "The Decoder",
-      "date": "2026-11-13"
+      "date": "2026-11-14"
     },
     {
       "title": "Export-banned Nvidia chips are behind China’s most powerful AI models — uh-oh, Jensen!",
       "link": "https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/",
       "source": "TechCrunch",
       "date": "2026-11-13"
+    },
+    {
+      "title": "New research could lead to faster, trustworthy AI models for climate prediction",
+      "link": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112",
+      "source": "MIT News",
+      "date": "2026-11-12"
     }
   ]
 }
