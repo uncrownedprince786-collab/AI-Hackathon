@@ -1,11 +1,17 @@
 {
-  "fetchedAt": "2026-11-15T12:51:21.731Z",
+  "fetchedAt": "2026-11-16T13:50:42.287Z",
   "items": [
     {
-      "title": "ChatGPT’s new Wallet lets AI agents shop and check out for you",
-      "link": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you/",
-      "source": "TechCrunch",
-      "date": "2026-11-13"
+      "title": "Does the Ranking Hold? A Practitioner-Facing Audit of Hallucination Detectors on Small, Quantized, On-Device LLMs",
+      "link": "https://arxiv.org/abs/2611.17339",
+      "source": "arXiv AI",
+      "date": "2026-11-16"
+    },
+    {
+      "title": "Anthropic's Claude Fable 5.2 doesn't generate images, it paints them",
+      "link": "https://the-decoder.com/anthropics-claude-fable-5-2-doesnt-generate-images-it-paints-them/",
+      "source": "The Decoder",
+      "date": "2026-11-15"
     },
     {
       "title": "Gemini 4 Carbon takes the MathArena crown but costs 15 times more than GPT-6.1 Sol",
@@ -18,12 +24,6 @@
       "link": "https://the-decoder.com/anthropic-says-outdated-prompting-habits-are-slowing-down-claude-opus-5-5/",
       "source": "The Decoder",
       "date": "2026-11-14"
-    },
-    {
-      "title": "Export-banned Nvidia chips are behind China’s most powerful AI models — uh-oh, Jensen!",
-      "link": "https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen/",
-      "source": "TechCrunch",
-      "date": "2026-11-13"
     },
     {
       "title": "New research could lead to faster, trustworthy AI models for climate prediction",
