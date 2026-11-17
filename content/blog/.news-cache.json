@@ -1,10 +1,16 @@
 {
-  "fetchedAt": "2026-11-16T13:50:42.287Z",
+  "fetchedAt": "2026-11-17T14:43:04.616Z",
   "items": [
     {
-      "title": "Does the Ranking Hold? A Practitioner-Facing Audit of Hallucination Detectors on Small, Quantized, On-Device LLMs",
-      "link": "https://arxiv.org/abs/2611.17339",
-      "source": "arXiv AI",
+      "title": "Quantize, Qualify, Rerank: A Recipe for Compressing LLMs Without Losing Quality",
+      "link": "https://arxiv.org/abs/2611.18587",
+      "source": "arXiv ML",
+      "date": "2026-11-17"
+    },
+    {
+      "title": "OpenAI's GPT-6 Astra tackles the Standard Model's toughest math problem on a lattice",
+      "link": "https://the-decoder.com/openais-gpt-6-astra-tackles-the-standard-models-toughest-math-problem-on-a-lattice/",
+      "source": "The Decoder",
       "date": "2026-11-16"
     },
     {
@@ -14,22 +20,16 @@
       "date": "2026-11-15"
     },
     {
-      "title": "Gemini 4 Carbon takes the MathArena crown but costs 15 times more than GPT-6.1 Sol",
-      "link": "https://the-decoder.com/gemini-4-carbon-takes-the-matharena-crown-but-costs-15-times-more-than-gpt-6-1-sol/",
-      "source": "The Decoder",
-      "date": "2026-11-14"
-    },
-    {
-      "title": "Anthropic says outdated prompting habits are slowing down Claude Opus 5.5",
-      "link": "https://the-decoder.com/anthropic-says-outdated-prompting-habits-are-slowing-down-claude-opus-5-5/",
-      "source": "The Decoder",
-      "date": "2026-11-14"
-    },
-    {
       "title": "New research could lead to faster, trustworthy AI models for climate prediction",
       "link": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112",
       "source": "MIT News",
       "date": "2026-11-12"
+    },
+    {
+      "title": "Ask Precisely, Assume Wisely: Interactive Evaluation of Ambiguity Resolution in Large Language Models",
+      "link": "https://arxiv.org/abs/2611.18905",
+      "source": "arXiv AI",
+      "date": "2026-11-17"
     }
   ]
 }
