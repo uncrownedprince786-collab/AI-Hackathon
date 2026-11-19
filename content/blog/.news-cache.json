@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-11-18T14:20:39.861Z",
+  "fetchedAt": "2026-11-19T14:32:54.099Z",
   "items": [
     {
-      "title": "California's attorney general sues OpenAI over rogue AI models that attacked Hugging Face",
-      "link": "https://the-decoder.com/californias-attorney-general-sues-openai-over-rogue-ai-models-that-attacked-hugging-face/",
+      "title": "OpenAI's own researchers now say they value their AI tools more than nearly half their colleagues",
+      "link": "https://the-decoder.com/openais-own-researchers-now-say-they-value-their-ai-tools-more-than-nearly-half-their-colleagues/",
       "source": "The Decoder",
-      "date": "2026-11-17"
+      "date": "2026-11-19"
     },
     {
-      "title": "KPMG's \"Project Exponential\" put AI agents alongside a real audit team and found the bots dug deeper on individual questions",
-      "link": "https://the-decoder.com/kpmgs-project-exponential-put-ai-agents-alongside-a-real-audit-team-and-found-the-bots-dug-deeper-on-individual-questions/",
+      "title": "Microsoft is replacing outside AI models in its own products with cheaper in-house alternatives",
+      "link": "https://the-decoder.com/microsoft-is-replacing-outside-ai-models-in-its-own-products-with-cheaper-in-house-alternatives/",
       "source": "The Decoder",
       "date": "2026-11-18"
     },
     {
-      "title": "Felicis leads $ bet on Unsiloed AI to make enterprise documents usable by AI agents",
-      "link": "https://techcrunch.com/2026/11/18/felicis-leads-7-5m-bet-on-unsiloed-ai-to-make-enterprise-documents-usable-by-ai-agents/",
+      "title": "Anthropic, OpenAI, and Google models readily marked medics, journalists, and surrendering soldiers as kamikaze drone targets",
+      "link": "https://the-decoder.com/anthropic-openai-and-google-models-readily-marked-medics-journalists-and-surrendering-soldiers-as-kamikaze-drone-targets/",
+      "source": "The Decoder",
+      "date": "2026-11-18"
+    },
+    {
+      "title": "Satya Nadella predicts AI agents will reshuffle the economics of the web",
+      "link": "https://techcrunch.com/2026/11/18/satya-nadella-predicts-ai-agents-will-reshuffle-the-economics-of-the-web/",
       "source": "TechCrunch",
       "date": "2026-11-18"
     },
     {
-      "title": "OpenAI launches GPT-6.2 Astra and Sol with lower API prices and some benchmark gains",
-      "link": "https://the-decoder.com/openai-launches-gpt-6-2-astra-and-sol-with-lower-api-prices-and-some-benchmark-gains/",
-      "source": "The Decoder",
-      "date": "2026-11-17"
-    },
-    {
-      "title": "AI agents are starting to fill out medical forms and file insurance requests in place of human staff",
-      "link": "https://the-decoder.com/ai-agents-are-starting-to-fill-out-medical-forms-and-file-insurance-requests-in-place-of-human-staff/",
-      "source": "The Decoder",
-      "date": "2026-11-17"
+      "title": "New research could lead to faster, trustworthy AI models for climate prediction",
+      "link": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112",
+      "source": "MIT News",
+      "date": "2026-11-12"
     }
   ]
 }
