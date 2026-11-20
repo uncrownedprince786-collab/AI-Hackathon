@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-19T14:32:54.099Z",
+  "fetchedAt": "2026-11-20T14:11:07.511Z",
   "items": [
     {
       "title": "OpenAI's own researchers now say they value their AI tools more than nearly half their colleagues",
@@ -8,28 +8,28 @@
       "date": "2026-11-19"
     },
     {
-      "title": "Microsoft is replacing outside AI models in its own products with cheaper in-house alternatives",
-      "link": "https://the-decoder.com/microsoft-is-replacing-outside-ai-models-in-its-own-products-with-cheaper-in-house-alternatives/",
-      "source": "The Decoder",
-      "date": "2026-11-18"
+      "title": "An LLM-Agentic Framework for Intelligent Work Order Management in Industrial Maintenance",
+      "link": "https://arxiv.org/abs/2611.25070",
+      "source": "arXiv AI",
+      "date": "2026-11-20"
     },
     {
-      "title": "Anthropic, OpenAI, and Google models readily marked medics, journalists, and surrendering soldiers as kamikaze drone targets",
-      "link": "https://the-decoder.com/anthropic-openai-and-google-models-readily-marked-medics-journalists-and-surrendering-soldiers-as-kamikaze-drone-targets/",
-      "source": "The Decoder",
-      "date": "2026-11-18"
+      "title": "BuggyMLE: Scaling Machine Learning Engineering Difficulty with Bug Injection",
+      "link": "https://arxiv.org/abs/2611.25088",
+      "source": "arXiv AI",
+      "date": "2026-11-20"
     },
     {
-      "title": "Satya Nadella predicts AI agents will reshuffle the economics of the web",
-      "link": "https://techcrunch.com/2026/11/18/satya-nadella-predicts-ai-agents-will-reshuffle-the-economics-of-the-web/",
-      "source": "TechCrunch",
-      "date": "2026-11-18"
+      "title": "CoMPASS: A Multi-Turn Benchmark for Measuring LLM Reinforcement of Parasocial Behavior",
+      "link": "https://arxiv.org/abs/2611.25109",
+      "source": "arXiv AI",
+      "date": "2026-11-20"
     },
     {
-      "title": "New research could lead to faster, trustworthy AI models for climate prediction",
-      "link": "https://news.mit.edu/2026/new-research-could-lead-faster-trustworthy-ai-models-climate-prediction-1112",
-      "source": "MIT News",
-      "date": "2026-11-12"
+      "title": "Calibrated Decision Rewards: Training Language Models with a Judge That Knows How Sure It Is",
+      "link": "https://arxiv.org/abs/2611.25135",
+      "source": "arXiv AI",
+      "date": "2026-11-20"
     }
   ]
 }
