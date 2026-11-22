@@ -1,11 +1,11 @@
 {
-  "fetchedAt": "2026-11-21T13:36:18.592Z",
+  "fetchedAt": "2026-11-22T13:28:34.203Z",
   "items": [
     {
-      "title": "OpenAI makes it much harder for attackers to extract how its latest AI models think",
-      "link": "https://the-decoder.com/openai-makes-it-much-harder-for-attackers-to-extract-how-its-latest-ai-models-think/",
+      "title": "GPT-6.2 Astra and Sol get to the point faster but score lower on transparency than Claude",
+      "link": "https://the-decoder.com/gpt-6-2-astra-and-sol-get-to-the-point-faster-but-score-lower-on-transparency-than-claude/",
       "source": "The Decoder",
-      "date": "2026-11-20"
+      "date": "2026-11-22"
     },
     {
       "title": "OpenAI shares new prompting tips for GPT-6.2 Astra and Sol to fix brief answers and unnecessary questions",
@@ -20,15 +20,15 @@
       "date": "2026-11-21"
     },
     {
-      "title": "Signal blocks screenshots on iOS 27 and Android to stop AI agents from reading private chats",
-      "link": "https://the-decoder.com/signal-blocks-screenshots-on-ios-27-and-android-to-stop-ai-agents-from-reading-private-chats/",
-      "source": "The Decoder",
-      "date": "2026-11-20"
+      "title": "Here are the top AI agents that can live in your text messages",
+      "link": "https://techcrunch.com/2026/11/21/all-the-ai-agents-that-can-live-in-your-text-messages/",
+      "source": "TechCrunch",
+      "date": "2026-11-21"
     },
     {
-      "title": "Apple joins the race for AI agents that control your device while raising new barriers for competitors",
-      "link": "https://the-decoder.com/apple-joins-the-race-for-ai-agents-that-control-your-device-while-raising-new-barriers-for-competitors/",
-      "source": "The Decoder",
+      "title": "New approach enables physically consistent AI models of chaotic systems",
+      "link": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120",
+      "source": "MIT News",
       "date": "2026-11-20"
     }
   ]
