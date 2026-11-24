@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-11-23T16:14:26.914Z",
+  "fetchedAt": "2026-11-24T16:01:48.689Z",
   "items": [
     {
-      "title": "Beyond Demographic Discrimination: Benchmarking Normative-Descriptive Calibration in LLMs",
-      "link": "https://arxiv.org/abs/2611.26870",
-      "source": "arXiv AI",
-      "date": "2026-11-23"
-    },
-    {
-      "title": "Z.ai follows OpenAI into loop transformer territory with its new 750B flagship model",
-      "link": "https://the-decoder.com/z-ai-follows-openai-into-loop-transformer-territory-with-its-new-750b-flagship-model/",
+      "title": "Anthropic's Claude Ship lets AI agents review, fix, and approve pull requests on their own",
+      "link": "https://the-decoder.com/anthropics-claude-ship-lets-ai-agents-review-fix-and-approve-pull-requests-on-their-own/",
       "source": "The Decoder",
-      "date": "2026-11-23"
+      "date": "2026-11-24"
     },
     {
-      "title": "Here are the top AI agents that can live in your text messages",
-      "link": "https://techcrunch.com/2026/11/21/all-the-ai-agents-that-can-live-in-your-text-messages/",
+      "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
+      "link": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
       "source": "TechCrunch",
-      "date": "2026-11-21"
+      "date": "2026-11-23"
     },
     {
-      "title": "New approach enables physically consistent AI models of chaotic systems",
-      "link": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120",
-      "source": "MIT News",
-      "date": "2026-11-20"
+      "title": "Specialized Large Language Models for Markovian Reasoning: Structural Cache Compression, Transition Pretraining, and Dual-Loop Transformers",
+      "link": "https://arxiv.org/abs/2611.28285",
+      "source": "arXiv AI",
+      "date": "2026-11-24"
     },
     {
-      "title": "Security researchers show how cheap AI inference providers steal keys and snoop on users",
-      "link": "https://the-decoder.com/security-researchers-show-how-cheap-ai-inference-providers-steal-keys-and-snoop-on-users/",
+      "title": "Dozens of insiders say OpenAI and Anthropic's unreleased models have outgrown their safety measures",
+      "link": "https://the-decoder.com/dozens-of-insiders-say-openai-and-anthropics-unreleased-models-have-outgrown-their-safety-measures/",
       "source": "The Decoder",
-      "date": "2026-11-22"
+      "date": "2026-11-24"
+    },
+    {
+      "title": "OpenAI updates ChatGPT to handle complex everyday questions, web searches, and images more reliably",
+      "link": "https://the-decoder.com/openai-updates-chatgpt-to-handle-complex-everyday-questions-web-searches-and-images-more-reliably/",
+      "source": "The Decoder",
+      "date": "2026-11-23"
     }
   ]
 }
