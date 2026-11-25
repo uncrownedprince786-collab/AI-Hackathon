@@ -1,35 +1,35 @@
 {
-  "fetchedAt": "2026-11-24T16:01:48.689Z",
+  "fetchedAt": "2026-11-25T15:49:54.841Z",
   "items": [
     {
-      "title": "Anthropic's Claude Ship lets AI agents review, fix, and approve pull requests on their own",
-      "link": "https://the-decoder.com/anthropics-claude-ship-lets-ai-agents-review-fix-and-approve-pull-requests-on-their-own/",
+      "title": "AI agents now control part of Deepmind's compute for Gemini experiments, but recursive self-improvement remains distant",
+      "link": "https://the-decoder.com/ai-agents-now-control-part-of-deepminds-compute-for-gemini-experiments-but-recursive-self-improvement-remains-distant/",
+      "source": "The Decoder",
+      "date": "2026-11-25"
+    },
+    {
+      "title": "Anthropic tops 700 million monthly MCP SDK downloads and expands the protocol for more autonomous AI agents",
+      "link": "https://the-decoder.com/anthropic-tops-700-million-monthly-mcp-sdk-downloads-and-expands-the-protocol-for-more-autonomous-ai-agents/",
       "source": "The Decoder",
       "date": "2026-11-24"
     },
     {
-      "title": "Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes",
-      "link": "https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/",
+      "title": "Anthropic turns Claude Artifacts into standalone desktop apps for macOS and Windows",
+      "link": "https://the-decoder.com/anthropic-turns-claude-artifacts-into-standalone-desktop-apps-for-macos-and-windows/",
+      "source": "The Decoder",
+      "date": "2026-11-24"
+    },
+    {
+      "title": "Even the best AI agents struggle with everyday life",
+      "link": "https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life/",
       "source": "TechCrunch",
-      "date": "2026-11-23"
-    },
-    {
-      "title": "Specialized Large Language Models for Markovian Reasoning: Structural Cache Compression, Transition Pretraining, and Dual-Loop Transformers",
-      "link": "https://arxiv.org/abs/2611.28285",
-      "source": "arXiv AI",
       "date": "2026-11-24"
     },
     {
-      "title": "Dozens of insiders say OpenAI and Anthropic's unreleased models have outgrown their safety measures",
-      "link": "https://the-decoder.com/dozens-of-insiders-say-openai-and-anthropics-unreleased-models-have-outgrown-their-safety-measures/",
-      "source": "The Decoder",
+      "title": "Anthropic shares fall below IPO price, a worrying sign for AI startups",
+      "link": "https://techcrunch.com/2026/11/24/anthropic-shares-fall-below-ipo-price-a-worrying-sign-for-ai-startups/",
+      "source": "TechCrunch",
       "date": "2026-11-24"
-    },
-    {
-      "title": "OpenAI updates ChatGPT to handle complex everyday questions, web searches, and images more reliably",
-      "link": "https://the-decoder.com/openai-updates-chatgpt-to-handle-complex-everyday-questions-web-searches-and-images-more-reliably/",
-      "source": "The Decoder",
-      "date": "2026-11-23"
     }
   ]
 }
