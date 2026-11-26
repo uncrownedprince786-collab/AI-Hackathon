@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-25T15:49:54.841Z",
+  "fetchedAt": "2026-11-26T15:29:22.566Z",
   "items": [
     {
       "title": "AI agents now control part of Deepmind's compute for Gemini experiments, but recursive self-improvement remains distant",
@@ -8,28 +8,28 @@
       "date": "2026-11-25"
     },
     {
-      "title": "Anthropic tops 700 million monthly MCP SDK downloads and expands the protocol for more autonomous AI agents",
-      "link": "https://the-decoder.com/anthropic-tops-700-million-monthly-mcp-sdk-downloads-and-expands-the-protocol-for-more-autonomous-ai-agents/",
-      "source": "The Decoder",
-      "date": "2026-11-24"
+      "title": "Where scientists draw the line on AI agents",
+      "link": "https://huggingface.co/blog/allenai/where-scientists-draw-the-line-on-ai-agents",
+      "source": "Hugging Face",
+      "date": "2026-11-25"
     },
     {
-      "title": "Anthropic turns Claude Artifacts into standalone desktop apps for macOS and Windows",
-      "link": "https://the-decoder.com/anthropic-turns-claude-artifacts-into-standalone-desktop-apps-for-macos-and-windows/",
-      "source": "The Decoder",
-      "date": "2026-11-24"
-    },
-    {
-      "title": "Even the best AI agents struggle with everyday life",
-      "link": "https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life/",
+      "title": "OpenAI says heavy ChatGPT users may hit limits sooner as it merges Chat and Work",
+      "link": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/",
       "source": "TechCrunch",
-      "date": "2026-11-24"
+      "date": "2026-11-25"
     },
     {
-      "title": "Anthropic shares fall below IPO price, a worrying sign for AI startups",
-      "link": "https://techcrunch.com/2026/11/24/anthropic-shares-fall-below-ipo-price-a-worrying-sign-for-ai-startups/",
-      "source": "TechCrunch",
-      "date": "2026-11-24"
+      "title": "New approach enables physically consistent AI models of chaotic systems",
+      "link": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120",
+      "source": "MIT News",
+      "date": "2026-11-20"
+    },
+    {
+      "title": "Constraint-Aware Test-Time Scoring for LLM and VLM Candidate Selection",
+      "link": "https://arxiv.org/abs/2611.33161",
+      "source": "arXiv AI",
+      "date": "2026-11-26"
     }
   ]
 }
