@@ -1,11 +1,23 @@
 {
-  "fetchedAt": "2026-11-26T15:29:22.566Z",
+  "fetchedAt": "2026-11-27T15:22:33.347Z",
   "items": [
     {
-      "title": "AI agents now control part of Deepmind's compute for Gemini experiments, but recursive self-improvement remains distant",
-      "link": "https://the-decoder.com/ai-agents-now-control-part-of-deepminds-compute-for-gemini-experiments-but-recursive-self-improvement-remains-distant/",
+      "title": "Former OpenAI researcher says the Riemann proof matters less than the fact that an AI system can produce it",
+      "link": "https://the-decoder.com/former-openai-researcher-says-the-riemann-proof-matters-less-than-the-fact-that-an-ai-system-can-produce-it/",
       "source": "The Decoder",
-      "date": "2026-11-25"
+      "date": "2026-11-26"
+    },
+    {
+      "title": "GPT-6.2 Astra users now hit limits 40% faster after OpenAI patched a pricing error",
+      "link": "https://the-decoder.com/gpt-6-2-astra-users-now-hit-limits-40-faster-after-openai-patched-a-pricing-error/",
+      "source": "The Decoder",
+      "date": "2026-11-26"
+    },
+    {
+      "title": "After OpenAI and Anthropic shut the door on their data, a Chinese AI developer is turning to Google and Meta instead",
+      "link": "https://the-decoder.com/after-openai-and-anthropic-shut-the-door-on-their-data-a-chinese-ai-developer-is-turning-to-google-and-meta-instead/",
+      "source": "The Decoder",
+      "date": "2026-11-26"
     },
     {
       "title": "Where scientists draw the line on AI agents",
@@ -18,18 +30,6 @@
       "link": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/",
       "source": "TechCrunch",
       "date": "2026-11-25"
-    },
-    {
-      "title": "New approach enables physically consistent AI models of chaotic systems",
-      "link": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120",
-      "source": "MIT News",
-      "date": "2026-11-20"
-    },
-    {
-      "title": "Constraint-Aware Test-Time Scoring for LLM and VLM Candidate Selection",
-      "link": "https://arxiv.org/abs/2611.33161",
-      "source": "arXiv AI",
-      "date": "2026-11-26"
     }
   ]
 }
