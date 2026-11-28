@@ -1,23 +1,17 @@
 {
-  "fetchedAt": "2026-11-27T15:22:33.347Z",
+  "fetchedAt": "2026-11-28T14:22:23.678Z",
   "items": [
     {
-      "title": "Former OpenAI researcher says the Riemann proof matters less than the fact that an AI system can produce it",
-      "link": "https://the-decoder.com/former-openai-researcher-says-the-riemann-proof-matters-less-than-the-fact-that-an-ai-system-can-produce-it/",
+      "title": "Google Deepmind's \"Humanity's First Exam\" shows top AI models still fail simple everyday tasks under repeated runs",
+      "link": "https://the-decoder.com/google-deepminds-humanitys-first-exam-shows-top-ai-models-still-fail-simple-everyday-tasks-under-repeated-runs/",
       "source": "The Decoder",
-      "date": "2026-11-26"
+      "date": "2026-11-28"
     },
     {
-      "title": "GPT-6.2 Astra users now hit limits 40% faster after OpenAI patched a pricing error",
-      "link": "https://the-decoder.com/gpt-6-2-astra-users-now-hit-limits-40-faster-after-openai-patched-a-pricing-error/",
+      "title": "OpenAI is building \"Athena\" data platform to cut down on AI agent guesswork",
+      "link": "https://the-decoder.com/openai-is-building-athena-data-platform-to-cut-down-on-ai-agent-guesswork/",
       "source": "The Decoder",
-      "date": "2026-11-26"
-    },
-    {
-      "title": "After OpenAI and Anthropic shut the door on their data, a Chinese AI developer is turning to Google and Meta instead",
-      "link": "https://the-decoder.com/after-openai-and-anthropic-shut-the-door-on-their-data-a-chinese-ai-developer-is-turning-to-google-and-meta-instead/",
-      "source": "The Decoder",
-      "date": "2026-11-26"
+      "date": "2026-11-27"
     },
     {
       "title": "Where scientists draw the line on AI agents",
@@ -30,6 +24,12 @@
       "link": "https://techcrunch.com/2026/11/25/openai-says-heavy-chatgpt-users-may-hit-limits-sooner-as-it-merges-chat-and-work/",
       "source": "TechCrunch",
       "date": "2026-11-25"
+    },
+    {
+      "title": "New approach enables physically consistent AI models of chaotic systems",
+      "link": "https://news.mit.edu/new-approach-enables-physically-consistent-ai-models-chaotic-systems-1120",
+      "source": "MIT News",
+      "date": "2026-11-20"
     }
   ]
 }
